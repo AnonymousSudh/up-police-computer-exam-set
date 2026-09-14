@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useExam } from '../context/ExamContext';
-import { Award, CheckCircle, XCircle, AlertCircle } from 'lucide-react';
+import { Award, CheckCircle, XCircle, AlertCircle, Filter } from 'lucide-react';
 
 const Result = () => {
   const { currentExamResult } = useExam();
   const navigate = useNavigate();
+  const [filter, setFilter] = useState('all');
 
   if (!currentExamResult) {
     return (
@@ -15,6 +16,10 @@ const Result = () => {
       </div>
     );
   }
+
+  const handleFilterClick = (newFilter) => {
+    setFilter(prev => prev === newFilter ? 'all' : newFilter);
+  };
 
   const { examTitle, totalQuestions, score, correctCount, incorrectCount, unattemptedCount, answers, exam } = currentExamResult;
   const percentage = Math.round((score / totalQuestions) * 100) || 0;
@@ -36,25 +41,37 @@ const Result = () => {
         </div>
 
         <div className="stats-grid">
-          <div className="stat-box">
+          <div 
+            className={`stat-box clickable-card ${filter === 'all' ? 'active-filter' : ''}`}
+            onClick={() => setFilter('all')}
+          >
             <span className="stat-label">Total Questions</span>
             <span className="stat-value">{totalQuestions}</span>
           </div>
-          <div className="stat-box success-box">
+          <div 
+            className={`stat-box success-box clickable-card ${filter === 'correct' ? 'active-filter-success' : ''}`}
+            onClick={() => handleFilterClick('correct')}
+          >
             <CheckCircle size={20} />
             <div className="stat-info">
               <span className="stat-label">Correct</span>
               <span className="stat-value">{correctCount}</span>
             </div>
           </div>
-          <div className="stat-box danger-box">
+          <div 
+            className={`stat-box danger-box clickable-card ${filter === 'incorrect' ? 'active-filter-danger' : ''}`}
+            onClick={() => handleFilterClick('incorrect')}
+          >
             <XCircle size={20} />
             <div className="stat-info">
               <span className="stat-label">Incorrect</span>
               <span className="stat-value">{incorrectCount}</span>
             </div>
           </div>
-          <div className="stat-box warning-box">
+          <div 
+            className={`stat-box warning-box clickable-card ${filter === 'unattempted' ? 'active-filter-warning' : ''}`}
+            onClick={() => handleFilterClick('unattempted')}
+          >
             <AlertCircle size={20} />
             <div className="stat-info">
               <span className="stat-label">Unattempted</span>
@@ -65,9 +82,32 @@ const Result = () => {
 
         {exam && (
           <div className="detailed-review">
-            <h3 className="review-title">Detailed Review</h3>
+            <div className="review-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
+              <h3 className="review-title" style={{ borderBottom: 'none', marginBottom: 0, paddingBottom: 0 }}>Detailed Review</h3>
+              {filter !== 'all' && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', fontSize: '0.9rem', fontWeight: 500 }}>
+                  <Filter size={16} /> 
+                  <span>Showing {filter} ({
+                    filter === 'correct' ? correctCount : 
+                    filter === 'incorrect' ? incorrectCount : unattemptedCount
+                  })</span>
+                </div>
+              )}
+            </div>
+            
             <div className="review-list">
-              {exam.questions.map((q, idx) => {
+              {exam.questions.map((q, idx) => ({ ...q, originalIdx: idx })).filter(q => {
+                const userAnswer = answers[q.id];
+                const isCorrect = userAnswer === q.correctAnswer;
+                const isAttempted = userAnswer !== undefined;
+                
+                if (filter === 'all') return true;
+                if (filter === 'correct') return isCorrect;
+                if (filter === 'incorrect') return isAttempted && !isCorrect;
+                if (filter === 'unattempted') return !isAttempted;
+                return true;
+              }).map((q) => {
+                const idx = q.originalIdx;
                 const userAnswer = answers[q.id];
                 const isCorrect = userAnswer === q.correctAnswer;
                 const isAttempted = userAnswer !== undefined;

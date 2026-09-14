@@ -684,3 +684,38 @@
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
+/* Clickable Stats Filter Cards */
+.clickable-card {
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.clickable-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.active-filter {
+  background: var(--accent-light);
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+}
+
+.active-filter-success {
+  background: var(--success-bg);
+  border-color: var(--success);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
+}
+
+.active-filter-danger {
+  background: var(--danger-bg);
+  border-color: var(--danger);
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.3);
+}
+
+.active-filter-warning {
+  background: var(--warning-bg);
+  border-color: var(--warning);
+  box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+}
