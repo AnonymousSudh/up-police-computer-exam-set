@@ -259,3 +259,33 @@ button:disabled {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--text-muted);
 }
+
+/* Layout with Ads */
+.layout-with-ads {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+.side-ad {
+  display: none; /* Hide on small and medium screens */
+}
+
+/* Only show side ads on laptops and desktops (1280px and above). 
+   The center content will gracefully shrink to fit. */
+@media (min-width: 1280px) {
+  .side-ad {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    flex-shrink: 0;
+    padding: 2rem 1rem;
+    position: sticky;
+    top: 80px; /* Accounts for header height */
+    height: calc(100vh - 80px);
+  }
+  
+  .hide-on-large {
+    display: none !important;
+  }
+}

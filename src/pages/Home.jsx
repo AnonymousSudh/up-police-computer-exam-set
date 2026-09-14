@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useExam } from '../context/ExamContext';
 import { PlayCircle, Clock, FileQuestion } from 'lucide-react';
+import { AdBanner } from '../components/AdBanner';
 
 const Home = () => {
   const { exams } = useExam();
@@ -10,9 +11,11 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="home-header">
-        <h2>Available Exam Sets</h2>
-        <p>Select an exam below to start your mock test.</p>
+        <h2>Available Exams</h2>
+        <p>Select an exam to begin your simulation</p>
       </div>
+
+      <AdBanner dataAdSlot="HOME_PAGE_TOP_SLOT" className="hide-on-large" />
 
       <div className="exams-grid">
         {exams.map((exam) => (

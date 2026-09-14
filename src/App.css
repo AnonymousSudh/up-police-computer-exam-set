@@ -330,7 +330,7 @@
   gap: 0.75rem;
   margin-bottom: 2rem;
   overflow-y: auto;
-  padding-right: 0.5rem;
+  padding: 0.4rem 0.5rem; /* Add padding to prevent clipping of scaled active button */
   flex: 1;
   min-height: 0;
 }

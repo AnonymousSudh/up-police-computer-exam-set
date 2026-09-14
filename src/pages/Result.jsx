@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useExam } from '../context/ExamContext';
 import { Award, CheckCircle, XCircle, AlertCircle, Filter } from 'lucide-react';
+import { AdBanner } from '../components/AdBanner';
 
 const Result = () => {
   const { currentExamResult } = useExam();
@@ -79,6 +80,8 @@ const Result = () => {
             </div>
           </div>
         </div>
+
+        <AdBanner dataAdSlot="RESULT_PAGE_MID_SLOT" className="hide-on-large" />
 
         {exam && (
           <div className="detailed-review">
