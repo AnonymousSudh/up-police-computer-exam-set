@@ -1,7 +1,12 @@
 const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const assert = require('node:assert/strict');
 const path = require('node:path');
-const fullForms = require('../src/data/full-form-exam.json');
+const fullFormBank = require('../src/data/full-form-exam.json');
+const fullForms = {
+  ...fullFormBank,
+  title: 'Full Form MCQ — Part 1 (Simple)',
+  questions: fullFormBank.questions.slice(0, 100),
+};
 const total = fullForms.questions.length;
 (async () => {
   const browser = await chromium.launch({headless: true, ...(process.env.CHROME_PATH ? {executablePath: process.env.CHROME_PATH} : {})});
@@ -13,7 +18,7 @@ const total = fullForms.questions.length;
     await page.goto('http://127.0.0.1:4173/');
     const card = page.locator('.exam-card').filter({has:page.getByRole('heading', {name:fullForms.title, exact:true})});
     await card.getByText(`${total} Questions`, {exact:true}).waitFor();
-    await card.getByText('Permanent practice set', {exact:true}).waitFor();
+    await card.getByText('Simple', {exact:true}).waitFor();
     assert.equal(await page.getByText('Stale copy', {exact:true}).count(), 0);
     const checkWidth = async label => assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${label} overflow at ${width}`);
     await card.locator('summary').click();
@@ -39,7 +44,6 @@ const total = fullForms.questions.length;
     assert.equal(await page.locator('.review-card').count(), 2);
     await page.locator('.question-references summary').first().click();
     await page.locator('.question-references summary').last().click();
-    assert.ok(await page.getByRole('link', {name:/NIST SP 800-145/}).count() > 0);
     assert.ok(await page.getByRole('link', {name:/UP Police Radio Training Centre/}).count() > 0);
     await checkWidth('expanded answer references');
     await page.reload();

@@ -74,8 +74,8 @@ The check covers 320, 375, 390, 768, 1024, and 1440 pixel layouts, refresh recov
 
 ## Built-in full-form practice
 
-Every visitor gets the permanent **Full Form Computer Operator** card: 300 MCQs, 60 minutes, explanations, and sources available after submission. It covers hardware and memory, input/output and media, software terminology, databases and office tools, networking, and security/web formats.
+Every visitor gets two permanent full-form MCQ cards. **Part 1 (Simple)** has 100 foundational questions and a 30-minute limit; **Part 2 (Hard)** has 200 more challenging questions and a 60-minute limit. Both include explanations and references after submission. Together they cover hardware and memory, input/output and media, software terminology, databases and office tools, networking, and security/web formats.
 
-Built-in content is shipped with the app and takes priority over old browser snapshots. Imported exams remain available alongside it. The question bank is `src/data/full-form-exam.json`; editorial provenance, source limitations, and maintenance guidance are in [the research notes](docs/full-form-research.md). Archived-paper topics, official training-bank topics, and reference-based practice are separately labelled. No numerical prediction of future exam questions is implied.
+Built-in content is shipped with the app and takes priority over old browser snapshots. Imported exams remain available alongside it; the retired combined exam is ignored for returning visitors to prevent duplicate cards. The question bank is `src/data/full-form-exam.json`, split into the two parts in `src/data/exam-library.js`; editorial provenance, source limitations, and maintenance guidance are in [the research notes](docs/full-form-research.md). Archived-paper topics, official training-bank topics, and reference-based practice are separately labelled. No numerical prediction of future exam questions is implied.
 
 With the preview running and optional Playwright available, verify the new set using `node tests/full-form-browser-check.cjs` (the same `PLAYWRIGHT_MODULE` and `CHROME_PATH` overrides apply).

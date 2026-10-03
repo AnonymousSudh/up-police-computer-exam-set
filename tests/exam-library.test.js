@@ -1,16 +1,19 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { builtInExams, mergeExamLibrary } from '../src/data/exam-library.js';
+import { builtInExams, mergeExamLibrary, simpleFullFormExam, hardFullFormExam } from '../src/data/exam-library.js';
 import { validateExam, gradeExam } from '../src/lib/exam.js';
+import fullFormBank from '../src/data/full-form-exam.json' with { type: 'json' };
 
-const fullForms = builtInExams.find(exam => exam.id === 'computer-operator-full-forms');
+const fullForms = fullFormBank;
 
-test('permanent full-form exam appears for new, returning and corrupt-storage users', () => {
-  for (const saved of [null, {}, [], [builtInExams[1]], [{ ...fullForms, title: 'Old overwritten title', questions: [fullForms.questions[0]] }]]) {
+test('both permanent full-form parts appear for new, returning and corrupt-storage users', () => {
+  for (const saved of [null, {}, [], [builtInExams[2]], [{ ...fullForms, title: 'Old overwritten title', questions: [fullForms.questions[0]] }]]) {
     const library = mergeExamLibrary(saved);
-    assert.equal(library[0], fullForms);
-    assert.equal(library.filter(exam => exam.id === fullForms.id).length, 1);
-    assert.equal(library[0].questions.length, 300);
+    assert.equal(library[0], simpleFullFormExam);
+    assert.equal(library[1], hardFullFormExam);
+    assert.equal(library.filter(exam => exam.id.startsWith('computer-operator-full-forms-')).length, 2);
+    assert.equal(library[0].questions.length, 100);
+    assert.equal(library[1].questions.length, 200);
   }
 });
 
@@ -43,10 +46,11 @@ test('question bank has valid answers, unique acronyms and traceable references'
 });
 
 test('scores full bank correctly including final question and session-result normalization', () => {
-  const normalized = validateExam(fullForms);
+  assert.deepEqual([...simpleFullFormExam.questions, ...hardFullFormExam.questions], fullForms.questions);
+  const normalized = validateExam(hardFullFormExam);
   const answers = Object.fromEntries(fullForms.questions.map(q => [q.id, q.correctAnswer]));
-  assert.equal(gradeExam(normalized, answers).score, 300);
-  delete answers[normalized.questions.at(-1).id];
+  assert.equal(gradeExam(normalized, answers).score, 200);
+  delete answers[hardFullFormExam.questions.at(-1).id];
   assert.equal(gradeExam(normalized, answers).unattemptedCount, 1);
 });
 
