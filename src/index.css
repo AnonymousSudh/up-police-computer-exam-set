@@ -122,6 +122,7 @@ h1, h2, h3, h4, h5, h6 {
 .logo-text {
   font-size: 1.5rem;
   background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -289,3 +290,20 @@ button:disabled {
     display: none !important;
   }
 }
+
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .logo-text {
+    font-size: 1.25rem;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+}
+
