@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useExam } from '../context/ExamContext';
 import { UploadCloud, CheckCircle2, AlertCircle } from 'lucide-react';
@@ -9,6 +9,8 @@ const ImportExam = () => {
   const [success, setSuccess] = useState('');
   const { addExam } = useExam();
   const navigate = useNavigate();
+  const redirectTimer = useRef(null);
+  useEffect(() => () => clearTimeout(redirectTimer.current), []);
 
   const handleImport = () => {
     setError('');
@@ -20,28 +22,12 @@ const ImportExam = () => {
       }
       const parsedData = JSON.parse(jsonInput);
       
-      // Basic Validation
-      if (!parsedData.title || !parsedData.questions || !Array.isArray(parsedData.questions)) {
-        throw new Error('Invalid format. JSON must include title and a questions array.');
-      }
-
-      // Format data to fit app structure gracefully handling missing fields
-      const formattedData = {
-        id: parsedData.id || `custom-${Date.now()}`,
-        title: parsedData.title,
-        durationMinutes: parsedData.durationMinutes || 60,
-        questions: parsedData.questions.map((q, idx) => ({
-          ...q,
-          id: q.id ? String(q.id) : `q-${idx}`,
-          text: q.text || q.question
-        }))
-      };
-      
-      addExam(formattedData);
+      if (jsonInput.length > 2_000_000) throw new Error('Exam JSON must be smaller than 2 MB.');
+      addExam(parsedData);
       setSuccess('Exam imported successfully! Redirecting to home...');
       setJsonInput('');
       
-      setTimeout(() => {
+      redirectTimer.current = setTimeout(() => {
         navigate('/');
       }, 1500);
 
@@ -60,7 +46,13 @@ const ImportExam = () => {
         </div>
 
         <div className="import-body">
+          <label htmlFor="exam-json">Exam JSON</label>
+          <p className="import-help">Use 2–8 text options per question and a zero-based correctAnswer (0 = first option). Exams are saved only in this browser.</p>
           <textarea
+            id="exam-json"
+            spellCheck={false}
+            aria-describedby={error ? "import-error" : undefined}
+            aria-invalid={Boolean(error)}
             className="json-textarea"
             placeholder={`{\n  "id": "custom-1",\n  "title": "My Custom Exam",\n  "durationMinutes": 60,\n  "questions": [...]\n}`}
             value={jsonInput}
@@ -68,14 +60,14 @@ const ImportExam = () => {
           ></textarea>
 
           {error && (
-            <div className="alert error-alert">
+            <div id="import-error" role="alert" className="alert error-alert">
               <AlertCircle size={18} />
               <span>{error}</span>
             </div>
           )}
           
           {success && (
-            <div className="alert success-alert">
+            <div role="status" className="alert success-alert">
               <CheckCircle2 size={18} />
               <span>{success}</span>
             </div>
@@ -86,7 +78,7 @@ const ImportExam = () => {
           <button className="btn-secondary" onClick={() => navigate('/')}>
             Cancel
           </button>
-          <button className="btn-primary" onClick={handleImport}>
+          <button className="btn-primary" disabled={Boolean(success)} onClick={handleImport}>
             Parse & Import
           </button>
         </div>

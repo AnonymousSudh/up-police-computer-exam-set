@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useExam } from '../context/ExamContext';
+import { gradeExam, readStorage, writeStorage, sessionStore } from '../lib/exam';
 import { Timer, ArrowLeft, ArrowRight, Flag, CheckCircle } from 'lucide-react';
 
 const ExamSimulator = () => {
@@ -8,109 +9,70 @@ const ExamSimulator = () => {
   const navigate = useNavigate();
   const { getExamById, saveExamResult } = useExam();
   
-  const [exam, setExam] = useState(null);
-  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
-  const [answers, setAnswers] = useState({});
-  const [markedForReview, setMarkedForReview] = useState({});
-  const [timeLeft, setTimeLeft] = useState(0);
+  const exam = getExamById(id);
+  const storageKey = `up-police-attempt-${id}`;
+  const [initial] = useState(() => {
+    const saved = readStorage(storageKey, null, sessionStore);
+    if (exam && saved?.examSignature === JSON.stringify(exam) && Number.isFinite(saved.deadline) && saved.answers && typeof saved.answers === 'object' && !Array.isArray(saved.answers) && Object.entries(saved.answers).every(([questionId, answer]) => exam.questions.some(q => q.id === questionId && Number.isInteger(answer) && answer >= 0 && answer < q.options.length)) && saved.markedForReview && typeof saved.markedForReview === 'object' && Number.isInteger(saved.currentQuestionIdx) && saved.currentQuestionIdx >= 0 && saved.currentQuestionIdx < exam.questions.length) return saved;
+    return { answers: {}, markedForReview: {}, currentQuestionIdx: 0, deadline: Date.now() + (exam?.durationMinutes ?? 60) * 60000 };
+  });
+  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(initial.currentQuestionIdx);
+  const [answers, setAnswers] = useState(initial.answers);
+  const [markedForReview, setMarkedForReview] = useState(initial.markedForReview);
+  const [deadline, setDeadline] = useState(initial.deadline);
+  const [timeLeft, setTimeLeft] = useState(() => Math.max(0, Math.ceil((initial.deadline - Date.now()) / 1000)));
   const [isEditingTime, setIsEditingTime] = useState(false);
   const [editTimeValue, setEditTimeValue] = useState('');
-  
-  useEffect(() => {
-    const loadedExam = getExamById(id);
-    if (!loadedExam) {
-      navigate('/');
-      return;
-    }
-    setExam(loadedExam);
-    setTimeLeft(loadedExam.durationMinutes * 60);
-  }, [id, getExamById, navigate]);
+  const [timeError, setTimeError] = useState('');
+  const [storageFailed, setStorageFailed] = useState(false);
+  const submitted = useRef(false);
+  const questionArea = useRef(null);
+
+  const handleSubmit = useCallback((automatic = false) => {
+    if (!exam || submitted.current) return;
+    if (!automatic && !window.confirm(`Submit this exam? ${exam.questions.length - Object.keys(answers).length} question(s) are unanswered.`)) return;
+    submitted.current = true;
+    saveExamResult(gradeExam(exam, answers));
+    try { sessionStore.removeItem(storageKey); } catch { /* Storage may be disabled. */ }
+    navigate('/result', { replace: true });
+  }, [exam, answers, saveExamResult, storageKey, navigate]);
 
   useEffect(() => {
-    if (timeLeft <= 0 && exam) {
-      handleSubmit();
-      return;
-    }
-    const timerId = setInterval(() => {
-      setTimeLeft(prev => prev - 1);
-    }, 1000);
-    return () => clearInterval(timerId);
-  }, [timeLeft, exam]);
+    if (!exam) navigate('/', { replace: true });
+  }, [exam, navigate]);
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        if (exam && currentQuestionIdx < exam.questions.length - 1) {
-          setCurrentQuestionIdx(prev => prev + 1);
-        }
-      }
+    const tick = () => {
+      const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+      setTimeLeft(remaining);
+      if (remaining === 0) handleSubmit(true);
     };
+    tick();
+    const timerId = setInterval(tick, 1000);
+    document.addEventListener('visibilitychange', tick);
+    return () => { clearInterval(timerId); document.removeEventListener('visibilitychange', tick); };
+  }, [deadline, handleSubmit]);
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentQuestionIdx, exam]);
+  useEffect(() => {
+    if (!exam || submitted.current) return;
+    const saved = writeStorage(storageKey, { examSignature: JSON.stringify(exam), answers, markedForReview, currentQuestionIdx, deadline }, sessionStore);
+    setStorageFailed(!saved);
+  }, [exam, storageKey, answers, markedForReview, currentQuestionIdx, deadline]);
 
-  if (!exam) return <div className="loading">Loading Exam...</div>;
+  useEffect(() => {
+    const warn = event => { if (submitted.current) return; event.preventDefault(); event.returnValue = ''; };
+    window.addEventListener('beforeunload', warn);
+    return () => window.removeEventListener('beforeunload', warn);
+  }, []);
 
+  useEffect(() => { questionArea.current?.scrollTo(0, 0); }, [currentQuestionIdx]);
+
+  if (!exam) return <div className="loading" role="status">Loading Exam...</div>;
   const currentQuestion = exam.questions[currentQuestionIdx];
-
-  const handleOptionSelect = (optionIdx) => {
-    setAnswers(prev => ({ ...prev, [currentQuestion.id]: optionIdx }));
-  };
-
-  const toggleMarkForReview = () => {
-    setMarkedForReview(prev => ({ 
-      ...prev, 
-      [currentQuestion.id]: !prev[currentQuestion.id] 
-    }));
-  };
-
-  const handleNext = () => {
-    if (currentQuestionIdx < exam.questions.length - 1) {
-      setCurrentQuestionIdx(prev => prev + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentQuestionIdx > 0) {
-      setCurrentQuestionIdx(prev => prev - 1);
-    }
-  };
-
-  const handleSubmit = () => {
-    let score = 0;
-    let correctCount = 0;
-    let incorrectCount = 0;
-    let unattemptedCount = 0;
-
-    exam.questions.forEach(q => {
-      const userAnswer = answers[q.id];
-      if (userAnswer === undefined) {
-        unattemptedCount++;
-      } else if (userAnswer === q.correctAnswer) {
-        score += 1;
-        correctCount++;
-      } else {
-        // Optional negative marking could be added here
-        incorrectCount++;
-      }
-    });
-
-    const result = {
-      examTitle: exam.title,
-      totalQuestions: exam.questions.length,
-      score,
-      correctCount,
-      incorrectCount,
-      unattemptedCount,
-      answers,
-      exam
-    };
-    
-    saveExamResult(result);
-    navigate('/result');
-  };
+  const handleOptionSelect = optionIdx => setAnswers(prev => ({ ...prev, [currentQuestion.id]: optionIdx }));
+  const toggleMarkForReview = () => setMarkedForReview(prev => ({ ...prev, [currentQuestion.id]: !prev[currentQuestion.id] }));
+  const handleNext = () => setCurrentQuestionIdx(prev => Math.min(prev + 1, exam.questions.length - 1));
+  const handlePrev = () => setCurrentQuestionIdx(prev => Math.max(0, prev - 1));
 
   const formatTime = (seconds) => {
     const m = Math.floor(seconds / 60).toString().padStart(2, '0');
@@ -124,20 +86,16 @@ const ExamSimulator = () => {
   };
 
   const handleTimeSubmit = () => {
-    setIsEditingTime(false);
-    const parts = editTimeValue.split(':');
-    if (parts.length === 2) {
-      const m = parseInt(parts[0], 10);
-      const s = parseInt(parts[1], 10);
-      if (!isNaN(m) && !isNaN(s)) {
-        setTimeLeft(m * 60 + s);
-      }
-    } else if (parts.length === 1) {
-      const m = parseInt(parts[0], 10);
-      if (!isNaN(m)) {
-        setTimeLeft(m * 60);
-      }
+    const match = /^(\d{1,4})(?::([0-5]\d))?$/.exec(editTimeValue.trim());
+    const seconds = match ? Number(match[1]) * 60 + Number(match[2] ?? 0) : 0;
+    if (seconds < 1 || seconds > 86400) {
+      setTimeError('Enter minutes or MM:SS, between 00:01 and 1440:00.');
+      return;
     }
+    setDeadline(Date.now() + seconds * 1000);
+    setTimeLeft(seconds);
+    setTimeError('');
+    setIsEditingTime(false);
   };
 
   const handleTimeKeyDown = (e) => {
@@ -152,11 +110,13 @@ const ExamSimulator = () => {
       <div className="exam-main-panel">
         <div className="exam-header-bar">
           <h2 className="exam-title">{exam.title}</h2>
-          <div className={`timer-badge ${timeLeft < 300 && !isEditingTime ? 'timer-warning' : ''}`} style={{cursor: 'pointer'}}>
-            <Timer size={18} onClick={!isEditingTime ? handleTimeClick : undefined} />
+          <div className={`timer-badge ${timeLeft < 300 && !isEditingTime ? 'timer-warning' : ''}`} >
+            <Timer size={18} aria-hidden="true" />
             {isEditingTime ? (
               <input 
-                type="text" 
+                type="text"
+                aria-label="Practice timer in minutes or MM:SS"
+                inputMode="numeric"
                 value={editTimeValue}
                 onChange={(e) => setEditTimeValue(e.target.value)}
                 onBlur={handleTimeSubmit}
@@ -175,18 +135,23 @@ const ExamSimulator = () => {
                 }}
               />
             ) : (
-              <span onClick={handleTimeClick}>{formatTime(timeLeft)}</span>
+              <button className="timer-edit" aria-label={`Time remaining ${formatTime(timeLeft)}. Adjust practice timer`} onClick={handleTimeClick}>{formatTime(timeLeft)}</button>
             )}
           </div>
         </div>
 
-        <div className="question-area">
+        {timeError && <p role="alert" className="alert error-alert">{timeError}</p>}
+        {storageFailed && <p role="status" className="alert error-alert">Browser storage is unavailable. Keep this tab open to retain your answers.</p>}
+        <div className="question-area" ref={questionArea}>
           <div className="question-number">Question {currentQuestionIdx + 1} of {exam.questions.length}</div>
+          {currentQuestion.topic && <p className="question-topic">{currentQuestion.topic}</p>}
           <h3 className="question-text">{currentQuestion.text}</h3>
           
-          <div className="options-list">
+          <div className="options-list" role="group" aria-label="Answer options">
             {currentQuestion.options.map((option, idx) => (
-              <div 
+              <button
+                type="button"
+                aria-pressed={answers[currentQuestion.id] === idx}
                 key={idx} 
                 className={`option-item ${answers[currentQuestion.id] === idx ? 'selected' : ''}`}
                 onClick={() => handleOptionSelect(idx)}
@@ -195,7 +160,7 @@ const ExamSimulator = () => {
                   {answers[currentQuestion.id] === idx && <div className="radio-dot"></div>}
                 </div>
                 <span>{option}</span>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -210,6 +175,7 @@ const ExamSimulator = () => {
               <ArrowLeft size={18} /> Previous
             </button>
             <button 
+              aria-pressed={Boolean(markedForReview[currentQuestion.id])}
               className={`btn-outline ${markedForReview[currentQuestion.id] ? 'active-mark' : ''}`}
               onClick={toggleMarkForReview}
             >
@@ -222,7 +188,7 @@ const ExamSimulator = () => {
                 Next <ArrowRight size={18} />
               </button>
             ) : (
-              <button className="btn-success" onClick={handleSubmit}>
+              <button className="btn-success" onClick={() => handleSubmit()}>
                 <CheckCircle size={18} /> Submit Exam
               </button>
             )}
@@ -242,6 +208,8 @@ const ExamSimulator = () => {
 
             return (
               <button 
+                aria-label={`Question ${idx + 1}, ${answers[q.id] !== undefined ? "answered" : "unanswered"}${markedForReview[q.id] ? ", marked for review" : ""}`}
+                aria-current={currentQuestionIdx === idx ? "step" : undefined}
                 key={q.id}
                 className={`palette-btn ${statusClass} ${currentQuestionIdx === idx ? 'current' : ''}`}
                 onClick={() => setCurrentQuestionIdx(idx)}
@@ -267,7 +235,7 @@ const ExamSimulator = () => {
           </div>
         </div>
         
-        <button className="btn-danger full-width mt-auto" onClick={handleSubmit}>
+        <button className="btn-danger full-width mt-auto" onClick={() => handleSubmit()}>
           Finish Test
         </button>
       </div>

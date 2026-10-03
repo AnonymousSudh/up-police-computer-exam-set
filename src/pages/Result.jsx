@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useExam } from '../context/ExamContext';
 import { Award, CheckCircle, XCircle, AlertCircle, Filter } from 'lucide-react';
+import { QuestionReferences } from '../components/QuestionReferences';
 import { AdBanner } from '../components/AdBanner';
 
 const Result = () => {
-  const { currentExamResult } = useExam();
+  const { currentExamResult, storageWarning } = useExam();
   const navigate = useNavigate();
   const [filter, setFilter] = useState('all');
 
@@ -28,6 +29,7 @@ const Result = () => {
   return (
     <div className="result-container">
       <div className="result-card">
+        {storageWarning && <p role="status" className="alert error-alert">{storageWarning}</p>}
         <div className="result-header">
           <Award size={48} className="award-icon" />
           <h2>Exam Result</h2>
@@ -35,22 +37,26 @@ const Result = () => {
         </div>
 
         <div className="score-circle-container">
-          <div className="score-circle">
+          <div className="score-circle" style={{ background: `conic-gradient(var(--accent-primary) ${percentage}%, var(--border-color) 0)` }}>
             <span className="score-text">{percentage}%</span>
             <span className="score-subtext">Score</span>
           </div>
         </div>
 
         <div className="stats-grid">
-          <div 
+          <button
+            type="button"
             className={`stat-box clickable-card ${filter === 'all' ? 'active-filter' : ''}`}
+            aria-pressed={filter === 'all'}
             onClick={() => setFilter('all')}
           >
             <span className="stat-label">Total Questions</span>
             <span className="stat-value">{totalQuestions}</span>
-          </div>
-          <div 
+          </button>
+          <button
+            type="button"
             className={`stat-box success-box clickable-card ${filter === 'correct' ? 'active-filter-success' : ''}`}
+            aria-pressed={filter === 'correct'}
             onClick={() => handleFilterClick('correct')}
           >
             <CheckCircle size={20} />
@@ -58,9 +64,11 @@ const Result = () => {
               <span className="stat-label">Correct</span>
               <span className="stat-value">{correctCount}</span>
             </div>
-          </div>
-          <div 
+          </button>
+          <button
+            type="button"
             className={`stat-box danger-box clickable-card ${filter === 'incorrect' ? 'active-filter-danger' : ''}`}
+            aria-pressed={filter === 'incorrect'}
             onClick={() => handleFilterClick('incorrect')}
           >
             <XCircle size={20} />
@@ -68,9 +76,11 @@ const Result = () => {
               <span className="stat-label">Incorrect</span>
               <span className="stat-value">{incorrectCount}</span>
             </div>
-          </div>
-          <div 
+          </button>
+          <button
+            type="button"
             className={`stat-box warning-box clickable-card ${filter === 'unattempted' ? 'active-filter-warning' : ''}`}
+            aria-pressed={filter === 'unattempted'}
             onClick={() => handleFilterClick('unattempted')}
           >
             <AlertCircle size={20} />
@@ -78,7 +88,7 @@ const Result = () => {
               <span className="stat-label">Unattempted</span>
               <span className="stat-value">{unattemptedCount}</span>
             </div>
-          </div>
+          </button>
         </div>
 
         <AdBanner dataAdSlot="RESULT_PAGE_MID_SLOT" className="hide-on-large" />
@@ -147,6 +157,7 @@ const Result = () => {
                       })}
                     </div>
                     
+                    <QuestionReferences examId={exam.id} questionId={q.id} />
                     {q.explanation && (
                       <div className="explanation-box">
                         <strong>Explanation:</strong> {q.explanation}

@@ -1,49 +1,34 @@
-import React, { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
-export const AdBanner = ({ dataAdSlot, style, className }) => {
+const client = import.meta.env.VITE_ADSENSE_CLIENT;
+const slots = {
+  HOME_PAGE_TOP_SLOT: import.meta.env.VITE_ADSENSE_HOME_SLOT,
+  RESULT_PAGE_MID_SLOT: import.meta.env.VITE_ADSENSE_RESULT_SLOT,
+  LEFT_SIDE_AD: import.meta.env.VITE_ADSENSE_LEFT_SLOT,
+  RIGHT_SIDE_AD: import.meta.env.VITE_ADSENSE_RIGHT_SLOT,
+};
+const validClient = /^ca-pub-\d{16}$/.test(client ?? '');
+// eslint-disable-next-line react/only-export-components
+export const hasSideAds = validClient && /^\d+$/.test(slots.LEFT_SIDE_AD ?? '') && /^\d+$/.test(slots.RIGHT_SIDE_AD ?? '');
+
+export const AdBanner = ({ dataAdSlot, style, className = '' }) => {
+  const slot = slots[dataAdSlot];
+  const enabled = validClient && /^\d+$/.test(slot ?? '');
+  const initialized = useRef(false);
   useEffect(() => {
-    try {
-      // Push empty object to initialize the ad on mount
-      if (window && typeof window !== 'undefined') {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      }
-    } catch (e) {
-      console.error('AdSense initialization error:', e);
+    if (!enabled || initialized.current) return;
+    // Load the publisher script only after a configured ad is mounted.
+    if (!document.querySelector('script[data-adsense]')) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.crossOrigin = 'anonymous';
+      script.dataset.adsense = 'true';
+      script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${client}`;
+      document.head.appendChild(script);
     }
-  }, []);
-
-  return (
-    <div 
-      className={`ad-container ${className || ''}`} 
-      style={{ 
-        textAlign: 'center', 
-        margin: '1.5rem 0',
-        minHeight: '90px', // Prevent layout shift before ad loads
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        background: 'rgba(255, 255, 255, 0.02)', // subtle placeholder background
-        borderRadius: '8px',
-        border: '1px dashed rgba(255, 255, 255, 0.1)',
-        position: 'relative',
-        ...style 
-      }}
-    >
-      <span style={{ position: 'absolute', color: 'var(--text-muted)', fontSize: '0.85rem', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-        Demo Ad Space
-      </span>
-      {/* 
-        This is a visual placeholder for dev. In production with a valid AdSense 
-        publisher ID, Google's script will inject the actual ad inside this <ins> tag.
-      */}
-      <ins 
-        className="adsbygoogle"
-        style={{ display: 'block', width: '100%' }}
-        data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" // REPLACE WITH YOUR ADSENSE PUBLISHER ID
-        data-ad-slot={dataAdSlot || "XXXXXXXXXX"}  // REPLACE WITH YOUR AD SLOT ID
-        data-ad-format="auto"
-        data-full-width-responsive="true"
-      ></ins>
-    </div>
-  );
+    initialized.current = true;
+    try { (window.adsbygoogle = window.adsbygoogle || []).push({}); } catch { /* Ad blockers must not interrupt practice. */ }
+  }, [enabled]);
+  if (!enabled) return null;
+  return <aside aria-label="Advertisement" className={`ad-container ${className}`} style={{ minHeight: 90, ...style }}><ins className="adsbygoogle" style={{ display: 'block', width: '100%' }} data-ad-client={client} data-ad-slot={slot} data-ad-format="auto" data-full-width-responsive="true" /></aside>;
 };

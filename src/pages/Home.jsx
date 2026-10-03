@@ -21,7 +21,9 @@ const Home = () => {
         {exams.map((exam) => (
           <div key={exam.id} className="exam-card">
             <div className="exam-card-header">
+              {exam.badge && <span className="exam-badge">{exam.badge}</span>}
               <h3>{exam.title}</h3>
+              {exam.description && <p className="exam-description">{exam.description}</p>}
             </div>
             <div className="exam-card-body">
               <div className="exam-detail">
@@ -33,10 +35,11 @@ const Home = () => {
                 <span>{exam.questions?.length || 0} Questions</span>
               </div>
             </div>
+            {exam.researchNote && <details className="exam-research-note"><summary>About this question set</summary><p>{exam.researchNote} Source links appear in the answer review.</p></details>}
             <div className="exam-card-footer">
               <button 
                 className="btn-primary"
-                onClick={() => navigate(`/exam/${exam.id}`)}
+                onClick={() => navigate(`/exam/${encodeURIComponent(exam.id)}`)}
               >
                 <PlayCircle size={18} />
                 Start Exam

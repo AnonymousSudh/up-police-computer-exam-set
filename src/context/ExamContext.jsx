@@ -1,50 +1,36 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import defaultExam from '../data/default-exam.json';
+import { createContext, useContext, useState, useCallback } from 'react';
+import { mergeExamLibrary } from '../data/exam-library';
+import { readStorage, writeStorage, sessionStore, validateExam, gradeExam } from '../lib/exam';
 
 const ExamContext = createContext();
 
 export const ExamProvider = ({ children }) => {
+  const [storageWarning, setStorageWarning] = useState('');
   const [exams, setExams] = useState(() => {
-    const saved = localStorage.getItem('up-police-exams');
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch (e) {
-        console.error("Failed to parse exams from localStorage", e);
-      }
-    }
-    return [defaultExam];
+    return mergeExamLibrary(readStorage('up-police-exams', []));
   });
-
-  const [currentExamResult, setCurrentExamResult] = useState(null);
-
-  useEffect(() => {
-    localStorage.setItem('up-police-exams', JSON.stringify(exams));
-  }, [exams]);
-
-  const addExam = (exam) => {
-    setExams(prev => [...prev, exam]);
+  const [currentExamResult, setCurrentExamResult] = useState(() => {
+    const saved = readStorage('up-police-result', null, sessionStore);
+    try {
+      if (!saved || !saved.answers || !Number.isFinite(saved.score)) return null;
+      return gradeExam(validateExam(saved.exam), saved.answers);
+    } catch { return null; }
+  });
+  const addExam = (data) => {
+    const exam = validateExam(data);
+    if (exams.some(item => item.id === exam.id)) throw new Error('This exam ID already exists. Use a different ID.');
+    const next = [...exams, exam];
+    if (!writeStorage('up-police-exams', next)) throw new Error('Cannot save this exam. Browser storage may be full or disabled.');
+    setExams(next);
   };
-
-  const getExamById = (id) => {
-    return exams.find(e => e.id === id);
-  };
-
-  const saveExamResult = (result) => {
+  const getExamById = useCallback(id => exams.find(exam => exam.id === id), [exams]);
+  const saveExamResult = useCallback(result => {
     setCurrentExamResult(result);
-  };
-
-  return (
-    <ExamContext.Provider value={{ 
-      exams, 
-      addExam, 
-      getExamById,
-      currentExamResult,
-      saveExamResult
-    }}>
-      {children}
-    </ExamContext.Provider>
-  );
+    if (!writeStorage('up-police-result', result, sessionStore)) setStorageWarning('Browser storage is unavailable. Keep this page open to retain your result.');
+  }, []);
+  return <ExamContext.Provider value={{ exams, addExam, getExamById, currentExamResult, saveExamResult, storageWarning }}>{children}</ExamContext.Provider>;
 };
 
+// Context hooks are intentionally exported alongside their provider.
+// eslint-disable-next-line react/only-export-components
 export const useExam = () => useContext(ExamContext);

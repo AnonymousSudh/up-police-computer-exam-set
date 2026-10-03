@@ -1,0 +1,60 @@
+const { chromium } = require(process.env.PLAYWRIGHT_MODULE || 'playwright');
+const assert = require('node:assert/strict');
+(async () => {
+ const browser = await chromium.launch({headless:true, ...(process.env.CHROME_PATH ? { executablePath: process.env.CHROME_PATH } : {})});
+ const errors = [];
+ for (const width of [320,375,390,768,1024,1440]) {
+  const page = await browser.newPage({viewport:{width,height:850}});
+  page.on('pageerror', e => errors.push(e.message));
+  await page.goto('http://127.0.0.1:4173');
+  const checkWidth = async label => {
+   const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+   assert.equal(overflow, false, `${label} overflows at ${width}px`);
+  };
+  await checkWidth('home');
+  await page.getByRole('link', {name:'Import Exam',exact:true}).click();
+  await checkWidth('import');
+  await page.locator('textarea').fill(JSON.stringify({title:'Invalid',questions:[]}));
+  await page.getByRole('button', {name:'Parse & Import'}).click();
+  await page.getByRole('alert').waitFor();
+  await page.getByRole('link', {name:'Home',exact:true}).click();
+  await page.locator('.exam-card').filter({has:page.getByRole('heading',{name:'UP Police Computer Operator Mock Test 1'})}).getByRole('button', {name:'Start Exam'}).click();
+  await checkWidth('exam');
+  if (width < 768) assert.ok(await page.locator('.question-area').evaluate(el=>el.getBoundingClientRect().top) < await page.locator('.exam-side-panel').evaluate(el=>el.getBoundingClientRect().top));
+  await page.getByRole('button', {name:'CPU',exact:true}).click();
+  await page.getByRole('button', {name:'Next',exact:true}).click();
+  await page.reload();
+  await page.getByText('Question 2 of 5', {exact:true}).waitFor();
+  await page.getByRole('button', {name:'Question 1, answered',exact:true}).click();
+  assert.equal(await page.getByRole('button', {name:'CPU',exact:true}).getAttribute('aria-pressed'), 'true');
+  page.once('dialog',d=>d.accept());
+  await page.getByRole('button', {name:'Finish Test'}).click();
+  await page.getByRole('heading', {name:'Exam Result'}).waitFor();
+  await checkWidth('result');
+  await page.reload();
+  await page.getByRole('heading', {name:'Exam Result'}).waitFor();
+  await page.getByRole('button', {name:'Correct 1',exact:true}).click();
+  assert.equal(await page.locator('.review-card').count(),1);
+
+  await page.close();
+  console.log(`PASS ${width}px: home, import, exam, refresh recovery, results and filtering`);
+ }
+ const page = await browser.newPage();
+ await page.goto('http://127.0.0.1:4173/import');
+ await page.locator('textarea').fill(JSON.stringify({id:'browser-test',title:'Browser imported exam',durationMinutes:1,questions:[{text:'What is correct?',options:['yes','no'],correctAnswer:0}]}));
+ await page.getByRole('button',{name:'Parse & Import'}).click();
+ await page.waitForURL('http://127.0.0.1:4173/');
+ await page.reload();
+ await page.getByRole('heading',{name:'Browser imported exam'}).waitFor();
+ await page.goto('http://127.0.0.1:4173/exam/browser-test');
+ await page.getByRole('button',{name:/Adjust practice timer/}).click();
+ await page.getByRole('textbox',{name:/Practice timer/}).fill('00:01');
+ await page.getByRole('textbox',{name:/Practice timer/}).press('Enter');
+ await page.getByRole('heading',{name:'Exam Result'}).waitFor();
+ console.log('PASS valid import, persistence, direct route, timer auto-submit');
+ await page.goto('http://127.0.0.1:4173/unknown');
+ await page.getByRole('heading',{name:'Page not found'}).waitFor();
+ assert.deepEqual(errors, []);
+ console.log('PASS no uncaught browser errors');
+ await browser.close();
+})().catch(e=>{console.error(e);process.exit(1)});
