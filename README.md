@@ -37,6 +37,10 @@ The practice timer uses an absolute deadline, including time spent in a backgrou
 
 ## Import format
 
+Both standard single-language and bilingual (English + Hindi) formats are supported.
+
+### Standard Format
+
 ```json
 {
   "id": "custom-1",
@@ -54,7 +58,38 @@ The practice timer uses an absolute deadline, including time spent in a backgrou
 }
 ```
 
-`correctAnswer` is a zero-based option index. IDs must be unique. Missing exam/question IDs are generated, missing duration defaults to 60 minutes, and `question` is accepted as an alias for `text`. The app rejects empty exams, invalid durations, malformed options, and invalid answer indexes. Limits: 2 MB of input, 1000 questions, 2–8 options per question, and 1–1440 minutes.
+### Bilingual Format (English + Hindi)
+
+```json
+{
+  "title": "UP Police Mock Test",
+  "durationMinutes": 60,
+  "questions": [
+    {
+      "question_number": 188,
+      "question_hindi": "किसी डॉक्यूमेंट को प्रिंट करने के लिए—",
+      "question_english": "To print a document—",
+      "options": [
+        {
+          "option_label": "a",
+          "option_text_hindi": "प्रिंट कमांड सेलेक्ट करें और तब ओके करें",
+          "option_text_english": "Select the Print command and then click OK."
+        },
+        {
+          "option_label": "b",
+          "option_text_hindi": "रेडी प्रिंटर कमांड सेलेक्ट करें तब ओके करें",
+          "option_text_english": "Select the Ready Printer command and then click OK."
+        }
+      ],
+      "correct_option_label": "a",
+      "explanation_hindi": "फ़ाइल मेनू से प्रिंट चुनें...",
+      "explanation_english": "Select Print from the File menu..."
+    }
+  ]
+}
+```
+
+`correctAnswer` can be specified as a zero-based option index, or through `correct_option_label` (e.g. `"a"`, `"b"`, `"c"`). When bilingual fields are present, candidates get interactive English / हिन्दी language switchers on every question and review card. IDs and titles are generated when omitted. Limits: 2 MB of input, 1000 questions, 2–8 options per question, and 1–1440 minutes.
 
 ## Optional advertising
 

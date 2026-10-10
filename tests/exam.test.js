@@ -22,3 +22,77 @@ test('handles corrupt and unavailable storage', () => {
   assert.equal(readStorage('x', 'fallback', { getItem: () => { throw Error(); } }), 'fallback');
   assert.equal(writeStorage('x', {}, { setItem: () => { throw Error(); } }), false);
 });
+
+test('validates and normalizes bilingual exams with question_number, object options, and label resolution', async () => {
+  const { isBilingualQuestion, getQuestionText, getQuestionOptions, getQuestionExplanation } = await import('../src/lib/exam.js');
+
+  const bilingualInput = {
+    questions: [
+      {
+        question_number: 188,
+        question_hindi: 'किसी डॉक्यूमेंट को प्रिंट करने के लिए—',
+        question_english: 'To print a document—',
+        options: [
+          { option_label: 'a', option_text_hindi: 'प्रिंट कमांड सेलेक्ट करें और तब ओके करें', option_text_english: 'Select the Print command and then click OK.' },
+          { option_label: 'b', option_text_hindi: 'रेडी प्रिंटर कमांड सेलेक्ट करें तब ओके करें', option_text_english: 'Select the Ready Printer command and then click OK.' },
+          { option_label: 'c', option_text_hindi: 'प्रिन्ट (Print) टाइप करने के बाद एंटर प्रेस करें', option_text_english: 'Type Print and then press Enter.' },
+          { option_label: 'd', option_text_hindi: 'डॉक्यूमेंट क्लोज करें, प्रिंट कमांड सेलेक्ट करें तब ओके करें', option_text_english: 'Close the document, select the Print command, and then click OK.' },
+          { option_label: 'e', option_text_hindi: 'उपरोक्त में से कोई नहीं', option_text_english: 'None of the above.' }
+        ],
+        correct_option_label: 'a',
+        correct_answer_hindi: 'प्रिंट कमांड सेलेक्ट करें और तब ओके करें',
+        correct_answer_english: 'Select the Print command and then click OK.',
+        explanation_hindi: 'डॉक्यूमेंट प्रिंट करने के लिए कंप्यूटर से प्रिंटर कनेक्ट करें।',
+        explanation_english: 'To print a document, connect a printer to the computer.'
+      },
+      {
+        question_number: 189,
+        question_hindi: 'स्टोरेज डिवाइस का मेन फोल्डर कहलाता है—',
+        question_english: 'The main folder of a storage device is called—',
+        options: [
+          { option_label: 'a', option_text_hindi: 'प्लेटफॉर्म', option_text_english: 'Platform' },
+          { option_label: 'b', option_text_hindi: 'इंटरफेस', option_text_english: 'Interface' },
+          { option_label: 'c', option_text_hindi: 'रूट डायरेक्टरी', option_text_english: 'Root directory' },
+          { option_label: 'd', option_text_hindi: 'डिवाइस ड्राइवर', option_text_english: 'Device driver' },
+          { option_label: 'e', option_text_hindi: 'उपरोक्त में से कोई नहीं', option_text_english: 'None of the above.' }
+        ],
+        correct_option_label: 'c',
+        correct_answer_hindi: 'रूट डायरेक्टरी',
+        correct_answer_english: 'Root directory',
+        explanation_hindi: 'रूट डायरेक्टरी सबसे ऊपरी स्तर की डायरेक्टरी होती है।',
+        explanation_english: 'The root directory is the top-level directory.'
+      }
+    ]
+  };
+
+  const parsed = validateExam(bilingualInput);
+  assert.equal(parsed.title, 'Imported Exam Set');
+  assert.equal(parsed.durationMinutes, 60);
+  assert.equal(parsed.questions.length, 2);
+
+  const q1 = parsed.questions[0];
+  assert.equal(q1.id, 'q-188');
+  assert.equal(q1.correctAnswer, 0); // 'a' -> 0
+  assert.equal(isBilingualQuestion(q1), true);
+  assert.equal(getQuestionText(q1, 'en'), 'To print a document—');
+  assert.equal(getQuestionText(q1, 'hi'), 'किसी डॉक्यूमेंट को प्रिंट करने के लिए—');
+  assert.equal(getQuestionOptions(q1, 'en')[0], 'Select the Print command and then click OK.');
+  assert.equal(getQuestionOptions(q1, 'hi')[0], 'प्रिंट कमांड सेलेक्ट करें और तब ओके करें');
+  assert.equal(getQuestionExplanation(q1, 'en'), 'To print a document, connect a printer to the computer.');
+  assert.equal(getQuestionExplanation(q1, 'hi'), 'डॉक्यूमेंट प्रिंट करने के लिए कंप्यूटर से प्रिंटर कनेक्ट करें।');
+
+  const q2 = parsed.questions[1];
+  assert.equal(q2.id, 'q-189');
+  assert.equal(q2.correctAnswer, 2); // 'c' -> 2
+  assert.equal(getQuestionText(q2, 'en'), 'The main folder of a storage device is called—');
+  assert.equal(getQuestionText(q2, 'hi'), 'स्टोरेज डिवाइस का मेन फोल्डर कहलाता है—');
+  assert.equal(getQuestionOptions(q2, 'en')[2], 'Root directory');
+  assert.equal(getQuestionOptions(q2, 'hi')[2], 'रूट डायरेक्टरी');
+
+  // Verify re-validation round trip (e.g. from session storage)
+  const revalidated = validateExam(parsed);
+  assert.equal(revalidated.questions[0].correctAnswer, 0);
+  assert.equal(revalidated.questions[0].options_hi[0], 'प्रिंट कमांड सेलेक्ट करें और तब ओके करें');
+  assert.equal(revalidated.questions[1].correctAnswer, 2);
+});
+

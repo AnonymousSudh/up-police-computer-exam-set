@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useExam } from '../context/ExamContext';
-import { Award, CheckCircle, XCircle, AlertCircle, Filter } from 'lucide-react';
+import { Award, CheckCircle, XCircle, AlertCircle, Filter, Languages } from 'lucide-react';
 import { QuestionReferences } from '../components/QuestionReferences';
 import { AdBanner } from '../components/AdBanner';
+import { isBilingualQuestion, getQuestionText, getQuestionOptions, getQuestionExplanation } from '../lib/exam';
 
 const Result = () => {
   const { currentExamResult, storageWarning } = useExam();
   const navigate = useNavigate();
   const [filter, setFilter] = useState('all');
+  const [globalReviewLang, setGlobalReviewLang] = useState('en');
+  const [questionReviewLangs, setQuestionReviewLangs] = useState({});
 
   if (!currentExamResult) {
     return (
@@ -25,6 +28,7 @@ const Result = () => {
 
   const { examTitle, totalQuestions, score, correctCount, incorrectCount, unattemptedCount, answers, exam } = currentExamResult;
   const percentage = Math.round((score / totalQuestions) * 100) || 0;
+  const hasAnyBilingual = exam?.questions?.some(isBilingualQuestion);
 
   return (
     <div className="result-container">
@@ -95,15 +99,41 @@ const Result = () => {
 
         {exam && (
           <div className="detailed-review">
-            <div className="review-header-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.5rem' }}>
-              <h3 className="review-title" style={{ borderBottom: 'none', marginBottom: 0, paddingBottom: 0 }}>Detailed Review</h3>
-              {filter !== 'all' && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--accent-primary)', fontSize: '0.9rem', fontWeight: 500 }}>
-                  <Filter size={16} /> 
-                  <span>Showing {filter} ({
-                    filter === 'correct' ? correctCount : 
-                    filter === 'incorrect' ? incorrectCount : unattemptedCount
-                  })</span>
+            <div className="review-header-row">
+              <div className="review-header-title-group">
+                <h3 className="review-title">Detailed Review</h3>
+                {filter !== 'all' && (
+                  <div className="filter-status-tag">
+                    <Filter size={15} /> 
+                    <span>Showing {filter} ({
+                      filter === 'correct' ? correctCount : 
+                      filter === 'incorrect' ? incorrectCount : unattemptedCount
+                    })</span>
+                  </div>
+                )}
+              </div>
+              {hasAnyBilingual && (
+                <div className="header-lang-switcher" role="group" aria-label="Review language">
+                  <Languages size={15} className="lang-icon" aria-hidden="true" />
+                  <span className="lang-text-label">Review in:</span>
+                  <div className="lang-pills">
+                    <button
+                      type="button"
+                      className={`lang-pill ${globalReviewLang === 'en' ? 'active' : ''}`}
+                      onClick={() => setGlobalReviewLang('en')}
+                      aria-pressed={globalReviewLang === 'en'}
+                    >
+                      English
+                    </button>
+                    <button
+                      type="button"
+                      className={`lang-pill ${globalReviewLang === 'hi' ? 'active' : ''}`}
+                      onClick={() => setGlobalReviewLang('hi')}
+                      aria-pressed={globalReviewLang === 'hi'}
+                    >
+                      हिन्दी
+                    </button>
+                  </div>
                 </div>
               )}
             </div>
@@ -124,19 +154,50 @@ const Result = () => {
                 const userAnswer = answers[q.id];
                 const isCorrect = userAnswer === q.correctAnswer;
                 const isAttempted = userAnswer !== undefined;
+                const isBilingual = isBilingualQuestion(q);
+                const currentLang = questionReviewLangs[q.id] || globalReviewLang;
+                const displayText = getQuestionText(q, currentLang);
+                const displayOptions = getQuestionOptions(q, currentLang);
+                const displayExplanation = getQuestionExplanation(q, currentLang);
                 
                 return (
                   <div key={q.id} className={`review-card ${isCorrect ? 'correct-card' : isAttempted ? 'incorrect-card' : 'unattempted-card'}`}>
                     <div className="review-q-header">
-                      <span className="q-num">Question {idx + 1}</span>
+                      <div className="review-q-header-left">
+                        <span className="q-num">Question {idx + 1}</span>
+                        {isBilingual && (
+                          <div className="question-lang-switcher compact" role="group" aria-label="Question language toggle">
+                            <Languages size={13} aria-hidden="true" />
+                            <div className="lang-pills">
+                              <button
+                                type="button"
+                                className={`lang-pill ${currentLang === 'en' ? 'active' : ''}`}
+                                onClick={() => setQuestionReviewLangs(prev => ({ ...prev, [q.id]: 'en' }))}
+                                aria-pressed={currentLang === 'en'}
+                              >
+                                English
+                              </button>
+                              <button
+                                type="button"
+                                className={`lang-pill ${currentLang === 'hi' ? 'active' : ''}`}
+                                onClick={() => setQuestionReviewLangs(prev => ({ ...prev, [q.id]: 'hi' }))}
+                                aria-pressed={currentLang === 'hi'}
+                              >
+                                हिन्दी
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </div>
                       <span className={`q-status ${isCorrect ? 'text-success' : isAttempted ? 'text-danger' : 'text-warning'}`}>
                         {isCorrect ? 'Correct' : isAttempted ? 'Incorrect' : 'Unattempted'}
                       </span>
                     </div>
-                    <h4 className="review-q-text">{q.text}</h4>
+                    <h4 className="review-q-text">{displayText}</h4>
                     
                     <div className="review-options">
-                      {q.options.map((opt, optIdx) => {
+                      {displayOptions.map((opt, optIdx) => {
+                        const label = q.option_labels?.[optIdx] || String.fromCharCode(65 + optIdx);
                         let optClass = 'review-opt';
                         if (optIdx === q.correctAnswer) {
                           optClass += ' correct-opt';
@@ -147,7 +208,7 @@ const Result = () => {
                         return (
                           <div key={optIdx} className={optClass}>
                             <div className="opt-content">
-                              <span className="opt-marker">{String.fromCharCode(65 + optIdx)}.</span> 
+                              <span className="opt-marker">{label.toUpperCase()}.</span> 
                               <span>{opt}</span>
                             </div>
                             {optIdx === q.correctAnswer && <CheckCircle size={18} className="opt-icon success-icon" />}
@@ -158,9 +219,9 @@ const Result = () => {
                     </div>
                     
                     <QuestionReferences examId={exam.id} questionId={q.id} />
-                    {q.explanation && (
+                    {displayExplanation && (
                       <div className="explanation-box">
-                        <strong>Explanation:</strong> {q.explanation}
+                        <strong>Explanation:</strong> {displayExplanation}
                       </div>
                     )}
                   </div>

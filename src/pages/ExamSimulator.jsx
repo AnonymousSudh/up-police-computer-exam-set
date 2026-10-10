@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useExam } from '../context/ExamContext';
-import { gradeExam, readStorage, writeStorage, sessionStore } from '../lib/exam';
-import { Timer, ArrowLeft, ArrowRight, Flag, CheckCircle } from 'lucide-react';
+import { gradeExam, readStorage, writeStorage, sessionStore, isBilingualQuestion, getQuestionText, getQuestionOptions } from '../lib/exam';
+import { Timer, ArrowLeft, ArrowRight, Flag, CheckCircle, Languages } from 'lucide-react';
 
 const ExamSimulator = () => {
   const { id } = useParams();
@@ -25,6 +25,8 @@ const ExamSimulator = () => {
   const [editTimeValue, setEditTimeValue] = useState('');
   const [timeError, setTimeError] = useState('');
   const [storageFailed, setStorageFailed] = useState(false);
+  const [globalLang, setGlobalLang] = useState('en');
+  const [questionLangs, setQuestionLangs] = useState({});
   const submitted = useRef(false);
   const questionArea = useRef(null);
 
@@ -69,6 +71,12 @@ const ExamSimulator = () => {
 
   if (!exam) return <div className="loading" role="status">Loading Exam...</div>;
   const currentQuestion = exam.questions[currentQuestionIdx];
+  const hasAnyBilingual = exam.questions.some(isBilingualQuestion);
+  const isCurrentBilingual = isBilingualQuestion(currentQuestion);
+  const currentLang = questionLangs[currentQuestion.id] || globalLang;
+  const displayText = getQuestionText(currentQuestion, currentLang);
+  const displayOptions = getQuestionOptions(currentQuestion, currentLang);
+
   const handleOptionSelect = optionIdx => setAnswers(prev => ({ ...prev, [currentQuestion.id]: optionIdx }));
   const toggleMarkForReview = () => setMarkedForReview(prev => ({ ...prev, [currentQuestion.id]: !prev[currentQuestion.id] }));
   const handleNext = () => setCurrentQuestionIdx(prev => Math.min(prev + 1, exam.questions.length - 1));
@@ -109,7 +117,33 @@ const ExamSimulator = () => {
     <div className="exam-simulator-container">
       <div className="exam-main-panel">
         <div className="exam-header-bar">
-          <h2 className="exam-title">{exam.title}</h2>
+          <div className="exam-header-left">
+            <h2 className="exam-title">{exam.title}</h2>
+            {hasAnyBilingual && (
+              <div className="header-lang-switcher" role="group" aria-label="Default language">
+                <Languages size={16} className="lang-icon" aria-hidden="true" />
+                <span className="lang-text-label">Default:</span>
+                <div className="lang-pills">
+                  <button
+                    type="button"
+                    className={`lang-pill ${globalLang === 'en' ? 'active' : ''}`}
+                    onClick={() => setGlobalLang('en')}
+                    aria-pressed={globalLang === 'en'}
+                  >
+                    English
+                  </button>
+                  <button
+                    type="button"
+                    className={`lang-pill ${globalLang === 'hi' ? 'active' : ''}`}
+                    onClick={() => setGlobalLang('hi')}
+                    aria-pressed={globalLang === 'hi'}
+                  >
+                    हिन्दी
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
           <div className={`timer-badge ${timeLeft < 300 && !isEditingTime ? 'timer-warning' : ''}`} >
             <Timer size={18} aria-hidden="true" />
             {isEditingTime ? (
@@ -143,25 +177,55 @@ const ExamSimulator = () => {
         {timeError && <p role="alert" className="alert error-alert">{timeError}</p>}
         {storageFailed && <p role="status" className="alert error-alert">Browser storage is unavailable. Keep this tab open to retain your answers.</p>}
         <div className="question-area" ref={questionArea}>
-          <div className="question-number">Question {currentQuestionIdx + 1} of {exam.questions.length}</div>
+          <div className="question-top-bar">
+            <div className="question-number">Question {currentQuestionIdx + 1} of {exam.questions.length}</div>
+            {isCurrentBilingual && (
+              <div className="question-lang-switcher" role="group" aria-label="Question language toggle">
+                <Languages size={15} aria-hidden="true" />
+                <span className="lang-text-label">Language:</span>
+                <div className="lang-pills">
+                  <button
+                    type="button"
+                    className={`lang-pill ${currentLang === 'en' ? 'active' : ''}`}
+                    onClick={() => setQuestionLangs(prev => ({ ...prev, [currentQuestion.id]: 'en' }))}
+                    aria-pressed={currentLang === 'en'}
+                  >
+                    English
+                  </button>
+                  <button
+                    type="button"
+                    className={`lang-pill ${currentLang === 'hi' ? 'active' : ''}`}
+                    onClick={() => setQuestionLangs(prev => ({ ...prev, [currentQuestion.id]: 'hi' }))}
+                    aria-pressed={currentLang === 'hi'}
+                  >
+                    हिन्दी
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
           {currentQuestion.topic && <p className="question-topic">{currentQuestion.topic}</p>}
-          <h3 className="question-text">{currentQuestion.text}</h3>
+          <h3 className="question-text">{displayText}</h3>
           
           <div className="options-list" role="group" aria-label="Answer options">
-            {currentQuestion.options.map((option, idx) => (
-              <button
-                type="button"
-                aria-pressed={answers[currentQuestion.id] === idx}
-                key={idx} 
-                className={`option-item ${answers[currentQuestion.id] === idx ? 'selected' : ''}`}
-                onClick={() => handleOptionSelect(idx)}
-              >
-                <div className="option-radio">
-                  {answers[currentQuestion.id] === idx && <div className="radio-dot"></div>}
-                </div>
-                <span>{option}</span>
-              </button>
-            ))}
+            {displayOptions.map((option, idx) => {
+              const label = currentQuestion.option_labels?.[idx] || String.fromCharCode(65 + idx);
+              return (
+                <button
+                  type="button"
+                  aria-pressed={answers[currentQuestion.id] === idx}
+                  key={idx} 
+                  className={`option-item ${answers[currentQuestion.id] === idx ? 'selected' : ''}`}
+                  onClick={() => handleOptionSelect(idx)}
+                >
+                  <div className="option-radio">
+                    {answers[currentQuestion.id] === idx && <div className="radio-dot"></div>}
+                  </div>
+                  <span className="option-label-badge">{label.toUpperCase()}.</span>
+                  <span className="option-label-text">{option}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
