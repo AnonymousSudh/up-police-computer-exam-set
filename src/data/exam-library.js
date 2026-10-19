@@ -1,6 +1,4 @@
-import defaultExam from './default-exam.json' with { type: 'json' };
 import fullFormExam from './full-form-exam.json' with { type: 'json' };
-import { rrbExams } from './exams/rrb/index.js';
 import { EXAM_CATEGORIES, getExamCategoryById } from './exams/categories.js';
 import { validateExam } from '../lib/exam.js';
 
@@ -33,38 +31,41 @@ export const hardFullFormExam = makeFullFormPart({
   questions: fullFormExam.questions.slice(100),
 });
 
-export const upPoliceDefaultExam = {
-  ...defaultExam,
-  category: 'up-police',
-};
+// All exams are now dynamic (managed via Firebase / Admin Panel upload)
+// No static mock tests are bundled in code
+export const builtInExams = [];
 
-const retiredBuiltInIds = new Set(['computer-operator-full-forms']);
+// Retired static sample IDs
+const RETIRED_SAMPLE_IDS = new Set([
+  'up-police-comp-op-1',
+  'rrb-ntpc-mock-1',
+  'computer-operator-full-forms',
+]);
 
-// Built-in exams across all exam categories (UP Police, RRB Railway, etc.)
-export const builtInExams = [
-  simpleFullFormExam,
-  hardFullFormExam,
-  upPoliceDefaultExam,
-  ...rrbExams,
-];
-
-// Built-in exams always come from the shipped library, including for returning
-// visitors with older localStorage snapshots. Imports cannot replace these IDs.
+// Merges dynamic exams from Firebase and local uploads, filtering out legacy static built-ins
 export function mergeExamLibrary(saved) {
-  const reservedIds = new Set([...builtInExams.map(exam => exam.id), ...retiredBuiltInIds]);
   const custom = [];
+  const seenIds = new Set();
   for (const item of Array.isArray(saved) ? saved : []) {
     try {
       const exam = validateExam(item);
-      if (reservedIds.has(exam.id)) continue;
-      reservedIds.add(exam.id);
+      // Exclude retired sample mock tests
+      if (RETIRED_SAMPLE_IDS.has(exam.id)) continue;
+      // Exclude old un-sourced static exams cached in legacy browser localStorage
+      if (!item.source && !item.isFirebase && !item.storageUrl && !item.storagePath) continue;
+      if (seenIds.has(exam.id)) continue;
+      seenIds.add(exam.id);
       custom.push({
         ...exam,
-        category: item.category || 'custom',
+        category: item.category || 'up-police',
+        isFirebase: true,
+        source: 'firebase',
       });
-    } catch { /* Ignore corrupt entries without hiding the built-in library. */ }
+    } catch {
+      // Ignore corrupt entries
+    }
   }
-  return [...builtInExams, ...custom];
+  return custom;
 }
 
 export function getBuiltInExam(id) {

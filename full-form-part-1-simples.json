@@ -1,0 +1,2968 @@
+{
+  "id": "computer-operator-full-forms-simple",
+  "title": "Full Form MCQ — Part 1 (Simple)",
+  "badge": "Simple",
+  "category": "up-police",
+  "durationMinutes": 30,
+  "description": "100 foundational full-form MCQs covering common computer, hardware, software, networking and office terms.",
+  "researchNote": "Questions are independently written. Archived-paper tags identify topics inspected in a third-party paper mirror; its exam date and official answer key are unverified. UP Police training-bank topics are distinct from recruitment PYQs. Other questions are reference-based practice, not predictions.",
+  "sources": {
+    "up-training": {
+      "title": "UP Police Radio Training Centre — Basic Computer Course Question Bank",
+      "url": "https://uppolice.gov.in/site/writereaddata/siteContent/202003151357233622Basic%20Computer%20Question%20Bank.pdf",
+      "kind": "official-training"
+    },
+    "archive": {
+      "title": "Archived UP Police Computer Operator paper — third-party mirror (date unverified)",
+      "url": "https://www.slideshare.net/slideshow/computer-operatorprevious-year-papercompressed-26191pdf/266115215",
+      "kind": "archived-paper"
+    },
+    "hardware": {
+      "title": "Dell OpenManage hardware glossary — archived manufacturer manual",
+      "url": "https://cs.uwaterloo.ca/~brecht/servers/docs/PowerEdge-2600/en/Dosa/UG/13gloss.htm",
+      "kind": "technical-reference"
+    },
+    "memory": {
+      "title": "Kingston memory glossary",
+      "url": "https://www.kingston.com/en/memory/kingston-glossary",
+      "kind": "technical-reference"
+    },
+    "network": {
+      "title": "IETF RFC 1208 — Networking glossary",
+      "url": "https://datatracker.ietf.org/doc/html/rfc1208",
+      "kind": "technical-reference"
+    },
+    "internet": {
+      "title": "IETF RFC 1392 — Internet users glossary",
+      "url": "https://datatracker.ietf.org/doc/html/rfc1392",
+      "kind": "technical-reference"
+    },
+    "sql": {
+      "title": "IBM — Structured Query Language",
+      "url": "https://www.ibm.com/think/topics/structured-query-language",
+      "kind": "technical-reference"
+    },
+    "db2": {
+      "title": "IBM Db2 glossary",
+      "url": "https://public.dhe.ibm.com/ps/products/db2/info/vr6/htm/db2help/db2gludb.htm",
+      "kind": "technical-reference"
+    },
+    "ebcdic": {
+      "title": "IBM — Character conversion terminology",
+      "url": "https://www.ibm.com/docs/en/db2-for-zos/13.0.0?topic=data-character-conversion-terminology",
+      "kind": "technical-reference"
+    },
+    "usb": {
+      "title": "USB Implementers Forum — About USB-IF",
+      "url": "https://www.usb.org/about",
+      "kind": "technical-reference"
+    },
+    "odbc": {
+      "title": "Microsoft — ODBC data access",
+      "url": "https://learn.microsoft.com/en-us/archive/msdn-magazine/2001/december/ado-net-building-a-custom-data-provider-for-use-with-the-net-data-access-framework",
+      "kind": "technical-reference"
+    },
+    "mdn-http": {
+      "title": "MDN — HTTP",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/HTTP",
+      "kind": "technical-reference"
+    },
+    "mdn-url": {
+      "title": "MDN — URL",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/URL",
+      "kind": "technical-reference"
+    },
+    "mdn-pop": {
+      "title": "MDN — POP",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/POP",
+      "kind": "technical-reference"
+    },
+    "mdn-imap": {
+      "title": "MDN — IMAP",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/IMAP",
+      "kind": "technical-reference"
+    },
+    "mdn-html": {
+      "title": "MDN — HTML",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/HTML",
+      "kind": "technical-reference"
+    },
+    "mdn-css": {
+      "title": "MDN — CSS",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/CSS",
+      "kind": "technical-reference"
+    },
+    "mdn-xml": {
+      "title": "MDN — XML",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/XML",
+      "kind": "technical-reference"
+    },
+    "mdn-ssl": {
+      "title": "MDN — SSL",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/SSL",
+      "kind": "technical-reference"
+    },
+    "mdn-tls": {
+      "title": "MDN — TLS",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/TLS",
+      "kind": "technical-reference"
+    },
+    "mdn-png": {
+      "title": "MDN — PNG",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/PNG",
+      "kind": "technical-reference"
+    },
+    "mdn-jpeg": {
+      "title": "MDN — JPEG",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/JPEG",
+      "kind": "technical-reference"
+    },
+    "mdn-gif": {
+      "title": "MDN — GIF",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/GIF",
+      "kind": "technical-reference"
+    },
+    "mdn-svg": {
+      "title": "MDN — SVG",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/SVG",
+      "kind": "technical-reference"
+    },
+    "mdn-api": {
+      "title": "MDN — API",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/API",
+      "kind": "technical-reference"
+    },
+    "hdd": {
+      "title": "Seagate — Hard disk drive data sheet",
+      "url": "https://www.seagate.com/files/www-content/product-content/barracuda-fam/desktop-hdd/barracuda-7200-14/en-us/docs/desktop-hdd-ds-1774-2-1304-amer.pdf",
+      "kind": "technical-reference"
+    },
+    "ecc": {
+      "title": "Kingston — Server memory support",
+      "url": "https://www.kingston.com/en/support/technical/products/server-memory",
+      "kind": "technical-reference"
+    },
+    "cobol": {
+      "title": "IBM — COBOL",
+      "url": "https://www.ibm.com/think/topics/cobol",
+      "kind": "technical-reference"
+    },
+    "fortran": {
+      "title": "IBM — Fortran history",
+      "url": "https://www.ibm.com/history/fortran",
+      "kind": "technical-reference"
+    },
+    "wlan": {
+      "title": "NIST — Wireless Local Area Network",
+      "url": "https://csrc.nist.gov/glossary/term/Wireless_Local_Area_Network",
+      "kind": "technical-reference"
+    },
+    "rtf": {
+      "title": "Microsoft — Rich Text Format",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.windows.dataformats.rtf",
+      "kind": "technical-reference"
+    },
+    "vpn": {
+      "title": "NIST — Virtual Private Network",
+      "url": "https://csrc.nist.gov/glossary/term/virtual_private_network",
+      "kind": "technical-reference"
+    },
+    "alu": {
+      "title": "IBM — Microprocessor components",
+      "url": "https://www.ibm.com/think/topics/microprocessor",
+      "kind": "technical-reference"
+    },
+    "ocr": {
+      "title": "IBM — Optical character recognition",
+      "url": "https://www.ibm.com/think/topics/optical-character-recognition",
+      "kind": "technical-reference"
+    },
+    "stack": {
+      "title": "MDN — Call stack",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/Call_stack",
+      "kind": "technical-reference"
+    },
+    "dvd": {
+      "title": "Sony — DVD glossary",
+      "url": "https://www.sony.com.sg/support/resources/en_AP/html/Compatibility/DVDCharts/DVDGloss.html",
+      "kind": "technical-reference"
+    },
+    "bluray": {
+      "title": "Sony — Blu-ray Disc formats",
+      "url": "https://www.sony.com/electronics/support/articles/00090460",
+      "kind": "technical-reference"
+    },
+    "security": {
+      "title": "IETF RFC 4949 — Internet Security Glossary",
+      "url": "https://www.rfc-editor.org/rfc/rfc4949.html",
+      "kind": "technical-reference"
+    },
+    "gpu": {
+      "title": "Intel — What is a GPU?",
+      "url": "https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-gpu.html",
+      "kind": "technical-reference"
+    },
+    "power": {
+      "title": "Delta — Power supply support and terminology",
+      "url": "https://psu.deltaww.com/en/contact/support",
+      "kind": "technical-reference"
+    },
+    "uefi": {
+      "title": "UEFI Forum — UEFI and ACPI specifications",
+      "url": "https://uefi.org/specifications",
+      "kind": "technical-reference"
+    },
+    "ahci": {
+      "title": "Intel — Advanced Host Controller Interface specification",
+      "url": "https://www.intel.com/content/www/us/en/io/serial-ata/ahci.html",
+      "kind": "technical-reference"
+    },
+    "sata": {
+      "title": "Intel — Serial ATA AHCI specification",
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/technical-specifications/serial-ata-ahci-spec-rev1_2.pdf",
+      "kind": "technical-reference"
+    },
+    "nvme": {
+      "title": "NVM Express — Specifications",
+      "url": "https://nvmexpress.org/specifications/",
+      "kind": "technical-reference"
+    },
+    "disc": {
+      "title": "Sony — DVD and CD format glossary",
+      "url": "https://www.sony.com.sg/support/resources/en_AP/html/Compatibility/DVDCharts/DVDGloss.html",
+      "kind": "technical-reference"
+    },
+    "hdmi": {
+      "title": "HDMI Licensing Administrator — Specification overview",
+      "url": "https://www.hdmi.org/spec/index",
+      "kind": "technical-reference"
+    },
+    "dvi": {
+      "title": "Intel — Digital Visual Interface specification announcement",
+      "url": "https://www.intel.com/pressroom/archive/releases/2000/in021600a.htm",
+      "kind": "technical-reference"
+    },
+    "oled": {
+      "title": "Samsung — OLED display terminology",
+      "url": "https://www.samsung.com/sg/support/tv-audio-video/what-is-an-oled-tv/",
+      "kind": "technical-reference"
+    },
+    "ips": {
+      "title": "LG — IPS screen technology",
+      "url": "https://www.lg.com/ae/business/technology-solution-ips",
+      "kind": "technical-reference"
+    },
+    "ppi": {
+      "title": "MDN — Resolution CSS data type",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/resolution",
+      "kind": "technical-reference"
+    },
+    "agp": {
+      "title": "Intel — Accelerated Graphics Port announcement",
+      "url": "https://www.intel.com/pressroom/archive/releases/2002/20020911tech.htm",
+      "kind": "technical-reference"
+    },
+    "pcie": {
+      "title": "PCI-SIG — PCI Express overview",
+      "url": "https://pcisig.com/pci-express",
+      "kind": "technical-reference"
+    },
+    "risc": {
+      "title": "Arm — Reduced Instruction Set Computer",
+      "url": "https://www.arm.com/glossary/risc",
+      "kind": "technical-reference"
+    },
+    "soc": {
+      "title": "Arm — Processor and system glossary",
+      "url": "https://www.arm.com/glossary",
+      "kind": "technical-reference"
+    },
+    "flops": {
+      "title": "IBM — Supercomputing",
+      "url": "https://www.ibm.com/think/topics/supercomputing",
+      "kind": "technical-reference"
+    },
+    "mmu": {
+      "title": "Arm — Architecture glossary",
+      "url": "https://documentation-service.arm.com/static/5f873212405d955c5176df15",
+      "kind": "technical-reference"
+    },
+    "registers": {
+      "title": "Cambridge International — Computer Science syllabus (CPU registers)",
+      "url": "https://www.cambridgeinternational.org/Images/697167-2026-2028-syllabus.pdf",
+      "kind": "technical-reference"
+    },
+    "fpga": {
+      "title": "AMD — What is an FPGA?",
+      "url": "https://www.amd.com/en/products/adaptive-socs-and-fpgas/fpga/what-is-an-fpga.html",
+      "kind": "technical-reference"
+    },
+    "adc": {
+      "title": "Texas Instruments — Data converters",
+      "url": "https://www.ti.com/data-converters/overview.html",
+      "kind": "technical-reference"
+    },
+    "sas": {
+      "title": "Seagate — Serial-Attached SCSI installation",
+      "url": "https://www.seagate.com/support/kb/serial-attached-scsi-installation-instructions-218751en/",
+      "kind": "technical-reference"
+    },
+    "ntfs": {
+      "title": "Microsoft — NTFS overview",
+      "url": "https://learn.microsoft.com/en-us/windows-server/storage/file-server/ntfs-overview",
+      "kind": "technical-reference"
+    },
+    "exfat": {
+      "title": "Microsoft — exFAT specification, Table 2 and GUID appendix",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/fileio/exfat-specification",
+      "kind": "technical-reference"
+    },
+    "gpt": {
+      "title": "Microsoft — exFAT specification, Table 2 and GUID appendix",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/fileio/exfat-specification",
+      "kind": "technical-reference"
+    },
+    "guid": {
+      "title": "Microsoft — exFAT specification, Table 2 and GUID appendix",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/fileio/exfat-specification",
+      "kind": "technical-reference"
+    },
+    "uuid": {
+      "title": "IETF RFC 9562 — Universally Unique Identifiers",
+      "url": "https://www.rfc-editor.org/rfc/rfc9562.html",
+      "kind": "technical-reference"
+    },
+    "dll": {
+      "title": "Microsoft — Dynamic-link libraries",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-libraries",
+      "kind": "technical-reference"
+    },
+    "exe": {
+      "title": "Microsoft — PE executable image format",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/debug/pe-format",
+      "kind": "technical-reference"
+    },
+    "posix": {
+      "title": "The Open Group — POSIX definitions",
+      "url": "https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap01.html",
+      "kind": "technical-reference"
+    },
+    "gnu": {
+      "title": "GNU Project — What is GNU?",
+      "url": "https://www.gnu.org/gnu/gnu.html",
+      "kind": "technical-reference"
+    },
+    "java": {
+      "title": "Oracle — Java technology overview",
+      "url": "https://docs.oracle.com/javase/tutorial/getStarted/intro/definition.html",
+      "kind": "technical-reference"
+    },
+    "clr": {
+      "title": "Microsoft — Common Language Runtime",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/clr",
+      "kind": "technical-reference"
+    },
+    "aot": {
+      "title": "Microsoft — Native AOT deployment",
+      "url": "https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/",
+      "kind": "technical-reference"
+    },
+    "unicode": {
+      "title": "Unicode Consortium — UTF and byte order mark FAQ",
+      "url": "https://www.unicode.org/faq/utf_bom.html",
+      "kind": "technical-reference"
+    },
+    "yaml": {
+      "title": "YAML language team — Specification 1.2.2",
+      "url": "https://yaml.org/spec/1.2.2/",
+      "kind": "technical-reference"
+    },
+    "urn": {
+      "title": "IETF RFC 8141 — Uniform Resource Names",
+      "url": "https://www.rfc-editor.org/rfc/rfc8141.html",
+      "kind": "technical-reference"
+    },
+    "xhtml": {
+      "title": "W3C — XHTML 1.0 specification",
+      "url": "https://www.w3.org/TR/xhtml1/",
+      "kind": "technical-reference"
+    },
+    "rss": {
+      "title": "RSS Advisory Board — RSS 2.0 specification",
+      "url": "https://www.rssboard.org/rss-specification",
+      "kind": "technical-reference"
+    },
+    "er": {
+      "title": "IBM — Entity relationship diagrams",
+      "url": "https://www.ibm.com/think/topics/entity-relationship-diagram",
+      "kind": "technical-reference"
+    },
+    "acid": {
+      "title": "IBM — ACID properties of transactions",
+      "url": "https://www.ibm.com/docs/en/cics-tx/11.1.0?topic=processing-acid-properties-transactions",
+      "kind": "technical-reference"
+    },
+    "oltp": {
+      "title": "IBM — OLAP and OLTP",
+      "url": "https://www.ibm.com/think/topics/olap-vs-oltp",
+      "kind": "technical-reference"
+    },
+    "olap": {
+      "title": "IBM — OLAP and OLTP",
+      "url": "https://www.ibm.com/think/topics/olap-vs-oltp",
+      "kind": "technical-reference"
+    },
+    "etl": {
+      "title": "IBM — Extract, Transform, Load",
+      "url": "https://www.ibm.com/think/topics/etl",
+      "kind": "technical-reference"
+    },
+    "csv": {
+      "title": "IETF RFC 4180 — Comma-Separated Values",
+      "url": "https://www.rfc-editor.org/rfc/rfc4180.html",
+      "kind": "technical-reference"
+    },
+    "tsv": {
+      "title": "IANA — Tab-separated-values media type registration",
+      "url": "https://www.iana.org/assignments/media-types/text/tab-separated-values",
+      "kind": "technical-reference"
+    },
+    "jdbc": {
+      "title": "Oracle — JDBC introduction",
+      "url": "https://docs.oracle.com/javase/tutorial/jdbc/overview/index.html",
+      "kind": "technical-reference"
+    },
+    "ado": {
+      "title": "Microsoft — ADO introduction",
+      "url": "https://learn.microsoft.com/en-us/office/client-developer/access/desktop-database-reference/ado-introduction",
+      "kind": "technical-reference"
+    },
+    "ole": {
+      "title": "Microsoft — OLE background",
+      "url": "https://learn.microsoft.com/en-us/cpp/mfc/ole-background",
+      "kind": "technical-reference"
+    },
+    "vba": {
+      "title": "Microsoft — Office VBA reference",
+      "url": "https://learn.microsoft.com/en-us/office/vba/api/overview/",
+      "kind": "technical-reference"
+    },
+    "mis": {
+      "title": "INFLIBNET — Management information systems",
+      "url": "https://ebooks.inflibnet.ac.in/lisp6/chapter/management-information-systems/",
+      "kind": "technical-reference"
+    },
+    "dss": {
+      "title": "INFLIBNET — Management information systems",
+      "url": "https://ebooks.inflibnet.ac.in/lisp6/chapter/management-information-systems/",
+      "kind": "technical-reference"
+    },
+    "erp": {
+      "title": "IBM — Enterprise Resource Planning",
+      "url": "https://www.ibm.com/think/topics/enterprise-resource-planning",
+      "kind": "technical-reference"
+    },
+    "crm": {
+      "title": "IBM — Crm",
+      "url": "https://www.ibm.com/think/topics/crm",
+      "kind": "technical-reference"
+    },
+    "scm": {
+      "title": "IBM — Supply Chain Management",
+      "url": "https://www.ibm.com/think/topics/supply-chain-management",
+      "kind": "technical-reference"
+    },
+    "bi": {
+      "title": "IBM — Business Intelligence",
+      "url": "https://www.ibm.com/think/topics/business-intelligence",
+      "kind": "technical-reference"
+    },
+    "iot": {
+      "title": "IBM — Internet Of Things",
+      "url": "https://www.ibm.com/think/topics/internet-of-things",
+      "kind": "technical-reference"
+    },
+    "it": {
+      "title": "IBM — Information Technology",
+      "url": "https://www.ibm.com/think/topics/information-technology",
+      "kind": "technical-reference"
+    },
+    "ai": {
+      "title": "IBM — Artificial intelligence and machine learning",
+      "url": "https://www.ibm.com/think/topics/artificial-intelligence",
+      "kind": "technical-reference"
+    },
+    "ict": {
+      "title": "ITU — Information and Communication Technology",
+      "url": "https://www.itu.int/ITU-D/tech/MobileCommunications/IMT_INTRODUCING/IMT_ICTEvolution.html",
+      "kind": "technical-reference"
+    },
+    "cloud": {
+      "title": "NIST SP 800-145 — Cloud computing service models",
+      "url": "https://csrc.nist.gov/pubs/sp/800/145/final",
+      "kind": "technical-reference"
+    },
+    "adsl": {
+      "title": "ITU-T G.988 — Abbreviations for DSL technologies",
+      "url": "https://www.itu.int/epublications/ar/publication/itu-t-g-988-2022-11-onu-management-and-control-interface-omci-specification/en",
+      "kind": "technical-reference"
+    },
+    "vdsl": {
+      "title": "ITU-T G.988 — Abbreviations for DSL technologies",
+      "url": "https://www.itu.int/epublications/ar/publication/itu-t-g-988-2022-11-onu-management-and-control-interface-omci-specification/en",
+      "kind": "technical-reference"
+    },
+    "ftth": {
+      "title": "ITU — Broadband fibre-to-the-home standards",
+      "url": "https://www.itu.int/en/broadband/Pages/ITU-T.aspx",
+      "kind": "technical-reference"
+    },
+    "stp-cable": {
+      "title": "Cisco — Shielded twisted-pair cabling",
+      "url": "https://www.cisco.com/E-Learning/bulk/guest/celc/fwl/ch1/1_2_2/content.html",
+      "kind": "technical-reference"
+    },
+    "tftp": {
+      "title": "IETF RFC 1350 — TFTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc1350.html",
+      "kind": "technical-reference"
+    },
+    "sftp": {
+      "title": "OpenSSH — SSH File Transfer Protocol specifications",
+      "url": "https://www.openssh.org/specs.html",
+      "kind": "technical-reference"
+    },
+    "ftps": {
+      "title": "IETF RFC 4217 — Securing FTP with TLS",
+      "url": "https://www.rfc-editor.org/rfc/rfc4217.html",
+      "kind": "technical-reference"
+    },
+    "ssh": {
+      "title": "IETF RFC 4253 — Secure Shell transport",
+      "url": "https://www.rfc-editor.org/rfc/rfc4253.html",
+      "kind": "technical-reference"
+    },
+    "rdp": {
+      "title": "Microsoft — Remote Desktop Protocol overview",
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol",
+      "kind": "technical-reference"
+    },
+    "ntp": {
+      "title": "IETF RFC 5905 — Network Time Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc5905.html",
+      "kind": "technical-reference"
+    },
+    "cidr": {
+      "title": "IETF RFC 4632 — Classless Inter-Domain Routing",
+      "url": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "kind": "technical-reference"
+    },
+    "nat": {
+      "title": "IETF RFC 3022 — Traditional IP Network Address Translator",
+      "url": "https://www.rfc-editor.org/rfc/rfc3022.html",
+      "kind": "technical-reference"
+    },
+    "pat": {
+      "title": "Cisco — Security glossary (Port Address Translation)",
+      "url": "https://www.cisco.com/c/en/us/td/docs/security/glossary/b_security_glossary_terms.html",
+      "kind": "technical-reference"
+    },
+    "vlan": {
+      "title": "Cisco — Virtual LANs",
+      "url": "https://www.cisco.com/c/en/us/tech/lan-switching/virtual-lans-vlan/index.html",
+      "kind": "technical-reference"
+    },
+    "pan": {
+      "title": "NIST — Personal Area Network",
+      "url": "https://csrc.nist.gov/glossary/term/personal_area_network",
+      "kind": "technical-reference"
+    },
+    "san": {
+      "title": "IBM — Storage area network",
+      "url": "https://www.ibm.com/think/topics/storage-area-network",
+      "kind": "technical-reference"
+    },
+    "ssid": {
+      "title": "Cisco — Multiple Basic Service Set Identifiers",
+      "url": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/wlan/configuration/xe-16-7/wl-16-7-book/wl-cfg-mult-bss.html",
+      "kind": "technical-reference"
+    },
+    "bssid": {
+      "title": "Cisco — Multiple Basic Service Set Identifiers",
+      "url": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/wlan/configuration/xe-16-7/wl-16-7-book/wl-cfg-mult-bss.html",
+      "kind": "technical-reference"
+    },
+    "csma-ca": {
+      "title": "NIST — Wireless networks security guidance",
+      "url": "https://csrc.nist.gov/pubs/sp/800/97/final",
+      "kind": "technical-reference"
+    },
+    "mtu": {
+      "title": "IETF RFC 1191 — Path MTU discovery",
+      "url": "https://www.rfc-editor.org/rfc/rfc1191.html",
+      "kind": "technical-reference"
+    },
+    "pdu": {
+      "title": "IETF RFC 4949 — Protocol Data Unit",
+      "url": "https://www.rfc-editor.org/rfc/rfc4949.html",
+      "kind": "technical-reference"
+    },
+    "sdn": {
+      "title": "Open Networking Foundation — SDN architecture",
+      "url": "https://opennetworking.org/sdn-definition/",
+      "kind": "technical-reference"
+    },
+    "bgp": {
+      "title": "IETF RFC 4271 — Border Gateway Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc4271.html",
+      "kind": "technical-reference"
+    },
+    "ospf": {
+      "title": "IETF RFC 2328 — Open Shortest Path First",
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.html",
+      "kind": "technical-reference"
+    },
+    "rip": {
+      "title": "IETF RFC 2453 — Routing Information Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc2453.html",
+      "kind": "technical-reference"
+    },
+    "voip": {
+      "title": "NIST — Voice over Internet Protocol",
+      "url": "https://csrc.nist.gov/glossary/term/voice_over_internet_protocol",
+      "kind": "technical-reference"
+    },
+    "pstn": {
+      "title": "NIST — Public Switched Telephone Network",
+      "url": "https://csrc.nist.gov/glossary/term/public_switched_telephone_network",
+      "kind": "technical-reference"
+    },
+    "gsm": {
+      "title": "3GPP — Technologies and cellular standards",
+      "url": "https://www.3gpp.org/technologies",
+      "kind": "technical-reference"
+    },
+    "lte": {
+      "title": "3GPP — Technologies and cellular standards",
+      "url": "https://www.3gpp.org/technologies",
+      "kind": "technical-reference"
+    },
+    "mime": {
+      "title": "IETF RFC 2045 — Multipurpose Internet Mail Extensions",
+      "url": "https://www.rfc-editor.org/rfc/rfc2045.html",
+      "kind": "technical-reference"
+    },
+    "mfa": {
+      "title": "NIST — Multi-factor authentication",
+      "url": "https://csrc.nist.gov/glossary/term/multi_factor_authentication",
+      "kind": "technical-reference"
+    },
+    "otp": {
+      "title": "NIST — One-time password",
+      "url": "https://csrc.nist.gov/glossary/term/one_time_password",
+      "kind": "technical-reference"
+    },
+    "totp": {
+      "title": "IETF RFC 6238 — Time-Based One-Time Password",
+      "url": "https://www.rfc-editor.org/rfc/rfc6238.html",
+      "kind": "technical-reference"
+    },
+    "hotp": {
+      "title": "IETF RFC 4226 — HMAC-Based One-Time Password",
+      "url": "https://www.rfc-editor.org/rfc/rfc4226.html",
+      "kind": "technical-reference"
+    },
+    "ids": {
+      "title": "NIST SP 800-94 — Intrusion detection and prevention systems",
+      "url": "https://csrc.nist.gov/pubs/sp/800/94/final",
+      "kind": "technical-reference"
+    },
+    "ddos": {
+      "title": "NIST — Distributed denial of service",
+      "url": "https://csrc.nist.gov/glossary/term/distributed_denial_of_service",
+      "kind": "technical-reference"
+    },
+    "wpa": {
+      "title": "Wi-Fi Alliance — Security",
+      "url": "https://www.wi-fi.org/discover-wi-fi/security",
+      "kind": "technical-reference"
+    },
+    "wps": {
+      "title": "Wi-Fi Alliance — Security",
+      "url": "https://www.wi-fi.org/discover-wi-fi/security",
+      "kind": "technical-reference"
+    },
+    "mdn-sdk": {
+      "title": "MDN — SDK",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/SDK",
+      "kind": "technical-reference"
+    },
+    "mdn-ide": {
+      "title": "MDN — IDE",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/IDE",
+      "kind": "technical-reference"
+    },
+    "mdn-oop": {
+      "title": "MDN — OOP",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/OOP",
+      "kind": "technical-reference"
+    },
+    "mdn-json": {
+      "title": "MDN — JSON",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/JSON",
+      "kind": "technical-reference"
+    },
+    "mdn-dom": {
+      "title": "MDN — DOM",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/DOM",
+      "kind": "technical-reference"
+    },
+    "mdn-ajax": {
+      "title": "MDN — Ajax",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/Ajax",
+      "kind": "technical-reference"
+    },
+    "mdn-uri": {
+      "title": "MDN — URI",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/URI",
+      "kind": "technical-reference"
+    },
+    "mdn-xslt": {
+      "title": "MDN — XSLT",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/XSLT",
+      "kind": "technical-reference"
+    },
+    "mdn-dtd": {
+      "title": "MDN — DTD",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/DTD",
+      "kind": "technical-reference"
+    },
+    "mdn-wysiwyg": {
+      "title": "MDN — WYSIWYG",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/WYSIWYG",
+      "kind": "technical-reference"
+    },
+    "mdn-xss": {
+      "title": "MDN — Cross-site scripting",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/XSS",
+      "kind": "technical-reference"
+    },
+    "mdn-csrf": {
+      "title": "MDN — CSRF",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/CSRF",
+      "kind": "technical-reference"
+    },
+    "mdn-sqli": {
+      "title": "MDN — SQL injection",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/SQL_injection",
+      "kind": "technical-reference"
+    },
+    "mdn-csp": {
+      "title": "MDN — CSP",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/CSP",
+      "kind": "technical-reference"
+    },
+    "mdn-cors": {
+      "title": "MDN — CORS",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/CORS",
+      "kind": "technical-reference"
+    },
+    "hmac": {
+      "title": "NIST — Hash-Based Message Authentication Code",
+      "url": "https://csrc.nist.gov/glossary/term/hash_based_message_authentication_code",
+      "kind": "technical-reference"
+    },
+    "amoled": {
+      "title": "Samsung Display — AMOLED terminology",
+      "url": "https://news.samsungdisplay.com/6753",
+      "kind": "technical-reference"
+    },
+    "sip": {
+      "title": "IETF RFC 3261 — Session Initiation Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261.html",
+      "kind": "technical-reference"
+    }
+  },
+  "questions": [
+    {
+      "id": "ff-cpu",
+      "acronym": "CPU",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of CPU?",
+      "options": [
+        "Central Program Utility",
+        "Computer Processing User",
+        "Central Processing Unit",
+        "Control Processing Unit"
+      ],
+      "correctAnswer": 2,
+      "explanation": "CPU: Central Processing Unit. The CPU executes program instructions.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Q21"
+        },
+        {
+          "sourceId": "hardware",
+          "locator": "CPU"
+        }
+      ]
+    },
+    {
+      "id": "ff-alu",
+      "acronym": "ALU",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of ALU?",
+      "options": [
+        "Arithmetic Logic Unit",
+        "Automatic Logic Utility",
+        "Arithmetic Local Unit",
+        "Advanced Language Unit"
+      ],
+      "correctAnswer": 0,
+      "explanation": "ALU: Arithmetic Logic Unit. The ALU performs arithmetic and logical operations.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Q22; wording normalized to standard terminology"
+        },
+        {
+          "sourceId": "alu",
+          "locator": "Arithmetic logic unit"
+        }
+      ]
+    },
+    {
+      "id": "ff-cu",
+      "acronym": "CU",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of CU?",
+      "options": [
+        "Computer Utility",
+        "Central User",
+        "Control Unit",
+        "Calculation Unit"
+      ],
+      "correctAnswer": 2,
+      "explanation": "CU: Control Unit. The control unit coordinates instruction execution.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Computer organization topics"
+        }
+      ]
+    },
+    {
+      "id": "ff-ram",
+      "acronym": "RAM",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of RAM?",
+      "options": [
+        "Read Access Memory",
+        "Random Allocation Module",
+        "Rapid Access Machine",
+        "Random Access Memory"
+      ],
+      "correctAnswer": 3,
+      "explanation": "RAM: Random Access Memory. RAM holds working data; ordinary system RAM is volatile.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "RAM"
+        }
+      ]
+    },
+    {
+      "id": "ff-rom",
+      "acronym": "ROM",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of ROM?",
+      "options": [
+        "Random Output Memory",
+        "Read Only Memory",
+        "Read Open Module",
+        "Rapid Operating Memory"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ROM: Read Only Memory. ROM is nonvolatile storage associated with firmware.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "ROM"
+        }
+      ]
+    },
+    {
+      "id": "ff-prom",
+      "acronym": "PROM",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of PROM?",
+      "options": [
+        "Permanent Random Output Memory",
+        "Programmable Read Only Memory",
+        "Programmed Read Open Module",
+        "Primary Read Only Machine"
+      ],
+      "correctAnswer": 1,
+      "explanation": "PROM: Programmable Read Only Memory. Classic PROM is programmed once after manufacture.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "PROM"
+        }
+      ]
+    },
+    {
+      "id": "ff-eprom",
+      "acronym": "EPROM",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of EPROM?",
+      "options": [
+        "Erasable Programmable Read Only Memory",
+        "Electronic Permanent Random Output Memory",
+        "Extended Program Read Open Memory",
+        "External Programmable Random Only Memory"
+      ],
+      "correctAnswer": 0,
+      "explanation": "EPROM: Erasable Programmable Read Only Memory. Classic EPROM can be erased using ultraviolet light.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "EPROM"
+        }
+      ]
+    },
+    {
+      "id": "ff-eeprom",
+      "acronym": "EEPROM",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of EEPROM?",
+      "options": [
+        "Electrically Erasable Programmable Read Only Memory",
+        "Electronic Extended Program Random Output Memory",
+        "Electrically Enabled Primary Read Only Memory",
+        "Erasable Electronic Permanent Random Open Memory"
+      ],
+      "correctAnswer": 0,
+      "explanation": "EEPROM: Electrically Erasable Programmable Read Only Memory. EEPROM can be erased and programmed electrically.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "EEPROM"
+        }
+      ]
+    },
+    {
+      "id": "ff-sram",
+      "acronym": "SRAM",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of SRAM?",
+      "options": [
+        "Static Random Access Memory",
+        "Synchronous Read Access Memory",
+        "Serial Random Allocation Module",
+        "System Read Only Access Memory"
+      ],
+      "correctAnswer": 0,
+      "explanation": "SRAM: Static Random Access Memory. SRAM is commonly used for caches and does not require periodic refresh while powered.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "SRAM"
+        }
+      ]
+    },
+    {
+      "id": "ff-dram",
+      "acronym": "DRAM",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of DRAM?",
+      "options": [
+        "Digital Read Access Memory",
+        "Direct Random Allocation Module",
+        "Dynamic Random Access Memory",
+        "Dynamic Read Only Access Memory"
+      ],
+      "correctAnswer": 2,
+      "explanation": "DRAM: Dynamic Random Access Memory. DRAM requires periodic refresh while powered.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "DRAM"
+        }
+      ]
+    },
+    {
+      "id": "ff-sdram",
+      "acronym": "SDRAM",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of SDRAM?",
+      "options": [
+        "Static Digital Read Access Memory",
+        "Serial Dynamic Read Only Memory",
+        "Synchronous Dynamic Random Access Memory",
+        "Synchronous Direct Random Allocation Module"
+      ],
+      "correctAnswer": 2,
+      "explanation": "SDRAM: Synchronous Dynamic Random Access Memory. SDRAM synchronizes operations with a clock signal.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "memory",
+          "locator": "SDRAM"
+        }
+      ]
+    },
+    {
+      "id": "ff-ddr",
+      "acronym": "DDR",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of DDR?",
+      "options": [
+        "Dual Digital Register",
+        "Dynamic Data Read",
+        "Double Disk Recording",
+        "Double Data Rate"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DDR: Double Data Rate. DDR memory transfers data on both clock edges.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "memory",
+          "locator": "DDR"
+        }
+      ]
+    },
+    {
+      "id": "ff-dimm",
+      "acronym": "DIMM",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of DIMM?",
+      "options": [
+        "Dual In-line Memory Module",
+        "Double Integrated Memory Machine",
+        "Direct Input Memory Module",
+        "Digital In-line Memory Mode"
+      ],
+      "correctAnswer": 0,
+      "explanation": "DIMM: Dual In-line Memory Module. A DIMM is a memory-module form factor.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "memory",
+          "locator": "DIMM"
+        }
+      ]
+    },
+    {
+      "id": "ff-bios",
+      "acronym": "BIOS",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of BIOS?",
+      "options": [
+        "Basic Input Output System",
+        "Binary Integrated Operating Service",
+        "Basic Internal Output Software",
+        "Boot Input Operating System"
+      ],
+      "correctAnswer": 0,
+      "explanation": "BIOS: Basic Input Output System. BIOS initializes hardware during startup.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "BIOS"
+        }
+      ]
+    },
+    {
+      "id": "ff-ecc",
+      "acronym": "ECC",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of ECC in computer memory?",
+      "options": [
+        "Electronic Control Circuit",
+        "Extended Computer Cache",
+        "Error Correction Code",
+        "Error Checking Controller"
+      ],
+      "correctAnswer": 2,
+      "explanation": "ECC: Error Correction Code. ECC uses redundancy to detect and correct certain data errors.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ecc",
+          "locator": "ECC"
+        }
+      ]
+    },
+    {
+      "id": "ff-nvram",
+      "acronym": "NVRAM",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of NVRAM in computer memory?",
+      "options": [
+        "Nonvolatile Random Access Memory",
+        "Network Virtual Read Access Memory",
+        "New Variable Random Allocation Module",
+        "Nonvolatile Read Only Memory"
+      ],
+      "correctAnswer": 0,
+      "explanation": "NVRAM: Nonvolatile Random Access Memory. NVRAM retains its stored contents when power is removed.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "NVRAM"
+        }
+      ]
+    },
+    {
+      "id": "ff-post",
+      "acronym": "POST",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of POST?",
+      "options": [
+        "Program Output System Transfer",
+        "Power On Self Test",
+        "Power Off Security Test",
+        "Primary Operating System Test"
+      ],
+      "correctAnswer": 1,
+      "explanation": "POST: Power On Self Test. POST checks hardware during startup.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "POST"
+        }
+      ]
+    },
+    {
+      "id": "ff-cmos",
+      "acronym": "CMOS",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of CMOS?",
+      "options": [
+        "Computer Memory Operating System",
+        "Common Metal Output Semiconductor",
+        "Complementary Metal Oxide Semiconductor",
+        "Complementary Memory Open System"
+      ],
+      "correctAnswer": 2,
+      "explanation": "CMOS: Complementary Metal Oxide Semiconductor. CMOS names a semiconductor technology, not an operating system.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "CMOS"
+        }
+      ]
+    },
+    {
+      "id": "ff-hdd",
+      "acronym": "HDD",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of HDD?",
+      "options": [
+        "High Data Device",
+        "Hard Disk Drive",
+        "Hardware Digital Disc",
+        "Hybrid Data Driver"
+      ],
+      "correctAnswer": 1,
+      "explanation": "HDD: Hard Disk Drive. An HDD stores data on rotating magnetic platters.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hdd",
+          "locator": "Hard disk drive / HDD"
+        }
+      ]
+    },
+    {
+      "id": "ff-ssd",
+      "acronym": "SSD",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of SSD?",
+      "options": [
+        "Serial Storage Device",
+        "Solid State Drive",
+        "System Software Disk",
+        "Secure State Driver"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SSD: Solid State Drive. An SSD provides persistent storage without spinning platters.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "memory",
+          "locator": "SSD"
+        }
+      ]
+    },
+    {
+      "id": "ff-dma",
+      "acronym": "DMA",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of DMA?",
+      "options": [
+        "Dynamic Memory Allocation",
+        "Digital Module Access",
+        "Direct Memory Access",
+        "Direct Memory Arrangement"
+      ],
+      "correctAnswer": 2,
+      "explanation": "DMA: Direct Memory Access. DMA allows a device to transfer data to or from memory without CPU handling of every transfer.",
+      "evidenceKind": "archived-paper",
+      "references": [
+        {
+          "sourceId": "archive",
+          "locator": "Question ID 324289 — full-form question"
+        },
+        {
+          "sourceId": "hardware",
+          "locator": "DMA"
+        }
+      ]
+    },
+    {
+      "id": "ff-pci",
+      "acronym": "PCI",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of PCI?",
+      "options": [
+        "Personal Computer Interface",
+        "Primary Control Interchange",
+        "Peripheral Computer Integration",
+        "Peripheral Component Interconnect"
+      ],
+      "correctAnswer": 3,
+      "explanation": "PCI: Peripheral Component Interconnect. PCI is a computer expansion-bus standard.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "PCI"
+        }
+      ]
+    },
+    {
+      "id": "ff-scsi",
+      "acronym": "SCSI",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of SCSI?",
+      "options": [
+        "Serial Computer Storage Interconnect",
+        "System Control Software Interface",
+        "Small Computer System Interface",
+        "Small Control Service Integration"
+      ],
+      "correctAnswer": 2,
+      "explanation": "SCSI: Small Computer System Interface. SCSI defines interfaces and commands for connecting devices.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "SCSI"
+        }
+      ]
+    },
+    {
+      "id": "ff-raid",
+      "acronym": "RAID",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of RAID?",
+      "options": [
+        "Random Access Integrated Drive",
+        "Redundant Array of Independent Disks",
+        "Rapid Array of Internal Data",
+        "Redundant Allocation of Input Devices"
+      ],
+      "correctAnswer": 1,
+      "explanation": "RAID: Redundant Array of Independent Disks. RAID combines multiple drives. Older literature also uses “inexpensive”; both wordings are recognized, so that variant is not a distractor.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "RAID"
+        }
+      ]
+    },
+    {
+      "id": "ff-ups",
+      "acronym": "UPS",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of UPS?",
+      "options": [
+        "Universal Power System",
+        "Unified Processing Supply",
+        "Uninterruptible Power Supply",
+        "Unlimited Power Storage"
+      ],
+      "correctAnswer": 2,
+      "explanation": "UPS: Uninterruptible Power Supply. A UPS supplies temporary backup power during an outage.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "UPS"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Q48; standard expansion corrected"
+        }
+      ]
+    },
+    {
+      "id": "ff-ic",
+      "acronym": "IC",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of IC?",
+      "options": [
+        "Integrated Circuit",
+        "Internal Computer",
+        "Input Controller",
+        "Interconnected Cable"
+      ],
+      "correctAnswer": 0,
+      "explanation": "IC: Integrated Circuit. An IC integrates electronic circuitry on a semiconductor chip.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Q51; singular normalized"
+        }
+      ]
+    },
+    {
+      "id": "ff-vlsi",
+      "acronym": "VLSI",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of VLSI?",
+      "options": [
+        "Very Large Scale Integration",
+        "Variable Logic System Interface",
+        "Very Low Speed Input",
+        "Virtual Large Storage Integration"
+      ],
+      "correctAnswer": 0,
+      "explanation": "VLSI: Very Large Scale Integration. VLSI refers to integrating very large numbers of components onto a chip.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Q37"
+        }
+      ]
+    },
+    {
+      "id": "ff-lsi",
+      "acronym": "LSI",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of LSI?",
+      "options": [
+        "Large Scale Integration",
+        "Logical System Input",
+        "Local Storage Interface",
+        "Long Signal Integration"
+      ],
+      "correctAnswer": 0,
+      "explanation": "LSI: Large Scale Integration. LSI is a historical integrated-circuit complexity category.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Q41"
+        }
+      ]
+    },
+    {
+      "id": "ff-msi",
+      "acronym": "MSI",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of MSI?",
+      "options": [
+        "Memory System Interface",
+        "Micro Storage Input",
+        "Medium Scale Integration",
+        "Multiple Signal Interconnect"
+      ],
+      "correctAnswer": 2,
+      "explanation": "MSI: Medium Scale Integration. MSI is a historical integrated-circuit complexity category.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Q42"
+        }
+      ]
+    },
+    {
+      "id": "ff-ssi",
+      "acronym": "SSI",
+      "topic": "Hardware & memory",
+      "text": "What is the full form of SSI?",
+      "options": [
+        "Small Scale Integration",
+        "Serial System Input",
+        "Secure Storage Interface",
+        "Single Signal Interchange"
+      ],
+      "correctAnswer": 0,
+      "explanation": "SSI: Small Scale Integration. SSI is a historical integrated-circuit complexity category.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Q46"
+        }
+      ]
+    },
+    {
+      "id": "ff-ocr",
+      "acronym": "OCR",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of OCR?",
+      "options": [
+        "Optical Character Recognition",
+        "Optical Code Reader",
+        "Output Character Register",
+        "Original Content Retrieval"
+      ],
+      "correctAnswer": 0,
+      "explanation": "OCR: Optical Character Recognition. OCR converts text in images into machine-readable characters.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Abbreviation list: OCR"
+        },
+        {
+          "sourceId": "ocr",
+          "locator": "Optical character recognition"
+        }
+      ]
+    },
+    {
+      "id": "ff-omr",
+      "acronym": "OMR",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of OMR for the technique used to detect filled bubbles on answer sheets?",
+      "options": [
+        "Optical Memory Retrieval",
+        "Output Mark Register",
+        "Optical Mark Recognition",
+        "Original Machine Reading"
+      ],
+      "correctAnswer": 2,
+      "explanation": "OMR: Optical Mark Recognition. OMR detects marked fields on forms. This question asks for the recognition technique; “Optical Mark Reader” names a device and is not used as a distractor.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Q69"
+        }
+      ]
+    },
+    {
+      "id": "ff-micr",
+      "acronym": "MICR",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of MICR for the cheque-reading technique?",
+      "options": [
+        "Magnetic Input Code Reader",
+        "Machine Ink Character Register",
+        "Magnetic Image Code Retrieval",
+        "Magnetic Ink Character Recognition"
+      ],
+      "correctAnswer": 3,
+      "explanation": "MICR: Magnetic Ink Character Recognition. MICR identifies characters printed using magnetic ink, commonly on bank cheques.",
+      "evidenceKind": "archived-paper",
+      "references": [
+        {
+          "sourceId": "archive",
+          "locator": "Question ID 324277 — R in MICR"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Q267 — character recognition topic"
+        }
+      ]
+    },
+    {
+      "id": "ff-lcd",
+      "acronym": "LCD",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of LCD?",
+      "options": [
+        "Light Control Device",
+        "Linear Colour Display",
+        "Liquid Crystal Display",
+        "Liquid Circuit Diode"
+      ],
+      "correctAnswer": 2,
+      "explanation": "LCD: Liquid Crystal Display. LCD panels use liquid crystals to control light.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "LCD"
+        }
+      ]
+    },
+    {
+      "id": "ff-led",
+      "acronym": "LED",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of LED?",
+      "options": [
+        "Light Emitting Diode",
+        "Liquid Electronic Display",
+        "Light Energy Device",
+        "Linear Emission Disc"
+      ],
+      "correctAnswer": 0,
+      "explanation": "LED: Light Emitting Diode. LEDs emit light when driven by electric current.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "LED"
+        }
+      ]
+    },
+    {
+      "id": "ff-crt",
+      "acronym": "CRT",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of CRT?",
+      "options": [
+        "Crystal Reflection Technology",
+        "Computer Read Terminal",
+        "Colour Raster Transistor",
+        "Cathode Ray Tube"
+      ],
+      "correctAnswer": 3,
+      "explanation": "CRT: Cathode Ray Tube. A CRT is a display tube used in older monitors.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "CRT"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Q150 — CRT terminology"
+        }
+      ]
+    },
+    {
+      "id": "ff-dpi",
+      "acronym": "DPI",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of DPI?",
+      "options": [
+        "Data Per Input",
+        "Dots Per Inch",
+        "Digital Pixel Interface",
+        "Display Processing Index"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DPI: Dots Per Inch. DPI describes dot density in printing and related imaging contexts.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "dpi"
+        }
+      ]
+    },
+    {
+      "id": "ff-usb",
+      "acronym": "USB",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of USB?",
+      "options": [
+        "Universal Serial Bus",
+        "Unified System Bridge",
+        "Universal Storage Buffer",
+        "Unique Serial Block"
+      ],
+      "correctAnswer": 0,
+      "explanation": "USB: Universal Serial Bus. USB connects peripherals and carries data and power.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "usb",
+          "locator": "Universal Serial Bus"
+        }
+      ]
+    },
+    {
+      "id": "ff-cdrom",
+      "acronym": "CD-ROM",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of CD-ROM?",
+      "options": [
+        "Computer Data Random Output Memory",
+        "Compact Drive Read Open Module",
+        "Compact Disc Read Only Memory",
+        "Control Disc Read Only Machine"
+      ],
+      "correctAnswer": 2,
+      "explanation": "CD-ROM: Compact Disc Read Only Memory. A CD-ROM is read-only optical storage.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "CD-ROM"
+        }
+      ]
+    },
+    {
+      "id": "ff-cdrw",
+      "acronym": "CD-RW",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of CD-RW?",
+      "options": [
+        "Compact Disc Read Write-only",
+        "Computer Data ReWriter",
+        "Compact Drive Random Writing",
+        "Compact Disc ReWritable"
+      ],
+      "correctAnswer": 3,
+      "explanation": "CD-RW: Compact Disc ReWritable. RW means rewritable; the disc can be erased and written again.",
+      "evidenceKind": "archived-paper",
+      "references": [
+        {
+          "sourceId": "archive",
+          "locator": "Question ID 324281 — RW in CD-RW"
+        }
+      ]
+    },
+    {
+      "id": "ff-dvd",
+      "acronym": "DVD",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of DVD?",
+      "options": [
+        "Digital Versatile Disc",
+        "Digital Video Driver",
+        "Data Virtual Device",
+        "Direct Visual Display"
+      ],
+      "correctAnswer": 0,
+      "explanation": "DVD: Digital Versatile Disc. Digital Versatile Disc is the conventional expansion used here; some historical literature also uses Digital Video Disc, which is not a distractor.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "dvd",
+          "locator": "Digital Versatile Disc"
+        }
+      ]
+    },
+    {
+      "id": "ff-bd",
+      "acronym": "BD",
+      "topic": "Input, output & storage media",
+      "text": "What is the full form of BD when referring to optical storage media?",
+      "options": [
+        "Blu-ray Disc",
+        "Binary Data",
+        "Barcode Display",
+        "Broadband Drive"
+      ],
+      "correctAnswer": 0,
+      "explanation": "BD: Blu-ray Disc. BD names Blu-ray optical media.",
+      "evidenceKind": "archived-paper",
+      "references": [
+        {
+          "sourceId": "archive",
+          "locator": "Question ID 324280 — BD in computer knowledge"
+        },
+        {
+          "sourceId": "bluray",
+          "locator": "Blu-ray Disc / BD formats"
+        }
+      ]
+    },
+    {
+      "id": "ff-os",
+      "acronym": "OS",
+      "topic": "Software & data representation",
+      "text": "What is the full form of OS?",
+      "options": [
+        "Output Service",
+        "Operating System",
+        "Open Software",
+        "Online Storage"
+      ],
+      "correctAnswer": 1,
+      "explanation": "OS: Operating System. The OS manages hardware resources and provides services to applications.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Operating-system topics"
+        }
+      ]
+    },
+    {
+      "id": "ff-dos",
+      "acronym": "DOS",
+      "topic": "Software & data representation",
+      "text": "What is the full form of DOS?",
+      "options": [
+        "Digital Output Service",
+        "Data Operating Software",
+        "Direct Online System",
+        "Disk Operating System"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DOS: Disk Operating System. DOS is a family of disk-oriented operating systems.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "MS-DOS"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Q64; disk spelling normalized"
+        }
+      ]
+    },
+    {
+      "id": "ff-gui",
+      "acronym": "GUI",
+      "topic": "Software & data representation",
+      "text": "What is the full form of GUI?",
+      "options": [
+        "General Utility Input",
+        "Graphical Unit Interconnect",
+        "Global User Integration",
+        "Graphical User Interface"
+      ],
+      "correctAnswer": 3,
+      "explanation": "GUI: Graphical User Interface. A GUI uses visual controls such as windows, icons and menus.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Q25 / abbreviation list: GUI"
+        }
+      ]
+    },
+    {
+      "id": "ff-cli",
+      "acronym": "CLI",
+      "topic": "Software & data representation",
+      "text": "What is the full form of CLI?",
+      "options": [
+        "Computer Language Interpreter",
+        "Control Logic Input",
+        "Command Line Interface",
+        "Central Link Integration"
+      ],
+      "correctAnswer": 2,
+      "explanation": "CLI: Command Line Interface. A CLI accepts commands entered as text.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "CLI"
+        }
+      ]
+    },
+    {
+      "id": "ff-ascii",
+      "acronym": "ASCII",
+      "topic": "Software & data representation",
+      "text": "What is the full form of ASCII?",
+      "options": [
+        "American System Code for Internet Integration",
+        "American Standard Code for Information Interchange",
+        "Automatic Standard Code for Information Input",
+        "Advanced Symbol Code for Internal Interchange"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ASCII: American Standard Code for Information Interchange. ASCII defines codes for characters; standard ASCII uses seven bits.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "ASCII"
+        }
+      ]
+    },
+    {
+      "id": "ff-ebcdic",
+      "acronym": "EBCDIC",
+      "topic": "Software & data representation",
+      "text": "What is the full form of EBCDIC?",
+      "options": [
+        "Electronic Binary Code for Digital Internet Communication",
+        "Extended Bit Character Data Integration Code",
+        "Enhanced Binary Coded Data Instruction Code",
+        "Extended Binary Coded Decimal Interchange Code"
+      ],
+      "correctAnswer": 3,
+      "explanation": "EBCDIC: Extended Binary Coded Decimal Interchange Code. EBCDIC is a character-encoding family associated with IBM systems.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ebcdic",
+          "locator": "EBCDIC"
+        }
+      ]
+    },
+    {
+      "id": "ff-bcd",
+      "acronym": "BCD",
+      "topic": "Software & data representation",
+      "text": "What is the full form of BCD?",
+      "options": [
+        "Binary Computer Data",
+        "Bit Coded Digit",
+        "Binary Character Display",
+        "Binary Coded Decimal"
+      ],
+      "correctAnswer": 3,
+      "explanation": "BCD: Binary Coded Decimal. BCD represents each decimal digit using a binary code.",
+      "evidenceKind": "archived-paper",
+      "references": [
+        {
+          "sourceId": "archive",
+          "locator": "Question ID 324265 — full-form question"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Q318 / abbreviation list: BCD"
+        }
+      ]
+    },
+    {
+      "id": "ff-basic",
+      "acronym": "BASIC",
+      "topic": "Software & data representation",
+      "text": "What is the full form of BASIC?",
+      "options": [
+        "Binary Automatic System Instruction Compiler",
+        "Basic Application Software Integration Code",
+        "Beginner's All-purpose Symbolic Instruction Code",
+        "Business Algorithm Standard Instruction Code"
+      ],
+      "correctAnswer": 2,
+      "explanation": "BASIC: Beginner's All-purpose Symbolic Instruction Code. BASIC is a programming-language family developed for accessibility.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Abbreviation list: BASIC"
+        }
+      ]
+    },
+    {
+      "id": "ff-cobol",
+      "acronym": "COBOL",
+      "topic": "Software & data representation",
+      "text": "What is the full form of COBOL?",
+      "options": [
+        "Computer Binary Object Language",
+        "Common Business Oriented Language",
+        "Common Basic Operating Logic",
+        "Central Business Output Language"
+      ],
+      "correctAnswer": 1,
+      "explanation": "COBOL: Common Business Oriented Language. COBOL is a language associated with business data processing.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "cobol",
+          "locator": "Common Business-Oriented Language"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Q307 — business data-processing topic"
+        }
+      ]
+    },
+    {
+      "id": "ff-fortran",
+      "acronym": "FORTRAN",
+      "topic": "Software & data representation",
+      "text": "What is the full form of FORTRAN?",
+      "options": [
+        "Formal Transaction",
+        "Format Transfer",
+        "Formula Translation",
+        "Forward Transmission"
+      ],
+      "correctAnswer": 2,
+      "explanation": "FORTRAN: Formula Translation. FORTRAN derives its name from formula translation and is associated with scientific computing.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "fortran",
+          "locator": "Formula Translation"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Q430 — expansion question"
+        }
+      ]
+    },
+    {
+      "id": "ff-fifo",
+      "acronym": "FIFO",
+      "topic": "Software & data representation",
+      "text": "What is the full form of FIFO in queue processing?",
+      "options": [
+        "First In First Out",
+        "First Input Final Output",
+        "Fast In Fast Out",
+        "Final In First Out"
+      ],
+      "correctAnswer": 0,
+      "explanation": "FIFO: First In First Out. A queue normally removes the item that was inserted first.",
+      "evidenceKind": "archived-paper",
+      "references": [
+        {
+          "sourceId": "archive",
+          "locator": "Question ID 324303 — queue order"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Abbreviation list: FIFO"
+        }
+      ]
+    },
+    {
+      "id": "ff-lifo",
+      "acronym": "LIFO",
+      "topic": "Software & data representation",
+      "text": "What is the full form of LIFO in stack processing?",
+      "options": [
+        "Last Input Final Output",
+        "Local In First Out",
+        "Last In Final Out",
+        "Last In First Out"
+      ],
+      "correctAnswer": 3,
+      "explanation": "LIFO: Last In First Out. A stack normally removes the most recently inserted item first.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "stack",
+          "locator": "Last In, First Out"
+        }
+      ]
+    },
+    {
+      "id": "ff-dbms",
+      "acronym": "DBMS",
+      "topic": "Databases & office tools",
+      "text": "What is the full form of DBMS?",
+      "options": [
+        "Data Backup Memory Service",
+        "Database Management System",
+        "Digital Base Management Software",
+        "Database Machine Storage"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DBMS: Database Management System. A DBMS provides facilities to store, organize and retrieve data.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "db2",
+          "locator": "database management system"
+        }
+      ]
+    },
+    {
+      "id": "ff-rdbms",
+      "acronym": "RDBMS",
+      "topic": "Databases & office tools",
+      "text": "What is the full form of RDBMS?",
+      "options": [
+        "Relational Database Management System",
+        "Remote Data Backup Management Service",
+        "Random Database Memory System",
+        "Relational Data Binary Mapping Software"
+      ],
+      "correctAnswer": 0,
+      "explanation": "RDBMS: Relational Database Management System. An RDBMS uses the relational model.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sql",
+          "locator": "Relational database management systems"
+        }
+      ]
+    },
+    {
+      "id": "ff-sql",
+      "acronym": "SQL",
+      "topic": "Databases & office tools",
+      "text": "What is the full form of SQL?",
+      "options": [
+        "System Query Logic",
+        "Structured Query Language",
+        "Standard Quick Language",
+        "Sequential Question Language"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SQL: Structured Query Language. SQL defines and manipulates data in relational database systems.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sql",
+          "locator": "SQL"
+        }
+      ]
+    },
+    {
+      "id": "ff-ddl",
+      "acronym": "DDL",
+      "topic": "Databases & office tools",
+      "text": "What is the full form of DDL?",
+      "options": [
+        "Data Display Logic",
+        "Database Design Link",
+        "Data Definition Language",
+        "Digital Definition List"
+      ],
+      "correctAnswer": 2,
+      "explanation": "DDL: Data Definition Language. DDL commands define database structures, for example CREATE TABLE.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sql",
+          "locator": "Types of SQL commands"
+        }
+      ]
+    },
+    {
+      "id": "ff-dml",
+      "acronym": "DML",
+      "topic": "Databases & office tools",
+      "text": "What is the full form of DML?",
+      "options": [
+        "Data Manipulation Language",
+        "Data Management Link",
+        "Database Memory Logic",
+        "Digital Mapping Language"
+      ],
+      "correctAnswer": 0,
+      "explanation": "DML: Data Manipulation Language. DML commands manipulate stored data, for example INSERT and UPDATE.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sql",
+          "locator": "Types of SQL commands"
+        }
+      ]
+    },
+    {
+      "id": "ff-dcl",
+      "acronym": "DCL",
+      "topic": "Databases & office tools",
+      "text": "What is the full form of DCL?",
+      "options": [
+        "Database Command Logic",
+        "Digital Connection Link",
+        "Data Conversion Language",
+        "Data Control Language"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DCL: Data Control Language. DCL concerns database permissions, for example GRANT and REVOKE.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sql",
+          "locator": "Types of SQL commands"
+        }
+      ]
+    },
+    {
+      "id": "ff-tcl",
+      "acronym": "TCL",
+      "topic": "Databases & office tools",
+      "text": "What is the full form of TCL in SQL transaction commands?",
+      "options": [
+        "Table Creation Logic",
+        "Transaction Control Language",
+        "Transfer Command Language",
+        "Text Conversion Link"
+      ],
+      "correctAnswer": 1,
+      "explanation": "TCL: Transaction Control Language. In SQL, TCL controls transactions using commands such as COMMIT and ROLLBACK.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sql",
+          "locator": "Types of SQL commands"
+        }
+      ]
+    },
+    {
+      "id": "ff-odbc",
+      "acronym": "ODBC",
+      "topic": "Databases & office tools",
+      "text": "What is the full form of ODBC?",
+      "options": [
+        "Online Data Backup Control",
+        "Open Database Connectivity",
+        "Object Database Connection",
+        "Open Digital Bus Communication"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ODBC: Open Database Connectivity. ODBC is a standard interface for accessing database systems.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "odbc",
+          "locator": "ODBC"
+        }
+      ]
+    },
+    {
+      "id": "ff-pdf",
+      "acronym": "PDF",
+      "topic": "Databases & office tools",
+      "text": "What is the full form of PDF?",
+      "options": [
+        "Personal Data File",
+        "Printed Document Form",
+        "Program Data Format",
+        "Portable Document Format"
+      ],
+      "correctAnswer": 3,
+      "explanation": "PDF: Portable Document Format. PDF is a document format designed to preserve layout.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "Q494"
+        }
+      ]
+    },
+    {
+      "id": "ff-rtf",
+      "acronym": "RTF",
+      "topic": "Databases & office tools",
+      "text": "What is the full form of RTF?",
+      "options": [
+        "Rich Text Format",
+        "Readable Table File",
+        "Random Text Folder",
+        "Remote Transfer Format"
+      ],
+      "correctAnswer": 0,
+      "explanation": "RTF: Rich Text Format. RTF can represent formatted text for exchange between applications.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "rtf",
+          "locator": "Rich Text Format"
+        }
+      ]
+    },
+    {
+      "id": "ff-lan",
+      "acronym": "LAN",
+      "topic": "Networking & internet",
+      "text": "What is the full form of LAN?",
+      "options": [
+        "Logical Access Node",
+        "Local Area Network",
+        "Large Area Network",
+        "Local Allocation Network"
+      ],
+      "correctAnswer": 1,
+      "explanation": "LAN: Local Area Network. A LAN connects devices across a limited local area.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "LAN"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Q56"
+        }
+      ]
+    },
+    {
+      "id": "ff-wan",
+      "acronym": "WAN",
+      "topic": "Networking & internet",
+      "text": "What is the full form of WAN?",
+      "options": [
+        "Wide Area Network",
+        "Wireless Access Node",
+        "Wide Allocation Network",
+        "Wired Area Network"
+      ],
+      "correctAnswer": 0,
+      "explanation": "WAN: Wide Area Network. A WAN connects networks over broader geographic distances.",
+      "evidenceKind": "archived-paper",
+      "references": [
+        {
+          "sourceId": "archive",
+          "locator": "Question ID 324263 — full-form question"
+        },
+        {
+          "sourceId": "network",
+          "locator": "WAN"
+        }
+      ]
+    },
+    {
+      "id": "ff-man",
+      "acronym": "MAN",
+      "topic": "Networking & internet",
+      "text": "What is the full form of MAN?",
+      "options": [
+        "Main Access Node",
+        "Metropolitan Area Network",
+        "Multiple Area Network",
+        "Memory Allocation Network"
+      ],
+      "correctAnswer": 1,
+      "explanation": "MAN: Metropolitan Area Network. A MAN is associated with metropolitan-scale networking.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "MAN"
+        }
+      ]
+    },
+    {
+      "id": "ff-wlan",
+      "acronym": "WLAN",
+      "topic": "Networking & internet",
+      "text": "What is the full form of WLAN?",
+      "options": [
+        "Wide Link Access Node",
+        "Wired Local Allocation Network",
+        "Wireless Long Area Network",
+        "Wireless Local Area Network"
+      ],
+      "correctAnswer": 3,
+      "explanation": "WLAN: Wireless Local Area Network. A WLAN provides local networking using wireless links.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "wlan",
+          "locator": "Wireless Local Area Network"
+        }
+      ]
+    },
+    {
+      "id": "ff-nic",
+      "acronym": "NIC",
+      "topic": "Networking & internet",
+      "text": "What is the full form of NIC?",
+      "options": [
+        "Network Internet Controller",
+        "Network Interface Card",
+        "Node Integration Cable",
+        "New Information Channel"
+      ],
+      "correctAnswer": 1,
+      "explanation": "NIC: Network Interface Card. A network adapter connects a computer to a network. NIC is also expanded as Network Interface Controller; this valid variant is not used as a distractor.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "NIC"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Abbreviation entry 800: Network Interface Card"
+        }
+      ]
+    },
+    {
+      "id": "ff-ip",
+      "acronym": "IP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of IP?",
+      "options": [
+        "Internal Program",
+        "Internet Protocol",
+        "Information Path",
+        "Internet Process"
+      ],
+      "correctAnswer": 1,
+      "explanation": "IP: Internet Protocol. IP provides addressing and packet delivery between networks.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "IP"
+        }
+      ]
+    },
+    {
+      "id": "ff-tcp",
+      "acronym": "TCP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of TCP?",
+      "options": [
+        "Transfer Communication Program",
+        "Transport Connection Path",
+        "Transmission Code Process",
+        "Transmission Control Protocol"
+      ],
+      "correctAnswer": 3,
+      "explanation": "TCP: Transmission Control Protocol. TCP provides a reliable, ordered byte-stream service.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "TCP"
+        }
+      ]
+    },
+    {
+      "id": "ff-udp",
+      "acronym": "UDP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of UDP?",
+      "options": [
+        "Universal Data Program",
+        "Unified Delivery Path",
+        "User Datagram Protocol",
+        "User Digital Process"
+      ],
+      "correctAnswer": 2,
+      "explanation": "UDP: User Datagram Protocol. UDP sends datagrams without TCP-style delivery guarantees.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "UDP"
+        }
+      ]
+    },
+    {
+      "id": "ff-dns",
+      "acronym": "DNS",
+      "topic": "Networking & internet",
+      "text": "What is the full form of DNS?",
+      "options": [
+        "Digital Network Service",
+        "Domain Node Server",
+        "Dynamic Name Software",
+        "Domain Name System"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DNS: Domain Name System. DNS resolves names using a distributed naming system; the expansion is System, not Server.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "DNS"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Q91"
+        }
+      ]
+    },
+    {
+      "id": "ff-dhcp",
+      "acronym": "DHCP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of DHCP?",
+      "options": [
+        "Digital Host Connection Program",
+        "Domain Hardware Control Protocol",
+        "Dynamic Host Configuration Protocol",
+        "Dynamic Hypertext Communication Path"
+      ],
+      "correctAnswer": 2,
+      "explanation": "DHCP: Dynamic Host Configuration Protocol. DHCP supplies network configuration to clients.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "DHCP"
+        }
+      ]
+    },
+    {
+      "id": "ff-mac",
+      "acronym": "MAC",
+      "topic": "Networking & internet",
+      "text": "What is the full form of MAC in Ethernet networking?",
+      "options": [
+        "Memory Allocation Code",
+        "Multiple Access Connection",
+        "Machine Address Configuration",
+        "Media Access Control"
+      ],
+      "correctAnswer": 3,
+      "explanation": "MAC: Media Access Control. MAC is a data-link-layer term; do not confuse it with an IP address.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "MAC"
+        }
+      ]
+    },
+    {
+      "id": "ff-arp",
+      "acronym": "ARP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of ARP?",
+      "options": [
+        "Automatic Routing Program",
+        "Access Request Path",
+        "Address Resolution Protocol",
+        "Address Routing Process"
+      ],
+      "correctAnswer": 2,
+      "explanation": "ARP: Address Resolution Protocol. ARP resolves IPv4 addresses to link-layer addresses on a local network.",
+      "evidenceKind": "archived-paper",
+      "references": [
+        {
+          "sourceId": "archive",
+          "locator": "Question ID 324267 — MAC address from IP address"
+        },
+        {
+          "sourceId": "network",
+          "locator": "ARP"
+        }
+      ]
+    },
+    {
+      "id": "ff-osi",
+      "acronym": "OSI",
+      "topic": "Networking & internet",
+      "text": "What is the full form of OSI?",
+      "options": [
+        "Operating System Internet",
+        "Open Software Integration",
+        "Online Service Interface",
+        "Open Systems Interconnection"
+      ],
+      "correctAnswer": 3,
+      "explanation": "OSI: Open Systems Interconnection. The OSI reference model organizes networking into seven layers.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "OSI"
+        }
+      ]
+    },
+    {
+      "id": "ff-ftp",
+      "acronym": "FTP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of FTP?",
+      "options": [
+        "Fast Transport Program",
+        "File Transfer Protocol",
+        "File Transmission Process",
+        "Folder Transfer Path"
+      ],
+      "correctAnswer": 1,
+      "explanation": "FTP: File Transfer Protocol. FTP is a protocol for transferring files.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "FTP"
+        }
+      ]
+    },
+    {
+      "id": "ff-http",
+      "acronym": "HTTP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of HTTP?",
+      "options": [
+        "High Transfer Text Program",
+        "Hypertext Transfer Protocol",
+        "Hyperlink Transmission Process",
+        "Host Text Transport Path"
+      ],
+      "correctAnswer": 1,
+      "explanation": "HTTP: Hypertext Transfer Protocol. HTTP supports exchange of web resources.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-http",
+          "locator": "HTTP"
+        }
+      ]
+    },
+    {
+      "id": "ff-https",
+      "acronym": "HTTPS",
+      "topic": "Networking & internet",
+      "text": "What is the full form of HTTPS?",
+      "options": [
+        "Hypertext Transfer Program Service",
+        "Hyperlink Transport Protocol System",
+        "High Text Transfer Protection Standard",
+        "Hypertext Transfer Protocol Secure"
+      ],
+      "correctAnswer": 3,
+      "explanation": "HTTPS: Hypertext Transfer Protocol Secure. HTTPS refers to HTTP over a secure channel, commonly TLS.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-http",
+          "locator": "HTTP over TLS"
+        }
+      ]
+    },
+    {
+      "id": "ff-url",
+      "acronym": "URL",
+      "topic": "Networking & internet",
+      "text": "What is the full form of URL?",
+      "options": [
+        "Uniform Resource Locator",
+        "Universal Resource Link",
+        "Unified Remote Location",
+        "Uniform Routing Language"
+      ],
+      "correctAnswer": 0,
+      "explanation": "URL: Uniform Resource Locator. A URL identifies the location of a resource.",
+      "evidenceKind": "archived-paper",
+      "references": [
+        {
+          "sourceId": "archive",
+          "locator": "Question ID 324295 — full-form question"
+        },
+        {
+          "sourceId": "mdn-url",
+          "locator": "URL"
+        }
+      ]
+    },
+    {
+      "id": "ff-www",
+      "acronym": "WWW",
+      "topic": "Networking & internet",
+      "text": "What is the full form of WWW?",
+      "options": [
+        "World Wide Web",
+        "Wide Wireless Web",
+        "World Web Window",
+        "Wide World Wire"
+      ],
+      "correctAnswer": 0,
+      "explanation": "WWW: World Wide Web. The Web is a system of linked resources accessed over the internet.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "internet",
+          "locator": "World Wide Web"
+        }
+      ]
+    },
+    {
+      "id": "ff-smtp",
+      "acronym": "SMTP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of SMTP?",
+      "options": [
+        "Secure Message Transport Program",
+        "System Mail Transfer Process",
+        "Simple Mail Transfer Protocol",
+        "Simple Message Tracking Protocol"
+      ],
+      "correctAnswer": 2,
+      "explanation": "SMTP: Simple Mail Transfer Protocol. SMTP is used to submit and relay email.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "SMTP"
+        }
+      ]
+    },
+    {
+      "id": "ff-pop3",
+      "acronym": "POP3",
+      "topic": "Networking & internet",
+      "text": "What is the full form of POP3?",
+      "options": [
+        "Public Online Program version 3",
+        "Personal Output Protocol version 3",
+        "Post Office Protocol version 3",
+        "Post Online Process version 3"
+      ],
+      "correctAnswer": 2,
+      "explanation": "POP3: Post Office Protocol version 3. POP3 is an email-retrieval protocol.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-pop",
+          "locator": "POP3"
+        }
+      ]
+    },
+    {
+      "id": "ff-imap",
+      "acronym": "IMAP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of IMAP?",
+      "options": [
+        "Internal Mail Allocation Process",
+        "Internet Message Access Protocol",
+        "Internet Mail Authentication Program",
+        "Integrated Message Access Path"
+      ],
+      "correctAnswer": 1,
+      "explanation": "IMAP: Internet Message Access Protocol. IMAP accesses mailboxes on a mail server.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-imap",
+          "locator": "IMAP"
+        }
+      ]
+    },
+    {
+      "id": "ff-isp",
+      "acronym": "ISP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of ISP?",
+      "options": [
+        "Internet Security Protocol",
+        "Internet Service Provider",
+        "Internal System Program",
+        "Integrated Service Path"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ISP: Internet Service Provider. An ISP supplies internet connectivity or related services.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "internet",
+          "locator": "Internet service provider"
+        }
+      ]
+    },
+    {
+      "id": "ff-isdn",
+      "acronym": "ISDN",
+      "topic": "Networking & internet",
+      "text": "What is the full form of ISDN?",
+      "options": [
+        "Internet Standard Data Node",
+        "Integrated Services Digital Network",
+        "Internal Service Distribution Network",
+        "Integrated System Direct Network"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ISDN: Integrated Services Digital Network. ISDN is a digital telecommunications network technology.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "ISDN"
+        }
+      ]
+    },
+    {
+      "id": "ff-ppp",
+      "acronym": "PPP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of PPP?",
+      "options": [
+        "Packet Processing Program",
+        "Private Path Protocol",
+        "Point to Point Protocol",
+        "Primary Port Process"
+      ],
+      "correctAnswer": 2,
+      "explanation": "PPP: Point to Point Protocol. PPP carries network-layer data over point-to-point links.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "PPP"
+        }
+      ]
+    },
+    {
+      "id": "ff-snmp",
+      "acronym": "SNMP",
+      "topic": "Networking & internet",
+      "text": "What is the full form of SNMP?",
+      "options": [
+        "Secure Network Messaging Program",
+        "System Node Mapping Process",
+        "Simple Network Monitoring Path",
+        "Simple Network Management Protocol"
+      ],
+      "correctAnswer": 3,
+      "explanation": "SNMP: Simple Network Management Protocol. SNMP supports network-device management.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "SNMP"
+        }
+      ]
+    },
+    {
+      "id": "ff-html",
+      "acronym": "HTML",
+      "topic": "Networking & internet",
+      "text": "What is the full form of HTML?",
+      "options": [
+        "Hypertext Machine Language",
+        "Hyperlink Management Logic",
+        "Hypertext Markup Language",
+        "High Transfer Markup Language"
+      ],
+      "correctAnswer": 2,
+      "explanation": "HTML: Hypertext Markup Language. HTML describes the structure and meaning of web content.",
+      "evidenceKind": "official-training",
+      "references": [
+        {
+          "sourceId": "mdn-html",
+          "locator": "HTML"
+        },
+        {
+          "sourceId": "up-training",
+          "locator": "Q55"
+        }
+      ]
+    },
+    {
+      "id": "ff-css",
+      "acronym": "CSS",
+      "topic": "Networking & internet",
+      "text": "What is the full form of CSS?",
+      "options": [
+        "Computer Styling System",
+        "Cascading Style Sheets",
+        "Coded Structure Sheets",
+        "Cascading Software Service"
+      ],
+      "correctAnswer": 1,
+      "explanation": "CSS: Cascading Style Sheets. CSS specifies the presentation of documents such as HTML pages.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-css",
+          "locator": "CSS"
+        }
+      ]
+    },
+    {
+      "id": "ff-xml",
+      "acronym": "XML",
+      "topic": "Networking & internet",
+      "text": "What is the full form of XML?",
+      "options": [
+        "Extended Machine Logic",
+        "External Memory Language",
+        "Executable Markup Link",
+        "Extensible Markup Language"
+      ],
+      "correctAnswer": 3,
+      "explanation": "XML: Extensible Markup Language. XML is a markup language for structured data.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-xml",
+          "locator": "XML"
+        }
+      ]
+    },
+    {
+      "id": "ff-ssl",
+      "acronym": "SSL",
+      "topic": "Security & web formats",
+      "text": "What is the full form of SSL?",
+      "options": [
+        "System Security Link",
+        "Secure Software Logic",
+        "Secure Sockets Layer",
+        "Standard Socket Line"
+      ],
+      "correctAnswer": 2,
+      "explanation": "SSL: Secure Sockets Layer. SSL is an older security-protocol family superseded by TLS.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-ssl",
+          "locator": "SSL"
+        }
+      ]
+    },
+    {
+      "id": "ff-tls",
+      "acronym": "TLS",
+      "topic": "Security & web formats",
+      "text": "What is the full form of TLS?",
+      "options": [
+        "Transfer Link Service",
+        "Transaction Logic System",
+        "Transport Level Software",
+        "Transport Layer Security"
+      ],
+      "correctAnswer": 3,
+      "explanation": "TLS: Transport Layer Security. TLS secures communications over a network.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-tls",
+          "locator": "TLS"
+        }
+      ]
+    },
+    {
+      "id": "ff-vpn",
+      "acronym": "VPN",
+      "topic": "Security & web formats",
+      "text": "What is the full form of VPN?",
+      "options": [
+        "Verified Public Node",
+        "Virtual Program Network",
+        "Variable Private Network",
+        "Virtual Private Network"
+      ],
+      "correctAnswer": 3,
+      "explanation": "VPN: Virtual Private Network. A VPN establishes a logical private network over another network.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "vpn",
+          "locator": "Virtual Private Network"
+        }
+      ]
+    },
+    {
+      "id": "ff-png",
+      "acronym": "PNG",
+      "topic": "Security & web formats",
+      "text": "What is the full form of PNG?",
+      "options": [
+        "Portable Network Graphics",
+        "Pixel Network Grid",
+        "Portable Numeric Graph",
+        "Public Network Graphic"
+      ],
+      "correctAnswer": 0,
+      "explanation": "PNG: Portable Network Graphics. PNG is a lossless raster image format.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-png",
+          "locator": "PNG"
+        }
+      ]
+    },
+    {
+      "id": "ff-jpeg",
+      "acronym": "JPEG",
+      "topic": "Security & web formats",
+      "text": "What is the full form of JPEG?",
+      "options": [
+        "Java Picture Encoding Graphics",
+        "Joint Photographic Experts Group",
+        "Joint Pixel Exchange Group",
+        "Joined Photo Electronic Grid"
+      ],
+      "correctAnswer": 1,
+      "explanation": "JPEG: Joint Photographic Experts Group. JPEG names the standards group and is associated with widely used photographic image compression.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-jpeg",
+          "locator": "JPEG"
+        }
+      ]
+    },
+    {
+      "id": "ff-gif",
+      "acronym": "GIF",
+      "topic": "Security & web formats",
+      "text": "What is the full form of GIF?",
+      "options": [
+        "Graphics Interchange Format",
+        "Graphical Internet File",
+        "General Image Folder",
+        "Graphics Input Form"
+      ],
+      "correctAnswer": 0,
+      "explanation": "GIF: Graphics Interchange Format. GIF is an image format that supports indexed colour and animation.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-gif",
+          "locator": "GIF"
+        }
+      ]
+    },
+    {
+      "id": "ff-svg",
+      "acronym": "SVG",
+      "topic": "Security & web formats",
+      "text": "What is the full form of SVG?",
+      "options": [
+        "Standard Visual Grid",
+        "Simple Video Graph",
+        "Scanned Vector Group",
+        "Scalable Vector Graphics"
+      ],
+      "correctAnswer": 3,
+      "explanation": "SVG: Scalable Vector Graphics. SVG represents vector graphics using XML.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-svg",
+          "locator": "SVG"
+        }
+      ]
+    },
+    {
+      "id": "ff-api",
+      "acronym": "API",
+      "topic": "Security & web formats",
+      "text": "What is the full form of API?",
+      "options": [
+        "Automatic Program Input",
+        "Application Processing Internet",
+        "Advanced Protocol Integration",
+        "Application Programming Interface"
+      ],
+      "correctAnswer": 3,
+      "explanation": "API: Application Programming Interface. An API defines how software components interact.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-api",
+          "locator": "API"
+        }
+      ]
+    }
+  ]
+}

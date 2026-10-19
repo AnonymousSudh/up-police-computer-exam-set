@@ -1,0 +1,4988 @@
+{
+  "id": "computer-operator-full-forms-hard",
+  "title": "Full Form MCQ — Part 2 (Hard)",
+  "badge": "Hard",
+  "category": "up-police",
+  "durationMinutes": 60,
+  "description": "200 more challenging full-form MCQs covering a wider range of computer, networking and security terms.",
+  "researchNote": "Questions are independently written. Archived-paper tags identify topics inspected in a third-party paper mirror; its exam date and official answer key are unverified. UP Police training-bank topics are distinct from recruitment PYQs. Other questions are reference-based practice, not predictions.",
+  "sources": {
+    "up-training": {
+      "title": "UP Police Radio Training Centre — Basic Computer Course Question Bank",
+      "url": "https://uppolice.gov.in/site/writereaddata/siteContent/202003151357233622Basic%20Computer%20Question%20Bank.pdf",
+      "kind": "official-training"
+    },
+    "archive": {
+      "title": "Archived UP Police Computer Operator paper — third-party mirror (date unverified)",
+      "url": "https://www.slideshare.net/slideshow/computer-operatorprevious-year-papercompressed-26191pdf/266115215",
+      "kind": "archived-paper"
+    },
+    "hardware": {
+      "title": "Dell OpenManage hardware glossary — archived manufacturer manual",
+      "url": "https://cs.uwaterloo.ca/~brecht/servers/docs/PowerEdge-2600/en/Dosa/UG/13gloss.htm",
+      "kind": "technical-reference"
+    },
+    "memory": {
+      "title": "Kingston memory glossary",
+      "url": "https://www.kingston.com/en/memory/kingston-glossary",
+      "kind": "technical-reference"
+    },
+    "network": {
+      "title": "IETF RFC 1208 — Networking glossary",
+      "url": "https://datatracker.ietf.org/doc/html/rfc1208",
+      "kind": "technical-reference"
+    },
+    "internet": {
+      "title": "IETF RFC 1392 — Internet users glossary",
+      "url": "https://datatracker.ietf.org/doc/html/rfc1392",
+      "kind": "technical-reference"
+    },
+    "sql": {
+      "title": "IBM — Structured Query Language",
+      "url": "https://www.ibm.com/think/topics/structured-query-language",
+      "kind": "technical-reference"
+    },
+    "db2": {
+      "title": "IBM Db2 glossary",
+      "url": "https://public.dhe.ibm.com/ps/products/db2/info/vr6/htm/db2help/db2gludb.htm",
+      "kind": "technical-reference"
+    },
+    "ebcdic": {
+      "title": "IBM — Character conversion terminology",
+      "url": "https://www.ibm.com/docs/en/db2-for-zos/13.0.0?topic=data-character-conversion-terminology",
+      "kind": "technical-reference"
+    },
+    "usb": {
+      "title": "USB Implementers Forum — About USB-IF",
+      "url": "https://www.usb.org/about",
+      "kind": "technical-reference"
+    },
+    "odbc": {
+      "title": "Microsoft — ODBC data access",
+      "url": "https://learn.microsoft.com/en-us/archive/msdn-magazine/2001/december/ado-net-building-a-custom-data-provider-for-use-with-the-net-data-access-framework",
+      "kind": "technical-reference"
+    },
+    "mdn-http": {
+      "title": "MDN — HTTP",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/HTTP",
+      "kind": "technical-reference"
+    },
+    "mdn-url": {
+      "title": "MDN — URL",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/URL",
+      "kind": "technical-reference"
+    },
+    "mdn-pop": {
+      "title": "MDN — POP",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/POP",
+      "kind": "technical-reference"
+    },
+    "mdn-imap": {
+      "title": "MDN — IMAP",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/IMAP",
+      "kind": "technical-reference"
+    },
+    "mdn-html": {
+      "title": "MDN — HTML",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/HTML",
+      "kind": "technical-reference"
+    },
+    "mdn-css": {
+      "title": "MDN — CSS",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/CSS",
+      "kind": "technical-reference"
+    },
+    "mdn-xml": {
+      "title": "MDN — XML",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/XML",
+      "kind": "technical-reference"
+    },
+    "mdn-ssl": {
+      "title": "MDN — SSL",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/SSL",
+      "kind": "technical-reference"
+    },
+    "mdn-tls": {
+      "title": "MDN — TLS",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/TLS",
+      "kind": "technical-reference"
+    },
+    "mdn-png": {
+      "title": "MDN — PNG",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/PNG",
+      "kind": "technical-reference"
+    },
+    "mdn-jpeg": {
+      "title": "MDN — JPEG",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/JPEG",
+      "kind": "technical-reference"
+    },
+    "mdn-gif": {
+      "title": "MDN — GIF",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/GIF",
+      "kind": "technical-reference"
+    },
+    "mdn-svg": {
+      "title": "MDN — SVG",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/SVG",
+      "kind": "technical-reference"
+    },
+    "mdn-api": {
+      "title": "MDN — API",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/API",
+      "kind": "technical-reference"
+    },
+    "hdd": {
+      "title": "Seagate — Hard disk drive data sheet",
+      "url": "https://www.seagate.com/files/www-content/product-content/barracuda-fam/desktop-hdd/barracuda-7200-14/en-us/docs/desktop-hdd-ds-1774-2-1304-amer.pdf",
+      "kind": "technical-reference"
+    },
+    "ecc": {
+      "title": "Kingston — Server memory support",
+      "url": "https://www.kingston.com/en/support/technical/products/server-memory",
+      "kind": "technical-reference"
+    },
+    "cobol": {
+      "title": "IBM — COBOL",
+      "url": "https://www.ibm.com/think/topics/cobol",
+      "kind": "technical-reference"
+    },
+    "fortran": {
+      "title": "IBM — Fortran history",
+      "url": "https://www.ibm.com/history/fortran",
+      "kind": "technical-reference"
+    },
+    "wlan": {
+      "title": "NIST — Wireless Local Area Network",
+      "url": "https://csrc.nist.gov/glossary/term/Wireless_Local_Area_Network",
+      "kind": "technical-reference"
+    },
+    "rtf": {
+      "title": "Microsoft — Rich Text Format",
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.windows.dataformats.rtf",
+      "kind": "technical-reference"
+    },
+    "vpn": {
+      "title": "NIST — Virtual Private Network",
+      "url": "https://csrc.nist.gov/glossary/term/virtual_private_network",
+      "kind": "technical-reference"
+    },
+    "alu": {
+      "title": "IBM — Microprocessor components",
+      "url": "https://www.ibm.com/think/topics/microprocessor",
+      "kind": "technical-reference"
+    },
+    "ocr": {
+      "title": "IBM — Optical character recognition",
+      "url": "https://www.ibm.com/think/topics/optical-character-recognition",
+      "kind": "technical-reference"
+    },
+    "stack": {
+      "title": "MDN — Call stack",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/Call_stack",
+      "kind": "technical-reference"
+    },
+    "dvd": {
+      "title": "Sony — DVD glossary",
+      "url": "https://www.sony.com.sg/support/resources/en_AP/html/Compatibility/DVDCharts/DVDGloss.html",
+      "kind": "technical-reference"
+    },
+    "bluray": {
+      "title": "Sony — Blu-ray Disc formats",
+      "url": "https://www.sony.com/electronics/support/articles/00090460",
+      "kind": "technical-reference"
+    },
+    "security": {
+      "title": "IETF RFC 4949 — Internet Security Glossary",
+      "url": "https://www.rfc-editor.org/rfc/rfc4949.html",
+      "kind": "technical-reference"
+    },
+    "gpu": {
+      "title": "Intel — What is a GPU?",
+      "url": "https://www.intel.com/content/www/us/en/products/docs/processors/what-is-a-gpu.html",
+      "kind": "technical-reference"
+    },
+    "power": {
+      "title": "Delta — Power supply support and terminology",
+      "url": "https://psu.deltaww.com/en/contact/support",
+      "kind": "technical-reference"
+    },
+    "uefi": {
+      "title": "UEFI Forum — UEFI and ACPI specifications",
+      "url": "https://uefi.org/specifications",
+      "kind": "technical-reference"
+    },
+    "ahci": {
+      "title": "Intel — Advanced Host Controller Interface specification",
+      "url": "https://www.intel.com/content/www/us/en/io/serial-ata/ahci.html",
+      "kind": "technical-reference"
+    },
+    "sata": {
+      "title": "Intel — Serial ATA AHCI specification",
+      "url": "https://www.intel.com/content/dam/www/public/us/en/documents/technical-specifications/serial-ata-ahci-spec-rev1_2.pdf",
+      "kind": "technical-reference"
+    },
+    "nvme": {
+      "title": "NVM Express — Specifications",
+      "url": "https://nvmexpress.org/specifications/",
+      "kind": "technical-reference"
+    },
+    "disc": {
+      "title": "Sony — DVD and CD format glossary",
+      "url": "https://www.sony.com.sg/support/resources/en_AP/html/Compatibility/DVDCharts/DVDGloss.html",
+      "kind": "technical-reference"
+    },
+    "hdmi": {
+      "title": "HDMI Licensing Administrator — Specification overview",
+      "url": "https://www.hdmi.org/spec/index",
+      "kind": "technical-reference"
+    },
+    "dvi": {
+      "title": "Intel — Digital Visual Interface specification announcement",
+      "url": "https://www.intel.com/pressroom/archive/releases/2000/in021600a.htm",
+      "kind": "technical-reference"
+    },
+    "oled": {
+      "title": "Samsung — OLED display terminology",
+      "url": "https://www.samsung.com/sg/support/tv-audio-video/what-is-an-oled-tv/",
+      "kind": "technical-reference"
+    },
+    "ips": {
+      "title": "LG — IPS screen technology",
+      "url": "https://www.lg.com/ae/business/technology-solution-ips",
+      "kind": "technical-reference"
+    },
+    "ppi": {
+      "title": "MDN — Resolution CSS data type",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/resolution",
+      "kind": "technical-reference"
+    },
+    "agp": {
+      "title": "Intel — Accelerated Graphics Port announcement",
+      "url": "https://www.intel.com/pressroom/archive/releases/2002/20020911tech.htm",
+      "kind": "technical-reference"
+    },
+    "pcie": {
+      "title": "PCI-SIG — PCI Express overview",
+      "url": "https://pcisig.com/pci-express",
+      "kind": "technical-reference"
+    },
+    "risc": {
+      "title": "Arm — Reduced Instruction Set Computer",
+      "url": "https://www.arm.com/glossary/risc",
+      "kind": "technical-reference"
+    },
+    "soc": {
+      "title": "Arm — Processor and system glossary",
+      "url": "https://www.arm.com/glossary",
+      "kind": "technical-reference"
+    },
+    "flops": {
+      "title": "IBM — Supercomputing",
+      "url": "https://www.ibm.com/think/topics/supercomputing",
+      "kind": "technical-reference"
+    },
+    "mmu": {
+      "title": "Arm — Architecture glossary",
+      "url": "https://documentation-service.arm.com/static/5f873212405d955c5176df15",
+      "kind": "technical-reference"
+    },
+    "registers": {
+      "title": "Cambridge International — Computer Science syllabus (CPU registers)",
+      "url": "https://www.cambridgeinternational.org/Images/697167-2026-2028-syllabus.pdf",
+      "kind": "technical-reference"
+    },
+    "fpga": {
+      "title": "AMD — What is an FPGA?",
+      "url": "https://www.amd.com/en/products/adaptive-socs-and-fpgas/fpga/what-is-an-fpga.html",
+      "kind": "technical-reference"
+    },
+    "adc": {
+      "title": "Texas Instruments — Data converters",
+      "url": "https://www.ti.com/data-converters/overview.html",
+      "kind": "technical-reference"
+    },
+    "sas": {
+      "title": "Seagate — Serial-Attached SCSI installation",
+      "url": "https://www.seagate.com/support/kb/serial-attached-scsi-installation-instructions-218751en/",
+      "kind": "technical-reference"
+    },
+    "ntfs": {
+      "title": "Microsoft — NTFS overview",
+      "url": "https://learn.microsoft.com/en-us/windows-server/storage/file-server/ntfs-overview",
+      "kind": "technical-reference"
+    },
+    "exfat": {
+      "title": "Microsoft — exFAT specification, Table 2 and GUID appendix",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/fileio/exfat-specification",
+      "kind": "technical-reference"
+    },
+    "gpt": {
+      "title": "Microsoft — exFAT specification, Table 2 and GUID appendix",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/fileio/exfat-specification",
+      "kind": "technical-reference"
+    },
+    "guid": {
+      "title": "Microsoft — exFAT specification, Table 2 and GUID appendix",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/fileio/exfat-specification",
+      "kind": "technical-reference"
+    },
+    "uuid": {
+      "title": "IETF RFC 9562 — Universally Unique Identifiers",
+      "url": "https://www.rfc-editor.org/rfc/rfc9562.html",
+      "kind": "technical-reference"
+    },
+    "dll": {
+      "title": "Microsoft — Dynamic-link libraries",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/dlls/dynamic-link-libraries",
+      "kind": "technical-reference"
+    },
+    "exe": {
+      "title": "Microsoft — PE executable image format",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/debug/pe-format",
+      "kind": "technical-reference"
+    },
+    "posix": {
+      "title": "The Open Group — POSIX definitions",
+      "url": "https://pubs.opengroup.org/onlinepubs/9799919799/basedefs/V1_chap01.html",
+      "kind": "technical-reference"
+    },
+    "gnu": {
+      "title": "GNU Project — What is GNU?",
+      "url": "https://www.gnu.org/gnu/gnu.html",
+      "kind": "technical-reference"
+    },
+    "java": {
+      "title": "Oracle — Java technology overview",
+      "url": "https://docs.oracle.com/javase/tutorial/getStarted/intro/definition.html",
+      "kind": "technical-reference"
+    },
+    "clr": {
+      "title": "Microsoft — Common Language Runtime",
+      "url": "https://learn.microsoft.com/en-us/dotnet/standard/clr",
+      "kind": "technical-reference"
+    },
+    "aot": {
+      "title": "Microsoft — Native AOT deployment",
+      "url": "https://learn.microsoft.com/en-us/dotnet/core/deploying/native-aot/",
+      "kind": "technical-reference"
+    },
+    "unicode": {
+      "title": "Unicode Consortium — UTF and byte order mark FAQ",
+      "url": "https://www.unicode.org/faq/utf_bom.html",
+      "kind": "technical-reference"
+    },
+    "yaml": {
+      "title": "YAML language team — Specification 1.2.2",
+      "url": "https://yaml.org/spec/1.2.2/",
+      "kind": "technical-reference"
+    },
+    "urn": {
+      "title": "IETF RFC 8141 — Uniform Resource Names",
+      "url": "https://www.rfc-editor.org/rfc/rfc8141.html",
+      "kind": "technical-reference"
+    },
+    "xhtml": {
+      "title": "W3C — XHTML 1.0 specification",
+      "url": "https://www.w3.org/TR/xhtml1/",
+      "kind": "technical-reference"
+    },
+    "rss": {
+      "title": "RSS Advisory Board — RSS 2.0 specification",
+      "url": "https://www.rssboard.org/rss-specification",
+      "kind": "technical-reference"
+    },
+    "er": {
+      "title": "IBM — Entity relationship diagrams",
+      "url": "https://www.ibm.com/think/topics/entity-relationship-diagram",
+      "kind": "technical-reference"
+    },
+    "acid": {
+      "title": "IBM — ACID properties of transactions",
+      "url": "https://www.ibm.com/docs/en/cics-tx/11.1.0?topic=processing-acid-properties-transactions",
+      "kind": "technical-reference"
+    },
+    "oltp": {
+      "title": "IBM — OLAP and OLTP",
+      "url": "https://www.ibm.com/think/topics/olap-vs-oltp",
+      "kind": "technical-reference"
+    },
+    "olap": {
+      "title": "IBM — OLAP and OLTP",
+      "url": "https://www.ibm.com/think/topics/olap-vs-oltp",
+      "kind": "technical-reference"
+    },
+    "etl": {
+      "title": "IBM — Extract, Transform, Load",
+      "url": "https://www.ibm.com/think/topics/etl",
+      "kind": "technical-reference"
+    },
+    "csv": {
+      "title": "IETF RFC 4180 — Comma-Separated Values",
+      "url": "https://www.rfc-editor.org/rfc/rfc4180.html",
+      "kind": "technical-reference"
+    },
+    "tsv": {
+      "title": "IANA — Tab-separated-values media type registration",
+      "url": "https://www.iana.org/assignments/media-types/text/tab-separated-values",
+      "kind": "technical-reference"
+    },
+    "jdbc": {
+      "title": "Oracle — JDBC introduction",
+      "url": "https://docs.oracle.com/javase/tutorial/jdbc/overview/index.html",
+      "kind": "technical-reference"
+    },
+    "ado": {
+      "title": "Microsoft — ADO introduction",
+      "url": "https://learn.microsoft.com/en-us/office/client-developer/access/desktop-database-reference/ado-introduction",
+      "kind": "technical-reference"
+    },
+    "ole": {
+      "title": "Microsoft — OLE background",
+      "url": "https://learn.microsoft.com/en-us/cpp/mfc/ole-background",
+      "kind": "technical-reference"
+    },
+    "vba": {
+      "title": "Microsoft — Office VBA reference",
+      "url": "https://learn.microsoft.com/en-us/office/vba/api/overview/",
+      "kind": "technical-reference"
+    },
+    "mis": {
+      "title": "INFLIBNET — Management information systems",
+      "url": "https://ebooks.inflibnet.ac.in/lisp6/chapter/management-information-systems/",
+      "kind": "technical-reference"
+    },
+    "dss": {
+      "title": "INFLIBNET — Management information systems",
+      "url": "https://ebooks.inflibnet.ac.in/lisp6/chapter/management-information-systems/",
+      "kind": "technical-reference"
+    },
+    "erp": {
+      "title": "IBM — Enterprise Resource Planning",
+      "url": "https://www.ibm.com/think/topics/enterprise-resource-planning",
+      "kind": "technical-reference"
+    },
+    "crm": {
+      "title": "IBM — Crm",
+      "url": "https://www.ibm.com/think/topics/crm",
+      "kind": "technical-reference"
+    },
+    "scm": {
+      "title": "IBM — Supply Chain Management",
+      "url": "https://www.ibm.com/think/topics/supply-chain-management",
+      "kind": "technical-reference"
+    },
+    "bi": {
+      "title": "IBM — Business Intelligence",
+      "url": "https://www.ibm.com/think/topics/business-intelligence",
+      "kind": "technical-reference"
+    },
+    "iot": {
+      "title": "IBM — Internet Of Things",
+      "url": "https://www.ibm.com/think/topics/internet-of-things",
+      "kind": "technical-reference"
+    },
+    "it": {
+      "title": "IBM — Information Technology",
+      "url": "https://www.ibm.com/think/topics/information-technology",
+      "kind": "technical-reference"
+    },
+    "ai": {
+      "title": "IBM — Artificial intelligence and machine learning",
+      "url": "https://www.ibm.com/think/topics/artificial-intelligence",
+      "kind": "technical-reference"
+    },
+    "ict": {
+      "title": "ITU — Information and Communication Technology",
+      "url": "https://www.itu.int/ITU-D/tech/MobileCommunications/IMT_INTRODUCING/IMT_ICTEvolution.html",
+      "kind": "technical-reference"
+    },
+    "cloud": {
+      "title": "NIST SP 800-145 — Cloud computing service models",
+      "url": "https://csrc.nist.gov/pubs/sp/800/145/final",
+      "kind": "technical-reference"
+    },
+    "adsl": {
+      "title": "ITU-T G.988 — Abbreviations for DSL technologies",
+      "url": "https://www.itu.int/epublications/ar/publication/itu-t-g-988-2022-11-onu-management-and-control-interface-omci-specification/en",
+      "kind": "technical-reference"
+    },
+    "vdsl": {
+      "title": "ITU-T G.988 — Abbreviations for DSL technologies",
+      "url": "https://www.itu.int/epublications/ar/publication/itu-t-g-988-2022-11-onu-management-and-control-interface-omci-specification/en",
+      "kind": "technical-reference"
+    },
+    "ftth": {
+      "title": "ITU — Broadband fibre-to-the-home standards",
+      "url": "https://www.itu.int/en/broadband/Pages/ITU-T.aspx",
+      "kind": "technical-reference"
+    },
+    "stp-cable": {
+      "title": "Cisco — Shielded twisted-pair cabling",
+      "url": "https://www.cisco.com/E-Learning/bulk/guest/celc/fwl/ch1/1_2_2/content.html",
+      "kind": "technical-reference"
+    },
+    "tftp": {
+      "title": "IETF RFC 1350 — TFTP",
+      "url": "https://www.rfc-editor.org/rfc/rfc1350.html",
+      "kind": "technical-reference"
+    },
+    "sftp": {
+      "title": "OpenSSH — SSH File Transfer Protocol specifications",
+      "url": "https://www.openssh.org/specs.html",
+      "kind": "technical-reference"
+    },
+    "ftps": {
+      "title": "IETF RFC 4217 — Securing FTP with TLS",
+      "url": "https://www.rfc-editor.org/rfc/rfc4217.html",
+      "kind": "technical-reference"
+    },
+    "ssh": {
+      "title": "IETF RFC 4253 — Secure Shell transport",
+      "url": "https://www.rfc-editor.org/rfc/rfc4253.html",
+      "kind": "technical-reference"
+    },
+    "rdp": {
+      "title": "Microsoft — Remote Desktop Protocol overview",
+      "url": "https://learn.microsoft.com/en-us/troubleshoot/windows-server/remote/understanding-remote-desktop-protocol",
+      "kind": "technical-reference"
+    },
+    "ntp": {
+      "title": "IETF RFC 5905 — Network Time Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc5905.html",
+      "kind": "technical-reference"
+    },
+    "cidr": {
+      "title": "IETF RFC 4632 — Classless Inter-Domain Routing",
+      "url": "https://www.rfc-editor.org/rfc/rfc4632.html",
+      "kind": "technical-reference"
+    },
+    "nat": {
+      "title": "IETF RFC 3022 — Traditional IP Network Address Translator",
+      "url": "https://www.rfc-editor.org/rfc/rfc3022.html",
+      "kind": "technical-reference"
+    },
+    "pat": {
+      "title": "Cisco — Security glossary (Port Address Translation)",
+      "url": "https://www.cisco.com/c/en/us/td/docs/security/glossary/b_security_glossary_terms.html",
+      "kind": "technical-reference"
+    },
+    "vlan": {
+      "title": "Cisco — Virtual LANs",
+      "url": "https://www.cisco.com/c/en/us/tech/lan-switching/virtual-lans-vlan/index.html",
+      "kind": "technical-reference"
+    },
+    "pan": {
+      "title": "NIST — Personal Area Network",
+      "url": "https://csrc.nist.gov/glossary/term/personal_area_network",
+      "kind": "technical-reference"
+    },
+    "san": {
+      "title": "IBM — Storage area network",
+      "url": "https://www.ibm.com/think/topics/storage-area-network",
+      "kind": "technical-reference"
+    },
+    "ssid": {
+      "title": "Cisco — Multiple Basic Service Set Identifiers",
+      "url": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/wlan/configuration/xe-16-7/wl-16-7-book/wl-cfg-mult-bss.html",
+      "kind": "technical-reference"
+    },
+    "bssid": {
+      "title": "Cisco — Multiple Basic Service Set Identifiers",
+      "url": "https://www.cisco.com/c/en/us/td/docs/ios-xml/ios/wlan/configuration/xe-16-7/wl-16-7-book/wl-cfg-mult-bss.html",
+      "kind": "technical-reference"
+    },
+    "csma-ca": {
+      "title": "NIST — Wireless networks security guidance",
+      "url": "https://csrc.nist.gov/pubs/sp/800/97/final",
+      "kind": "technical-reference"
+    },
+    "mtu": {
+      "title": "IETF RFC 1191 — Path MTU discovery",
+      "url": "https://www.rfc-editor.org/rfc/rfc1191.html",
+      "kind": "technical-reference"
+    },
+    "pdu": {
+      "title": "IETF RFC 4949 — Protocol Data Unit",
+      "url": "https://www.rfc-editor.org/rfc/rfc4949.html",
+      "kind": "technical-reference"
+    },
+    "sdn": {
+      "title": "Open Networking Foundation — SDN architecture",
+      "url": "https://opennetworking.org/sdn-definition/",
+      "kind": "technical-reference"
+    },
+    "bgp": {
+      "title": "IETF RFC 4271 — Border Gateway Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc4271.html",
+      "kind": "technical-reference"
+    },
+    "ospf": {
+      "title": "IETF RFC 2328 — Open Shortest Path First",
+      "url": "https://www.rfc-editor.org/rfc/rfc2328.html",
+      "kind": "technical-reference"
+    },
+    "rip": {
+      "title": "IETF RFC 2453 — Routing Information Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc2453.html",
+      "kind": "technical-reference"
+    },
+    "voip": {
+      "title": "NIST — Voice over Internet Protocol",
+      "url": "https://csrc.nist.gov/glossary/term/voice_over_internet_protocol",
+      "kind": "technical-reference"
+    },
+    "pstn": {
+      "title": "NIST — Public Switched Telephone Network",
+      "url": "https://csrc.nist.gov/glossary/term/public_switched_telephone_network",
+      "kind": "technical-reference"
+    },
+    "gsm": {
+      "title": "3GPP — Technologies and cellular standards",
+      "url": "https://www.3gpp.org/technologies",
+      "kind": "technical-reference"
+    },
+    "lte": {
+      "title": "3GPP — Technologies and cellular standards",
+      "url": "https://www.3gpp.org/technologies",
+      "kind": "technical-reference"
+    },
+    "mime": {
+      "title": "IETF RFC 2045 — Multipurpose Internet Mail Extensions",
+      "url": "https://www.rfc-editor.org/rfc/rfc2045.html",
+      "kind": "technical-reference"
+    },
+    "mfa": {
+      "title": "NIST — Multi-factor authentication",
+      "url": "https://csrc.nist.gov/glossary/term/multi_factor_authentication",
+      "kind": "technical-reference"
+    },
+    "otp": {
+      "title": "NIST — One-time password",
+      "url": "https://csrc.nist.gov/glossary/term/one_time_password",
+      "kind": "technical-reference"
+    },
+    "totp": {
+      "title": "IETF RFC 6238 — Time-Based One-Time Password",
+      "url": "https://www.rfc-editor.org/rfc/rfc6238.html",
+      "kind": "technical-reference"
+    },
+    "hotp": {
+      "title": "IETF RFC 4226 — HMAC-Based One-Time Password",
+      "url": "https://www.rfc-editor.org/rfc/rfc4226.html",
+      "kind": "technical-reference"
+    },
+    "ids": {
+      "title": "NIST SP 800-94 — Intrusion detection and prevention systems",
+      "url": "https://csrc.nist.gov/pubs/sp/800/94/final",
+      "kind": "technical-reference"
+    },
+    "ddos": {
+      "title": "NIST — Distributed denial of service",
+      "url": "https://csrc.nist.gov/glossary/term/distributed_denial_of_service",
+      "kind": "technical-reference"
+    },
+    "wpa": {
+      "title": "Wi-Fi Alliance — Security",
+      "url": "https://www.wi-fi.org/discover-wi-fi/security",
+      "kind": "technical-reference"
+    },
+    "wps": {
+      "title": "Wi-Fi Alliance — Security",
+      "url": "https://www.wi-fi.org/discover-wi-fi/security",
+      "kind": "technical-reference"
+    },
+    "mdn-sdk": {
+      "title": "MDN — SDK",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/SDK",
+      "kind": "technical-reference"
+    },
+    "mdn-ide": {
+      "title": "MDN — IDE",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/IDE",
+      "kind": "technical-reference"
+    },
+    "mdn-oop": {
+      "title": "MDN — OOP",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/OOP",
+      "kind": "technical-reference"
+    },
+    "mdn-json": {
+      "title": "MDN — JSON",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/JSON",
+      "kind": "technical-reference"
+    },
+    "mdn-dom": {
+      "title": "MDN — DOM",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/DOM",
+      "kind": "technical-reference"
+    },
+    "mdn-ajax": {
+      "title": "MDN — Ajax",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/Ajax",
+      "kind": "technical-reference"
+    },
+    "mdn-uri": {
+      "title": "MDN — URI",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/URI",
+      "kind": "technical-reference"
+    },
+    "mdn-xslt": {
+      "title": "MDN — XSLT",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/XSLT",
+      "kind": "technical-reference"
+    },
+    "mdn-dtd": {
+      "title": "MDN — DTD",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/DTD",
+      "kind": "technical-reference"
+    },
+    "mdn-wysiwyg": {
+      "title": "MDN — WYSIWYG",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/WYSIWYG",
+      "kind": "technical-reference"
+    },
+    "mdn-xss": {
+      "title": "MDN — Cross-site scripting",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/XSS",
+      "kind": "technical-reference"
+    },
+    "mdn-csrf": {
+      "title": "MDN — CSRF",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/CSRF",
+      "kind": "technical-reference"
+    },
+    "mdn-sqli": {
+      "title": "MDN — SQL injection",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/SQL_injection",
+      "kind": "technical-reference"
+    },
+    "mdn-csp": {
+      "title": "MDN — CSP",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/CSP",
+      "kind": "technical-reference"
+    },
+    "mdn-cors": {
+      "title": "MDN — CORS",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/CORS",
+      "kind": "technical-reference"
+    },
+    "hmac": {
+      "title": "NIST — Hash-Based Message Authentication Code",
+      "url": "https://csrc.nist.gov/glossary/term/hash_based_message_authentication_code",
+      "kind": "technical-reference"
+    },
+    "amoled": {
+      "title": "Samsung Display — AMOLED terminology",
+      "url": "https://news.samsungdisplay.com/6753",
+      "kind": "technical-reference"
+    },
+    "sip": {
+      "title": "IETF RFC 3261 — Session Initiation Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc3261.html",
+      "kind": "technical-reference"
+    }
+  },
+  "questions": [
+    {
+      "id": "ff-pc",
+      "acronym": "PC",
+      "topic": "Hardware & memory",
+      "text": "What does PC stand for in hardware & memory?",
+      "options": [
+        "Personal Computer",
+        "Programmed Computer",
+        "Peripheral Computer",
+        "Processing Computer"
+      ],
+      "correctAnswer": 0,
+      "explanation": "PC stands for Personal Computer. A computer designed for use by one person.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "PC: Personal Computer — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-gpu",
+      "acronym": "GPU",
+      "topic": "Hardware & memory",
+      "text": "What does GPU stand for in hardware & memory?",
+      "options": [
+        "Graphics Program Unit",
+        "General Processing Unit",
+        "Graphics Processing Utility",
+        "Graphics Processing Unit"
+      ],
+      "correctAnswer": 3,
+      "explanation": "GPU stands for Graphics Processing Unit. A processor optimized for graphics and parallel calculations.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "gpu",
+          "locator": "GPU: Graphics Processing Unit — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-smps",
+      "acronym": "SMPS",
+      "topic": "Hardware & memory",
+      "text": "What does SMPS stand for in hardware & memory?",
+      "options": [
+        "Synchronous Mode Power Supply",
+        "Switched Mode Power Supply",
+        "Switched Mode Power System",
+        "Switched Module Power Supply"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SMPS stands for Switched Mode Power Supply. A supply that converts electrical power using switching circuitry.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "power",
+          "locator": "SMPS: Switched Mode Power Supply — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-psu",
+      "acronym": "PSU",
+      "topic": "Hardware & memory",
+      "text": "What does PSU stand for in hardware & memory?",
+      "options": [
+        "Power Switching Unit",
+        "Primary Supply Unit",
+        "Power Supply Unit",
+        "Power Storage Unit"
+      ],
+      "correctAnswer": 2,
+      "explanation": "PSU stands for Power Supply Unit. The computer component that supplies regulated electrical power.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "power",
+          "locator": "PSU: Power Supply Unit — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ac",
+      "acronym": "AC",
+      "topic": "Hardware & memory",
+      "text": "What does AC stand for in hardware & memory?",
+      "options": [
+        "Active Current",
+        "Alternating Charge",
+        "Alternating Current",
+        "Applied Current"
+      ],
+      "correctAnswer": 2,
+      "explanation": "AC stands for Alternating Current. Electric current whose direction reverses periodically.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "AC: Alternating Current — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dc",
+      "acronym": "DC",
+      "topic": "Hardware & memory",
+      "text": "What does DC stand for in hardware & memory?",
+      "options": [
+        "Dynamic Current",
+        "Direct Charge",
+        "Distributed Current",
+        "Direct Current"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DC stands for Direct Current. Electric current flowing in one direction.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "DC: Direct Current — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-uefi",
+      "acronym": "UEFI",
+      "topic": "Hardware & memory",
+      "text": "What does UEFI stand for in hardware & memory?",
+      "options": [
+        "Universal Extensible Firmware Interface",
+        "Unified Extensible Firmware Interface",
+        "Unified External Firmware Interface",
+        "Unified Extensible Firmware Integration"
+      ],
+      "correctAnswer": 1,
+      "explanation": "UEFI stands for Unified Extensible Firmware Interface. An interface between platform firmware and the operating system.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "uefi",
+          "locator": "UEFI: Unified Extensible Firmware Interface — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-acpi",
+      "acronym": "ACPI",
+      "topic": "Hardware & memory",
+      "text": "What does ACPI stand for in hardware & memory?",
+      "options": [
+        "Advanced Configuration and Power Integration",
+        "Advanced Configuration and Power Interface",
+        "Automatic Configuration and Power Interface",
+        "Advanced Control and Power Interface"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ACPI stands for Advanced Configuration and Power Interface. A standard for operating-system-directed hardware configuration and power management.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "uefi",
+          "locator": "ACPI: Advanced Configuration and Power Interface — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ahci",
+      "acronym": "AHCI",
+      "topic": "Hardware & memory",
+      "text": "What does AHCI stand for in hardware & memory?",
+      "options": [
+        "Advanced Hardware Controller Interface",
+        "Automatic Host Controller Interface",
+        "Advanced Host Controller Interface",
+        "Advanced Host Communication Interface"
+      ],
+      "correctAnswer": 2,
+      "explanation": "AHCI stands for Advanced Host Controller Interface. An interface for SATA host controllers.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ahci",
+          "locator": "AHCI: Advanced Host Controller Interface — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-sata",
+      "acronym": "SATA",
+      "topic": "Hardware & memory",
+      "text": "What does SATA stand for in hardware & memory?",
+      "options": [
+        "Synchronous ATA",
+        "Serial ATA",
+        "Sequential ATA",
+        "System ATA"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SATA stands for Serial ATA. A serial storage interface; ATA refers to AT Attachment.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sata",
+          "locator": "SATA: Serial ATA — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-pata",
+      "acronym": "PATA",
+      "topic": "Hardware & memory",
+      "text": "What does PATA stand for in hardware & memory?",
+      "options": [
+        "Peripheral ATA",
+        "Primary ATA",
+        "Parallel ATA",
+        "Programmable ATA"
+      ],
+      "correctAnswer": 2,
+      "explanation": "PATA stands for Parallel ATA. The parallel predecessor of SATA; ATA refers to AT Attachment.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sata",
+          "locator": "PATA: Parallel ATA — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ata",
+      "acronym": "ATA",
+      "topic": "Hardware & memory",
+      "text": "What does ATA stand for in hardware & memory?",
+      "options": [
+        "AT Adapter",
+        "AT Addressing",
+        "AT Allocation",
+        "AT Attachment"
+      ],
+      "correctAnswer": 3,
+      "explanation": "ATA stands for AT Attachment. AT Attachment is a storage interface name; AT refers to the IBM PC/AT designation.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sata",
+          "locator": "ATA: AT Attachment — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ide",
+      "acronym": "IDE",
+      "topic": "Hardware & memory",
+      "text": "What does IDE stand for in storage hardware?",
+      "options": [
+        "Integrated Disk Encoding",
+        "Integrated Drive Electronics",
+        "Internal Drive Electronics",
+        "Integrated Drive Extension"
+      ],
+      "correctAnswer": 1,
+      "explanation": "IDE stands for Integrated Drive Electronics. A historical term for a drive interface with integrated control electronics.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "IDE: Integrated Drive Electronics — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-eide",
+      "acronym": "EIDE",
+      "topic": "Hardware & memory",
+      "text": "What does EIDE stand for in hardware & memory?",
+      "options": [
+        "Extended Integrated Drive Electronics",
+        "Enhanced Integrated Drive Electronics",
+        "Enhanced Internal Drive Electronics",
+        "Enhanced Integrated Disk Encoding"
+      ],
+      "correctAnswer": 1,
+      "explanation": "EIDE stands for Enhanced Integrated Drive Electronics. An enhanced form of the historical IDE interface.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "EIDE: Enhanced Integrated Drive Electronics — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-nvme",
+      "acronym": "NVMe",
+      "topic": "Hardware & memory",
+      "text": "What does NVMe stand for in hardware & memory?",
+      "options": [
+        "Non-Volatile Memory Extension",
+        "Non-Volatile Module Express",
+        "Non-Volatile Memory Express",
+        "Non-Volatile Memory Exchange"
+      ],
+      "correctAnswer": 2,
+      "explanation": "NVMe stands for Non-Volatile Memory Express. A protocol designed for accessing nonvolatile storage over interfaces such as PCIe.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "nvme",
+          "locator": "NVMe: Non-Volatile Memory Express — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-fdd",
+      "acronym": "FDD",
+      "topic": "Hardware & memory",
+      "text": "What does FDD stand for in hardware & memory?",
+      "options": [
+        "Fixed Disk Drive",
+        "Floppy Disk Drive",
+        "Floppy Data Drive",
+        "Flexible Disk Decoder"
+      ],
+      "correctAnswer": 1,
+      "explanation": "FDD stands for Floppy Disk Drive. A drive used to read and write floppy disks.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "FDD: Floppy Disk Drive — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-cd",
+      "acronym": "CD",
+      "topic": "Input, output & storage media",
+      "text": "What does CD stand for in input, output & storage media?",
+      "options": [
+        "Compact Disc",
+        "Compact Drive",
+        "Computer Disc",
+        "Compact Data"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CD stands for Compact Disc. An optical storage medium.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "disc",
+          "locator": "CD: Compact Disc — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-cd-r",
+      "acronym": "CD-R",
+      "topic": "Input, output & storage media",
+      "text": "What does CD-R stand for in input, output & storage media?",
+      "options": [
+        "Compact Disc Readable",
+        "Compact Disc Rewritable",
+        "Compact Disc Recordable",
+        "Compact Drive Recordable"
+      ],
+      "correctAnswer": 2,
+      "explanation": "CD-R stands for Compact Disc Recordable. A recordable CD whose written data cannot be erased like a CD-RW.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "disc",
+          "locator": "CD-R: Compact Disc Recordable — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dvd-rom",
+      "acronym": "DVD-ROM",
+      "topic": "Input, output & storage media",
+      "text": "What does DVD-ROM stand for in input, output & storage media?",
+      "options": [
+        "Digital Versatile Disc Read Only Memory",
+        "Digital Versatile Disc Random Output Memory",
+        "Digital Versatile Drive Read Only Memory",
+        "Digital Visual Disc Read Only Memory"
+      ],
+      "correctAnswer": 0,
+      "explanation": "DVD-ROM stands for Digital Versatile Disc Read Only Memory. A read-only DVD format.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "dvd",
+          "locator": "DVD-ROM: Digital Versatile Disc Read Only Memory — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dvd-rw",
+      "acronym": "DVD-RW",
+      "topic": "Input, output & storage media",
+      "text": "What does DVD-RW stand for in input, output & storage media?",
+      "options": [
+        "Digital Versatile Disc Read-only Write-once",
+        "Digital Versatile Drive ReWritable",
+        "Digital Visual Disc ReWritable",
+        "Digital Versatile Disc ReWritable"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DVD-RW stands for Digital Versatile Disc ReWritable. A rewritable DVD format.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "dvd",
+          "locator": "DVD-RW: Digital Versatile Disc ReWritable — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-bd-rom",
+      "acronym": "BD-ROM",
+      "topic": "Input, output & storage media",
+      "text": "What does BD-ROM stand for in input, output & storage media?",
+      "options": [
+        "Blu-ray Disc Random Output Memory",
+        "Blu-ray Drive Read Only Memory",
+        "Binary Disc Read Only Memory",
+        "Blu-ray Disc Read Only Memory"
+      ],
+      "correctAnswer": 3,
+      "explanation": "BD-ROM stands for Blu-ray Disc Read Only Memory. A read-only Blu-ray format.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "bluray",
+          "locator": "BD-ROM: Blu-ray Disc Read Only Memory — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-bd-r",
+      "acronym": "BD-R",
+      "topic": "Input, output & storage media",
+      "text": "What does BD-R stand for in input, output & storage media?",
+      "options": [
+        "Blu-ray Disc Rewritable",
+        "Blu-ray Disc Recordable",
+        "Blu-ray Disc Readable",
+        "Blu-ray Drive Recordable"
+      ],
+      "correctAnswer": 1,
+      "explanation": "BD-R stands for Blu-ray Disc Recordable. A recordable Blu-ray format.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "bluray",
+          "locator": "BD-R: Blu-ray Disc Recordable — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-bd-re",
+      "acronym": "BD-RE",
+      "topic": "Input, output & storage media",
+      "text": "What does BD-RE stand for in input, output & storage media?",
+      "options": [
+        "Blu-ray Disc Recordable",
+        "Blu-ray Disc Read-only",
+        "Blu-ray Drive Rewritable",
+        "Blu-ray Disc Rewritable"
+      ],
+      "correctAnswer": 3,
+      "explanation": "BD-RE stands for Blu-ray Disc Rewritable. A rewritable Blu-ray format.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "bluray",
+          "locator": "BD-RE: Blu-ray Disc Rewritable — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-hdmi",
+      "acronym": "HDMI",
+      "topic": "Input, output & storage media",
+      "text": "What does HDMI stand for in input, output & storage media?",
+      "options": [
+        "High-Definition Media Interface",
+        "High-Definition Multimedia Interface",
+        "High-Definition Multimedia Integration",
+        "High-Density Multimedia Interface"
+      ],
+      "correctAnswer": 1,
+      "explanation": "HDMI stands for High-Definition Multimedia Interface. An interface that carries digital video and audio.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hdmi",
+          "locator": "HDMI: High-Definition Multimedia Interface — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-vga",
+      "acronym": "VGA",
+      "topic": "Input, output & storage media",
+      "text": "What does VGA stand for in input, output & storage media?",
+      "options": [
+        "Video Graphics Array",
+        "Video Graphics Accelerator",
+        "Visual Graphics Array",
+        "Video Grid Array"
+      ],
+      "correctAnswer": 0,
+      "explanation": "VGA stands for Video Graphics Array. A display standard associated with the familiar analog monitor connector.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "VGA: Video Graphics Array — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dvi",
+      "acronym": "DVI",
+      "topic": "Input, output & storage media",
+      "text": "What does DVI stand for in input, output & storage media?",
+      "options": [
+        "Digital Video Integration",
+        "Direct Visual Interface",
+        "Digital Visual Interface",
+        "Digital Visual Interconnect"
+      ],
+      "correctAnswer": 2,
+      "explanation": "DVI stands for Digital Visual Interface. A display interface for video signals.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "dvi",
+          "locator": "DVI: Digital Visual Interface — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-vdu",
+      "acronym": "VDU",
+      "topic": "Input, output & storage media",
+      "text": "What does VDU stand for in input, output & storage media?",
+      "options": [
+        "Video Data Unit",
+        "Visual Display Utility",
+        "Visual Display Unit",
+        "Virtual Display Unit"
+      ],
+      "correctAnswer": 2,
+      "explanation": "VDU stands for Visual Display Unit. A device such as a monitor that displays computer output.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "VDU: Visual Display Unit — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-tft",
+      "acronym": "TFT",
+      "topic": "Input, output & storage media",
+      "text": "What does TFT stand for in input, output & storage media?",
+      "options": [
+        "Thin Film Transformer",
+        "Thin Field Transistor",
+        "Thin Film Transistor",
+        "Transparent Film Transistor"
+      ],
+      "correctAnswer": 2,
+      "explanation": "TFT stands for Thin Film Transistor. A transistor technology commonly used in flat-panel displays.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "TFT: Thin Film Transistor — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-oled",
+      "acronym": "OLED",
+      "topic": "Input, output & storage media",
+      "text": "What does OLED stand for in input, output & storage media?",
+      "options": [
+        "Organic Light Emitting Diode",
+        "Optical Light Emitting Diode",
+        "Organic Light Emitting Display",
+        "Organic Light Emission Device"
+      ],
+      "correctAnswer": 0,
+      "explanation": "OLED stands for Organic Light Emitting Diode. A display technology using organic light-emitting materials.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "oled",
+          "locator": "OLED: Organic Light Emitting Diode — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-amoled",
+      "acronym": "AMOLED",
+      "topic": "Input, output & storage media",
+      "text": "What does AMOLED stand for in input, output & storage media?",
+      "options": [
+        "Active Matrix Optical Light Emitting Diode",
+        "Adaptive Matrix Organic Light Emitting Diode",
+        "Active Matrix Organic Light Emitting Diode",
+        "Active Matrix Organic Light Emitting Display"
+      ],
+      "correctAnswer": 2,
+      "explanation": "AMOLED stands for Active Matrix Organic Light Emitting Diode. An OLED display driven using an active-matrix backplane.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "amoled",
+          "locator": "AMOLED: Active Matrix Organic Light Emitting Diode — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ips",
+      "acronym": "IPS",
+      "topic": "Input, output & storage media",
+      "text": "What does IPS stand for in LCD displays?",
+      "options": [
+        "In Plane Switching",
+        "Integrated Panel Switching",
+        "In Plane Scanning",
+        "Internal Pixel Switching"
+      ],
+      "correctAnswer": 0,
+      "explanation": "IPS stands for In Plane Switching. An LCD panel technology; the context here is displays, not intrusion prevention.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ips",
+          "locator": "IPS: In Plane Switching — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ppi",
+      "acronym": "PPI",
+      "topic": "Input, output & storage media",
+      "text": "What does PPI stand for in input, output & storage media?",
+      "options": [
+        "Points Per Inch",
+        "Pixels Per Inch",
+        "Pixels Per Interval",
+        "Pixels Per Image"
+      ],
+      "correctAnswer": 1,
+      "explanation": "PPI stands for Pixels Per Inch. A measure of display pixel density, distinct from printing DPI.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ppi",
+          "locator": "PPI: Pixels Per Inch — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-agp",
+      "acronym": "AGP",
+      "topic": "Hardware & memory",
+      "text": "What does AGP stand for in hardware & memory?",
+      "options": [
+        "Advanced Graphics Port",
+        "Accelerated Graphics Processor",
+        "Accelerated Graphics Protocol",
+        "Accelerated Graphics Port"
+      ],
+      "correctAnswer": 3,
+      "explanation": "AGP stands for Accelerated Graphics Port. It is an older expansion interface used for graphics cards.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "agp",
+          "locator": "AGP: Accelerated Graphics Port — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-pcie",
+      "acronym": "PCIe",
+      "topic": "Hardware & memory",
+      "text": "What does PCIe stand for in hardware & memory?",
+      "options": [
+        "Peripheral Component Interconnect Express",
+        "Peripheral Component Interface Express",
+        "Peripheral Computer Interconnect Express",
+        "Parallel Component Interconnect Express"
+      ],
+      "correctAnswer": 0,
+      "explanation": "PCIe stands for Peripheral Component Interconnect Express. A high-speed serial expansion interconnect.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "pcie",
+          "locator": "PCIe: Peripheral Component Interconnect Express — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-isa",
+      "acronym": "ISA",
+      "topic": "Hardware & memory",
+      "text": "What does ISA stand for in hardware & memory?",
+      "options": [
+        "Integrated System Architecture",
+        "Industry System Architecture",
+        "Internal Standard Architecture",
+        "Industry Standard Architecture"
+      ],
+      "correctAnswer": 3,
+      "explanation": "ISA stands for Industry Standard Architecture. An older computer expansion-bus architecture.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "ISA: Industry Standard Architecture — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-eisa",
+      "acronym": "EISA",
+      "topic": "Hardware & memory",
+      "text": "What does EISA stand for in hardware & memory?",
+      "options": [
+        "Enhanced Industry Standard Architecture",
+        "Extended Industry Standard Architecture",
+        "Extended Integrated System Architecture",
+        "Extended Industry System Architecture"
+      ],
+      "correctAnswer": 1,
+      "explanation": "EISA stands for Extended Industry Standard Architecture. An extension of the ISA expansion-bus architecture.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "EISA: Extended Industry Standard Architecture — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-simm",
+      "acronym": "SIMM",
+      "topic": "Hardware & memory",
+      "text": "What does SIMM stand for in hardware & memory?",
+      "options": [
+        "Serial In-line Memory Module",
+        "Single Integrated Memory Module",
+        "Single In-line Memory Multiplexer",
+        "Single In-line Memory Module"
+      ],
+      "correctAnswer": 3,
+      "explanation": "SIMM stands for Single In-line Memory Module. An older memory-module form factor.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "SIMM: Single In-line Memory Module — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-sodimm",
+      "acronym": "SODIMM",
+      "topic": "Hardware & memory",
+      "text": "What does SODIMM stand for in hardware & memory?",
+      "options": [
+        "Small Outline Dual Integrated Memory Module",
+        "Small Output Dual In-line Memory Module",
+        "Small Outline Dynamic In-line Memory Module",
+        "Small Outline Dual In-line Memory Module"
+      ],
+      "correctAnswer": 3,
+      "explanation": "SODIMM stands for Small Outline Dual In-line Memory Module. A compact memory-module form factor common in laptops.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "memory",
+          "locator": "SODIMM: Small Outline Dual In-line Memory Module — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-rdimm",
+      "acronym": "RDIMM",
+      "topic": "Hardware & memory",
+      "text": "What does RDIMM stand for in hardware & memory?",
+      "options": [
+        "Reduced Dual In-line Memory Module",
+        "Registered Dynamic In-line Memory Module",
+        "Registered Dual Integrated Memory Module",
+        "Registered Dual In-line Memory Module"
+      ],
+      "correctAnswer": 3,
+      "explanation": "RDIMM stands for Registered Dual In-line Memory Module. A memory module with a register buffering selected signals.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "memory",
+          "locator": "RDIMM: Registered Dual In-line Memory Module — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-udimm",
+      "acronym": "UDIMM",
+      "topic": "Hardware & memory",
+      "text": "What does UDIMM stand for in hardware & memory?",
+      "options": [
+        "Unified Dual In-line Memory Module",
+        "Unbuffered Dual In-line Memory Module",
+        "Unbuffered Dynamic In-line Memory Module",
+        "Unbuffered Dual Integrated Memory Module"
+      ],
+      "correctAnswer": 1,
+      "explanation": "UDIMM stands for Unbuffered Dual In-line Memory Module. A memory module without the register used in RDIMMs.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "memory",
+          "locator": "UDIMM: Unbuffered Dual In-line Memory Module — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-vram",
+      "acronym": "VRAM",
+      "topic": "Hardware & memory",
+      "text": "What does VRAM stand for in hardware & memory?",
+      "options": [
+        "Video Random Access Memory",
+        "Virtual Random Access Memory",
+        "Video Read Access Memory",
+        "Video Random Allocation Memory"
+      ],
+      "correctAnswer": 0,
+      "explanation": "VRAM stands for Video Random Access Memory. Memory associated with graphics data.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "VRAM: Video Random Access Memory — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ddr-sdram",
+      "acronym": "DDR SDRAM",
+      "topic": "Hardware & memory",
+      "text": "What does DDR SDRAM stand for in hardware & memory?",
+      "options": [
+        "Double Data Rate Static Dynamic Random Access Memory",
+        "Dual Data Rate Synchronous Dynamic Random Access Memory",
+        "Double Data Rate Synchronous Direct Read Access Memory",
+        "Double Data Rate Synchronous Dynamic Random Access Memory"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DDR SDRAM stands for Double Data Rate Synchronous Dynamic Random Access Memory. Synchronous memory transferring data on both clock edges.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "memory",
+          "locator": "DDR SDRAM: Double Data Rate Synchronous Dynamic Random Access Memory — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-gddr",
+      "acronym": "GDDR",
+      "topic": "Hardware & memory",
+      "text": "What does GDDR stand for in hardware & memory?",
+      "options": [
+        "Graphics Dual Data Rate",
+        "Graphics Double Data Register",
+        "Graphics Double Data Rate",
+        "General Double Data Rate"
+      ],
+      "correctAnswer": 2,
+      "explanation": "GDDR stands for Graphics Double Data Rate. A family of memory technologies used for graphics workloads.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "memory",
+          "locator": "GDDR: Graphics Double Data Rate — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-risc",
+      "acronym": "RISC",
+      "topic": "Hardware & memory",
+      "text": "What does RISC stand for in hardware & memory?",
+      "options": [
+        "Reduced Instruction System Computer",
+        "Reduced Instruction Set Computer",
+        "Rapid Instruction Set Computer",
+        "Reduced Integrated Set Computer"
+      ],
+      "correctAnswer": 1,
+      "explanation": "RISC stands for Reduced Instruction Set Computer. An instruction-set design approach; Computing is also used in explanatory literature.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "risc",
+          "locator": "RISC: Reduced Instruction Set Computer — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-cisc",
+      "acronym": "CISC",
+      "topic": "Hardware & memory",
+      "text": "What does CISC stand for in hardware & memory?",
+      "options": [
+        "Complete Instruction Set Computer",
+        "Complex Instruction System Computer",
+        "Complex Integrated Set Computer",
+        "Complex Instruction Set Computer"
+      ],
+      "correctAnswer": 3,
+      "explanation": "CISC stands for Complex Instruction Set Computer. An instruction-set design approach; Computing is also used in explanatory literature.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "risc",
+          "locator": "CISC: Complex Instruction Set Computer — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-mips",
+      "acronym": "MIPS",
+      "topic": "Hardware & memory",
+      "text": "What does MIPS stand for in processor throughput?",
+      "options": [
+        "Million Instructions Per Second",
+        "Million Instructions Per Sequence",
+        "Multiple Instructions Per Second",
+        "Million Inputs Per Second"
+      ],
+      "correctAnswer": 0,
+      "explanation": "MIPS stands for Million Instructions Per Second. A processor throughput measure in this context; not the MIPS architecture name.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "MIPS: Million Instructions Per Second — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-flops",
+      "acronym": "FLOPS",
+      "topic": "Hardware & memory",
+      "text": "What does FLOPS stand for in hardware & memory?",
+      "options": [
+        "Fixed Point Operations Per Second",
+        "Floating Point Operands Per Second",
+        "Floating Point Operations Per Sequence",
+        "Floating Point Operations Per Second"
+      ],
+      "correctAnswer": 3,
+      "explanation": "FLOPS stands for Floating Point Operations Per Second. A performance measure for floating-point computations.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "flops",
+          "locator": "FLOPS: Floating Point Operations Per Second — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-fpu",
+      "acronym": "FPU",
+      "topic": "Hardware & memory",
+      "text": "What does FPU stand for in hardware & memory?",
+      "options": [
+        "Floating Point Unit",
+        "Fixed Point Unit",
+        "Floating Processing Unit",
+        "Floating Point Utility"
+      ],
+      "correctAnswer": 0,
+      "explanation": "FPU stands for Floating Point Unit. A component that performs floating-point arithmetic.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "FPU: Floating Point Unit — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-mmu",
+      "acronym": "MMU",
+      "topic": "Hardware & memory",
+      "text": "What does MMU stand for in hardware & memory?",
+      "options": [
+        "Memory Mapping Unit",
+        "Memory Management Unit",
+        "Main Memory Unit",
+        "Memory Management Utility"
+      ],
+      "correctAnswer": 1,
+      "explanation": "MMU stands for Memory Management Unit. A component responsible for address translation and memory protection.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mmu",
+          "locator": "MMU: Memory Management Unit — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-mar",
+      "acronym": "MAR",
+      "topic": "Hardware & memory",
+      "text": "What does MAR stand for in hardware & memory?",
+      "options": [
+        "Memory Access Register",
+        "Main Address Register",
+        "Memory Allocation Register",
+        "Memory Address Register"
+      ],
+      "correctAnswer": 3,
+      "explanation": "MAR stands for Memory Address Register. A register holding an address involved in a memory operation.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "registers",
+          "locator": "MAR: Memory Address Register — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-mdr",
+      "acronym": "MDR",
+      "topic": "Hardware & memory",
+      "text": "What does MDR stand for in hardware & memory?",
+      "options": [
+        "Memory Decode Register",
+        "Main Data Register",
+        "Memory Data Register",
+        "Memory Data Router"
+      ],
+      "correctAnswer": 2,
+      "explanation": "MDR stands for Memory Data Register. A register holding data being transferred to or from memory.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "registers",
+          "locator": "MDR: Memory Data Register — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ir",
+      "acronym": "IR",
+      "topic": "Hardware & memory",
+      "text": "What does IR stand for in CPU registers?",
+      "options": [
+        "Input Register",
+        "Index Register",
+        "Interrupt Register",
+        "Instruction Register"
+      ],
+      "correctAnswer": 3,
+      "explanation": "IR stands for Instruction Register. A CPU register holding an instruction in this context.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "registers",
+          "locator": "IR: Instruction Register — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-tlb",
+      "acronym": "TLB",
+      "topic": "Hardware & memory",
+      "text": "What does TLB stand for in hardware & memory?",
+      "options": [
+        "Translation Lookaside Buffer",
+        "Translation Lookup Block",
+        "Transaction Lookaside Buffer",
+        "Translation Link Buffer"
+      ],
+      "correctAnswer": 0,
+      "explanation": "TLB stands for Translation Lookaside Buffer. A cache used for virtual-to-physical address translations.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mmu",
+          "locator": "TLB: Translation Lookaside Buffer — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-soc",
+      "acronym": "SoC",
+      "topic": "Hardware & memory",
+      "text": "What does SoC stand for in hardware & memory?",
+      "options": [
+        "Storage on Chip",
+        "System on Chip",
+        "System on Controller",
+        "Software on Chip"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SoC stands for System on Chip. An integrated circuit combining several system components.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "soc",
+          "locator": "SoC: System on Chip — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-asic",
+      "acronym": "ASIC",
+      "topic": "Hardware & memory",
+      "text": "What does ASIC stand for in hardware & memory?",
+      "options": [
+        "Application Standard Integrated Circuit",
+        "Application Specific Internal Circuit",
+        "Adaptive Specific Integrated Circuit",
+        "Application Specific Integrated Circuit"
+      ],
+      "correctAnswer": 3,
+      "explanation": "ASIC stands for Application Specific Integrated Circuit. An integrated circuit designed for a particular application.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "ASIC: Application Specific Integrated Circuit — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-fpga",
+      "acronym": "FPGA",
+      "topic": "Hardware & memory",
+      "text": "What does FPGA stand for in hardware & memory?",
+      "options": [
+        "Field Programmable Graphics Array",
+        "Field Programmable Gate Array",
+        "Fixed Programmable Gate Array",
+        "Field Processing Gate Array"
+      ],
+      "correctAnswer": 1,
+      "explanation": "FPGA stands for Field Programmable Gate Array. An integrated circuit whose logic can be configured after manufacture.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "fpga",
+          "locator": "FPGA: Field Programmable Gate Array — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-adc",
+      "acronym": "ADC",
+      "topic": "Hardware & memory",
+      "text": "What does ADC stand for in hardware & memory?",
+      "options": [
+        "Analog to Decimal Converter",
+        "Address to Digital Converter",
+        "Analog to Digital Converter",
+        "Analog to Digital Controller"
+      ],
+      "correctAnswer": 2,
+      "explanation": "ADC stands for Analog to Digital Converter. A device that converts analog signals to digital values.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "adc",
+          "locator": "ADC: Analog to Digital Converter — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dac",
+      "acronym": "DAC",
+      "topic": "Hardware & memory",
+      "text": "What does DAC stand for in signal conversion?",
+      "options": [
+        "Data to Analog Converter",
+        "Digital to Analog Controller",
+        "Digital to Address Converter",
+        "Digital to Analog Converter"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DAC stands for Digital to Analog Converter. A device that converts digital values to analog signals.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "adc",
+          "locator": "DAC: Digital to Analog Converter — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-rpm",
+      "acronym": "RPM",
+      "topic": "Hardware & memory",
+      "text": "What does RPM stand for in hardware & memory?",
+      "options": [
+        "Rotations Per Millisecond",
+        "Revolutions Per Microsecond",
+        "Revolutions Per Minute",
+        "Readings Per Minute"
+      ],
+      "correctAnswer": 2,
+      "explanation": "RPM stands for Revolutions Per Minute. A rotational speed measure used for hard drives and fans.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "RPM: Revolutions Per Minute — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-sas",
+      "acronym": "SAS",
+      "topic": "Hardware & memory",
+      "text": "What does SAS stand for in hardware & memory?",
+      "options": [
+        "Synchronous Attached SCSI",
+        "Serial Addressed SCSI",
+        "System Attached SCSI",
+        "Serial Attached SCSI"
+      ],
+      "correctAnswer": 3,
+      "explanation": "SAS stands for Serial Attached SCSI. A serial storage interface; SCSI expands to Small Computer System Interface.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sas",
+          "locator": "SAS: Serial Attached SCSI — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-fat",
+      "acronym": "FAT",
+      "topic": "Software & data representation",
+      "text": "What does FAT stand for in software & data representation?",
+      "options": [
+        "File Allocation Table",
+        "File Address Table",
+        "File Access Table",
+        "File Allocation Tree"
+      ],
+      "correctAnswer": 0,
+      "explanation": "FAT stands for File Allocation Table. A family of file systems tracking file allocation in a table.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "FAT: File Allocation Table — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ntfs",
+      "acronym": "NTFS",
+      "topic": "Software & data representation",
+      "text": "What does NTFS stand for in software & data representation?",
+      "options": [
+        "Network Technology File System",
+        "New Technology File System",
+        "New Transaction File System",
+        "New Technology File Storage"
+      ],
+      "correctAnswer": 1,
+      "explanation": "NTFS stands for New Technology File System. A Windows file system with features such as access permissions.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ntfs",
+          "locator": "NTFS: New Technology File System — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-exfat",
+      "acronym": "exFAT",
+      "topic": "Software & data representation",
+      "text": "What does exFAT stand for in software & data representation?",
+      "options": [
+        "Extended File Access Table",
+        "Extensible File Allocation Table",
+        "Extensible File Address Table",
+        "External File Allocation Table"
+      ],
+      "correctAnswer": 1,
+      "explanation": "exFAT stands for Extensible File Allocation Table. A file system often used for removable media.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "exfat",
+          "locator": "exFAT: Extensible File Allocation Table — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-gpt",
+      "acronym": "GPT",
+      "topic": "Software & data representation",
+      "text": "What does GPT stand for in software & data representation?",
+      "options": [
+        "GUID Partition Tree",
+        "Global Partition Table",
+        "GUID Partition Table",
+        "GUID Protection Table"
+      ],
+      "correctAnswer": 2,
+      "explanation": "GPT stands for GUID Partition Table. A disk partition scheme; GUID means Globally Unique Identifier.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "gpt",
+          "locator": "GPT: GUID Partition Table — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-mbr",
+      "acronym": "MBR",
+      "topic": "Software & data representation",
+      "text": "What does MBR stand for in software & data representation?",
+      "options": [
+        "Master Boot Record",
+        "Main Boot Register",
+        "Master Boot Registry",
+        "Memory Boot Record"
+      ],
+      "correctAnswer": 0,
+      "explanation": "MBR stands for Master Boot Record. A legacy disk partition and boot-record structure.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "gpt",
+          "locator": "MBR: Master Boot Record — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-guid",
+      "acronym": "GUID",
+      "topic": "Software & data representation",
+      "text": "What does GUID stand for in software & data representation?",
+      "options": [
+        "Globally Unified Identifier",
+        "General Unique Identifier",
+        "Globally Unique Identifier",
+        "Globally Unique Index"
+      ],
+      "correctAnswer": 2,
+      "explanation": "GUID stands for Globally Unique Identifier. A widely used identifier format.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "guid",
+          "locator": "GUID: Globally Unique Identifier — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-uuid",
+      "acronym": "UUID",
+      "topic": "Software & data representation",
+      "text": "What does UUID stand for in software & data representation?",
+      "options": [
+        "Universally Unique Identifier",
+        "Universally Unified Identifier",
+        "Uniform Unique Identifier",
+        "Universally Unique Index"
+      ],
+      "correctAnswer": 0,
+      "explanation": "UUID stands for Universally Unique Identifier. A standardized identifier format used across systems.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "uuid",
+          "locator": "UUID: Universally Unique Identifier — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dll",
+      "acronym": "DLL",
+      "topic": "Software & data representation",
+      "text": "What does DLL stand for in software & data representation?",
+      "options": [
+        "Dynamic Load Library",
+        "Direct Link Library",
+        "Dynamic Link Loader",
+        "Dynamic Link Library"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DLL stands for Dynamic Link Library. A library containing code or resources shared by programs.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "dll",
+          "locator": "DLL: Dynamic Link Library — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-exe",
+      "acronym": "EXE",
+      "topic": "Software & data representation",
+      "text": "What does the .exe filename extension abbreviate?",
+      "options": [
+        "Execution Extension",
+        "External Executable",
+        "Extended Execution",
+        "Executable"
+      ],
+      "correctAnswer": 3,
+      "explanation": ".exe abbreviates Executable. A filename extension associated with executable programs; it is an abbreviation, not a multiword acronym.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "exe",
+          "locator": "EXE: Executable — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ms-dos",
+      "acronym": "MS-DOS",
+      "topic": "Software & data representation",
+      "text": "What does MS-DOS stand for in software & data representation?",
+      "options": [
+        "Microsoft Data Operating System",
+        "Microsoft Disk Operating System",
+        "Microsoft Disk Output System",
+        "Microsoft Drive Organization System"
+      ],
+      "correctAnswer": 1,
+      "explanation": "MS-DOS stands for Microsoft Disk Operating System. Microsoft's historical disk-based operating system.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "MS-DOS: Microsoft Disk Operating System — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-posix",
+      "acronym": "POSIX",
+      "topic": "Software & data representation",
+      "text": "What does POSIX stand for in software & data representation?",
+      "options": [
+        "Portable Operating System Interconnect",
+        "Portable Operating System Interface",
+        "Parallel Operating System Interface",
+        "Portable Open Software Interface"
+      ],
+      "correctAnswer": 1,
+      "explanation": "POSIX stands for Portable Operating System Interface. A family of standards for operating-system interfaces.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "posix",
+          "locator": "POSIX: Portable Operating System Interface — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-gnu",
+      "acronym": "GNU",
+      "topic": "Software & data representation",
+      "text": "What does GNU stand for in software & data representation?",
+      "options": [
+        "GNU's New Unix",
+        "General Network Unix",
+        "GNU's Not Unix",
+        "Global Network Unix"
+      ],
+      "correctAnswer": 2,
+      "explanation": "GNU stands for GNU's Not Unix. A recursive acronym naming the GNU free-software system.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "gnu",
+          "locator": "GNU: GNU's Not Unix — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-sdk",
+      "acronym": "SDK",
+      "topic": "Software & data representation",
+      "text": "What does SDK stand for in software & data representation?",
+      "options": [
+        "Software Development Kit",
+        "Software Design Kit",
+        "System Development Kit",
+        "Software Development Kernel"
+      ],
+      "correctAnswer": 0,
+      "explanation": "SDK stands for Software Development Kit. A collection of resources for developing software.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-sdk",
+          "locator": "SDK: Software Development Kit — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ide-software",
+      "acronym": "IDE (software)",
+      "topic": "Software & data representation",
+      "text": "What does IDE stand for in software development?",
+      "options": [
+        "Integrated Development Environment",
+        "Interactive Development Environment",
+        "Integrated Design Environment",
+        "Integrated Development Engine"
+      ],
+      "correctAnswer": 0,
+      "explanation": "IDE stands for Integrated Development Environment. A programming environment; this is distinct from IDE storage hardware.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-ide",
+          "locator": "IDE: Integrated Development Environment — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-oop",
+      "acronym": "OOP",
+      "topic": "Software & data representation",
+      "text": "What does OOP stand for in software & data representation?",
+      "options": [
+        "Object Organized Programming",
+        "Operation Oriented Programming",
+        "Object Oriented Programming",
+        "Object Oriented Processing"
+      ],
+      "correctAnswer": 2,
+      "explanation": "OOP stands for Object Oriented Programming. A programming paradigm organizing software around objects.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-oop",
+          "locator": "OOP: Object Oriented Programming — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-jvm",
+      "acronym": "JVM",
+      "topic": "Software & data representation",
+      "text": "What does JVM stand for in software & data representation?",
+      "options": [
+        "Java Virtual Module",
+        "Java Virtual Machine",
+        "Java Verified Machine",
+        "Java Variable Memory"
+      ],
+      "correctAnswer": 1,
+      "explanation": "JVM stands for Java Virtual Machine. The execution environment for Java bytecode.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "java",
+          "locator": "JVM: Java Virtual Machine — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-jre",
+      "acronym": "JRE",
+      "topic": "Software & data representation",
+      "text": "What does JRE stand for in software & data representation?",
+      "options": [
+        "Java Resource Engine",
+        "Java Resource Environment",
+        "Java Reference Execution",
+        "Java Runtime Environment"
+      ],
+      "correctAnswer": 3,
+      "explanation": "JRE stands for Java Runtime Environment. The environment required to run Java programs.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "java",
+          "locator": "JRE: Java Runtime Environment — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-jdk",
+      "acronym": "JDK",
+      "topic": "Software & data representation",
+      "text": "What does JDK stand for in software & data representation?",
+      "options": [
+        "Java Design Kit",
+        "Java Development Kit",
+        "Java Development Kernel",
+        "Java Deployment Kit"
+      ],
+      "correctAnswer": 1,
+      "explanation": "JDK stands for Java Development Kit. Tools and runtime resources for developing Java programs.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "java",
+          "locator": "JDK: Java Development Kit — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-jit",
+      "acronym": "JIT",
+      "topic": "Software & data representation",
+      "text": "What does JIT stand for in software & data representation?",
+      "options": [
+        "Just In Time",
+        "Just In Translation",
+        "Java In Time",
+        "Joined Instruction Translation"
+      ],
+      "correctAnswer": 0,
+      "explanation": "JIT stands for Just In Time. A compilation approach that compiles code during execution.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "java",
+          "locator": "JIT: Just In Time — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-clr",
+      "acronym": "CLR",
+      "topic": "Software & data representation",
+      "text": "What does CLR stand for in software & data representation?",
+      "options": [
+        "Common Language Runtime",
+        "Common Library Runtime",
+        "Compiled Language Runtime",
+        "Common Language Reference"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CLR stands for Common Language Runtime. The managed execution environment associated with .NET.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "clr",
+          "locator": "CLR: Common Language Runtime — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-il",
+      "acronym": "IL",
+      "topic": "Software & data representation",
+      "text": "What does IL stand for in .NET?",
+      "options": [
+        "Internal Language",
+        "Instruction Language",
+        "Integrated Language",
+        "Intermediate Language"
+      ],
+      "correctAnswer": 3,
+      "explanation": "IL stands for Intermediate Language. An intermediate instruction representation in managed-code environments.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "clr",
+          "locator": "IL: Intermediate Language — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-aot",
+      "acronym": "AOT",
+      "topic": "Software & data representation",
+      "text": "What does AOT stand for in software & data representation?",
+      "options": [
+        "At Optimization Time",
+        "Ahead Of Translation",
+        "After Optimization Time",
+        "Ahead Of Time"
+      ],
+      "correctAnswer": 3,
+      "explanation": "AOT stands for Ahead Of Time. A compilation approach that compiles code before execution.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "aot",
+          "locator": "AOT: Ahead Of Time — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-utf",
+      "acronym": "UTF",
+      "topic": "Software & data representation",
+      "text": "What does UTF stand for in software & data representation?",
+      "options": [
+        "Unicode Transformation Format",
+        "Unicode Transfer Format",
+        "Universal Transformation Format",
+        "Unicode Translation Format"
+      ],
+      "correctAnswer": 0,
+      "explanation": "UTF stands for Unicode Transformation Format. A family of encoding forms for Unicode text.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "unicode",
+          "locator": "UTF: Unicode Transformation Format — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ucs",
+      "acronym": "UCS",
+      "topic": "Software & data representation",
+      "text": "What does UCS stand for in software & data representation?",
+      "options": [
+        "Unicode Character Sequence",
+        "Universal Character Storage",
+        "Universal Coded Character Set",
+        "Unified Coded Character Set"
+      ],
+      "correctAnswer": 2,
+      "explanation": "UCS stands for Universal Coded Character Set. The character set standardized by ISO/IEC 10646.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "unicode",
+          "locator": "UCS: Universal Coded Character Set — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-bom",
+      "acronym": "BOM",
+      "topic": "Software & data representation",
+      "text": "What does BOM stand for in software & data representation?",
+      "options": [
+        "Byte Order Mark",
+        "Bit Order Mark",
+        "Byte Offset Mark",
+        "Byte Order Map"
+      ],
+      "correctAnswer": 0,
+      "explanation": "BOM stands for Byte Order Mark. A character used as an encoding signature in some Unicode text streams.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "unicode",
+          "locator": "BOM: Byte Order Mark — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-json",
+      "acronym": "JSON",
+      "topic": "Software & data representation",
+      "text": "What does JSON stand for in software & data representation?",
+      "options": [
+        "JavaScript Object Naming",
+        "JavaScript Output Notation",
+        "JavaScript Object Notation",
+        "Java Serialized Object Notation"
+      ],
+      "correctAnswer": 2,
+      "explanation": "JSON stands for JavaScript Object Notation. A text format for exchanging structured data.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-json",
+          "locator": "JSON: JavaScript Object Notation — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-yaml",
+      "acronym": "YAML",
+      "topic": "Software & data representation",
+      "text": "What does YAML stand for in software & data representation?",
+      "options": [
+        "YAML Ain't Markup Language",
+        "YAML Automatic Markup Language",
+        "Yet Another Modeling Language",
+        "YAML Application Markup Language"
+      ],
+      "correctAnswer": 0,
+      "explanation": "YAML stands for YAML Ain't Markup Language. A recursive acronym for a data-serialization language.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "yaml",
+          "locator": "YAML: YAML Ain't Markup Language — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dom",
+      "acronym": "DOM",
+      "topic": "Software & data representation",
+      "text": "What does DOM stand for in software & data representation?",
+      "options": [
+        "Data Object Model",
+        "Document Object Model",
+        "Document Oriented Model",
+        "Document Object Mapping"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DOM stands for Document Object Model. A programming representation of a document's structure.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-dom",
+          "locator": "DOM: Document Object Model — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ajax",
+      "acronym": "AJAX",
+      "topic": "Software & data representation",
+      "text": "What does AJAX stand for in software & data representation?",
+      "options": [
+        "Automatic JavaScript and XML",
+        "Asynchronous JavaScript and XML",
+        "Asynchronous Java and XML",
+        "Asynchronous JavaScript and XHTML"
+      ],
+      "correctAnswer": 1,
+      "explanation": "AJAX stands for Asynchronous JavaScript and XML. A web-development technique; modern implementations need not exchange XML.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-ajax",
+          "locator": "AJAX: Asynchronous JavaScript and XML — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-uri",
+      "acronym": "URI",
+      "topic": "Software & data representation",
+      "text": "What does URI stand for in software & data representation?",
+      "options": [
+        "Universal Resource Identifier",
+        "Uniform Reference Identifier",
+        "Uniform Resource Index",
+        "Uniform Resource Identifier"
+      ],
+      "correctAnswer": 3,
+      "explanation": "URI stands for Uniform Resource Identifier. An identifier for a resource; URL is a related term.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-uri",
+          "locator": "URI: Uniform Resource Identifier — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-urn",
+      "acronym": "URN",
+      "topic": "Software & data representation",
+      "text": "What does URN stand for in software & data representation?",
+      "options": [
+        "Uniform Resource Name",
+        "Universal Resource Name",
+        "Uniform Reference Name",
+        "Uniform Resource Number"
+      ],
+      "correctAnswer": 0,
+      "explanation": "URN stands for Uniform Resource Name. A resource identifier intended to provide a persistent name.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "urn",
+          "locator": "URN: Uniform Resource Name — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-xhtml",
+      "acronym": "XHTML",
+      "topic": "Software & data representation",
+      "text": "What does XHTML stand for in software & data representation?",
+      "options": [
+        "Extensible Hypertext Markup Language",
+        "Extended Hypertext Markup Language",
+        "Extensible Hyperlink Markup Language",
+        "Extensible Hypertext Modeling Language"
+      ],
+      "correctAnswer": 0,
+      "explanation": "XHTML stands for Extensible Hypertext Markup Language. A reformulation of HTML using XML syntax.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "xhtml",
+          "locator": "XHTML: Extensible Hypertext Markup Language — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-xslt",
+      "acronym": "XSLT",
+      "topic": "Software & data representation",
+      "text": "What does XSLT stand for in software & data representation?",
+      "options": [
+        "Extensible Stylesheet Language Translation",
+        "Extensible Stylesheet Language Transformations",
+        "Extended Stylesheet Language Transformations",
+        "Extensible Style Layout Transformations"
+      ],
+      "correctAnswer": 1,
+      "explanation": "XSLT stands for Extensible Stylesheet Language Transformations. A language for transforming XML documents.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-xslt",
+          "locator": "XSLT: Extensible Stylesheet Language Transformations — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dtd",
+      "acronym": "DTD",
+      "topic": "Software & data representation",
+      "text": "What does DTD stand for in software & data representation?",
+      "options": [
+        "Document Type Declaration",
+        "Data Type Definition",
+        "Document Template Definition",
+        "Document Type Definition"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DTD stands for Document Type Definition. Declarations describing the structure of an XML document type.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-dtd",
+          "locator": "DTD: Document Type Definition — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-rss",
+      "acronym": "RSS",
+      "topic": "Software & data representation",
+      "text": "What does RSS stand for in RSS 2.0?",
+      "options": [
+        "Really Simple Syndication",
+        "Really Simple Synchronization",
+        "Remote Site Syndication",
+        "Really Simple Subscription"
+      ],
+      "correctAnswer": 0,
+      "explanation": "RSS stands for Really Simple Syndication. The conventional expansion for RSS 2.0; older RSS versions use different names.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "rss",
+          "locator": "RSS: Really Simple Syndication — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-wysiwyg",
+      "acronym": "WYSIWYG",
+      "topic": "Software & data representation",
+      "text": "What does WYSIWYG stand for in software & data representation?",
+      "options": [
+        "What You Save Is What You Get",
+        "What You See Is Where You Go",
+        "What You See Is What You Get",
+        "What You Select Is What You Get"
+      ],
+      "correctAnswer": 2,
+      "explanation": "WYSIWYG stands for What You See Is What You Get. Editing where the displayed result resembles the final output.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-wysiwyg",
+          "locator": "WYSIWYG: What You See Is What You Get — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dql",
+      "acronym": "DQL",
+      "topic": "Databases & office tools",
+      "text": "What does DQL stand for in databases & office tools?",
+      "options": [
+        "Data Question Language",
+        "Database Queue Language",
+        "Data Query Logic",
+        "Data Query Language"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DQL stands for Data Query Language. A classification for querying data, commonly associated with SELECT.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sql",
+          "locator": "DQL: Data Query Language — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-er",
+      "acronym": "ER",
+      "topic": "Databases & office tools",
+      "text": "What does ER stand for in databases & office tools?",
+      "options": [
+        "Entity Reference",
+        "Element Relationship",
+        "Entity Relationship",
+        "Entity Record"
+      ],
+      "correctAnswer": 2,
+      "explanation": "ER stands for Entity Relationship. A database-modeling approach showing entities and their relationships.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "er",
+          "locator": "ER: Entity Relationship — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-erd",
+      "acronym": "ERD",
+      "topic": "Databases & office tools",
+      "text": "What does ERD stand for in databases & office tools?",
+      "options": [
+        "Entity Reference Diagram",
+        "Entity Relationship Definition",
+        "Element Relationship Diagram",
+        "Entity Relationship Diagram"
+      ],
+      "correctAnswer": 3,
+      "explanation": "ERD stands for Entity Relationship Diagram. A diagram representing an entity-relationship model.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "er",
+          "locator": "ERD: Entity Relationship Diagram — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-acid",
+      "acronym": "ACID",
+      "topic": "Databases & office tools",
+      "text": "What does ACID stand for in databases & office tools?",
+      "options": [
+        "Atomicity Consistency Integrity Durability",
+        "Atomicity Concurrency Isolation Durability",
+        "Atomicity Consistency Isolation Durability",
+        "Availability Consistency Isolation Durability"
+      ],
+      "correctAnswer": 2,
+      "explanation": "ACID stands for Atomicity Consistency Isolation Durability. Properties associated with reliable database transactions.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "acid",
+          "locator": "ACID: Atomicity Consistency Isolation Durability — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-oltp",
+      "acronym": "OLTP",
+      "topic": "Databases & office tools",
+      "text": "What does OLTP stand for in databases & office tools?",
+      "options": [
+        "Online Transaction Processing",
+        "Online Transfer Processing",
+        "Online Transaction Protocol",
+        "Offline Transaction Processing"
+      ],
+      "correctAnswer": 0,
+      "explanation": "OLTP stands for Online Transaction Processing. Systems supporting frequent operational transactions.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "oltp",
+          "locator": "OLTP: Online Transaction Processing — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-olap",
+      "acronym": "OLAP",
+      "topic": "Databases & office tools",
+      "text": "What does OLAP stand for in databases & office tools?",
+      "options": [
+        "Online Application Processing",
+        "Offline Analytical Processing",
+        "Online Analytical Processing",
+        "Online Analytical Protocol"
+      ],
+      "correctAnswer": 2,
+      "explanation": "OLAP stands for Online Analytical Processing. Systems supporting multidimensional data analysis.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "olap",
+          "locator": "OLAP: Online Analytical Processing — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-etl",
+      "acronym": "ETL",
+      "topic": "Databases & office tools",
+      "text": "What does ETL stand for in databases & office tools?",
+      "options": [
+        "Extract Transform Load",
+        "Extract Transfer Load",
+        "Export Transform Load",
+        "Extract Transform Link"
+      ],
+      "correctAnswer": 0,
+      "explanation": "ETL stands for Extract Transform Load. A process for moving and transforming data into a target system.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "etl",
+          "locator": "ETL: Extract Transform Load — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-csv",
+      "acronym": "CSV",
+      "topic": "Databases & office tools",
+      "text": "What does CSV stand for in databases & office tools?",
+      "options": [
+        "Comma Separated Values",
+        "Character Separated Values",
+        "Comma Structured Values",
+        "Column Separated Values"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CSV stands for Comma Separated Values. A plain-text tabular-data format using commas as separators.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "csv",
+          "locator": "CSV: Comma Separated Values — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-tsv",
+      "acronym": "TSV",
+      "topic": "Databases & office tools",
+      "text": "What does TSV stand for in databases & office tools?",
+      "options": [
+        "Text Separated Values",
+        "Tab Structured Values",
+        "Tab Separated Values",
+        "Table Separated Values"
+      ],
+      "correctAnswer": 2,
+      "explanation": "TSV stands for Tab Separated Values. A plain-text tabular-data format using tabs as separators.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "tsv",
+          "locator": "TSV: Tab Separated Values — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-jdbc",
+      "acronym": "JDBC",
+      "topic": "Databases & office tools",
+      "text": "What does JDBC stand for in databases & office tools?",
+      "options": [
+        "Java Database Connector",
+        "Java Database Connectivity",
+        "Java Data Bridge Connectivity",
+        "Java Database Control"
+      ],
+      "correctAnswer": 1,
+      "explanation": "JDBC stands for Java Database Connectivity. A Java API for database access.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "jdbc",
+          "locator": "JDBC: Java Database Connectivity — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ado",
+      "acronym": "ADO",
+      "topic": "Databases & office tools",
+      "text": "What does ADO stand for in databases & office tools?",
+      "options": [
+        "Application Data Objects",
+        "ActiveX Database Operations",
+        "ActiveX Data Objects",
+        "ActiveX Data Output"
+      ],
+      "correctAnswer": 2,
+      "explanation": "ADO stands for ActiveX Data Objects. A Microsoft data-access technology.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ado",
+          "locator": "ADO: ActiveX Data Objects — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ole",
+      "acronym": "OLE",
+      "topic": "Databases & office tools",
+      "text": "What does OLE stand for in databases & office tools?",
+      "options": [
+        "Object Loading and Embedding",
+        "Object Linking and Embedding",
+        "Object Linking and Execution",
+        "Output Linking and Embedding"
+      ],
+      "correctAnswer": 1,
+      "explanation": "OLE stands for Object Linking and Embedding. Technology for combining objects from different applications.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ole",
+          "locator": "OLE: Object Linking and Embedding — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-vba",
+      "acronym": "VBA",
+      "topic": "Databases & office tools",
+      "text": "What does VBA stand for in databases & office tools?",
+      "options": [
+        "Visual Basic for Applications",
+        "Visual Basic for Automation",
+        "Visual Binary for Applications",
+        "Virtual Basic for Applications"
+      ],
+      "correctAnswer": 0,
+      "explanation": "VBA stands for Visual Basic for Applications. A language used to automate tasks in applications such as Microsoft Office.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "vba",
+          "locator": "VBA: Visual Basic for Applications — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dtp",
+      "acronym": "DTP",
+      "topic": "Databases & office tools",
+      "text": "What does DTP stand for in databases & office tools?",
+      "options": [
+        "Digital Text Publishing",
+        "Desktop Publishing",
+        "Desktop Text Processing",
+        "Document Transfer Publishing"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DTP stands for Desktop Publishing. Preparing page layouts for printed or digital publications.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "DTP: Desktop Publishing — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-mis",
+      "acronym": "MIS",
+      "topic": "Databases & office tools",
+      "text": "What does MIS stand for in databases & office tools?",
+      "options": [
+        "Management Integration System",
+        "Managerial Information Service",
+        "Management Information Storage",
+        "Management Information System"
+      ],
+      "correctAnswer": 3,
+      "explanation": "MIS stands for Management Information System. A system supporting management information needs.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mis",
+          "locator": "MIS: Management Information System — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dss",
+      "acronym": "DSS",
+      "topic": "Databases & office tools",
+      "text": "What does DSS stand for in databases & office tools?",
+      "options": [
+        "Decision Support System",
+        "Data Support System",
+        "Decision Service System",
+        "Decision Support Software"
+      ],
+      "correctAnswer": 0,
+      "explanation": "DSS stands for Decision Support System. A system supporting decision-making through information and analysis.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "dss",
+          "locator": "DSS: Decision Support System — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-erp",
+      "acronym": "ERP",
+      "topic": "Databases & office tools",
+      "text": "What does ERP stand for in databases & office tools?",
+      "options": [
+        "Enterprise Resource Processing",
+        "Enterprise Record Planning",
+        "Enterprise Resource Planning",
+        "Executive Resource Planning"
+      ],
+      "correctAnswer": 2,
+      "explanation": "ERP stands for Enterprise Resource Planning. Integrated systems supporting business functions.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "erp",
+          "locator": "ERP: Enterprise Resource Planning — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-crm",
+      "acronym": "CRM",
+      "topic": "Databases & office tools",
+      "text": "What does CRM stand for in databases & office tools?",
+      "options": [
+        "Customer Record Management",
+        "Customer Relationship Monitoring",
+        "Customer Relationship Management",
+        "Client Resource Management"
+      ],
+      "correctAnswer": 2,
+      "explanation": "CRM stands for Customer Relationship Management. Processes and systems for managing customer relationships.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "crm",
+          "locator": "CRM: Customer Relationship Management — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-scm",
+      "acronym": "SCM",
+      "topic": "Databases & office tools",
+      "text": "What does SCM stand for in business applications?",
+      "options": [
+        "Supply Channel Management",
+        "Supply Chain Monitoring",
+        "Supply Chain Management",
+        "Stock Chain Management"
+      ],
+      "correctAnswer": 2,
+      "explanation": "SCM stands for Supply Chain Management. Managing the flow of goods and related information in this business context.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "scm",
+          "locator": "SCM: Supply Chain Management — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-bi",
+      "acronym": "BI",
+      "topic": "Databases & office tools",
+      "text": "What does BI stand for in databases & office tools?",
+      "options": [
+        "Business Integration",
+        "Business Information",
+        "Business Intelligence",
+        "Business Interpretation"
+      ],
+      "correctAnswer": 2,
+      "explanation": "BI stands for Business Intelligence. Tools and processes used to derive insights from business data.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "bi",
+          "locator": "BI: Business Intelligence — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-modem",
+      "acronym": "MODEM",
+      "topic": "Networking & internet",
+      "text": "What does MODEM stand for in networking & internet?",
+      "options": [
+        "Modulator Decoder",
+        "Multiplexer Demodulator",
+        "Modulator Decompressor",
+        "Modulator Demodulator"
+      ],
+      "correctAnswer": 3,
+      "explanation": "MODEM stands for Modulator Demodulator. A device converting between modulated signals and data representations.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "MODEM: Modulator Demodulator — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dsl",
+      "acronym": "DSL",
+      "topic": "Networking & internet",
+      "text": "What does DSL stand for in networking & internet?",
+      "options": [
+        "Digital Subscriber Line",
+        "Digital Signal Line",
+        "Direct Subscriber Line",
+        "Digital Subscriber Link"
+      ],
+      "correctAnswer": 0,
+      "explanation": "DSL stands for Digital Subscriber Line. Broadband technology using telephone lines.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "up-training",
+          "locator": "DSL: Digital Subscriber Line — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-adsl",
+      "acronym": "ADSL",
+      "topic": "Networking & internet",
+      "text": "What does ADSL stand for in networking & internet?",
+      "options": [
+        "Asynchronous Digital Subscriber Line",
+        "Asymmetric Digital Subscriber Line",
+        "Asymmetric Digital Signal Line",
+        "Advanced Digital Subscriber Line"
+      ],
+      "correctAnswer": 1,
+      "explanation": "ADSL stands for Asymmetric Digital Subscriber Line. DSL with different upstream and downstream rates.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "adsl",
+          "locator": "ADSL: Asymmetric Digital Subscriber Line — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-vdsl",
+      "acronym": "VDSL",
+      "topic": "Networking & internet",
+      "text": "What does VDSL stand for in networking & internet?",
+      "options": [
+        "Very High Speed Digital Signal Line",
+        "Very High Speed Digital Subscriber Line",
+        "Variable High Speed Digital Subscriber Line",
+        "Very High Speed Direct Subscriber Line"
+      ],
+      "correctAnswer": 1,
+      "explanation": "VDSL stands for Very High Speed Digital Subscriber Line. A DSL technology supporting higher data rates over short copper loops.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "vdsl",
+          "locator": "VDSL: Very High Speed Digital Subscriber Line — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ftth",
+      "acronym": "FTTH",
+      "topic": "Networking & internet",
+      "text": "What does FTTH stand for in networking & internet?",
+      "options": [
+        "Fibre To The Home",
+        "Fibre To The Host",
+        "Fibre Through The Hub",
+        "Fibre To The Hardware"
+      ],
+      "correctAnswer": 0,
+      "explanation": "FTTH stands for Fibre To The Home. An access network bringing fibre to a residence; Fiber is the US spelling.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ftth",
+          "locator": "FTTH: Fibre To The Home — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-utp",
+      "acronym": "UTP",
+      "topic": "Networking & internet",
+      "text": "What does UTP stand for in networking & internet?",
+      "options": [
+        "Unshielded Twisted Pair",
+        "Unshielded Transmission Pair",
+        "Untwisted Transmission Pair",
+        "Unshielded Twisted Port"
+      ],
+      "correctAnswer": 0,
+      "explanation": "UTP stands for Unshielded Twisted Pair. A cable type with twisted wire pairs and no overall shielding.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "UTP: Unshielded Twisted Pair — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-stp-cable",
+      "acronym": "STP (cable)",
+      "topic": "Networking & internet",
+      "text": "What does STP stand for in network cabling?",
+      "options": [
+        "Screened Transmission Pair",
+        "Shielded Twisted Port",
+        "Shielded Twisted Pair",
+        "Shielded Transfer Pair"
+      ],
+      "correctAnswer": 2,
+      "explanation": "STP stands for Shielded Twisted Pair. A shielded twisted-pair cable in this context.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "stp-cable",
+          "locator": "STP: Shielded Twisted Pair — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-tftp",
+      "acronym": "TFTP",
+      "topic": "Networking & internet",
+      "text": "What does TFTP stand for in networking & internet?",
+      "options": [
+        "Trusted File Transfer Protocol",
+        "Trivial File Transport Process",
+        "Trivial File Transfer Protocol",
+        "Terminal File Transfer Protocol"
+      ],
+      "correctAnswer": 2,
+      "explanation": "TFTP stands for Trivial File Transfer Protocol. A simple file-transfer protocol, distinct from FTP.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "tftp",
+          "locator": "TFTP: Trivial File Transfer Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-sftp",
+      "acronym": "SFTP",
+      "topic": "Networking & internet",
+      "text": "What does SFTP stand for in networking & internet?",
+      "options": [
+        "Secure Folder Transfer Protocol",
+        "SSH File Transfer Protocol",
+        "Serial File Transfer Protocol",
+        "SSH File Transport Process"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SFTP stands for SSH File Transfer Protocol. A file-transfer protocol associated with SSH; it is not FTP over TLS.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sftp",
+          "locator": "SFTP: SSH File Transfer Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ftps",
+      "acronym": "FTPS",
+      "topic": "Networking & internet",
+      "text": "Which description correctly identifies FTPS in secure file transfer?",
+      "options": [
+        "File Transfer Protocol over SSH",
+        "File Transfer Protocol with password hashing only",
+        "File Transfer Protocol over TLS",
+        "File Transfer Protocol over an unencrypted TCP connection"
+      ],
+      "correctAnswer": 2,
+      "explanation": "FTPS denotes File Transfer Protocol over TLS. FTP protected using TLS, distinct from SFTP.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ftps",
+          "locator": "FTPS: File Transfer Protocol over TLS — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ssh",
+      "acronym": "SSH",
+      "topic": "Networking & internet",
+      "text": "What does SSH stand for in networking & internet?",
+      "options": [
+        "Secure Shell",
+        "Secure Session Host",
+        "Shared Secure Host",
+        "System Shell"
+      ],
+      "correctAnswer": 0,
+      "explanation": "SSH stands for Secure Shell. A protocol for secure remote access.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ssh",
+          "locator": "SSH: Secure Shell — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-rdp",
+      "acronym": "RDP",
+      "topic": "Networking & internet",
+      "text": "What does RDP stand for in networking & internet?",
+      "options": [
+        "Remote Display Process",
+        "Remote Data Protocol",
+        "Remote Desktop Process",
+        "Remote Desktop Protocol"
+      ],
+      "correctAnswer": 3,
+      "explanation": "RDP stands for Remote Desktop Protocol. A protocol for remote graphical desktop sessions.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "rdp",
+          "locator": "RDP: Remote Desktop Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ntp",
+      "acronym": "NTP",
+      "topic": "Networking & internet",
+      "text": "What does NTP stand for in networking & internet?",
+      "options": [
+        "Network Transfer Protocol",
+        "Node Time Protocol",
+        "Network Time Protocol",
+        "Network Time Process"
+      ],
+      "correctAnswer": 2,
+      "explanation": "NTP stands for Network Time Protocol. A protocol used for synchronizing clocks over networks.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ntp",
+          "locator": "NTP: Network Time Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-icmp",
+      "acronym": "ICMP",
+      "topic": "Networking & internet",
+      "text": "What does ICMP stand for in networking & internet?",
+      "options": [
+        "Internet Connection Message Protocol",
+        "Internet Control Management Protocol",
+        "Internal Control Message Protocol",
+        "Internet Control Message Protocol"
+      ],
+      "correctAnswer": 3,
+      "explanation": "ICMP stands for Internet Control Message Protocol. A protocol carrying network control and diagnostic messages.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "ICMP: Internet Control Message Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-igmp",
+      "acronym": "IGMP",
+      "topic": "Networking & internet",
+      "text": "What does IGMP stand for in networking & internet?",
+      "options": [
+        "Internet Gateway Management Protocol",
+        "Internet Group Messaging Protocol",
+        "Internet Group Management Protocol",
+        "Internal Group Management Protocol"
+      ],
+      "correctAnswer": 2,
+      "explanation": "IGMP stands for Internet Group Management Protocol. A protocol used to manage IPv4 multicast group membership.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "IGMP: Internet Group Management Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-rarp",
+      "acronym": "RARP",
+      "topic": "Networking & internet",
+      "text": "What does RARP stand for in networking & internet?",
+      "options": [
+        "Reverse Address Resolution Protocol",
+        "Remote Address Resolution Protocol",
+        "Reverse Address Routing Protocol",
+        "Reverse Access Resolution Protocol"
+      ],
+      "correctAnswer": 0,
+      "explanation": "RARP stands for Reverse Address Resolution Protocol. A historical protocol for obtaining a protocol address from a hardware address.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "RARP: Reverse Address Resolution Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-cidr",
+      "acronym": "CIDR",
+      "topic": "Networking & internet",
+      "text": "What does CIDR stand for in networking & internet?",
+      "options": [
+        "Classful Inter Domain Routing",
+        "Classless Internal Data Routing",
+        "Classless Inter Domain Resolution",
+        "Classless Inter Domain Routing"
+      ],
+      "correctAnswer": 3,
+      "explanation": "CIDR stands for Classless Inter Domain Routing. An addressing and routing approach using variable-length network prefixes.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "cidr",
+          "locator": "CIDR: Classless Inter Domain Routing — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-nat",
+      "acronym": "NAT",
+      "topic": "Networking & internet",
+      "text": "What does NAT stand for in networking & internet?",
+      "options": [
+        "Network Address Transfer",
+        "Network Address Translation",
+        "Node Address Translation",
+        "Network Access Translation"
+      ],
+      "correctAnswer": 1,
+      "explanation": "NAT stands for Network Address Translation. Translation of network addresses between address spaces.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "nat",
+          "locator": "NAT: Network Address Translation — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-pat",
+      "acronym": "PAT",
+      "topic": "Networking & internet",
+      "text": "What does PAT stand for in networking & internet?",
+      "options": [
+        "Packet Address Translation",
+        "Port Address Translation",
+        "Port Access Translation",
+        "Port Address Transfer"
+      ],
+      "correctAnswer": 1,
+      "explanation": "PAT stands for Port Address Translation. Address translation distinguishing flows using transport-layer ports.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "pat",
+          "locator": "PAT: Port Address Translation — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-vlan",
+      "acronym": "VLAN",
+      "topic": "Networking & internet",
+      "text": "What does VLAN stand for in networking & internet?",
+      "options": [
+        "Virtual Link Area Network",
+        "Variable Local Area Network",
+        "Virtual Local Area Network",
+        "Virtual Local Access Network"
+      ],
+      "correctAnswer": 2,
+      "explanation": "VLAN stands for Virtual Local Area Network. Logical separation of a switched local network.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "vlan",
+          "locator": "VLAN: Virtual Local Area Network — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-pan",
+      "acronym": "PAN",
+      "topic": "Networking & internet",
+      "text": "What does PAN stand for in networking & internet?",
+      "options": [
+        "Private Area Network",
+        "Personal Area Network",
+        "Personal Access Network",
+        "Peripheral Area Network"
+      ],
+      "correctAnswer": 1,
+      "explanation": "PAN stands for Personal Area Network. A network serving devices around an individual.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "pan",
+          "locator": "PAN: Personal Area Network — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-san",
+      "acronym": "SAN",
+      "topic": "Networking & internet",
+      "text": "What does SAN stand for in networking & internet?",
+      "options": [
+        "Storage Area Network",
+        "Storage Allocation Network",
+        "Storage Access Network",
+        "Shared Area Network"
+      ],
+      "correctAnswer": 0,
+      "explanation": "SAN stands for Storage Area Network. A network providing access to storage resources.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "san",
+          "locator": "SAN: Storage Area Network — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-sip",
+      "acronym": "SIP",
+      "topic": "Networking & internet",
+      "text": "What does SIP stand for in internet voice and multimedia signalling?",
+      "options": [
+        "Session Initiation Protocol",
+        "Session Integration Protocol",
+        "Secure Initiation Protocol",
+        "Session Information Protocol"
+      ],
+      "correctAnswer": 0,
+      "explanation": "SIP stands for Session Initiation Protocol. It is used to establish, modify and end multimedia sessions, including internet voice calls.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sip",
+          "locator": "RFC 3261 title and introduction"
+        }
+      ]
+    },
+    {
+      "id": "ff-ssid",
+      "acronym": "SSID",
+      "topic": "Networking & internet",
+      "text": "What does SSID stand for in networking & internet?",
+      "options": [
+        "Service Session Identifier",
+        "System Set Identifier",
+        "Service Set Index",
+        "Service Set Identifier"
+      ],
+      "correctAnswer": 3,
+      "explanation": "SSID stands for Service Set Identifier. The identifier associated with a wireless network.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ssid",
+          "locator": "SSID: Service Set Identifier — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-bssid",
+      "acronym": "BSSID",
+      "topic": "Networking & internet",
+      "text": "What does BSSID stand for in networking & internet?",
+      "options": [
+        "Basic Session Set Identifier",
+        "Base Service Set Index",
+        "Basic Service System Identifier",
+        "Basic Service Set Identifier"
+      ],
+      "correctAnswer": 3,
+      "explanation": "BSSID stands for Basic Service Set Identifier. An identifier for a basic service set in an IEEE 802.11 network.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "bssid",
+          "locator": "BSSID: Basic Service Set Identifier — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-csma-cd",
+      "acronym": "CSMA/CD",
+      "topic": "Networking & internet",
+      "text": "What does CSMA/CD stand for in networking & internet?",
+      "options": [
+        "Carrier Sense Multiple Access with Collision Disabling",
+        "Carrier Sense Multiple Access with Collision Detection",
+        "Channel Sense Multiple Access with Collision Detection",
+        "Carrier Sense Managed Access with Collision Detection"
+      ],
+      "correctAnswer": 1,
+      "explanation": "CSMA/CD stands for Carrier Sense Multiple Access with Collision Detection. A medium-access approach associated with shared Ethernet.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "CSMA/CD: Carrier Sense Multiple Access with Collision Detection — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-csma-ca",
+      "acronym": "CSMA/CA",
+      "topic": "Networking & internet",
+      "text": "What does CSMA/CA stand for in networking & internet?",
+      "options": [
+        "Carrier Sense Multiple Access with Collision Arbitration",
+        "Channel Sense Multiple Access with Collision Avoidance",
+        "Carrier Sense Managed Access with Collision Avoidance",
+        "Carrier Sense Multiple Access with Collision Avoidance"
+      ],
+      "correctAnswer": 3,
+      "explanation": "CSMA/CA stands for Carrier Sense Multiple Access with Collision Avoidance. A medium-access approach associated with wireless LANs.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "csma-ca",
+          "locator": "CSMA/CA: Carrier Sense Multiple Access with Collision Avoidance — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-llc",
+      "acronym": "LLC",
+      "topic": "Networking & internet",
+      "text": "What does LLC stand for in networking & internet?",
+      "options": [
+        "Local Link Control",
+        "Logical Line Control",
+        "Logical Link Control",
+        "Logical Link Connection"
+      ],
+      "correctAnswer": 2,
+      "explanation": "LLC stands for Logical Link Control. A data-link-layer sublayer in IEEE networking architecture.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "LLC: Logical Link Control — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-mtu",
+      "acronym": "MTU",
+      "topic": "Networking & internet",
+      "text": "What does MTU stand for in networking & internet?",
+      "options": [
+        "Maximum Transfer Utility",
+        "Minimum Transmission Unit",
+        "Maximum Transport Usage",
+        "Maximum Transmission Unit"
+      ],
+      "correctAnswer": 3,
+      "explanation": "MTU stands for Maximum Transmission Unit. The largest packet size that can be carried by a network link under its rules.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mtu",
+          "locator": "MTU: Maximum Transmission Unit — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-pdu",
+      "acronym": "PDU",
+      "topic": "Networking & internet",
+      "text": "What does PDU stand for in networking & internet?",
+      "options": [
+        "Packet Data Unit",
+        "Protocol Delivery Unit",
+        "Protocol Data Unit",
+        "Primary Data Unit"
+      ],
+      "correctAnswer": 2,
+      "explanation": "PDU stands for Protocol Data Unit. A unit of information handled by a particular protocol layer.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "pdu",
+          "locator": "PDU: Protocol Data Unit — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-sdn",
+      "acronym": "SDN",
+      "topic": "Networking & internet",
+      "text": "What does SDN stand for in networking & internet?",
+      "options": [
+        "Software Driven Nodes",
+        "System Defined Networking",
+        "Software Distributed Networking",
+        "Software Defined Networking"
+      ],
+      "correctAnswer": 3,
+      "explanation": "SDN stands for Software Defined Networking. An approach separating network control from forwarding functions.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "sdn",
+          "locator": "SDN: Software Defined Networking — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-bgp",
+      "acronym": "BGP",
+      "topic": "Networking & internet",
+      "text": "What does BGP stand for in networking & internet?",
+      "options": [
+        "Bridge Gateway Protocol",
+        "Border Group Protocol",
+        "Border Gateway Protocol",
+        "Boundary Gateway Process"
+      ],
+      "correctAnswer": 2,
+      "explanation": "BGP stands for Border Gateway Protocol. A routing protocol used between autonomous systems.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "bgp",
+          "locator": "BGP: Border Gateway Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ospf",
+      "acronym": "OSPF",
+      "topic": "Networking & internet",
+      "text": "What does OSPF stand for in networking & internet?",
+      "options": [
+        "Open Secure Path First",
+        "Optimal Shortest Path First",
+        "Open Shortest Packet Forwarding",
+        "Open Shortest Path First"
+      ],
+      "correctAnswer": 3,
+      "explanation": "OSPF stands for Open Shortest Path First. A link-state interior routing protocol.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ospf",
+          "locator": "OSPF: Open Shortest Path First — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-rip",
+      "acronym": "RIP",
+      "topic": "Networking & internet",
+      "text": "What does RIP stand for in networking & internet?",
+      "options": [
+        "Routing Interface Protocol",
+        "Remote Information Protocol",
+        "Routing Information Protocol",
+        "Routing Information Process"
+      ],
+      "correctAnswer": 2,
+      "explanation": "RIP stands for Routing Information Protocol. A distance-vector routing protocol.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "rip",
+          "locator": "RIP: Routing Information Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-voip",
+      "acronym": "VoIP",
+      "topic": "Networking & internet",
+      "text": "What does VoIP stand for in networking & internet?",
+      "options": [
+        "Video over Internet Protocol",
+        "Voice over Internal Protocol",
+        "Voice over Internet Protocol",
+        "Voice over Internet Processing"
+      ],
+      "correctAnswer": 2,
+      "explanation": "VoIP stands for Voice over Internet Protocol. Technology carrying voice communications over IP networks.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "voip",
+          "locator": "VoIP: Voice over Internet Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-pstn",
+      "acronym": "PSTN",
+      "topic": "Networking & internet",
+      "text": "What does PSTN stand for in networking & internet?",
+      "options": [
+        "Public Shared Telephone Network",
+        "Public Switched Telephone Network",
+        "Private Switched Telephone Network",
+        "Public Switched Transmission Network"
+      ],
+      "correctAnswer": 1,
+      "explanation": "PSTN stands for Public Switched Telephone Network. The traditional public telephone network.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "pstn",
+          "locator": "PSTN: Public Switched Telephone Network — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-gsm",
+      "acronym": "GSM",
+      "topic": "Networking & internet",
+      "text": "What does GSM stand for in networking & internet?",
+      "options": [
+        "General System for Mobile Communications",
+        "Global System for Mobile Communications",
+        "Global Standard for Mobile Connections",
+        "Global System for Multimedia Communications"
+      ],
+      "correctAnswer": 1,
+      "explanation": "GSM stands for Global System for Mobile Communications. A family of cellular communication standards.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "gsm",
+          "locator": "GSM: Global System for Mobile Communications — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-lte",
+      "acronym": "LTE",
+      "topic": "Networking & internet",
+      "text": "What does LTE stand for in networking & internet?",
+      "options": [
+        "Local Transmission Evolution",
+        "Long Term Evolution",
+        "Long Term Extension",
+        "Low Transmission Encoding"
+      ],
+      "correctAnswer": 1,
+      "explanation": "LTE stands for Long Term Evolution. A cellular broadband technology.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "lte",
+          "locator": "LTE: Long Term Evolution — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-mime",
+      "acronym": "MIME",
+      "topic": "Networking & internet",
+      "text": "What does MIME stand for in networking & internet?",
+      "options": [
+        "Multimedia Internet Mail Extensions",
+        "Multipurpose Internet Mail Extensions",
+        "Multipurpose Internet Message Encoding",
+        "Multipurpose Internal Mail Extensions"
+      ],
+      "correctAnswer": 1,
+      "explanation": "MIME stands for Multipurpose Internet Mail Extensions. Standards extending internet mail to support content types and encodings.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mime",
+          "locator": "MIME: Multipurpose Internet Mail Extensions — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-nntp",
+      "acronym": "NNTP",
+      "topic": "Networking & internet",
+      "text": "What does NNTP stand for in networking & internet?",
+      "options": [
+        "Network News Transfer Protocol",
+        "Network News Transport Process",
+        "Network Node Transfer Protocol",
+        "Network News Transmission Program"
+      ],
+      "correctAnswer": 0,
+      "explanation": "NNTP stands for Network News Transfer Protocol. A protocol for transferring internet news articles.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "network",
+          "locator": "NNTP: Network News Transfer Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-aes",
+      "acronym": "AES",
+      "topic": "Security & web formats",
+      "text": "What does AES stand for in security & web formats?",
+      "options": [
+        "Advanced Encoding Standard",
+        "Automatic Encryption Standard",
+        "Advanced Encryption Standard",
+        "Advanced Encryption System"
+      ],
+      "correctAnswer": 2,
+      "explanation": "AES stands for Advanced Encryption Standard. A standardized symmetric block cipher.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "AES: Advanced Encryption Standard — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-des",
+      "acronym": "DES",
+      "topic": "Security & web formats",
+      "text": "What does DES stand for in security & web formats?",
+      "options": [
+        "Data Encoding Standard",
+        "Digital Encryption Standard",
+        "Data Encryption System",
+        "Data Encryption Standard"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DES stands for Data Encryption Standard. A historical symmetric cipher with an obsolete key size.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "DES: Data Encryption Standard — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-rsa",
+      "acronym": "RSA",
+      "topic": "Security & web formats",
+      "text": "Which names form the abbreviation RSA for the public-key algorithm?",
+      "options": [
+        "Rivest Shannon Adleman",
+        "Rivest Shamir Adleman",
+        "Rivest Shamir Anderson",
+        "Ritchie Shamir Adleman"
+      ],
+      "correctAnswer": 1,
+      "explanation": "RSA stands for Rivest Shamir Adleman. The public-key algorithm name comes from the surnames of its designers.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "RSA: Rivest Shamir Adleman — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-sha",
+      "acronym": "SHA",
+      "topic": "Security & web formats",
+      "text": "What does SHA stand for in security & web formats?",
+      "options": [
+        "Secure Hash Authentication",
+        "Secure Hash Algorithm",
+        "Standard Hash Algorithm",
+        "Secure Hybrid Algorithm"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SHA stands for Secure Hash Algorithm. A family of cryptographic hash algorithms.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "SHA: Secure Hash Algorithm — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-md5",
+      "acronym": "MD5",
+      "topic": "Security & web formats",
+      "text": "What does MD5 stand for in security & web formats?",
+      "options": [
+        "Message Decoder 5",
+        "Memory Digest 5",
+        "Message Digest 5",
+        "Message Digitalization 5"
+      ],
+      "correctAnswer": 2,
+      "explanation": "MD5 stands for Message Digest 5. A historical hash algorithm unsuitable for collision-resistant security uses.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "MD5: Message Digest 5 — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-hmac",
+      "acronym": "HMAC",
+      "topic": "Security & web formats",
+      "text": "What does HMAC stand for in security & web formats?",
+      "options": [
+        "Hash based Message Authentication Code",
+        "Hash based Message Authorization Code",
+        "Hash based Memory Authentication Code",
+        "Host based Message Authentication Code"
+      ],
+      "correctAnswer": 0,
+      "explanation": "HMAC stands for Hash based Message Authentication Code. A keyed construction providing message authentication using a hash function.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hmac",
+          "locator": "HMAC: Hash based Message Authentication Code — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-pki",
+      "acronym": "PKI",
+      "topic": "Security & web formats",
+      "text": "What does PKI stand for in security & web formats?",
+      "options": [
+        "Public Key Infrastructure",
+        "Private Key Infrastructure",
+        "Public Key Integration",
+        "Public Key Interface"
+      ],
+      "correctAnswer": 0,
+      "explanation": "PKI stands for Public Key Infrastructure. An infrastructure for managing public keys and certificates.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "PKI: Public Key Infrastructure — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ca",
+      "acronym": "CA",
+      "topic": "Security & web formats",
+      "text": "What does CA stand for in public-key certificates?",
+      "options": [
+        "Certification Authority",
+        "Certificate Authentication",
+        "Cryptographic Authority",
+        "Credential Authorization"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CA stands for Certification Authority. An entity issuing certificates; Certificate Authority is also common wording.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "CA: Certification Authority — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-csr",
+      "acronym": "CSR",
+      "topic": "Security & web formats",
+      "text": "What does CSR stand for in security & web formats?",
+      "options": [
+        "Certificate Security Request",
+        "Certificate Signing Response",
+        "Certificate Signing Request",
+        "Credential Signing Request"
+      ],
+      "correctAnswer": 2,
+      "explanation": "CSR stands for Certificate Signing Request. A request containing information for certificate issuance.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "CSR: Certificate Signing Request — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-crl",
+      "acronym": "CRL",
+      "topic": "Security & web formats",
+      "text": "What does CRL stand for in security & web formats?",
+      "options": [
+        "Certificate Revocation List",
+        "Certificate Renewal List",
+        "Certificate Registration List",
+        "Credential Revocation List"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CRL stands for Certificate Revocation List. A list identifying revoked certificates.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "CRL: Certificate Revocation List — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ocsp",
+      "acronym": "OCSP",
+      "topic": "Security & web formats",
+      "text": "What does OCSP stand for in security & web formats?",
+      "options": [
+        "Online Certificate Security Protocol",
+        "Open Certificate Status Protocol",
+        "Online Certificate Status Protocol",
+        "Online Credential Signing Protocol"
+      ],
+      "correctAnswer": 2,
+      "explanation": "OCSP stands for Online Certificate Status Protocol. A protocol for checking certificate status.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "OCSP: Online Certificate Status Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-acl",
+      "acronym": "ACL",
+      "topic": "Security & web formats",
+      "text": "What does ACL stand for in security & web formats?",
+      "options": [
+        "Access Configuration List",
+        "Account Control List",
+        "Access Control List",
+        "Access Control Level"
+      ],
+      "correctAnswer": 2,
+      "explanation": "ACL stands for Access Control List. A list specifying access permissions for resources.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "ACL: Access Control List — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-rbac",
+      "acronym": "RBAC",
+      "topic": "Security & web formats",
+      "text": "What does RBAC stand for in security & web formats?",
+      "options": [
+        "Rule Based Access Control",
+        "Role Based Access Control",
+        "Role Based Authentication Control",
+        "Resource Based Access Control"
+      ],
+      "correctAnswer": 1,
+      "explanation": "RBAC stands for Role Based Access Control. Access permissions organized through roles.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "RBAC: Role Based Access Control — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dac-security",
+      "acronym": "DAC (security)",
+      "topic": "Security & web formats",
+      "text": "What does DAC stand for in access control?",
+      "options": [
+        "Dynamic Access Control",
+        "Discretionary Access Control",
+        "Distributed Access Control",
+        "Discretionary Authentication Control"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DAC stands for Discretionary Access Control. Access control where specified users can grant rights; unrelated to digital-to-analog conversion.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "DAC: Discretionary Access Control — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-mac-security",
+      "acronym": "MAC (security)",
+      "topic": "Security & web formats",
+      "text": "What does MAC stand for in access control?",
+      "options": [
+        "Managed Access Control",
+        "Mandatory Access Control",
+        "Mandatory Authentication Control",
+        "Monitored Access Control"
+      ],
+      "correctAnswer": 1,
+      "explanation": "MAC stands for Mandatory Access Control. Access control enforcing centrally defined policy; unrelated to Media Access Control.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "MAC: Mandatory Access Control — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-mfa",
+      "acronym": "MFA",
+      "topic": "Security & web formats",
+      "text": "What does MFA stand for in security & web formats?",
+      "options": [
+        "Multiple File Authentication",
+        "Multi Factor Authorization",
+        "Multi Factor Authentication",
+        "Managed Factor Authentication"
+      ],
+      "correctAnswer": 2,
+      "explanation": "MFA stands for Multi Factor Authentication. Authentication using more than one distinct factor type.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mfa",
+          "locator": "MFA: Multi Factor Authentication — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-2fa",
+      "acronym": "2FA",
+      "topic": "Security & web formats",
+      "text": "What does 2FA stand for in security & web formats?",
+      "options": [
+        "Two Factor Authorization",
+        "Two File Authentication",
+        "Two Form Authentication",
+        "Two Factor Authentication"
+      ],
+      "correctAnswer": 3,
+      "explanation": "2FA stands for Two Factor Authentication. Authentication using two distinct factor types.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mfa",
+          "locator": "2FA: Two Factor Authentication — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-otp",
+      "acronym": "OTP",
+      "topic": "Security & web formats",
+      "text": "What does OTP stand for in security & web formats?",
+      "options": [
+        "One Time Permission",
+        "One Time Password",
+        "Online Token Password",
+        "One Token Protocol"
+      ],
+      "correctAnswer": 1,
+      "explanation": "OTP stands for One Time Password. A password valid for one authentication event or a short validity window.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "otp",
+          "locator": "OTP: One Time Password — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-totp",
+      "acronym": "TOTP",
+      "topic": "Security & web formats",
+      "text": "What does TOTP stand for in security & web formats?",
+      "options": [
+        "Time based One Time Password",
+        "Token based One Time Password",
+        "Time based One Token Protocol",
+        "Transaction based One Time Password"
+      ],
+      "correctAnswer": 0,
+      "explanation": "TOTP stands for Time based One Time Password. A time-based one-time password generated using a shared secret.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "totp",
+          "locator": "TOTP: Time based One Time Password — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-hotp",
+      "acronym": "HOTP",
+      "topic": "Security & web formats",
+      "text": "What does HOTP stand for in security & web formats?",
+      "options": [
+        "HMAC based One Time Password",
+        "Hash Only Time Password",
+        "Host based One Time Password",
+        "HMAC based One Token Protocol"
+      ],
+      "correctAnswer": 0,
+      "explanation": "HOTP stands for HMAC based One Time Password. A counter-based one-time password construction.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hotp",
+          "locator": "HOTP: HMAC based One Time Password — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ids",
+      "acronym": "IDS",
+      "topic": "Security & web formats",
+      "text": "What does IDS stand for in security & web formats?",
+      "options": [
+        "Intrusion Defense Service",
+        "Intrusion Data System",
+        "Internal Detection System",
+        "Intrusion Detection System"
+      ],
+      "correctAnswer": 3,
+      "explanation": "IDS stands for Intrusion Detection System. A system monitoring for potentially malicious activity.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ids",
+          "locator": "IDS: Intrusion Detection System — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ips-security",
+      "acronym": "IPS (security)",
+      "topic": "Security & web formats",
+      "text": "What does IPS stand for in network security?",
+      "options": [
+        "Intrusion Protection Service",
+        "Internal Prevention System",
+        "Intrusion Packet System",
+        "Intrusion Prevention System"
+      ],
+      "correctAnswer": 3,
+      "explanation": "IPS stands for Intrusion Prevention System. A system capable of taking action to prevent detected intrusion activity.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ids",
+          "locator": "IPS: Intrusion Prevention System — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ddos",
+      "acronym": "DDoS",
+      "topic": "Security & web formats",
+      "text": "What does DDoS stand for in security & web formats?",
+      "options": [
+        "Direct Denial of Service",
+        "Distributed Disruption of Security",
+        "Dynamic Denial of Service",
+        "Distributed Denial of Service"
+      ],
+      "correctAnswer": 3,
+      "explanation": "DDoS stands for Distributed Denial of Service. A denial-of-service attack involving distributed sources.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ddos",
+          "locator": "DDoS: Distributed Denial of Service — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-dos-security",
+      "acronym": "DoS",
+      "topic": "Security & web formats",
+      "text": "What does DoS stand for in security & web formats?",
+      "options": [
+        "Disruption of Security",
+        "Denial of Service",
+        "Denial of Session",
+        "Disconnection of Service"
+      ],
+      "correctAnswer": 1,
+      "explanation": "DoS stands for Denial of Service. Disruption or prevention of legitimate access to a service.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ddos",
+          "locator": "DoS: Denial of Service — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-xss",
+      "acronym": "XSS",
+      "topic": "Security & web formats",
+      "text": "What does XSS stand for in security & web formats?",
+      "options": [
+        "Cross Site Scripting",
+        "Cross Server Scripting",
+        "Cross Site Spoofing",
+        "Cross Session Scripting"
+      ],
+      "correctAnswer": 0,
+      "explanation": "XSS stands for Cross Site Scripting. A vulnerability class involving execution of injected script in a web context.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-xss",
+          "locator": "XSS: Cross Site Scripting — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-csrf",
+      "acronym": "CSRF",
+      "topic": "Security & web formats",
+      "text": "What does CSRF stand for in security & web formats?",
+      "options": [
+        "Cross Site Request Forgery",
+        "Cross Site Response Forgery",
+        "Cross Server Request Forgery",
+        "Cross Site Request Filtering"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CSRF stands for Cross Site Request Forgery. An attack inducing unintended requests using a user's authenticated context.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-csrf",
+          "locator": "CSRF: Cross Site Request Forgery — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-sqli",
+      "acronym": "SQLi",
+      "topic": "Security & web formats",
+      "text": "What does SQLi stand for in security & web formats?",
+      "options": [
+        "SQL Interception",
+        "SQL Injection",
+        "SQL Integration",
+        "SQL Insertion"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SQLi stands for SQL Injection. An attack that alters database queries through untrusted input.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-sqli",
+          "locator": "SQLi: SQL Injection — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-csp",
+      "acronym": "CSP",
+      "topic": "Security & web formats",
+      "text": "What does CSP stand for in security & web formats?",
+      "options": [
+        "Content Security Policy",
+        "Content Safety Protocol",
+        "Client Security Policy",
+        "Content Security Permission"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CSP stands for Content Security Policy. A web-security mechanism restricting permitted content and behavior.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-csp",
+          "locator": "CSP: Content Security Policy — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-cors",
+      "acronym": "CORS",
+      "topic": "Security & web formats",
+      "text": "What does CORS stand for in security & web formats?",
+      "options": [
+        "Cross Origin Resource Sharing",
+        "Cross Origin Request Security",
+        "Cross Object Resource Sharing",
+        "Cross Origin Response Synchronization"
+      ],
+      "correctAnswer": 0,
+      "explanation": "CORS stands for Cross Origin Resource Sharing. A browser mechanism controlling cross-origin resource access.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "mdn-cors",
+          "locator": "CORS: Cross Origin Resource Sharing — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-wpa",
+      "acronym": "WPA",
+      "topic": "Security & web formats",
+      "text": "What does WPA stand for in security & web formats?",
+      "options": [
+        "Wireless Password Authentication",
+        "Wi-Fi Protected Authentication",
+        "Wired Protected Access",
+        "Wi-Fi Protected Access"
+      ],
+      "correctAnswer": 3,
+      "explanation": "WPA stands for Wi-Fi Protected Access. A family of security mechanisms for Wi-Fi networks; Wi-Fi itself is a brand name.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "wpa",
+          "locator": "WPA: Wi-Fi Protected Access — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-wep",
+      "acronym": "WEP",
+      "topic": "Security & web formats",
+      "text": "What does WEP stand for in security & web formats?",
+      "options": [
+        "Wireless Encryption Protocol",
+        "Wired Encryption Privacy",
+        "Wired Equivalent Privacy",
+        "Wireless Equivalent Protection"
+      ],
+      "correctAnswer": 2,
+      "explanation": "WEP stands for Wired Equivalent Privacy. An obsolete wireless-security mechanism.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "WEP: Wired Equivalent Privacy — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-wps",
+      "acronym": "WPS",
+      "topic": "Security & web formats",
+      "text": "What does WPS stand for in security & web formats?",
+      "options": [
+        "Wi-Fi Protected Setup",
+        "Wi-Fi Password Security",
+        "Wi-Fi Protected Session",
+        "Wireless Pairing Service"
+      ],
+      "correctAnswer": 0,
+      "explanation": "WPS stands for Wi-Fi Protected Setup. A mechanism intended to simplify wireless-network configuration.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "wps",
+          "locator": "WPS: Wi-Fi Protected Setup — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-eap",
+      "acronym": "EAP",
+      "topic": "Security & web formats",
+      "text": "What does EAP stand for in security & web formats?",
+      "options": [
+        "Extended Authentication Protocol",
+        "Extensible Authentication Protocol",
+        "Extensible Authorization Protocol",
+        "Encrypted Access Protocol"
+      ],
+      "correctAnswer": 1,
+      "explanation": "EAP stands for Extensible Authentication Protocol. A framework supporting multiple authentication methods.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "EAP: Extensible Authentication Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-chap",
+      "acronym": "CHAP",
+      "topic": "Security & web formats",
+      "text": "What does CHAP stand for in security & web formats?",
+      "options": [
+        "Challenge Hash Authentication Protocol",
+        "Challenge Handshake Authorization Protocol",
+        "Challenge Handshake Authentication Protocol",
+        "Client Handshake Authentication Protocol"
+      ],
+      "correctAnswer": 2,
+      "explanation": "CHAP stands for Challenge Handshake Authentication Protocol. A challenge-response authentication protocol.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "hardware",
+          "locator": "CHAP: Challenge Handshake Authentication Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-pap",
+      "acronym": "PAP",
+      "topic": "Security & web formats",
+      "text": "What does PAP stand for in security & web formats?",
+      "options": [
+        "Password Authorization Protocol",
+        "Private Authentication Protocol",
+        "Password Access Procedure",
+        "Password Authentication Protocol"
+      ],
+      "correctAnswer": 3,
+      "explanation": "PAP stands for Password Authentication Protocol. A password-based authentication protocol.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "PAP: Password Authentication Protocol — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-radius",
+      "acronym": "RADIUS",
+      "topic": "Security & web formats",
+      "text": "What does RADIUS stand for in security & web formats?",
+      "options": [
+        "Remote Authorization Dial In User Service",
+        "Remote Authentication Digital Interface User Service",
+        "Remote Authentication Dial In User Service",
+        "Remote Access Dial In User Security"
+      ],
+      "correctAnswer": 2,
+      "explanation": "RADIUS stands for Remote Authentication Dial In User Service. A protocol supporting centralized authentication, authorization and accounting.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "security",
+          "locator": "RADIUS: Remote Authentication Dial In User Service — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ai",
+      "acronym": "AI",
+      "topic": "Software & data representation",
+      "text": "What does AI stand for in software & data representation?",
+      "options": [
+        "Automated Intelligence",
+        "Artificial Interpretation",
+        "Adaptive Intelligence",
+        "Artificial Intelligence"
+      ],
+      "correctAnswer": 3,
+      "explanation": "AI stands for Artificial Intelligence. Computer systems performing tasks associated with human intelligence.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ai",
+          "locator": "AI: Artificial Intelligence — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ml",
+      "acronym": "ML",
+      "topic": "Software & data representation",
+      "text": "What does ML stand for in software & data representation?",
+      "options": [
+        "Machine Logic",
+        "Memory Learning",
+        "Machine Linking",
+        "Machine Learning"
+      ],
+      "correctAnswer": 3,
+      "explanation": "ML stands for Machine Learning. Techniques that learn patterns from data rather than relying only on explicitly written rules.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ai",
+          "locator": "ML: Machine Learning — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-iot",
+      "acronym": "IoT",
+      "topic": "Networking & internet",
+      "text": "What does IoT stand for in networking & internet?",
+      "options": [
+        "Integration of Things",
+        "Internet of Things",
+        "Internet of Terminals",
+        "Interconnection of Technology"
+      ],
+      "correctAnswer": 1,
+      "explanation": "IoT stands for Internet of Things. Connected physical devices that exchange data through networks.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "iot",
+          "locator": "IoT: Internet of Things — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-ict",
+      "acronym": "ICT",
+      "topic": "Software & data representation",
+      "text": "What does ICT stand for in software & data representation?",
+      "options": [
+        "Information and Communication Technology",
+        "Information and Computing Technology",
+        "Integrated Communication Technology",
+        "Information and Control Technology"
+      ],
+      "correctAnswer": 0,
+      "explanation": "ICT stands for Information and Communication Technology. Technologies used to process and communicate information.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "ict",
+          "locator": "ICT: Information and Communication Technology — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-it",
+      "acronym": "IT",
+      "topic": "Software & data representation",
+      "text": "What does IT stand for in computing?",
+      "options": [
+        "Information Transmission",
+        "Integrated Technology",
+        "Internet Technology",
+        "Information Technology"
+      ],
+      "correctAnswer": 3,
+      "explanation": "IT stands for Information Technology. Technology used to process, store and communicate information.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "it",
+          "locator": "IT: Information Technology — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-saas",
+      "acronym": "SaaS",
+      "topic": "Software & data representation",
+      "text": "What does SaaS stand for in software & data representation?",
+      "options": [
+        "Storage as a Service",
+        "Software as a Service",
+        "Software as a System",
+        "Security as a Solution"
+      ],
+      "correctAnswer": 1,
+      "explanation": "SaaS stands for Software as a Service. A cloud service model in which customers use a provider's applications.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "cloud",
+          "locator": "SaaS: Software as a Service — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-paas",
+      "acronym": "PaaS",
+      "topic": "Software & data representation",
+      "text": "What does PaaS stand for in software & data representation?",
+      "options": [
+        "Processing as a Service",
+        "Platform as a System",
+        "Program as a Solution",
+        "Platform as a Service"
+      ],
+      "correctAnswer": 3,
+      "explanation": "PaaS stands for Platform as a Service. A cloud service model providing a platform for deploying applications.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "cloud",
+          "locator": "PaaS: Platform as a Service — terminology and context"
+        }
+      ]
+    },
+    {
+      "id": "ff-iaas",
+      "acronym": "IaaS",
+      "topic": "Software & data representation",
+      "text": "What does IaaS stand for in software & data representation?",
+      "options": [
+        "Infrastructure as a Service",
+        "Integration as a Service",
+        "Infrastructure as a System",
+        "Information as a Solution"
+      ],
+      "correctAnswer": 0,
+      "explanation": "IaaS stands for Infrastructure as a Service. A cloud service model providing computing resources such as processing, storage and networks.",
+      "evidenceKind": "reference-practice",
+      "references": [
+        {
+          "sourceId": "cloud",
+          "locator": "IaaS: Infrastructure as a Service — terminology and context"
+        }
+      ]
+    }
+  ]
+}

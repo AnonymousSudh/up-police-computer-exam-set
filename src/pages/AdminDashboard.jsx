@@ -19,12 +19,14 @@ import {
   Database,
   PlayCircle,
   Settings,
-  Shield,
   Download,
   FileUp,
   Search,
   HardDrive,
-  CheckCheck
+  CheckCheck,
+  Clock,
+  Type,
+  Tag
 } from 'lucide-react';
 import { AI_IMAGE_OCR_PROMPT } from './ImportExam';
 import { EXAM_CATEGORIES } from '../data/exams/categories';
@@ -38,6 +40,8 @@ const AdminDashboard = () => {
 
   // Import Tab State
   const [jsonInput, setJsonInput] = useState('');
+  const [examTitle, setExamTitle] = useState('');
+  const [examDuration, setExamDuration] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('rrb');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
@@ -70,6 +74,69 @@ const AdminDashboard = () => {
     }
   }, [showPromptModal]);
 
+  // Synchronized field updates between metadata inputs and raw JSON
+  const handleTitleChange = (val) => {
+    setExamTitle(val);
+    try {
+      if (jsonInput.trim()) {
+        const parsed = JSON.parse(jsonInput);
+        parsed.title = val;
+        setJsonInput(JSON.stringify(parsed, null, 2));
+      }
+    } catch {
+      // ignore JSON parse error while user edits
+    }
+  };
+
+  const handleDurationChange = (val) => {
+    setExamDuration(val);
+    try {
+      if (jsonInput.trim()) {
+        const parsed = JSON.parse(jsonInput);
+        const num = Number(val);
+        if (!isNaN(num) && num > 0) {
+          parsed.durationMinutes = num;
+        }
+        setJsonInput(JSON.stringify(parsed, null, 2));
+      }
+    } catch {
+      // ignore
+    }
+  };
+
+  const handleCategoryChange = (val) => {
+    setSelectedCategory(val);
+    try {
+      if (jsonInput.trim()) {
+        const parsed = JSON.parse(jsonInput);
+        parsed.category = val;
+        setJsonInput(JSON.stringify(parsed, null, 2));
+      }
+    } catch {
+      // ignore
+    }
+  };
+
+  const handleJsonChange = (val) => {
+    setJsonInput(val);
+    try {
+      const parsed = JSON.parse(val);
+      if (parsed.title) setExamTitle(parsed.title);
+      if (parsed.durationMinutes) setExamDuration(String(parsed.durationMinutes));
+      if (parsed.category) setSelectedCategory(parsed.category);
+    } catch {
+      // While user is typing partial JSON, do not wipe metadata fields
+    }
+  };
+
+  const handleClearAll = () => {
+    setJsonInput('');
+    setUploadedFileName('');
+    setExamTitle('');
+    setExamDuration('');
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
+
   // Read and validate dropped or selected file
   const processUploadedFile = async (file) => {
     setError('');
@@ -86,8 +153,12 @@ const AdminDashboard = () => {
       const parsed = JSON.parse(text);
       setJsonInput(JSON.stringify(parsed, null, 2));
       setUploadedFileName(file.name);
+      if (parsed.title) setExamTitle(parsed.title);
+      if (parsed.durationMinutes) setExamDuration(String(parsed.durationMinutes));
+      if (parsed.category) setSelectedCategory(parsed.category);
+
       const qCount = Array.isArray(parsed.questions) ? parsed.questions.length : 0;
-      setSuccess(`File "${file.name}" loaded successfully with ${qCount} questions. Click "Save & Deploy" to upload to Firebase.`);
+      setSuccess(`File "${file.name}" loaded with ${qCount} questions. You can customize the Name and Duration above before saving.`);
     } catch (err) {
       setError(`Failed to parse "${file.name}": ${err.message}`);
     }
@@ -140,9 +211,9 @@ const AdminDashboard = () => {
       const hasBilingual = questions.some(q => q.question_hindi || q.text_hi || q.option_text_hindi);
       return {
         valid: true,
-        title: parsed.title || 'Untitled',
+        title: examTitle.trim() || parsed.title || 'Untitled',
         questionCount: questions.length,
-        durationMinutes: parsed.durationMinutes || 60,
+        durationMinutes: (examDuration && Number(examDuration) > 0) ? Number(examDuration) : (parsed.durationMinutes || 60),
         isBilingual: hasBilingual,
         id: parsed.id || null
       };
@@ -173,9 +244,19 @@ const AdminDashboard = () => {
         throw new Error('Exam JSON must be smaller than 5 MB.');
       }
 
-      // Attach selected category if not present
-      if (!parsedData.category) {
+      // Override with user's configured title and duration if provided
+      if (examTitle.trim()) {
+        parsedData.title = examTitle.trim();
+      }
+      if (examDuration && Number(examDuration) > 0) {
+        parsedData.durationMinutes = Number(examDuration);
+      }
+
+      // Attach selected category
+      if (selectedCategory) {
         parsedData.category = selectedCategory;
+      } else if (!parsedData.category) {
+        parsedData.category = 'rrb';
       }
 
       setIsSaving(true);
@@ -185,9 +266,8 @@ const AdminDashboard = () => {
         ? ' Question paper saved to Firebase Cloud Firestore! (Live instantly for candidates)'
         : ' (Saved to local storage. Connect Firebase backend for cloud sync).';
 
-      setSuccess(`Exam "${saved.title || parsedData.title || 'Untitled'}" successfully deployed!${storageNotice}`);
-      setJsonInput('');
-      setUploadedFileName('');
+      setSuccess(`Exam "${saved.title || parsedData.title || 'Untitled'}" (${saved.durationMinutes || parsedData.durationMinutes} mins) successfully deployed!${storageNotice}`);
+      handleClearAll();
 
       // Refresh list
       if (refreshExams) await refreshExams();
@@ -218,7 +298,7 @@ const AdminDashboard = () => {
 
   const loadSample = () => {
     setUploadedFileName('');
-    setJsonInput(JSON.stringify({
+    const sampleObj = {
       title: "Sample Bilingual Railway Mock Test",
       category: selectedCategory,
       durationMinutes: 60,
@@ -252,7 +332,10 @@ const AdminDashboard = () => {
           explanation_hindi: "रैम (RAM) एक अस्थिर मेमोरी है जिसे डेटा बनाए रखने के लिए बिजली की आवश्यकता होती है।"
         }
       ]
-    }, null, 2));
+    };
+    setExamTitle(sampleObj.title);
+    setExamDuration(String(sampleObj.durationMinutes));
+    setJsonInput(JSON.stringify(sampleObj, null, 2));
   };
 
   const handleSaveSettings = (e) => {
@@ -311,47 +394,56 @@ service firebase.storage {
   };
 
   return (
-    <div className="admin-dashboard-container">
-      {/* Top Admin Navigation Bar */}
-      <div className="admin-topbar">
-        <div className="admin-topbar-left">
-          <div className="admin-portal-badge">
-            <Shield size={16} />
-            <span>Admin Control Panel</span>
+    <div className="admin-page-wrapper">
+      {/* Top Admin Navigation Bar - Unified Single Header */}
+      <header className="admin-unified-header">
+        <div className="admin-header-inner">
+          <div className="admin-header-left">
+            <div className="admin-brand-group">
+              <img src="/favicon.svg" alt="" width="26" height="26" className="admin-logo-img" />
+              <span className="admin-brand-title">GovExam</span>
+              <span className="admin-brand-tag">Admin Control Panel</span>
+            </div>
+
+            <div className="admin-status-indicator" title={isConfigured ? "Firebase Backend Connected" : "Local Demo Mode"}>
+              <span className={`status-dot ${isConfigured ? 'online' : 'offline'}`} />
+              <span className="status-label">
+                {isConfigured ? `Firebase: ${firebaseConfig?.projectId || 'Connected'}` : 'Local / Demo Mode'}
+              </span>
+            </div>
           </div>
-          <div className="admin-status-indicator">
-            <span className={`status-dot ${isConfigured ? 'online' : 'offline'}`} />
-            <span className="status-label">
-              {isConfigured ? `Firebase: ${firebaseConfig?.projectId || 'Connected'}` : 'Local / Demo Mode (No Firebase)'}
-            </span>
+
+          <div className="admin-header-right">
+            <div className="admin-user-pill" title={`Signed in as ${currentUser?.email || 'Admin'}`}>
+              <span className="admin-user-dot" />
+              <span className="admin-user-email">{currentUser?.email || 'Admin'}</span>
+            </div>
+            <button
+              type="button"
+              className="btn-admin-header-nav"
+              onClick={() => navigate('/')}
+              title="Open public candidate portal"
+            >
+              <ExternalLink size={14} />
+              <span>View Portal</span>
+            </button>
+            <button
+              type="button"
+              className="btn-admin-header-logout"
+              onClick={logout}
+              title="Sign out of admin session"
+            >
+              <LogOut size={14} />
+              <span>Sign Out</span>
+            </button>
           </div>
         </div>
+      </header>
 
-        <div className="admin-topbar-right">
-          <span className="admin-user-email">{currentUser?.email || 'Admin'}</span>
-          <button
-            type="button"
-            className="btn-outline-small"
-            onClick={() => navigate('/')}
-            title="View public student portal"
-          >
-            <ExternalLink size={14} />
-            <span>View Portal</span>
-          </button>
-          <button
-            type="button"
-            className="btn-logout"
-            onClick={logout}
-            title="Log out of admin"
-          >
-            <LogOut size={14} />
-            <span>Sign Out</span>
-          </button>
-        </div>
-      </div>
-
-      {/* Main Admin Card */}
-      <div className="admin-main-card">
+      {/* Main Admin Content */}
+      <div className="admin-dashboard-container">
+        {/* Main Admin Card */}
+        <div className="admin-main-card">
         {/* Tab Header */}
         <div className="admin-tabs-nav" role="tablist">
           <button
@@ -402,127 +494,208 @@ service firebase.storage {
           </div>
         )}
 
-        {/* TAB 1: IMPORT QUESTION SET (SHIFTED FROM PUBLIC PORTAL) */}
+        {/* TAB 1: IMPORT QUESTION SET */}
         {activeTab === 'import' && (
           <div className="admin-tab-content">
             <div className="import-section-header">
               <div>
-                <h3>Upload Question Paper JSON</h3>
+                <h3>Upload &amp; Import Question Paper</h3>
                 <p>
-                  Store question paper sets in <strong>Firebase Cloud Firestore</strong> (100% Free on Spark Plan).
+                  Deploy question papers dynamically to <strong>Firebase Cloud Storage &amp; Firestore</strong>.
                 </p>
               </div>
-              <div className="category-select-wrapper">
-                <label htmlFor="exam-stream-select">Target Stream:</label>
-                <select
-                  id="exam-stream-select"
-                  className="admin-select"
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                >
-                  {EXAM_CATEGORIES.map(cat => (
-                    <option key={cat.id} value={cat.id}>{cat.name}</option>
-                  ))}
-                  <option value="custom">General / Custom Stream</option>
-                </select>
+            </div>
+
+            {/* Quick Exam Settings (Editable Title, Duration & Stream) */}
+            <div className="exam-metadata-editor-card">
+              <div className="editor-card-header">
+                <div className="editor-card-title">
+                  <FileText size={18} className="editor-icon" />
+                  <span>Exam Details &amp; Settings (Customizable on Upload)</span>
+                </div>
+                <span className="editor-badge">Auto-syncs with JSON</span>
+              </div>
+              <div className="metadata-inputs-grid">
+                <div className="metadata-field">
+                  <label htmlFor="meta-exam-title">
+                    <Type size={14} />
+                    <span>Exam Name / Title</span>
+                  </label>
+                  <input
+                    id="meta-exam-title"
+                    type="text"
+                    className="admin-input"
+                    placeholder="e.g. Full Form MCQ — Part 1 (Simple)"
+                    value={examTitle}
+                    onChange={(e) => handleTitleChange(e.target.value)}
+                  />
+                </div>
+
+                <div className="metadata-field">
+                  <label htmlFor="meta-exam-duration">
+                    <Clock size={14} />
+                    <span>Duration (Minutes)</span>
+                  </label>
+                  <input
+                    id="meta-exam-duration"
+                    type="number"
+                    min="1"
+                    max="600"
+                    className="admin-input"
+                    placeholder="e.g. 60"
+                    value={examDuration}
+                    onChange={(e) => handleDurationChange(e.target.value)}
+                  />
+                </div>
+
+                <div className="metadata-field">
+                  <label htmlFor="meta-exam-category">
+                    <Tag size={14} />
+                    <span>Target Stream</span>
+                  </label>
+                  <select
+                    id="meta-exam-category"
+                    className="admin-select"
+                    value={selectedCategory}
+                    onChange={(e) => handleCategoryChange(e.target.value)}
+                  >
+                    {EXAM_CATEGORIES.map(cat => (
+                      <option key={cat.id} value={cat.id}>{cat.name}</option>
+                    ))}
+                    <option value="custom">General / Custom Stream</option>
+                  </select>
+                </div>
               </div>
             </div>
 
-            {/* Drag & Drop / File Picker Card */}
-            <div
-              className={`file-drop-zone ${isDragging ? 'dragging' : ''} ${uploadedFileName ? 'has-file' : ''}`}
-              onDragOver={handleDragOver}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-              onClick={() => fileInputRef.current?.click()}
-            >
-              <input
-                type="file"
-                ref={fileInputRef}
-                style={{ display: 'none' }}
-                accept=".json,application/json"
-                onChange={handleFileChange}
-              />
-              <FileUp size={32} className="drop-icon" />
-              {uploadedFileName ? (
-                <div className="drop-text-group">
-                  <strong>Loaded: {uploadedFileName}</strong>
-                  <span>Click or drag another .json file to replace</span>
+            {/* Side-by-Side: File Upload on Left & Raw JSON Paste on Right */}
+            <div className="import-side-by-side-grid">
+              {/* Left Side: Upload Question Paper JSON */}
+              <div className="import-column import-column-upload">
+                <div className="column-header">
+                  <div className="column-title-box">
+                    <UploadCloud size={18} />
+                    <h4>Upload Question Paper JSON</h4>
+                  </div>
+                  <span className="column-hint">File Drop or Browse</span>
                 </div>
-              ) : (
-                <div className="drop-text-group">
-                  <strong>Click to select a Question Paper (.json) or drag &amp; drop here</strong>
-                  <span>Files will be saved in Firebase Firestore (free tier friendly, no credit card required)</span>
-                </div>
-              )}
-            </div>
 
-            <div className="import-format-bar">
-              <label htmlFor="admin-exam-json">Or Paste Bilingual JSON Payload (Hindi + English)</label>
-              <div className="sample-buttons">
-                <button
-                  type="button"
-                  className="btn-sample"
-                  onClick={loadSample}
+                <div
+                  className={`file-drop-zone side-drop-zone ${isDragging ? 'dragging' : ''} ${uploadedFileName ? 'has-file' : ''}`}
+                  onDragOver={handleDragOver}
+                  onDragLeave={handleDragLeave}
+                  onDrop={handleDrop}
+                  onClick={() => fileInputRef.current?.click()}
                 >
-                  Load Bilingual Sample
-                </button>
-                <button
-                  type="button"
-                  className="btn-sample btn-sample-prompt"
-                  onClick={() => setShowPromptModal(true)}
-                  title="View prompt to convert question photos to JSON with AI"
-                >
-                  <Camera size={14} />
-                  <span>AI Prompt for Question Photos</span>
-                </button>
-                <button
-                  type="button"
-                  className={`btn-sample btn-sample-copy ${copied ? 'copied-btn' : ''}`}
-                  onClick={handleCopyPrompt}
-                  title="Copy prompt to clipboard"
-                >
-                  {copied ? <Check size={14} /> : <Copy size={14} />}
-                  <span>{copied ? 'Prompt Copied!' : 'Copy Prompt'}</span>
-                </button>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    style={{ display: 'none' }}
+                    accept=".json,application/json"
+                    onChange={handleFileChange}
+                  />
+                  <FileUp size={36} className="drop-icon" />
+                  {uploadedFileName ? (
+                    <div className="drop-text-group">
+                      <strong>Loaded: {uploadedFileName}</strong>
+                      <span className="file-ready-tag">JSON parsed &amp; fields populated above</span>
+                      <span className="click-sub">Click or drag another .json to replace</span>
+                    </div>
+                  ) : (
+                    <div className="drop-text-group">
+                      <strong>Click to select a Question Paper (.json)</strong>
+                      <span>or drag &amp; drop file here</span>
+                      <span className="file-specs-note">Auto-populates title, duration &amp; questions</span>
+                    </div>
+                  )}
+                </div>
+
+                {uploadedFileName && (
+                  <div className="loaded-file-indicator">
+                    <CheckCircle2 size={16} className="success-icon" />
+                    <span>Active File: <strong>{uploadedFileName}</strong></span>
+                    <button
+                      type="button"
+                      className="btn-clear-file"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setUploadedFileName('');
+                        if (fileInputRef.current) fileInputRef.current.value = '';
+                      }}
+                      title="Clear uploaded file"
+                    >
+                      <X size={14} />
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Right Side: Or Paste Bilingual JSON Payload (Hindi + English) */}
+              <div className="import-column import-column-paste">
+                <div className="column-header">
+                  <div className="column-title-box">
+                    <FileText size={18} />
+                    <h4>Or Paste Bilingual JSON Payload (Hindi + English)</h4>
+                  </div>
+                  <div className="sample-buttons">
+                    <button
+                      type="button"
+                      className="btn-sample"
+                      onClick={loadSample}
+                    >
+                      Load Sample
+                    </button>
+                    <button
+                      type="button"
+                      className="btn-sample btn-sample-prompt"
+                      onClick={() => setShowPromptModal(true)}
+                      title="View prompt to convert question photos to JSON with AI"
+                    >
+                      <Camera size={13} />
+                      <span>AI OCR Prompt</span>
+                    </button>
+                    <button
+                      type="button"
+                      className={`btn-sample btn-sample-copy ${copied ? 'copied-btn' : ''}`}
+                      onClick={handleCopyPrompt}
+                      title="Copy prompt to clipboard"
+                    >
+                      {copied ? <Check size={13} /> : <Copy size={13} />}
+                      <span>{copied ? 'Copied' : 'Copy'}</span>
+                    </button>
+                  </div>
+                </div>
+
+                <textarea
+                  id="admin-exam-json"
+                  spellCheck={false}
+                  className="json-textarea side-textarea"
+                  placeholder={`{\n  "title": "Full Form MCQ — Part 1 (Simple)",\n  "durationMinutes": 30,\n  "questions": [\n    {\n      "question_number": 1,\n      "question_english": "What is the full form of CPU?",\n      "question_hindi": "CPU का पूर्ण रूप क्या है?",\n      "options": [\n        { "option_label": "a", "option_text_english": "Central Processing Unit", "option_text_hindi": "सेंट्रल प्रोसेसिंग यूनिट" }\n      ],\n      "correct_option_label": "a"\n    }\n  ]\n}`}
+                  value={jsonInput}
+                  onChange={(e) => handleJsonChange(e.target.value)}
+                />
               </div>
             </div>
-
-            <p className="import-help">
-              Questions should include <code>question_english</code> and <code>question_hindi</code>. Use the <strong>AI Prompt for Question Photos</strong> to digitize physical book photos and automatically format multiline step-by-step explanations.
-            </p>
-
-            <textarea
-              id="admin-exam-json"
-              spellCheck={false}
-              className="json-textarea admin-textarea"
-              placeholder={`{\n  "title": "Railway ALP CBT-1 Mock Test",\n  "durationMinutes": 60,\n  "questions": [\n    {\n      "question_number": 1,\n      "question_english": "Question in English",\n      "question_hindi": "हिंदी में प्रश्न",\n      "options": [\n        { "option_label": "a", "option_text_english": "50", "option_text_hindi": "50" }\n      ],\n      "correct_option_label": "a",\n      "explanation_english": "• Step 1: ...\\n• Step 2: ...",\n      "explanation_hindi": "• चरण 1: ...\\n• चरण 2: ..."\n    }\n  ]\n}`}
-              value={jsonInput}
-              onChange={(e) => {
-                setJsonInput(e.target.value);
-                setUploadedFileName('');
-              }}
-            />
 
             {/* Live Inspection Card */}
             {livePreview && livePreview.valid && (
               <div className="live-preview-box">
                 <div className="preview-item">
-                  <span className="preview-label">Title</span>
-                  <strong>{livePreview.title}</strong>
+                  <span className="preview-label">Exam Name</span>
+                  <strong>{examTitle || livePreview.title}</strong>
                 </div>
                 <div className="preview-item">
-                  <span className="preview-label">Questions</span>
+                  <span className="preview-label">Total Questions</span>
                   <strong>{livePreview.questionCount} Questions</strong>
                 </div>
                 <div className="preview-item">
                   <span className="preview-label">Duration</span>
-                  <strong>{livePreview.durationMinutes} Minutes</strong>
+                  <strong>{examDuration || livePreview.durationMinutes} Minutes</strong>
                 </div>
                 <div className="preview-item">
                   <span className="preview-label">Languages</span>
                   <span className={`badge ${livePreview.isBilingual ? 'badge-success' : 'badge-neutral'}`}>
-                    {livePreview.isBilingual ? 'Bilingual (Hi + En)' : 'Monolingual'}
+                    {livePreview.isBilingual ? 'Bilingual (Hindi + English)' : 'Monolingual'}
                   </span>
                 </div>
               </div>
@@ -532,13 +705,10 @@ service firebase.storage {
               <button
                 type="button"
                 className="btn-secondary"
-                onClick={() => {
-                  setJsonInput('');
-                  setUploadedFileName('');
-                }}
-                disabled={!jsonInput || isSaving}
+                onClick={handleClearAll}
+                disabled={(!jsonInput && !examTitle && !uploadedFileName) || isSaving}
               >
-                Clear Input
+                Clear All
               </button>
               <button
                 type="button"
@@ -623,7 +793,6 @@ service firebase.storage {
                 </thead>
                 <tbody>
                   {filteredExams.map((examItem) => {
-                    const isCustomOrFirebase = examItem.isFirebase || examItem.source === 'firebase' || examItem.id.startsWith('custom-');
                     const catObj = EXAM_CATEGORIES.find(c => c.id === examItem.category);
 
                     return (
@@ -642,17 +811,10 @@ service firebase.storage {
                         <td>{examItem.questions?.length || 0} Qs</td>
                         <td>{examItem.durationMinutes || 60} mins</td>
                         <td>
-                          {isCustomOrFirebase ? (
-                            <span className="badge badge-firebase" title="Stored in Firebase Cloud Storage">
-                              <HardDrive size={12} />
-                              <span>Firebase Storage</span>
-                            </span>
-                          ) : (
-                            <span className="badge badge-builtin" title="Built-in repository mock test">
-                              <FileText size={12} />
-                              <span>Built-in</span>
-                            </span>
-                          )}
+                          <span className="badge badge-firebase" title="Stored in Firebase Cloud Storage & Firestore">
+                            <HardDrive size={12} />
+                            <span>Firebase Storage</span>
+                          </span>
                         </td>
                         <td>
                           <div className="action-buttons-group">
@@ -683,16 +845,14 @@ service firebase.storage {
                                 <ExternalLink size={16} />
                               </a>
                             )}
-                            {isCustomOrFirebase && (
-                              <button
-                                type="button"
-                                className="btn-action-icon delete-btn"
-                                title="Delete exam from Firebase Storage & Firestore"
-                                onClick={() => handleDeleteExam(examItem.id, examItem.title)}
-                              >
-                                <Trash2 size={16} />
-                              </button>
-                            )}
+                            <button
+                              type="button"
+                              className="btn-action-icon delete-btn"
+                              title="Delete exam from Firebase Storage & Firestore"
+                              onClick={() => handleDeleteExam(examItem.id, examItem.title)}
+                            >
+                              <Trash2 size={16} />
+                            </button>
                           </div>
                         </td>
                       </tr>
@@ -897,6 +1057,7 @@ service firebase.storage {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 };

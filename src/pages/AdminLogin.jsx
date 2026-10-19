@@ -12,10 +12,7 @@ import {
   Settings,
   CheckCircle2,
   ArrowRight,
-  Sparkles,
-  HelpCircle,
-  ChevronDown,
-  ChevronUp
+  Sparkles
 } from 'lucide-react';
 
 const AdminLogin = () => {
@@ -32,7 +29,6 @@ const AdminLogin = () => {
   const [rawConfigInput, setRawConfigInput] = useState('');
   const [testResults, setTestResults] = useState(null);
   const [isTesting, setIsTesting] = useState(false);
-  const [showSetupGuide, setShowSetupGuide] = useState(false);
 
   const {
     currentUser,
@@ -391,50 +387,17 @@ const AdminLogin = () => {
           </button>
         </form>
 
-        {/* Demo Mode Button */}
+        {/* Demo Mode Link */}
         <div className="demo-mode-container">
           <button
             type="button"
-            className="btn-demo-mode-subtle"
+            className="btn-demo-link"
             onClick={handleDemoLogin}
+            title="Preview admin interface offline"
           >
-            <Sparkles size={14} />
-            <span>Enter Demo Admin Mode (Offline Preview)</span>
+            <Sparkles size={13} />
+            <span>Enter Offline Demo Mode</span>
           </button>
-        </div>
-
-        {/* Setup Accordion */}
-        <div className="admin-login-footer">
-          <button
-            type="button"
-            className="btn-setup-guide-toggle"
-            onClick={() => setShowSetupGuide(prev => !prev)}
-          >
-            <div className="guide-toggle-title">
-              <HelpCircle size={14} />
-              <span>Firebase Setup Instructions</span>
-            </div>
-            {showSetupGuide ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
-          </button>
-
-          {showSetupGuide && (
-            <div className="setup-guide-box">
-              <ol>
-                <li>
-                  Go to <a href="https://console.firebase.google.com" target="_blank" rel="noopener noreferrer">Firebase Console</a> and open your project.
-                </li>
-                <li>
-                  Under <strong>Build &gt; Authentication &gt; Sign-in method</strong>, enable <strong>Email/Password</strong>.
-                </li>
-                <li>
-                  Under <strong>Build &gt; Firestore Database</strong>, click <strong>Create database</strong> (choose Start in test mode).
-                </li>
-                <li>
-                  Copy your <code>firebaseConfig</code> credentials into <code>.env</code> or into the <strong>Setup</strong> drawer above.
-                </li>
-              </ol>
-            </div>
-          )}
         </div>
       </div>
     </div>

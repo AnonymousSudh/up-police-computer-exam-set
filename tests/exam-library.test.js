@@ -1,27 +1,31 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { builtInExams, mergeExamLibrary, simpleFullFormExam, hardFullFormExam } from '../src/data/exam-library.js';
+import { mergeExamLibrary, simpleFullFormExam, hardFullFormExam } from '../src/data/exam-library.js';
 import { validateExam, gradeExam } from '../src/lib/exam.js';
 import fullFormBank from '../src/data/full-form-exam.json' with { type: 'json' };
 
 const fullForms = fullFormBank;
 
-test('both permanent full-form parts appear for new, returning and corrupt-storage users', () => {
-  for (const saved of [null, {}, [], [builtInExams[2]], [{ ...fullForms, title: 'Old overwritten title', questions: [fullForms.questions[0]] }]]) {
-    const library = mergeExamLibrary(saved);
-    assert.equal(library[0], simpleFullFormExam);
-    assert.equal(library[1], hardFullFormExam);
-    assert.equal(library.filter(exam => exam.id.startsWith('computer-operator-full-forms-')).length, 2);
-    assert.equal(library[0].questions.length, 100);
-    assert.equal(library[1].questions.length, 200);
-  }
+test('mergeExamLibrary filters retired sample mock exams and accepts dynamic full form exams', () => {
+  const dynamicInput = [
+    { ...simpleFullFormExam, source: 'firebase' },
+    { ...hardFullFormExam, source: 'firebase' },
+    { id: 'up-police-comp-op-1', title: 'Retired Mock', questions: [] },
+    { id: 'rrb-ntpc-mock-1', title: 'Retired RRB', questions: [] },
+  ];
+  const library = mergeExamLibrary(dynamicInput);
+  assert.equal(library.length, 2);
+  assert.equal(library[0].id, simpleFullFormExam.id);
+  assert.equal(library[1].id, hardFullFormExam.id);
+  assert.equal(library[0].questions.length, 100);
+  assert.equal(library[1].questions.length, 200);
 });
 
 test('preserves valid custom exams while dropping corrupt or duplicate entries', () => {
-  const custom = { ...builtInExams[1], id: 'custom', title: 'My practice set' };
+  const custom = { ...simpleFullFormExam, id: 'custom-practice-1', title: 'My practice set', source: 'firebase' };
   const library = mergeExamLibrary([custom, null, { ...custom, title: 'Duplicate' }]);
-  assert.equal(library.length, builtInExams.length + 1);
-  assert.equal(library.at(-1).title, custom.title);
+  assert.equal(library.length, 1);
+  assert.equal(library[0].title, custom.title);
 });
 
 test('question bank has valid answers, unique acronyms and traceable references', () => {
