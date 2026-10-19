@@ -1838,16 +1838,16 @@ summary:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 4px; border-
 
 /* Admin Login Page */
 .admin-login-container {
-  max-width: 440px;
-  margin: 3rem auto;
-  padding: 0 1rem;
+  max-width: 580px;
+  margin: 3.5rem auto;
+  padding: 0 1.25rem;
 }
 
 .admin-login-card {
   background: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-lg);
-  padding: 2.25rem 2rem;
+  border-radius: var(--radius-xl);
+  padding: 3rem 2.75rem;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
   position: relative;
 }
@@ -2195,9 +2195,9 @@ summary:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 4px; border-
   align-items: center;
   gap: 0.45rem;
   background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  color: var(--accent-light);
-  font-weight: 600;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #34d399;
+  font-weight: 700;
   font-size: 0.85rem;
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-sm);
@@ -2302,7 +2302,7 @@ summary:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 4px; border-
   background: transparent;
   border: none;
   border-bottom: 2px solid transparent;
-  color: var(--text-secondary);
+  color: #94a3b8;
   font-size: 0.92rem;
   font-weight: 500;
   cursor: pointer;
@@ -2311,15 +2311,15 @@ summary:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 4px; border-
 }
 
 .admin-tab-btn:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.03);
+  color: #f8fafc;
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .admin-tab-btn.active {
-  color: var(--accent-light);
-  border-bottom-color: var(--accent-primary);
-  background: rgba(16, 185, 129, 0.08);
-  font-weight: 600;
+  color: #34d399;
+  border-bottom-color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+  font-weight: 700;
 }
 
 .admin-tab-content {

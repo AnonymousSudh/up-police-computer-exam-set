@@ -27,10 +27,22 @@ import { getAnalytics, isSupported } from 'firebase/analytics';
 
 const STORAGE_KEY_CUSTOM_CONFIG = 'firebase_custom_config_v1';
 
+// Default production configuration for GovExam Portal
+const DEFAULT_FIREBASE_CONFIG = {
+  apiKey: 'AIzaSyCTJwkr5UzKu5EOOPGSCQ6zIg8sGGI3cfY',
+  authDomain: 'govexam-portal-25a95.firebaseapp.com',
+  projectId: 'govexam-portal-25a95',
+  storageBucket: 'govexam-portal-25a95.firebasestorage.app',
+  messagingSenderId: '704446526479',
+  appId: '1:704446526479:web:803fd8f03fc72d66eedf7a',
+  measurementId: 'G-J4S1KKDKDB'
+};
+
 /**
  * Resolves Firebase configuration in order of priority:
  * 1. Custom config in localStorage (set via Admin UI)
  * 2. Vite environment variables (VITE_FIREBASE_*)
+ * 3. Default production credentials
  */
 export function getFirebaseConfig() {
   if (typeof window !== 'undefined') {
@@ -47,21 +59,25 @@ export function getFirebaseConfig() {
     }
   }
 
-  const env = (typeof import.meta !== 'undefined' && import.meta.env) ? import.meta.env : {};
+  // Direct static access for Vite bundler replacement
+  const envApiKey = (typeof import.meta !== 'undefined' && import.meta.env) ? import.meta.env.VITE_FIREBASE_API_KEY : '';
+  const envProjectId = (typeof import.meta !== 'undefined' && import.meta.env) ? import.meta.env.VITE_FIREBASE_PROJECT_ID : '';
 
-  const apiKey = env.VITE_FIREBASE_API_KEY;
-  const projectId = env.VITE_FIREBASE_PROJECT_ID;
-
-  if (apiKey && projectId) {
+  if (envApiKey && envProjectId) {
     return {
-      apiKey: env.VITE_FIREBASE_API_KEY || '',
-      authDomain: env.VITE_FIREBASE_AUTH_DOMAIN || `${projectId}.firebaseapp.com`,
-      projectId: projectId,
-      storageBucket: env.VITE_FIREBASE_STORAGE_BUCKET || `${projectId}.appspot.com`,
-      messagingSenderId: env.VITE_FIREBASE_MESSAGING_SENDER_ID || '',
-      appId: env.VITE_FIREBASE_APP_ID || '',
-      measurementId: env.VITE_FIREBASE_MEASUREMENT_ID || ''
+      apiKey: envApiKey,
+      authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || `${envProjectId}.firebaseapp.com`,
+      projectId: envProjectId,
+      storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || `${envProjectId}.firebasestorage.app`,
+      messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '',
+      appId: import.meta.env.VITE_FIREBASE_APP_ID || '',
+      measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || ''
     };
+  }
+
+  // Fallback to project default config (guarantees production builds work seamlessly anywhere)
+  if (DEFAULT_FIREBASE_CONFIG && DEFAULT_FIREBASE_CONFIG.apiKey && DEFAULT_FIREBASE_CONFIG.projectId) {
+    return DEFAULT_FIREBASE_CONFIG;
   }
 
   return null;

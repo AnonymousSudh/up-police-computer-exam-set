@@ -12,8 +12,6 @@ import {
   Settings,
   CheckCircle2,
   ArrowRight,
-  UserPlus,
-  KeyRound,
   Sparkles,
   HelpCircle,
   ChevronDown,
@@ -21,10 +19,9 @@ import {
 } from 'lucide-react';
 
 const AdminLogin = () => {
-  const [authMode, setAuthMode] = useState('login'); // 'login' | 'register' | 'forgot'
+  const [authMode, setAuthMode] = useState('login'); // 'login' | 'forgot'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
@@ -40,7 +37,6 @@ const AdminLogin = () => {
   const {
     currentUser,
     login,
-    register,
     resetPassword,
     loginAsDemo,
     isConfigured,
@@ -93,17 +89,6 @@ const AdminLogin = () => {
       return;
     }
 
-    if (authMode === 'register') {
-      if (password.length < 6) {
-        setError('Password must be at least 6 characters long.');
-        return;
-      }
-      if (password !== confirmPassword) {
-        setError('Passwords do not match. Please re-enter.');
-        return;
-      }
-    }
-
     if (!isConfigured) {
       setError('Firebase is not configured yet. Configure credentials below or use Demo Mode.');
       setShowConfigDrawer(true);
@@ -112,18 +97,12 @@ const AdminLogin = () => {
 
     setIsSubmitting(true);
     try {
-      if (authMode === 'login') {
-        await login(email, password);
-      } else {
-        await register(email, password);
-      }
+      await login(email, password);
       navigate(destination, { replace: true });
     } catch (err) {
       const code = err.code || '';
       if (code === 'auth/invalid-credential' || code === 'auth/user-not-found' || code === 'auth/wrong-password') {
         setError('Invalid admin email or password. Please verify your credentials.');
-      } else if (code === 'auth/email-already-in-use') {
-        setError('An admin account with this email already exists. Please switch to Sign In.');
       } else if (code === 'auth/weak-password') {
         setError('Password is too weak. Please use at least 6 characters.');
       } else if (code === 'auth/too-many-requests') {
@@ -319,30 +298,6 @@ const AdminLogin = () => {
           </div>
         )}
 
-        {/* Mode Switcher Tabs */}
-        <div className="auth-mode-tabs" role="tablist">
-          <button
-            type="button"
-            role="tab"
-            aria-selected={authMode === 'login'}
-            className={`auth-mode-tab ${authMode === 'login' ? 'active' : ''}`}
-            onClick={() => { setAuthMode('login'); setError(''); }}
-          >
-            <KeyRound size={15} />
-            <span>Sign In</span>
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={authMode === 'register'}
-            className={`auth-mode-tab ${authMode === 'register' ? 'active' : ''}`}
-            onClick={() => { setAuthMode('register'); setError(''); }}
-          >
-            <UserPlus size={15} />
-            <span>Create Admin</span>
-          </button>
-        </div>
-
         {/* Main Auth Form */}
         <form onSubmit={handleSubmit} className="admin-login-form">
           <div className="form-group">
@@ -382,7 +337,7 @@ const AdminLogin = () => {
                   id="admin-password"
                   type={showPassword ? 'text' : 'password'}
                   required
-                  autoComplete={authMode === 'login' ? 'current-password' : 'new-password'}
+                  autoComplete="current-password"
                   placeholder="••••••••"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -396,25 +351,6 @@ const AdminLogin = () => {
                 >
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
-              </div>
-            </div>
-          )}
-
-          {authMode === 'register' && (
-            <div className="form-group">
-              <label htmlFor="admin-confirm-password">Confirm Password</label>
-              <div className="input-with-icon">
-                <Lock size={17} className="input-icon" />
-                <input
-                  id="admin-confirm-password"
-                  type={showPassword ? 'text' : 'password'}
-                  required
-                  autoComplete="new-password"
-                  placeholder="••••••••"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  disabled={isSubmitting}
-                />
               </div>
             </div>
           )}
@@ -441,13 +377,13 @@ const AdminLogin = () => {
               <>
                 <span className="spinner-small" />
                 <span>
-                  {authMode === 'login' ? 'Signing in...' : authMode === 'register' ? 'Registering...' : 'Sending email...'}
+                  {authMode === 'login' ? 'Signing in...' : 'Sending email...'}
                 </span>
               </>
             ) : (
               <>
                 <span>
-                  {authMode === 'login' ? 'Sign In to Admin Portal' : authMode === 'register' ? 'Register Admin Account' : 'Send Reset Link'}
+                  {authMode === 'login' ? 'Sign In to Admin Portal' : 'Send Reset Link'}
                 </span>
                 <ArrowRight size={17} />
               </>
