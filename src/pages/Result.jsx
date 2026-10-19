@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useExam } from '../context/ExamContext';
-import { Award, CheckCircle, XCircle, AlertCircle, Filter, Languages } from 'lucide-react';
+import { Award, CheckCircle, XCircle, AlertCircle, Filter, Languages, Lightbulb } from 'lucide-react';
 import { QuestionReferences } from '../components/QuestionReferences';
 import { AdBanner } from '../components/AdBanner';
-import { isBilingualQuestion, getQuestionText, getQuestionOptions, getQuestionExplanation } from '../lib/exam';
+import { isBilingualQuestion, getQuestionText, getQuestionOptions, getQuestionExplanation, parseExplanationLines } from '../lib/exam';
 
 const Result = () => {
   const { currentExamResult, storageWarning } = useExam();
@@ -29,6 +29,30 @@ const Result = () => {
   const { examTitle, totalQuestions, score, correctCount, incorrectCount, unattemptedCount, answers, exam } = currentExamResult;
   const percentage = Math.round((score / totalQuestions) * 100) || 0;
   const hasAnyBilingual = exam?.questions?.some(isBilingualQuestion);
+
+  const renderExplanation = (text) => {
+    if (!text) return null;
+    const lines = parseExplanationLines(text);
+    if (!lines || lines.length === 0) return null;
+
+    if (lines.length === 1) {
+      return <p className="explanation-single-line">{lines[0]}</p>;
+    }
+
+    return (
+      <ul className="explanation-steps-list">
+        {lines.map((step, stepIdx) => {
+          const clean = step.replace(/^[•\-*]\s*/, '');
+          return (
+            <li key={stepIdx} className="explanation-step-item">
+              <span className="explanation-bullet" aria-hidden="true" />
+              <span className="explanation-step-content">{clean}</span>
+            </li>
+          );
+        })}
+      </ul>
+    );
+  };
 
   return (
     <div className="result-container">
@@ -221,7 +245,11 @@ const Result = () => {
                     <QuestionReferences examId={exam.id} questionId={q.id} />
                     {displayExplanation && (
                       <div className="explanation-box">
-                        <strong>Explanation:</strong> {displayExplanation}
+                        <div className="explanation-header">
+                          <Lightbulb size={15} className="explanation-icon" aria-hidden="true" />
+                          <span className="explanation-title">Explanation</span>
+                        </div>
+                        {renderExplanation(displayExplanation)}
                       </div>
                     )}
                   </div>

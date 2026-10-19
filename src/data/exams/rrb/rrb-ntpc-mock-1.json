@@ -1,0 +1,476 @@
+{
+  "id": "rrb-ntpc-mock-1",
+  "title": "RRB NTPC & Group D Mock Test 1 (Bilingual)",
+  "badge": "RRB NTPC / Group D",
+  "category": "rrb",
+  "durationMinutes": 45,
+  "description": "Comprehensive Railway Recruitment Board practice paper covering General Awareness, Indian Railways, General Science, and basic IT.",
+  "researchNote": "Curated to follow recent RRB NTPC Stage 1 & Group D exam formats with full bilingual (English & Hindi) support.",
+  "questions": [
+    {
+      "id": "rrb-q1",
+      "question_number": 1,
+      "question_english": "In which year did the first passenger train run in India between Bombay (Bori Bunder) and Thane?",
+      "question_hindi": "भारत में पहली यात्री ट्रेन बॉम्बे (बोरी बंदर) और ठाणे के बीच किस वर्ष चलाई गई थी?",
+      "options": [
+        "1850",
+        "1853",
+        "1857",
+        "1869"
+      ],
+      "options_en": [
+        "1850",
+        "1853",
+        "1857",
+        "1869"
+      ],
+      "options_hi": [
+        "1850",
+        "1853",
+        "1857",
+        "1869"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 1,
+      "correct_option_label": "b",
+      "correct_answer_english": "1853",
+      "correct_answer_hindi": "1853",
+      "explanation_english": "India's first passenger train ran on April 16, 1853, covering a distance of 34 kilometers between Bori Bunder (Mumbai) and Thane.",
+      "explanation_hindi": "भारत की पहली यात्री ट्रेन 16 अप्रैल 1853 को बोरी बंदर (मुंबई) से ठाणे के बीच 34 किमी की दूरी पर चली थी।"
+    },
+    {
+      "id": "rrb-q2",
+      "question_number": 2,
+      "question_english": "What is the full form of 'IRCTC' in the context of Indian Railways?",
+      "question_hindi": "भारतीय रेलवे के संदर्भ में 'IRCTC' का पूर्ण रूप (Full Form) क्या है?",
+      "options": [
+        "Indian Railway Catering and Tourism Corporation",
+        "Indian Road and Catering Transport Corporation",
+        "International Railway Catering and Tourism Council",
+        "Indian Railway Communication and Telecommunication Corporation"
+      ],
+      "options_en": [
+        "Indian Railway Catering and Tourism Corporation",
+        "Indian Road and Catering Transport Corporation",
+        "International Railway Catering and Tourism Council",
+        "Indian Railway Communication and Telecommunication Corporation"
+      ],
+      "options_hi": [
+        "इंडियन रेलवे कैटरिंग एंड टूरिज्म कॉर्पोरेशन",
+        "इंडियन रोड एंड कैटरिंग ट्रांसपोर्ट कॉर्पोरेशन",
+        "इंटरनेशनल रेलवे कैटरिंग एंड टूरिज्म काउंसिल",
+        "इंडियन रेलवे कम्युनिकेशन एंड टेलीकम्यूनिकेशन कॉर्पोरेशन"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 0,
+      "correct_option_label": "a",
+      "correct_answer_english": "Indian Railway Catering and Tourism Corporation",
+      "correct_answer_hindi": "इंडियन रेलवे कैटरिंग एंड टूरिज्म कॉर्पोरेशन",
+      "explanation_english": "IRCTC stands for Indian Railway Catering and Tourism Corporation, established in 1999 to handle catering, tourism, and online ticketing for Indian Railways.",
+      "explanation_hindi": "IRCTC का पूर्ण रूप इंडियन रेलवे कैटरिंग एंड टूरिज्म कॉर्पोरेशन है, जिसकी स्थापना 1999 में की गई थी।"
+    },
+    {
+      "id": "rrb-q3",
+      "question_number": 3,
+      "question_english": "Where is the headquarters of the Northern Railway zone located?",
+      "question_hindi": "उत्तर रेलवे (Northern Railway) क्षेत्र का मुख्यालय कहाँ स्थित है?",
+      "options": [
+        "Prayagraj",
+        "New Delhi",
+        "Gorakhpur",
+        "Kolkata"
+      ],
+      "options_en": [
+        "Prayagraj",
+        "New Delhi",
+        "Gorakhpur",
+        "Kolkata"
+      ],
+      "options_hi": [
+        "प्रयागराज",
+        "नई दिल्ली",
+        "गोरखपुर",
+        "कोलकाता"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 1,
+      "correct_option_label": "b",
+      "correct_answer_english": "New Delhi",
+      "correct_answer_hindi": "नई दिल्ली",
+      "explanation_english": "The headquarters of Northern Railway is situated at Baroda House, New Delhi. Prayagraj is North Central, Gorakhpur is North Eastern.",
+      "explanation_hindi": "उत्तर रेलवे का मुख्यालय बड़ौदा हाउस, नई दिल्ली में स्थित है।"
+    },
+    {
+      "id": "rrb-q4",
+      "question_number": 4,
+      "question_english": "Which organelle is commonly known as the 'Powerhouse of the Cell'?",
+      "question_hindi": "किस कोशिकांग को आमतौर पर 'कोशिका का पावरहाउस' (ऊर्जा घर) कहा जाता है?",
+      "options": [
+        "Ribosome",
+        "Nucleus",
+        "Mitochondria",
+        "Golgi apparatus"
+      ],
+      "options_en": [
+        "Ribosome",
+        "Nucleus",
+        "Mitochondria",
+        "Golgi apparatus"
+      ],
+      "options_hi": [
+        "राइबोसोम",
+        "केन्द्रक",
+        "माइटोकॉन्ड्रिया",
+        "गॉल्जी उपकरण"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 2,
+      "correct_option_label": "c",
+      "correct_answer_english": "Mitochondria",
+      "correct_answer_hindi": "माइटोकॉन्ड्रिया",
+      "explanation_english": "Mitochondria generate most of the chemical energy needed to power the cell's biochemical reactions, stored as ATP (Adenosine Triphosphate).",
+      "explanation_hindi": "माइटोकॉन्ड्रिया सेल के भीतर एटीपी (ATP) के रूप में रासायनिक ऊर्जा का उत्पादन करते हैं, इसलिए इसे कोशिका का ऊर्जा घर कहते हैं।"
+    },
+    {
+      "id": "rrb-q5",
+      "question_number": 5,
+      "question_english": "What is the SI unit of electric current?",
+      "question_hindi": "विद्युत धारा (Electric Current) का SI मात्रक क्या है?",
+      "options": [
+        "Volt",
+        "Ampere",
+        "Ohm",
+        "Watt"
+      ],
+      "options_en": [
+        "Volt",
+        "Ampere",
+        "Ohm",
+        "Watt"
+      ],
+      "options_hi": [
+        "वोल्ट",
+        "एम्पीयर",
+        "ओम",
+        "वाट"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 1,
+      "correct_option_label": "b",
+      "correct_answer_english": "Ampere",
+      "correct_answer_hindi": "एम्पीयर",
+      "explanation_english": "The SI unit of electric current is the Ampere (A). Volt is electric potential, Ohm is resistance, and Watt is power.",
+      "explanation_hindi": "विद्युत धारा की SI इकाई एम्पीयर (A) है। वोल्ट विभव का, ओम प्रतिरोध का और वाट शक्ति का मात्रक है।"
+    },
+    {
+      "id": "rrb-q6",
+      "question_number": 6,
+      "question_english": "Which chemical compound is commonly known as 'Laughing Gas'?",
+      "question_hindi": "किस रासायनिक यौगिक को सामान्यतः 'हंसाने वाली गैस' (लाफिंग गैस) कहा जाता है?",
+      "options": [
+        "Nitrous oxide (N2O)",
+        "Nitrogen dioxide (NO2)",
+        "Carbon monoxide (CO)",
+        "Sulphur dioxide (SO2)"
+      ],
+      "options_en": [
+        "Nitrous oxide (N2O)",
+        "Nitrogen dioxide (NO2)",
+        "Carbon monoxide (CO)",
+        "Sulphur dioxide (SO2)"
+      ],
+      "options_hi": [
+        "नाइट्रस ऑक्साइड (N2O)",
+        "नाइट्रोजन डाइऑक्साइड (NO2)",
+        "कार्बन मोनोऑक्साइड (CO)",
+        "सल्फर डाइऑक्साइड (SO2)"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 0,
+      "correct_option_label": "a",
+      "correct_answer_english": "Nitrous oxide (N2O)",
+      "correct_answer_hindi": "नाइट्रस ऑक्साइड (N2O)",
+      "explanation_english": "Nitrous oxide (N2O) is known as laughing gas due to the euphoric effects of inhaling it.",
+      "explanation_hindi": "नाइट्रस ऑक्साइड (N2O) को लाफिंग गैस कहा जाता है क्योंकि इसे सूंघने पर उत्तेजना और हंसी आती है।"
+    },
+    {
+      "id": "rrb-q7",
+      "question_number": 7,
+      "question_english": "Who is known as the Chief Architect and Father of the Indian Constitution?",
+      "question_hindi": "भारतीय संविधान के मुख्य वास्तुकार और जनक के रूप में किसे जाना जाता है?",
+      "options": [
+        "Dr. Rajendra Prasad",
+        "Mahatma Gandhi",
+        "Dr. B. R. Ambedkar",
+        "Jawaharlal Nehru"
+      ],
+      "options_en": [
+        "Dr. Rajendra Prasad",
+        "Mahatma Gandhi",
+        "Dr. B. R. Ambedkar",
+        "Jawaharlal Nehru"
+      ],
+      "options_hi": [
+        "डॉ. राजेंद्र प्रसाद",
+        "महात्मा गांधी",
+        "डॉ. बी. आर. अम्बेडकर",
+        "जवाहरलाल नेहरू"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 2,
+      "correct_option_label": "c",
+      "correct_answer_english": "Dr. B. R. Ambedkar",
+      "correct_answer_hindi": "डॉ. बी. आर. अम्बेडकर",
+      "explanation_english": "Dr. Bhimrao Ramji Ambedkar was the Chairman of the Drafting Committee of the Constituent Assembly.",
+      "explanation_hindi": "डॉ. भीमराव रामजी अम्बेडकर संविधान सभा की प्रारूप समिति (Drafting Committee) के अध्यक्ष थे।"
+    },
+    {
+      "id": "rrb-q8",
+      "question_number": 8,
+      "question_english": "A train 180 meters long is running at a speed of 54 km/h. How much time will it take to pass an electric pole?",
+      "question_hindi": "180 मीटर लंबी एक रेलगाड़ी 54 किमी/घंटा की गति से चल रही है। वह एक बिजली के खंभे को पार करने में कितना समय लेगी?",
+      "options": [
+        "10 seconds",
+        "12 seconds",
+        "15 seconds",
+        "18 seconds"
+      ],
+      "options_en": [
+        "10 seconds",
+        "12 seconds",
+        "15 seconds",
+        "18 seconds"
+      ],
+      "options_hi": [
+        "10 सेकंड",
+        "12 सेकंड",
+        "15 सेकंड",
+        "18 सेकंड"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 1,
+      "correct_option_label": "b",
+      "correct_answer_english": "12 seconds",
+      "correct_answer_hindi": "12 सेकंड",
+      "explanation_english": "Speed = 54 * (5/18) = 15 m/s. Distance to cross pole = 180 m. Time = Distance / Speed = 180 / 15 = 12 seconds.",
+      "explanation_hindi": "चाल = 54 * (5/18) = 15 मीटर/सेकंड। दूरी = 180 मीटर। समय = दूरी / चाल = 180 / 15 = 12 सेकंड।"
+    },
+    {
+      "id": "rrb-q9",
+      "question_number": 9,
+      "question_english": "What does CRIS stand for in Indian Railways information technology operations?",
+      "question_hindi": "भारतीय रेलवे सूचना प्रौद्योगिकी संचालन में CRIS का पूर्ण रूप क्या है?",
+      "options": [
+        "Centre for Railway Information Systems",
+        "Central Railway Information Service",
+        "Computer Railway Interconnected System",
+        "Council of Railway Integrated Software"
+      ],
+      "options_en": [
+        "Centre for Railway Information Systems",
+        "Central Railway Information Service",
+        "Computer Railway Interconnected System",
+        "Council of Railway Integrated Software"
+      ],
+      "options_hi": [
+        "सेंटर फॉर रेलवे इंफॉर्मेशन सिस्टम्स",
+        "सेंट्रल रेलवे इंफॉर्मेशन सर्विस",
+        "कंप्यूटर रेलवे इंटरकनेक्टेड सिस्टम",
+        "काउंसिल ऑफ रेलवे इंटीग्रेटेड सॉफ्टवेयर"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 0,
+      "correct_option_label": "a",
+      "correct_answer_english": "Centre for Railway Information Systems",
+      "correct_answer_hindi": "सेंटर फॉर रेलवे इंफॉर्मेशन सिस्टम्स",
+      "explanation_english": "CRIS (Centre for Railway Information Systems) designs, develops, implements and maintains the core IT applications of Indian Railways including passenger reservation, freight operating and tracking systems.",
+      "explanation_hindi": "CRIS (Centre for Railway Information Systems) भारतीय रेलवे की मुख्य IT प्रणालियों और सॉफ्टवेयर का विकास व रखरखाव करता है।"
+    },
+    {
+      "id": "rrb-q10",
+      "question_number": 10,
+      "question_english": "Which is the highest civilian award of the Republic of India?",
+      "question_hindi": "भारत गणराज्य का सर्वोच्च नागरिक पुरस्कार कौन सा है?",
+      "options": [
+        "Padma Vibhushan",
+        "Param Vir Chakra",
+        "Bharat Ratna",
+        "Padma Bhushan"
+      ],
+      "options_en": [
+        "Padma Vibhushan",
+        "Param Vir Chakra",
+        "Bharat Ratna",
+        "Padma Bhushan"
+      ],
+      "options_hi": [
+        "पद्म विभूषण",
+        "परमवीर चक्र",
+        "भारत रत्न",
+        "पद्म भूषण"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 2,
+      "correct_option_label": "c",
+      "correct_answer_english": "Bharat Ratna",
+      "correct_answer_hindi": "भारत रत्न",
+      "explanation_english": "The Bharat Ratna is India's highest civilian award, instituted in 1954 for exceptional service towards advancement of art, literature, science and public service.",
+      "explanation_hindi": "भारत रत्न भारत का सर्वोच्च नागरिक सम्मान है, जिसे 1954 में शुरू किया गया था।"
+    },
+    {
+      "id": "rrb-q11",
+      "question_number": 11,
+      "question_english": "Which blood group is known as the 'Universal Donor'?",
+      "question_hindi": "किस रक्त समूह को 'सर्वदाता' (Universal Donor) कहा जाता है?",
+      "options": [
+        "AB positive (AB+)",
+        "O negative (O-)",
+        "A positive (A+)",
+        "B negative (B-)"
+      ],
+      "options_en": [
+        "AB positive (AB+)",
+        "O negative (O-)",
+        "A positive (A+)",
+        "B negative (B-)"
+      ],
+      "options_hi": [
+        "AB पॉजिटिव (AB+)",
+        "O नेगेटिव (O-)",
+        "A पॉजिटिव (A+)",
+        "B नेगेटिव (B-)"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 1,
+      "correct_option_label": "b",
+      "correct_answer_english": "O negative (O-)",
+      "correct_answer_hindi": "O नेगेटिव (O-)",
+      "explanation_english": "O-negative blood lacks A, B, and Rh antigens, making it safe for transfusion to virtually any recipient in an emergency.",
+      "explanation_hindi": "O- नेगेटिव रक्त समूह में कोई एंटीजन नहीं होने के कारण इसे किसी भी व्यक्ति को दिया जा सकता है।"
+    },
+    {
+      "id": "rrb-q12",
+      "question_number": 12,
+      "question_english": "What is the speed of light in vacuum?",
+      "question_hindi": "निर्वात (Vacuum) में प्रकाश की गति कितनी होती है?",
+      "options": [
+        "3 × 10^8 m/s",
+        "3 × 10^6 m/s",
+        "3 × 10^10 m/s",
+        "330 m/s"
+      ],
+      "options_en": [
+        "3 × 10^8 m/s",
+        "3 × 10^6 m/s",
+        "3 × 10^10 m/s",
+        "330 m/s"
+      ],
+      "options_hi": [
+        "3 × 10^8 m/s",
+        "3 × 10^6 m/s",
+        "3 × 10^10 m/s",
+        "330 m/s"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 0,
+      "correct_option_label": "a",
+      "correct_answer_english": "3 × 10^8 m/s",
+      "correct_answer_hindi": "3 × 10^8 m/s",
+      "explanation_english": "The speed of light in vacuum is approximately 300,000 km/s or 3 × 10^8 meters per second.",
+      "explanation_hindi": "निर्वात में प्रकाश की चाल लगभग 3 × 10^8 मीटर प्रति सेकंड (3 लाख किमी/सेकंड) होती है।"
+    },
+    {
+      "id": "rrb-q13",
+      "question_number": 13,
+      "question_english": "Find the next number in the sequence: 4, 9, 16, 25, 36, ?",
+      "question_hindi": "दी गई संख्या श्रृंखला में अगला पद ज्ञात कीजिए: 4, 9, 16, 25, 36, ?",
+      "options": [
+        "47",
+        "49",
+        "50",
+        "64"
+      ],
+      "options_en": [
+        "47",
+        "49",
+        "50",
+        "64"
+      ],
+      "options_hi": [
+        "47",
+        "49",
+        "50",
+        "64"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 1,
+      "correct_option_label": "b",
+      "correct_answer_english": "49",
+      "correct_answer_hindi": "49",
+      "explanation_english": "The numbers are consecutive squares: 2^2=4, 3^2=9, 4^2=16, 5^2=25, 6^2=36, so the next term is 7^2 = 49.",
+      "explanation_hindi": "यह क्रमिक संख्याओं के वर्ग हैं: 2^2=4, 3^2=9, 4^2=16, 5^2=25, 6^2=36, अतः अगला पद 7^2 = 49 होगा।"
+    },
+    {
+      "id": "rrb-q14",
+      "question_number": 14,
+      "question_english": "Where is the National Rail Museum of India situated?",
+      "question_hindi": "भारत का राष्ट्रीय रेल संग्रहालय (National Rail Museum) कहाँ स्थित है?",
+      "options": [
+        "Mumbai",
+        "Chanakyapuri, New Delhi",
+        "Chennai",
+        "Varanasi"
+      ],
+      "options_en": [
+        "Mumbai",
+        "Chanakyapuri, New Delhi",
+        "Chennai",
+        "Varanasi"
+      ],
+      "options_hi": [
+        "मुंबई",
+        "चाणक्यपुरी, नई दिल्ली",
+        "चेन्नई",
+        "वाराणसी"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 1,
+      "correct_option_label": "b",
+      "correct_answer_english": "Chanakyapuri, New Delhi",
+      "correct_answer_hindi": "चाणक्यपुरी, नई दिल्ली",
+      "explanation_english": "The National Rail Museum opened in 1977 and is located in Chanakyapuri, New Delhi. It houses historic locomotives including Fairy Queen.",
+      "explanation_hindi": "राष्ट्रीय रेल संग्रहालय 1977 में खोला गया था और यह चाणक्यपुरी, नई दिल्ली में स्थित है।"
+    },
+    {
+      "id": "rrb-q15",
+      "question_number": 15,
+      "question_english": "Which computer network topology connects every computer directly to a central hub or switch?",
+      "question_hindi": "कौन सी कंप्यूटर नेटवर्क टोपोलॉजी प्रत्येक कंप्यूटर को सीधे एक केंद्रीय हब या स्विच से जोड़ती है?",
+      "options": [
+        "Bus Topology",
+        "Ring Topology",
+        "Star Topology",
+        "Mesh Topology"
+      ],
+      "options_en": [
+        "Bus Topology",
+        "Ring Topology",
+        "Star Topology",
+        "Mesh Topology"
+      ],
+      "options_hi": [
+        "बस टोपोलॉजी",
+        "रिंग टोपोलॉजी",
+        "स्टार टोपोलॉजी",
+        "मेश टोपोलॉजी"
+      ],
+      "option_labels": ["a", "b", "c", "d"],
+      "correctAnswer": 2,
+      "correct_option_label": "c",
+      "correct_answer_english": "Star Topology",
+      "correct_answer_hindi": "स्टार टोपोलॉजी",
+      "explanation_english": "In Star Topology, all node devices are individually connected to a central connection point such as a switch or hub.",
+      "explanation_hindi": "स्टार टोपोलॉजी में सभी नेटवर्क नोड्स एक केंद्रीय स्विच या हब से जुड़े होते हैं।"
+    }
+  ]
+}

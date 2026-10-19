@@ -1,0 +1,37 @@
+{
+  "id": "up-police-comp-op-1",
+  "title": "UP Police Computer Operator Mock Test 1",
+  "durationMinutes": 60,
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Which of the following is considered the brain of the computer?",
+      "options": ["ALU", "Memory", "CPU", "Control Unit"],
+      "correctAnswer": 2
+    },
+    {
+      "id": "q2",
+      "text": "What does RAM stand for?",
+      "options": ["Read Access Memory", "Random Access Memory", "Run Accept Memory", "Real Action Memory"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q3",
+      "text": "In a relational database, what is a primary key?",
+      "options": ["A key that allows multiple null values", "A unique identifier for each record in a table", "The main table in a database", "A key used to encrypt the database"],
+      "correctAnswer": 1
+    },
+    {
+      "id": "q4",
+      "text": "Which protocol is used for secure communication over the internet?",
+      "options": ["HTTP", "FTP", "SMTP", "HTTPS"],
+      "correctAnswer": 3
+    },
+    {
+      "id": "q5",
+      "text": "Which of these is not an operating system?",
+      "options": ["Linux", "Windows", "Oracle", "macOS"],
+      "correctAnswer": 2
+    }
+  ]
+}

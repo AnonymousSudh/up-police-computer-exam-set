@@ -96,3 +96,77 @@ test('validates and normalizes bilingual exams with question_number, object opti
   assert.equal(revalidated.questions[1].correctAnswer, 2);
 });
 
+test('shows N/A when English or Hindi version is not available in bilingual questions', async () => {
+  const { getQuestionText, getQuestionOptions } = await import('../src/lib/exam.js');
+  const input = {
+    title: 'Partial Translation Exam',
+    questions: [
+      {
+        question_number: 1,
+        question_hindi: 'भारत की राजधानी क्या है?',
+        options: [
+          { option_label: 'a', option_text_hindi: 'नई दिल्ली' },
+          { option_label: 'b', option_text_hindi: 'मुंबई' }
+        ],
+        correct_option_label: 'a'
+      },
+      {
+        question_number: 2,
+        question_english: 'What is the capital of France?',
+        options: [
+          { option_label: 'a', option_text_english: 'Paris' },
+          { option_label: 'b', option_text_english: 'Rome' }
+        ],
+        correct_option_label: 'a'
+      }
+    ]
+  };
+
+  const parsed = validateExam(input);
+  // Question 1: English not available -> shows N/A
+  assert.equal(getQuestionText(parsed.questions[0], 'hi'), 'भारत की राजधानी क्या है?');
+  assert.equal(getQuestionText(parsed.questions[0], 'en'), 'N/A');
+  assert.equal(getQuestionOptions(parsed.questions[0], 'hi')[0], 'नई दिल्ली');
+  assert.equal(getQuestionOptions(parsed.questions[0], 'en')[0], 'N/A');
+
+  // Question 2: Hindi not available -> shows N/A
+  assert.equal(getQuestionText(parsed.questions[1], 'en'), 'What is the capital of France?');
+  assert.equal(getQuestionText(parsed.questions[1], 'hi'), 'N/A');
+  assert.equal(getQuestionOptions(parsed.questions[1], 'en')[0], 'Paris');
+  assert.equal(getQuestionOptions(parsed.questions[1], 'hi')[0], 'N/A');
+});
+
+test('parses and splits explanations into structured next-line steps with indentation', async () => {
+  const { parseExplanationLines } = await import('../src/lib/exam.js');
+
+  // Case 1: Text with explicit newlines
+  const withNewlines = "• Step 1\n• Step 2\n• Step 3";
+  assert.deepEqual(parseExplanationLines(withNewlines), ["• Step 1", "• Step 2", "• Step 3"]);
+
+  // Case 2: Hindi single-line calculation with danda (।)
+  const hindiSingleLine = "कुल दूरी = (2 * 60) + 80 = 120 + 80 = 200 किमी। कुल समय = 2 + (80 / 40) = 2 + 2 = 4 घंटे। औसत चाल = 200 / 4 = 50 किमी/घंटा।";
+  const parsedHindi = parseExplanationLines(hindiSingleLine);
+  assert.equal(parsedHindi.length, 3);
+  assert.equal(parsedHindi[0], "कुल दूरी = (2 * 60) + 80 = 120 + 80 = 200 किमी।");
+  assert.equal(parsedHindi[1], "कुल समय = 2 + (80 / 40) = 2 + 2 = 4 घंटे।");
+  assert.equal(parsedHindi[2], "औसत चाल = 200 / 4 = 50 किमी/घंटा।");
+
+  // Case 3: English single-line calculation with formulas
+  const englishSingleLine = "Total distance = (2 * 60) + 80 = 120 + 80 = 200 km. Total time = 2 + (80 / 40) = 2 + 2 = 4 hours. Average speed = 200 / 4 = 50 km/h.";
+  const parsedEnglish = parseExplanationLines(englishSingleLine);
+  assert.equal(parsedEnglish.length, 3);
+  assert.equal(parsedEnglish[0], "Total distance = (2 * 60) + 80 = 120 + 80 = 200 km.");
+  assert.equal(parsedEnglish[1], "Total time = 2 + (80 / 40) = 2 + 2 = 4 hours.");
+  assert.equal(parsedEnglish[2], "Average speed = 200 / 4 = 50 km/h.");
+
+  // Case 4: Non-math text should not accidentally split abbreviations like Dr. B. R. Ambedkar
+  const normalText = "Dr. B. R. Ambedkar was the Chairman of the Drafting Committee.";
+  assert.deepEqual(parseExplanationLines(normalText), ["Dr. B. R. Ambedkar was the Chairman of the Drafting Committee."]);
+
+  // Case 5: Empty and N/A handling
+  assert.deepEqual(parseExplanationLines(""), []);
+  assert.deepEqual(parseExplanationLines("N/A"), ["N/A"]);
+});
+
+
+

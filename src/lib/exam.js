@@ -1,29 +1,102 @@
 export function isBilingualQuestion(q) {
-  return Boolean(q && (q.text_hi || (Array.isArray(q.options_hi) && q.options_hi.some(Boolean))));
+  if (!q) return false;
+  return Boolean(
+    q.text_hi ||
+    q.question_hindi ||
+    q.text_en ||
+    q.question_english ||
+    (Array.isArray(q.options_hi) && q.options_hi.some(Boolean)) ||
+    (Array.isArray(q.options_en) && q.options_en.some(Boolean))
+  );
 }
 
 export function getQuestionText(q, lang = 'en') {
   if (!q) return '';
-  if (lang === 'hi' && q.text_hi) return q.text_hi;
-  return q.text_en || q.text || q.text_hi || '';
+  const isBilingual = isBilingualQuestion(q);
+  if (lang === 'hi') {
+    if (q.text_hi && q.text_hi.trim()) return q.text_hi;
+    return isBilingual ? 'N/A' : (q.text || 'N/A');
+  }
+  if (lang === 'en') {
+    if (q.text_en && q.text_en.trim()) return q.text_en;
+    if (q.text && !isBilingual) return q.text;
+    return isBilingual ? 'N/A' : (q.text || 'N/A');
+  }
+  return q.text_en || q.text || q.text_hi || 'N/A';
 }
 
 export function getQuestionOptions(q, lang = 'en') {
   if (!q || !Array.isArray(q.options)) return [];
+  const isBilingual = isBilingualQuestion(q);
   if (lang === 'hi' && Array.isArray(q.options_hi) && q.options_hi.length === q.options.length) {
-    return q.options_hi;
+    return q.options_hi.map((opt, i) => (opt && String(opt).trim()) ? opt : (isBilingual ? 'N/A' : (q.options[i] || 'N/A')));
   }
   if (lang === 'en' && Array.isArray(q.options_en) && q.options_en.length === q.options.length) {
-    return q.options_en;
+    return q.options_en.map((opt, i) => (opt && String(opt).trim()) ? opt : (isBilingual ? 'N/A' : (q.options[i] || 'N/A')));
   }
   return q.options;
 }
 
 export function getQuestionExplanation(q, lang = 'en') {
   if (!q) return '';
-  if (lang === 'hi' && q.explanation_hi) return q.explanation_hi;
-  if (lang === 'en' && q.explanation_en) return q.explanation_en;
+  const isBilingual = isBilingualQuestion(q);
+  if (lang === 'hi') {
+    if (q.explanation_hi && String(q.explanation_hi).trim()) return q.explanation_hi;
+    return (isBilingual && q.explanation_en) ? 'N/A' : (q.explanation || q.explanation_hi || '');
+  }
+  if (lang === 'en') {
+    if (q.explanation_en && String(q.explanation_en).trim()) return q.explanation_en;
+    return (isBilingual && q.explanation_hi) ? 'N/A' : (q.explanation || q.explanation_en || '');
+  }
   return q.explanation || q.explanation_hi || '';
+}
+
+export function parseExplanationLines(text) {
+  if (!text || typeof text !== 'string') return [];
+  const trimmed = text.trim();
+  if (!trimmed || trimmed === 'N/A') return [trimmed];
+
+  // 1. If text explicitly has newlines, split on newlines
+  if (trimmed.includes('\n')) {
+    return trimmed
+      .split('\n')
+      .map(line => line.trim())
+      .filter(Boolean);
+  }
+
+  // 2. If numbered list in a single line e.g. "1. First step 2. Second step"
+  if (/\b1\.\s+.*\b2\.\s+/.test(trimmed)) {
+    return trimmed
+      .split(/(?=\b\d+\.\s+)/)
+      .map(line => line.trim())
+      .filter(Boolean);
+  }
+
+  // 3. If Hindi text with danda (।) followed by text (e.g. "किमी। कुल समय = ...")
+  if (/।\s+[^\s]/.test(trimmed)) {
+    const parts = trimmed.split(/।\s+/);
+    return parts
+      .map((part, idx) => {
+        const clean = part.trim();
+        if (!clean) return '';
+        return (idx === parts.length - 1 && !trimmed.endsWith('।')) ? clean : (clean.endsWith('।') ? clean : clean + '।');
+      })
+      .filter(Boolean);
+  }
+
+  // 4. If English text with formulas/calculations containing multiple sentences
+  if (/[=+\-*/]/.test(trimmed) && /\.\s+[A-Z0-9]/.test(trimmed)) {
+    const parts = trimmed.split(/\.\s+(?=[A-Z0-9])/);
+    return parts
+      .map((part, idx) => {
+        const clean = part.trim();
+        if (!clean) return '';
+        return (idx === parts.length - 1 && !trimmed.endsWith('.')) ? clean : (clean.endsWith('.') ? clean : clean + '.');
+      })
+      .filter(Boolean);
+  }
+
+  return [trimmed];
 }
 
 export function validateExam(data) {
@@ -93,10 +166,10 @@ export function validateExam(data) {
         throw new Error(`${label} option ${optIdx + 1} must be text or an option object.`);
       }
 
-      const effectiveOpt = optEn || optHi;
+      const effectiveOpt = (optEn && optEn !== 'N/A') ? optEn : ((optHi && optHi !== 'N/A') ? optHi : (optEn || optHi));
       options.push(effectiveOpt);
-      options_en.push(optEn || effectiveOpt);
-      options_hi.push(optHi || effectiveOpt);
+      options_en.push(optEn || (hasObjectOptions ? 'N/A' : effectiveOpt));
+      options_hi.push(optHi || (hasObjectOptions ? 'N/A' : effectiveOpt));
       option_labels.push(optLabel);
     }
 
@@ -152,7 +225,7 @@ export function validateExam(data) {
     }
     ids.add(id);
 
-    const isBilingual = Boolean(text_hi || options_hi.some(h => h && h !== options_en[options_hi.indexOf(h)]) || explanation_hi || hasObjectOptions);
+    const isBilingual = Boolean(text_hi || options_hi.some(h => h && h !== options_en[options_hi.indexOf(h)]) || explanation_hi || hasObjectOptions || q.question_hindi || q.question_english);
 
     const questionItem = {
       id,
@@ -163,8 +236,8 @@ export function validateExam(data) {
     };
 
     if (isBilingual) {
-      if (text_en) questionItem.text_en = text_en;
-      if (text_hi) questionItem.text_hi = text_hi;
+      questionItem.text_en = text_en || 'N/A';
+      questionItem.text_hi = text_hi || 'N/A';
       questionItem.options_en = options_en;
       questionItem.options_hi = options_hi;
       questionItem.option_labels = option_labels;
@@ -176,7 +249,12 @@ export function validateExam(data) {
     return questionItem;
   });
 
-  return { id: String(data.id ?? `custom-${crypto.randomUUID()}`), title, durationMinutes, questions };
+  const result = { id: String(data.id ?? `custom-${crypto.randomUUID()}`), title, durationMinutes, questions };
+  if (data.badge) result.badge = String(data.badge).trim();
+  if (data.description) result.description = String(data.description).trim();
+  if (data.category) result.category = String(data.category).trim();
+  if (data.researchNote) result.researchNote = String(data.researchNote).trim();
+  return result;
 }
 
 export function readStorage(key, fallback, storage) {

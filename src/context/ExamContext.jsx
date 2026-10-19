@@ -1,6 +1,12 @@
-import { createContext, useContext, useState, useCallback } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect } from 'react';
 import { mergeExamLibrary } from '../data/exam-library';
 import { readStorage, writeStorage, sessionStore, validateExam, gradeExam } from '../lib/exam';
+import {
+  saveExamToFirebase,
+  fetchExamsFromFirebase,
+  deleteExamFromFirebase,
+  isFirebaseConfigured
+} from '../lib/firebase';
 
 const ExamContext = createContext();
 
@@ -9,6 +15,7 @@ export const ExamProvider = ({ children }) => {
   const [exams, setExams] = useState(() => {
     return mergeExamLibrary(readStorage('up-police-exams', []));
   });
+
   const [currentExamResult, setCurrentExamResult] = useState(() => {
     const saved = readStorage('up-police-result', null, sessionStore);
     try {
@@ -16,19 +23,100 @@ export const ExamProvider = ({ children }) => {
       return gradeExam(validateExam(saved.exam), saved.answers);
     } catch { return null; }
   });
-  const addExam = (data) => {
+
+  // Fetch remote exams from Firebase on mount or config change
+  const refreshExams = useCallback(async () => {
+    if (!isFirebaseConfigured()) return;
+    try {
+      const remoteExams = await fetchExamsFromFirebase();
+      if (remoteExams && remoteExams.length > 0) {
+        const localCustom = readStorage('up-police-exams', []);
+        setExams(mergeExamLibrary([...localCustom, ...remoteExams]));
+      }
+    } catch (err) {
+      console.warn('Could not fetch exams from Firebase:', err.message);
+    }
+  }, []);
+
+  useEffect(() => {
+    let isMounted = true;
+    if (!isFirebaseConfigured()) return;
+
+    fetchExamsFromFirebase()
+      .then(remoteExams => {
+        if (!isMounted || !remoteExams || remoteExams.length === 0) return;
+        const localCustom = readStorage('up-police-exams', []);
+        setExams(mergeExamLibrary([...localCustom, ...remoteExams]));
+      })
+      .catch(err => {
+        console.warn('Could not fetch exams from Firebase:', err.message);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const addExam = async (data) => {
     const exam = validateExam(data);
-    if (exams.some(item => item.id === exam.id)) throw new Error('This exam ID already exists. Use a different ID.');
+    if (exams.some(item => item.id === exam.id)) {
+      throw new Error('This exam ID already exists. Use a different ID.');
+    }
+
+    // If Firebase is available, save to Firestore & Storage
+    if (isFirebaseConfigured()) {
+      try {
+        await saveExamToFirebase(exam);
+      } catch (fbErr) {
+        console.warn('Firebase save notice (falling back to local cache):', fbErr.message);
+      }
+    }
+
     const next = [...exams, exam];
-    if (!writeStorage('up-police-exams', next)) throw new Error('Cannot save this exam. Browser storage may be full or disabled.');
+    writeStorage('up-police-exams', next);
     setExams(next);
+    return exam;
   };
+
+  const deleteExam = async (examId) => {
+    if (isFirebaseConfigured()) {
+      try {
+        await deleteExamFromFirebase(examId);
+      } catch (fbErr) {
+        console.warn('Firebase delete notice:', fbErr.message);
+      }
+    }
+
+    const filtered = exams.filter(ex => ex.id !== examId);
+    writeStorage('up-police-exams', filtered);
+    setExams(filtered);
+  };
+
   const getExamById = useCallback(id => exams.find(exam => exam.id === id), [exams]);
+
   const saveExamResult = useCallback(result => {
     setCurrentExamResult(result);
-    if (!writeStorage('up-police-result', result, sessionStore)) setStorageWarning('Browser storage is unavailable. Keep this page open to retain your result.');
+    if (!writeStorage('up-police-result', result, sessionStore)) {
+      setStorageWarning('Browser storage is unavailable. Keep this page open to retain your result.');
+    }
   }, []);
-  return <ExamContext.Provider value={{ exams, addExam, getExamById, currentExamResult, saveExamResult, storageWarning }}>{children}</ExamContext.Provider>;
+
+  return (
+    <ExamContext.Provider
+      value={{
+        exams,
+        addExam,
+        deleteExam,
+        refreshExams,
+        getExamById,
+        currentExamResult,
+        saveExamResult,
+        storageWarning
+      }}
+    >
+      {children}
+    </ExamContext.Provider>
+  );
 };
 
 // Context hooks are intentionally exported alongside their provider.
