@@ -136,7 +136,7 @@
 .json-textarea:focus {
   outline: none;
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px var(--accent-light);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
 }
 
 .import-footer {
@@ -208,7 +208,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: var(--accent-light);
+  background: var(--accent-bg);
   color: #a5b4fc;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -269,7 +269,7 @@
 }
 
 .option-item.selected {
-  background: var(--accent-light);
+  background: var(--accent-bg);
   border-color: var(--accent-primary);
 }
 
@@ -765,7 +765,7 @@
 }
 
 .active-filter {
-  background: var(--accent-light);
+  background: var(--accent-bg);
   border-color: var(--accent-primary);
   box-shadow: 0 0 12px rgba(16, 185, 129, 0.3);
 }
@@ -851,7 +851,7 @@ button svg, .review-opt svg, .alert svg, .logo-icon { flex-shrink: 0; }
 
 .score-circle::after { background: #1e293b; }
 
-.exam-badge { display: inline-block; margin-bottom: .75rem; padding: .25rem .6rem; border: 1px solid rgba(165,180,252,.35); border-radius: 999px; color: #c7d2fe; background: var(--accent-light); font-size: .75rem; font-weight: 600; }
+.exam-badge { display: inline-block; margin-bottom: .75rem; padding: .25rem .6rem; border: 1px solid rgba(165,180,252,.35); border-radius: 999px; color: #c7d2fe; background: var(--accent-bg); font-size: .75rem; font-weight: 600; }
 .exam-description { margin-top: .75rem; color: var(--text-secondary); font-size: .9rem; line-height: 1.6; }
 .exam-card-footer { margin-top: auto; }
 .exam-card-footer button { width: 100%; }
@@ -1608,7 +1608,7 @@ summary:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 4px; border-
 
 .search-input:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px var(--accent-light);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.25);
 }
 
 .clear-search-btn {

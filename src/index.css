@@ -11,7 +11,8 @@
   
   --accent-primary: #10b981;
   --accent-hover: #059669;
-  --accent-light: rgba(16, 185, 129, 0.12);
+  --accent-light: #34d399;
+  --accent-bg: rgba(16, 185, 129, 0.12);
   
   --success: #10b981;
   --success-bg: rgba(16, 185, 129, 0.1);
@@ -171,7 +172,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .import-link {
-  background: var(--accent-light);
+  background: var(--accent-bg);
   color: var(--accent-primary);
   padding: 0.5rem 1rem;
   border-radius: var(--radius-sm);
