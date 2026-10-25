@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useExam } from '../context/ExamContext';
-import { gradeExam, readStorage, writeStorage, sessionStore, isBilingualQuestion, getQuestionText, getQuestionOptions } from '../lib/exam';
-import { Timer, ArrowLeft, ArrowRight, Flag, CheckCircle, Languages } from 'lucide-react';
+import { gradeExam, readStorage, writeStorage, sessionStore, isBilingualQuestion, getQuestionText, getQuestionOptions, formatTimer } from '../lib/exam';
+import { Timer, Clock, ArrowLeft, ArrowRight, Flag, CheckCircle, Languages } from 'lucide-react';
 
 const ExamSimulator = () => {
   const { id } = useParams();
@@ -13,8 +13,12 @@ const ExamSimulator = () => {
   const storageKey = `up-police-attempt-${id}`;
   const [initial] = useState(() => {
     const saved = readStorage(storageKey, null, sessionStore);
-    if (exam && saved?.examSignature === JSON.stringify(exam) && Number.isFinite(saved.deadline) && saved.answers && typeof saved.answers === 'object' && !Array.isArray(saved.answers) && Object.entries(saved.answers).every(([questionId, answer]) => exam.questions.some(q => q.id === questionId && Number.isInteger(answer) && answer >= 0 && answer < q.options.length)) && saved.markedForReview && typeof saved.markedForReview === 'object' && Number.isInteger(saved.currentQuestionIdx) && saved.currentQuestionIdx >= 0 && saved.currentQuestionIdx < exam.questions.length) return saved;
-    return { answers: {}, markedForReview: {}, currentQuestionIdx: 0, deadline: Date.now() + (exam?.durationMinutes ?? 60) * 60000 };
+    if (exam && saved?.examSignature === JSON.stringify(exam) && Number.isFinite(saved.deadline) && saved.answers && typeof saved.answers === 'object' && !Array.isArray(saved.answers) && Object.entries(saved.answers).every(([questionId, answer]) => exam.questions.some(q => q.id === questionId && Number.isInteger(answer) && answer >= 0 && answer < q.options.length)) && saved.markedForReview && typeof saved.markedForReview === 'object' && Number.isInteger(saved.currentQuestionIdx) && saved.currentQuestionIdx >= 0 && saved.currentQuestionIdx < exam.questions.length) {
+      const questionTimes = (saved.questionTimes && typeof saved.questionTimes === 'object' && !Array.isArray(saved.questionTimes)) ? saved.questionTimes : {};
+      const totalTimeSpent = Number.isFinite(saved.totalTimeSpent) && saved.totalTimeSpent >= 0 ? saved.totalTimeSpent : 0;
+      return { ...saved, questionTimes, totalTimeSpent };
+    }
+    return { answers: {}, markedForReview: {}, currentQuestionIdx: 0, deadline: Date.now() + (exam?.durationMinutes ?? 60) * 60000, questionTimes: {}, totalTimeSpent: 0 };
   });
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(initial.currentQuestionIdx);
   const [answers, setAnswers] = useState(initial.answers);
@@ -27,14 +31,40 @@ const ExamSimulator = () => {
   const [storageFailed, setStorageFailed] = useState(false);
   const [globalLang, setGlobalLang] = useState('en');
   const [questionLangs, setQuestionLangs] = useState({});
+  const [questionTimes, setQuestionTimes] = useState(initial.questionTimes || {});
+  const [totalTimeSpent, setTotalTimeSpent] = useState(initial.totalTimeSpent || 0);
+
+  const questionTimesRef = useRef(initial.questionTimes || {});
+  const totalTimeSpentRef = useRef(initial.totalTimeSpent || 0);
+  const currentQuestionIdxRef = useRef(initial.currentQuestionIdx);
+  const lastTickRef = useRef(0);
   const submitted = useRef(false);
   const questionArea = useRef(null);
+
+  useEffect(() => {
+    currentQuestionIdxRef.current = currentQuestionIdx;
+  }, [currentQuestionIdx]);
 
   const handleSubmit = useCallback((automatic = false) => {
     if (!exam || submitted.current) return;
     if (!automatic && !window.confirm(`Submit this exam? ${exam.questions.length - Object.keys(answers).length} question(s) are unanswered.`)) return;
     submitted.current = true;
-    saveExamResult(gradeExam(exam, answers));
+
+    // Flush any pending seconds on current question
+    const now = Date.now();
+    const elapsed = lastTickRef.current ? Math.max(0, Math.round((now - lastTickRef.current) / 1000)) : 0;
+    if (elapsed > 0) {
+      totalTimeSpentRef.current += elapsed;
+      const currentQ = exam.questions[currentQuestionIdxRef.current];
+      if (currentQ?.id) {
+        questionTimesRef.current = {
+          ...questionTimesRef.current,
+          [currentQ.id]: (questionTimesRef.current[currentQ.id] || 0) + elapsed
+        };
+      }
+    }
+
+    saveExamResult(gradeExam(exam, answers, questionTimesRef.current, totalTimeSpentRef.current));
     try { sessionStore.removeItem(storageKey); } catch { /* Storage may be disabled. */ }
     navigate('/result', { replace: true });
   }, [exam, answers, saveExamResult, storageKey, navigate]);
@@ -44,22 +74,52 @@ const ExamSimulator = () => {
   }, [exam, navigate]);
 
   useEffect(() => {
+    lastTickRef.current = Date.now();
     const tick = () => {
-      const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+      const now = Date.now();
+      const remaining = Math.max(0, Math.ceil((deadline - now) / 1000));
       setTimeLeft(remaining);
+
+      const elapsed = Math.max(0, Math.round((now - lastTickRef.current) / 1000));
+      if (elapsed > 0) {
+        lastTickRef.current = now;
+        totalTimeSpentRef.current += elapsed;
+        const currentQ = exam?.questions?.[currentQuestionIdxRef.current];
+        if (currentQ?.id) {
+          questionTimesRef.current = {
+            ...questionTimesRef.current,
+            [currentQ.id]: (questionTimesRef.current[currentQ.id] || 0) + elapsed
+          };
+        }
+        setTotalTimeSpent(totalTimeSpentRef.current);
+        setQuestionTimes({ ...questionTimesRef.current });
+      }
+
       if (remaining === 0) handleSubmit(true);
     };
     tick();
     const timerId = setInterval(tick, 1000);
     document.addEventListener('visibilitychange', tick);
     return () => { clearInterval(timerId); document.removeEventListener('visibilitychange', tick); };
-  }, [deadline, handleSubmit]);
+  }, [deadline, exam, handleSubmit]);
 
   useEffect(() => {
     if (!exam || submitted.current) return;
-    const saved = writeStorage(storageKey, { examSignature: JSON.stringify(exam), answers, markedForReview, currentQuestionIdx, deadline }, sessionStore);
+    const saved = writeStorage(
+      storageKey,
+      {
+        examSignature: JSON.stringify(exam),
+        answers,
+        markedForReview,
+        currentQuestionIdx,
+        deadline,
+        questionTimes,
+        totalTimeSpent
+      },
+      sessionStore
+    );
     setStorageFailed(!saved);
-  }, [exam, storageKey, answers, markedForReview, currentQuestionIdx, deadline]);
+  }, [exam, storageKey, answers, markedForReview, currentQuestionIdx, deadline, questionTimes, totalTimeSpent]);
 
   useEffect(() => {
     const warn = event => { if (submitted.current) return; event.preventDefault(); event.returnValue = ''; };
@@ -77,20 +137,36 @@ const ExamSimulator = () => {
   const displayText = getQuestionText(currentQuestion, currentLang);
   const displayOptions = getQuestionOptions(currentQuestion, currentLang);
 
+  const navigateToQuestion = (targetIdx) => {
+    if (targetIdx === currentQuestionIdx) return;
+    const now = Date.now();
+    const elapsed = lastTickRef.current ? Math.max(0, Math.round((now - lastTickRef.current) / 1000)) : 0;
+    if (elapsed > 0) {
+      lastTickRef.current = now;
+      totalTimeSpentRef.current += elapsed;
+      const currentQ = exam?.questions?.[currentQuestionIdxRef.current];
+      if (currentQ?.id) {
+        questionTimesRef.current = {
+          ...questionTimesRef.current,
+          [currentQ.id]: (questionTimesRef.current[currentQ.id] || 0) + elapsed
+        };
+      }
+      setTotalTimeSpent(totalTimeSpentRef.current);
+      setQuestionTimes({ ...questionTimesRef.current });
+    } else {
+      lastTickRef.current = now;
+    }
+    setCurrentQuestionIdx(targetIdx);
+  };
+
   const handleOptionSelect = optionIdx => setAnswers(prev => ({ ...prev, [currentQuestion.id]: optionIdx }));
   const toggleMarkForReview = () => setMarkedForReview(prev => ({ ...prev, [currentQuestion.id]: !prev[currentQuestion.id] }));
-  const handleNext = () => setCurrentQuestionIdx(prev => Math.min(prev + 1, exam.questions.length - 1));
-  const handlePrev = () => setCurrentQuestionIdx(prev => Math.max(0, prev - 1));
-
-  const formatTime = (seconds) => {
-    const m = Math.floor(seconds / 60).toString().padStart(2, '0');
-    const s = (seconds % 60).toString().padStart(2, '0');
-    return `${m}:${s}`;
-  };
+  const handleNext = () => navigateToQuestion(Math.min(currentQuestionIdx + 1, exam.questions.length - 1));
+  const handlePrev = () => navigateToQuestion(Math.max(0, currentQuestionIdx - 1));
 
   const handleTimeClick = () => {
     setIsEditingTime(true);
-    setEditTimeValue(formatTime(timeLeft));
+    setEditTimeValue(formatTimer(timeLeft));
   };
 
   const handleTimeSubmit = () => {
@@ -169,7 +245,7 @@ const ExamSimulator = () => {
                 }}
               />
             ) : (
-              <button className="timer-edit" aria-label={`Time remaining ${formatTime(timeLeft)}. Adjust practice timer`} onClick={handleTimeClick}>{formatTime(timeLeft)}</button>
+              <button className="timer-edit" aria-label={`Time remaining ${formatTimer(timeLeft)}. Adjust practice timer`} onClick={handleTimeClick}>{formatTimer(timeLeft)}</button>
             )}
           </div>
         </div>
@@ -178,7 +254,13 @@ const ExamSimulator = () => {
         {storageFailed && <p role="status" className="alert error-alert">Browser storage is unavailable. Keep this tab open to retain your answers.</p>}
         <div className="question-area" ref={questionArea}>
           <div className="question-top-bar">
-            <div className="question-number">Question {currentQuestionIdx + 1} of {exam.questions.length}</div>
+            <div className="question-top-left">
+              <div className="question-number">Question {currentQuestionIdx + 1} of {exam.questions.length}</div>
+              <div className="question-time-badge" title="Time spent on this question">
+                <Clock size={14} className="question-time-icon" aria-hidden="true" />
+                <span>Time on Q: <strong>{formatTimer(questionTimes[currentQuestion.id] || 0)}</strong></span>
+              </div>
+            </div>
             {isCurrentBilingual && (
               <div className="question-lang-switcher" role="group" aria-label="Question language toggle">
                 <Languages size={15} aria-hidden="true" />
@@ -276,7 +358,7 @@ const ExamSimulator = () => {
                 aria-current={currentQuestionIdx === idx ? "step" : undefined}
                 key={q.id}
                 className={`palette-btn ${statusClass} ${currentQuestionIdx === idx ? 'current' : ''}`}
-                onClick={() => setCurrentQuestionIdx(idx)}
+                onClick={() => navigateToQuestion(idx)}
               >
                 {idx + 1}
               </button>

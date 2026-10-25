@@ -265,14 +265,76 @@ export function writeStorage(key, value, storage) {
   try { (storage ?? globalThis.localStorage).setItem(key, JSON.stringify(value)); return true; } catch { return false; }
 }
 
-export function gradeExam(exam, answers) {
+export function formatDuration(seconds) {
+  const total = Math.max(0, Math.floor(Number(seconds) || 0));
+  if (total === 0) return '0s';
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const secs = total % 60;
+
+  if (hours > 0) {
+    if (minutes === 0 && secs === 0) return `${hours}h`;
+    if (secs === 0) return `${hours}h ${minutes}m`;
+    return `${hours}h ${minutes}m ${secs}s`;
+  }
+  if (minutes > 0) {
+    if (secs === 0) return `${minutes}m`;
+    return `${minutes}m ${secs}s`;
+  }
+  return `${secs}s`;
+}
+
+export function formatTimer(seconds) {
+  const total = Math.max(0, Math.floor(Number(seconds) || 0));
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const secs = total % 60;
+
+  const mm = minutes.toString().padStart(2, '0');
+  const ss = secs.toString().padStart(2, '0');
+
+  if (hours > 0) {
+    const hh = hours.toString().padStart(2, '0');
+    return `${hh}:${mm}:${ss}`;
+  }
+  return `${mm}:${ss}`;
+}
+
+export function gradeExam(exam, answers, questionTimes = {}, totalTimeSpent = 0) {
   let correctCount = 0, incorrectCount = 0, unattemptedCount = 0;
   for (const q of exam.questions) {
     if (answers[q.id] === undefined) unattemptedCount++;
     else if (answers[q.id] === q.correctAnswer) correctCount++;
     else incorrectCount++;
   }
-  return { examTitle: exam.title, totalQuestions: exam.questions.length, score: correctCount, correctCount, incorrectCount, unattemptedCount, answers, exam };
+
+  const safeQuestionTimes = {};
+  if (questionTimes && typeof questionTimes === 'object' && !Array.isArray(questionTimes)) {
+    for (const [qid, sec] of Object.entries(questionTimes)) {
+      if (Number.isFinite(sec) && sec >= 0) {
+        safeQuestionTimes[qid] = Math.floor(sec);
+      }
+    }
+  }
+
+  let calculatedTotal = Number.isFinite(totalTimeSpent) && totalTimeSpent >= 0 ? Math.floor(totalTimeSpent) : 0;
+  const sumTimes = Object.values(safeQuestionTimes).reduce((acc, t) => acc + t, 0);
+  if (calculatedTotal === 0 && sumTimes > 0) {
+    calculatedTotal = sumTimes;
+  }
+
+  return {
+    examTitle: exam.title,
+    totalQuestions: exam.questions.length,
+    score: correctCount,
+    correctCount,
+    incorrectCount,
+    unattemptedCount,
+    answers,
+    exam,
+    questionTimes: safeQuestionTimes,
+    totalTimeSpent: calculatedTotal
+  };
 }
 
 export const sessionStore = {

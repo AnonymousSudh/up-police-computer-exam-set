@@ -25,7 +25,7 @@ export const ExamProvider = ({ children }) => {
     const saved = readStorage('up-police-result', null, sessionStore);
     try {
       if (!saved || !saved.answers || !Number.isFinite(saved.score)) return null;
-      return gradeExam(validateExam(saved.exam), saved.answers);
+      return gradeExam(validateExam(saved.exam), saved.answers, saved.questionTimes, saved.totalTimeSpent);
     } catch { return null; }
   });
 

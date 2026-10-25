@@ -168,5 +168,56 @@ test('parses and splits explanations into structured next-line steps with indent
   assert.deepEqual(parseExplanationLines("N/A"), ["N/A"]);
 });
 
+test('formats durations and timers correctly', async () => {
+  const { formatDuration, formatTimer } = await import('../src/lib/exam.js');
+
+  assert.equal(formatDuration(0), '0s');
+  assert.equal(formatDuration(45), '45s');
+  assert.equal(formatDuration(60), '1m');
+  assert.equal(formatDuration(90), '1m 30s');
+  assert.equal(formatDuration(3600), '1h');
+  assert.equal(formatDuration(3665), '1h 1m 5s');
+  assert.equal(formatDuration(3660), '1h 1m');
+  assert.equal(formatDuration(-5), '0s');
+  assert.equal(formatDuration('invalid'), '0s');
+
+  assert.equal(formatTimer(0), '00:00');
+  assert.equal(formatTimer(9), '00:09');
+  assert.equal(formatTimer(75), '01:15');
+  assert.equal(formatTimer(3600), '01:00:00');
+  assert.equal(formatTimer(3665), '01:01:05');
+  assert.equal(formatTimer(7325), '02:02:05');
+});
+
+test('grades exam and tracks per-question time and total time correctly', async () => {
+  const { gradeExam } = await import('../src/lib/exam.js');
+  const sampleExam = {
+    id: 'test-exam',
+    title: 'Time Test Exam',
+    durationMinutes: 10,
+    questions: [
+      { id: 'q1', text: 'Q1', options: ['A', 'B'], correctAnswer: 0 },
+      { id: 'q2', text: 'Q2', options: ['A', 'B'], correctAnswer: 1 },
+      { id: 'q3', text: 'Q3', options: ['A', 'B'], correctAnswer: 0 }
+    ]
+  };
+
+  const answers = { q1: 0, q2: 0 }; // q1 correct, q2 incorrect, q3 unattempted
+  const questionTimes = { q1: 25, q2: 45, q3: 10 };
+  const totalTimeSpent = 80;
+
+  const result = gradeExam(sampleExam, answers, questionTimes, totalTimeSpent);
+  assert.equal(result.score, 1);
+  assert.equal(result.correctCount, 1);
+  assert.equal(result.incorrectCount, 1);
+  assert.equal(result.unattemptedCount, 1);
+  assert.deepEqual(result.questionTimes, { q1: 25, q2: 45, q3: 10 });
+  assert.equal(result.totalTimeSpent, 80);
+
+  // Test fallback totalTimeSpent when totalTimeSpent is 0 or omitted
+  const resultFallback = gradeExam(sampleExam, answers, questionTimes, 0);
+  assert.equal(resultFallback.totalTimeSpent, 80);
+});
+
 
 
