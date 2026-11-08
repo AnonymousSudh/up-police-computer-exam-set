@@ -26,15 +26,32 @@ import {
   CheckCheck,
   Clock,
   Type,
-  Tag
+  Tag,
+  Edit3,
+  Sparkles,
+  FileQuestion,
+  Languages
 } from 'lucide-react';
 import { AI_IMAGE_OCR_PROMPT } from './ImportExam';
 import { EXAM_CATEGORIES } from '../data/exams/categories';
+import { ToastContainer } from '../components/Toast';
 
 const AdminDashboard = () => {
   const { currentUser, logout, isConfigured, firebaseConfig, setCustomConfig, removeCustomConfig } = useAuth();
-  const { exams, addExam, deleteExam, refreshExams } = useExam();
+  const { exams, addExam, updateExam, deleteExam, refreshExams } = useExam();
   const navigate = useNavigate();
+
+  // Floating Toast Notifications State
+  const [toasts, setToasts] = useState([]);
+
+  const showToast = (type, title, message, examId = null, duration = 8500) => {
+    const id = Date.now() + Math.random();
+    setToasts((prev) => [...prev, { id, type, title, message, examId, duration }]);
+  };
+
+  const handleDismissToast = (id) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id));
+  };
 
   const [activeTab, setActiveTab] = useState('import'); // 'import' | 'exams' | 'settings'
 
@@ -57,6 +74,13 @@ const AdminDashboard = () => {
   const [manageSearch, setManageSearch] = useState('');
   const [manageCategoryFilter, setManageCategoryFilter] = useState('all');
 
+  // Edit Deployed Exam State
+  const [editingExam, setEditingExam] = useState(null);
+  const [editTitle, setEditTitle] = useState('');
+  const [editDuration, setEditDuration] = useState('');
+  const [editCategory, setEditCategory] = useState('rrb');
+  const [isUpdatingExam, setIsUpdatingExam] = useState(false);
+
   // Settings Tab State
   const [settingsConfigInput, setSettingsConfigInput] = useState('');
   const [settingsSuccess, setSettingsSuccess] = useState('');
@@ -66,13 +90,16 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'Escape') setShowPromptModal(false);
+      if (e.key === 'Escape') {
+        setShowPromptModal(false);
+        setEditingExam(null);
+      }
     };
-    if (showPromptModal) {
+    if (showPromptModal || editingExam) {
       window.addEventListener('keydown', handleKeyDown);
       return () => window.removeEventListener('keydown', handleKeyDown);
     }
-  }, [showPromptModal]);
+  }, [showPromptModal, editingExam]);
 
   // Synchronized field updates between metadata inputs and raw JSON
   const handleTitleChange = (val) => {
@@ -158,9 +185,13 @@ const AdminDashboard = () => {
       if (parsed.category) setSelectedCategory(parsed.category);
 
       const qCount = Array.isArray(parsed.questions) ? parsed.questions.length : 0;
-      setSuccess(`File "${file.name}" loaded with ${qCount} questions. You can customize the Name and Duration above before saving.`);
+      const loadedMsg = `File "${file.name}" loaded with ${qCount} questions. You can customize the Name and Duration above before saving.`;
+      setSuccess(loadedMsg);
+      showToast('info', 'Question Paper Loaded', loadedMsg);
     } catch (err) {
-      setError(`Failed to parse "${file.name}": ${err.message}`);
+      const errorMsg = `Failed to parse "${file.name}": ${err.message}`;
+      setError(errorMsg);
+      showToast('error', 'File Parse Error', errorMsg);
     }
   };
 
@@ -209,11 +240,18 @@ const AdminDashboard = () => {
       const parsed = JSON.parse(jsonInput);
       const questions = Array.isArray(parsed.questions) ? parsed.questions : [];
       const hasBilingual = questions.some(q => q.question_hindi || q.text_hi || q.option_text_hindi);
+      const activeTitle = (examTitle !== '') ? examTitle : (parsed.title || 'Untitled');
+      const activeDuration = (examDuration !== '' && Number(examDuration) > 0)
+        ? Number(examDuration)
+        : (parsed.durationMinutes || 60);
+
       return {
         valid: true,
-        title: examTitle.trim() || parsed.title || 'Untitled',
+        title: activeTitle,
+        rawTitle: parsed.title || '',
+        rawDuration: parsed.durationMinutes || 60,
         questionCount: questions.length,
-        durationMinutes: (examDuration && Number(examDuration) > 0) ? Number(examDuration) : (parsed.durationMinutes || 60),
+        durationMinutes: activeDuration,
         isBilingual: hasBilingual,
         id: parsed.id || null
       };
@@ -262,17 +300,22 @@ const AdminDashboard = () => {
       setIsSaving(true);
       const saved = await addExam(parsedData);
 
-      const storageNotice = isConfigured
-        ? ' Question paper saved to Firebase Cloud Firestore! (Live instantly for candidates)'
-        : ' (Saved to local storage. Connect Firebase backend for cloud sync).';
+      const deployedTitle = saved.title || parsedData.title || 'Untitled';
+      const deployedDuration = saved.durationMinutes || parsedData.durationMinutes || 60;
+      const storageNotice = ' Question paper saved to Firebase Cloud Firestore! (Live instantly for candidates)';
 
-      setSuccess(`Exam "${saved.title || parsedData.title || 'Untitled'}" (${saved.durationMinutes || parsedData.durationMinutes} mins) successfully deployed!${storageNotice}`);
+      const fullSuccessMsg = `Exam "${deployedTitle}" (${deployedDuration} mins) successfully deployed!${storageNotice}`;
+
+      setSuccess(fullSuccessMsg);
+      showToast('success', 'Exam Deployed Successfully!', fullSuccessMsg, saved.id, 9500);
       handleClearAll();
 
       // Refresh list
       if (refreshExams) await refreshExams();
     } catch (err) {
-      setError(err.message || 'Failed to deploy exam.');
+      const errorMsg = err.message || 'Failed to deploy exam.';
+      setError(errorMsg);
+      showToast('error', 'Exam Deployment Failed', errorMsg, null, 9500);
     } finally {
       setIsSaving(false);
     }
@@ -285,15 +328,66 @@ const AdminDashboard = () => {
 
     try {
       await deleteExam(examId);
-      setSuccess(`Exam "${title}" was removed from Firebase.`);
+      const deleteMsg = `Exam "${title}" was removed from Firebase.`;
+      setSuccess(deleteMsg);
+      showToast('info', 'Exam Removed', deleteMsg);
       setTimeout(() => setSuccess(''), 4000);
     } catch (err) {
-      setError(`Failed to delete exam: ${err.message}`);
+      const errorMsg = `Failed to delete exam: ${err.message}`;
+      setError(errorMsg);
+      showToast('error', 'Delete Failed', errorMsg);
     }
   };
 
   const handleDownloadExam = (examItem) => {
     downloadExamJson(examItem);
+  };
+
+  const handleOpenEditModal = (examItem) => {
+    setEditingExam(examItem);
+    setEditTitle(examItem.title || '');
+    setEditDuration(String(examItem.durationMinutes || 60));
+    setEditCategory(examItem.category || 'rrb');
+    setError('');
+  };
+
+  const handleCloseEditModal = () => {
+    setEditingExam(null);
+  };
+
+  const handleSaveEditedExam = async (e) => {
+    e?.preventDefault();
+    if (!editingExam) return;
+    if (!editTitle.trim()) {
+      setError('Exam title cannot be empty.');
+      return;
+    }
+    const durationNum = Number(editDuration);
+    if (!durationNum || durationNum < 1 || durationNum > 1440) {
+      setError('Duration must be between 1 and 1440 minutes.');
+      return;
+    }
+
+    try {
+      setIsUpdatingExam(true);
+      setError('');
+      await updateExam(editingExam.id, {
+        title: editTitle.trim(),
+        durationMinutes: durationNum,
+        category: editCategory
+      });
+      const updateMsg = `Exam "${editTitle.trim()}" successfully updated!`;
+      setSuccess(updateMsg);
+      showToast('success', 'Exam Updated', updateMsg, editingExam.id);
+      setEditingExam(null);
+      if (refreshExams) await refreshExams();
+    } catch (err) {
+      const errorMsg = err.message || 'Failed to update exam.';
+      setError(errorMsg);
+      showToast('error', 'Update Failed', errorMsg);
+    } finally {
+      setIsUpdatingExam(false);
+    }
   };
 
   const loadSample = () => {
@@ -442,6 +536,9 @@ service firebase.storage {
 
       {/* Main Admin Content */}
       <div className="admin-dashboard-container">
+        {/* Floating Toast Notifications */}
+        <ToastContainer toasts={toasts} onDismiss={handleDismissToast} />
+
         {/* Main Admin Card */}
         <div className="admin-main-card">
         {/* Tab Header */}
@@ -677,26 +774,104 @@ service firebase.storage {
               </div>
             </div>
 
-            {/* Live Inspection Card */}
+            {/* Live Inspection & Quick Customization Card */}
             {livePreview && livePreview.valid && (
-              <div className="live-preview-box">
-                <div className="preview-item">
-                  <span className="preview-label">Exam Name</span>
-                  <strong>{examTitle || livePreview.title}</strong>
-                </div>
-                <div className="preview-item">
-                  <span className="preview-label">Total Questions</span>
-                  <strong>{livePreview.questionCount} Questions</strong>
-                </div>
-                <div className="preview-item">
-                  <span className="preview-label">Duration</span>
-                  <strong>{examDuration || livePreview.durationMinutes} Minutes</strong>
-                </div>
-                <div className="preview-item">
-                  <span className="preview-label">Languages</span>
-                  <span className={`badge ${livePreview.isBilingual ? 'badge-success' : 'badge-neutral'}`}>
-                    {livePreview.isBilingual ? 'Bilingual (Hindi + English)' : 'Monolingual'}
+              <div className="live-preview-wrapper">
+                <div className="live-preview-header">
+                  <div className="live-preview-title">
+                    <Sparkles size={16} className="text-success" />
+                    <span>Live Exam Inspection &amp; Quick Customization</span>
+                  </div>
+                  <span className="live-preview-subtitle">
+                    Option to change Name and Duration directly before deploying
                   </span>
+                </div>
+
+                <div className="live-preview-box">
+                  {/* Exam Name (Editable directly here) */}
+                  <div className="preview-item preview-item-title preview-item-editable">
+                    <div className="preview-label-row">
+                      <span className="preview-label">Exam Name</span>
+                      <span className="preview-edit-badge" title="Change the exam name directly here">
+                        <Edit3 size={11} />
+                        <span>Editable</span>
+                      </span>
+                    </div>
+                    <div className="preview-input-field-wrap">
+                      <Type size={14} className="preview-field-icon" />
+                      <input
+                        type="text"
+                        className="preview-editable-input"
+                        value={examTitle !== '' ? examTitle : (livePreview.title || '')}
+                        onChange={(e) => handleTitleChange(e.target.value)}
+                        placeholder="e.g. SSC CGL Tier I — 14 July 2023 — Shift 1"
+                        title="Click to edit exam name"
+                        aria-label="Exam Name"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Total Questions (Read-only inspection) */}
+                  <div className="preview-item preview-item-stat">
+                    <span className="preview-label">Total Questions</span>
+                    <div className="preview-stat-content">
+                      <FileQuestion size={16} className="text-primary-accent" />
+                      <strong>{livePreview.questionCount} Questions</strong>
+                    </div>
+                  </div>
+
+                  {/* Duration (Editable directly here with quick presets) */}
+                  <div className="preview-item preview-item-duration preview-item-editable">
+                    <div className="preview-label-row">
+                      <span className="preview-label">Duration</span>
+                      <span className="preview-edit-badge" title="Change duration directly here">
+                        <Edit3 size={11} />
+                        <span>Editable</span>
+                      </span>
+                    </div>
+                    <div className="preview-duration-control">
+                      <div className="preview-input-field-wrap duration-field-wrap">
+                        <Clock size={14} className="preview-field-icon" />
+                        <input
+                          type="number"
+                          min="1"
+                          max="600"
+                          className="preview-editable-input duration-input"
+                          value={examDuration !== '' ? examDuration : String(livePreview.durationMinutes || 60)}
+                          onChange={(e) => handleDurationChange(e.target.value)}
+                          placeholder="60"
+                          title="Click to change duration in minutes"
+                          aria-label="Duration in minutes"
+                        />
+                        <span className="duration-unit-text">Minutes</span>
+                      </div>
+                      <div className="duration-quick-presets" role="group" aria-label="Duration presets">
+                        {[30, 45, 60, 90, 120].map((mins) => {
+                          const activeMins = Number(examDuration !== '' ? examDuration : livePreview.durationMinutes);
+                          return (
+                            <button
+                              key={mins}
+                              type="button"
+                              className={`btn-duration-preset ${activeMins === mins ? 'is-active' : ''}`}
+                              onClick={() => handleDurationChange(String(mins))}
+                              title={`Set duration to ${mins} minutes`}
+                            >
+                              {mins}m
+                            </button>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Languages */}
+                  <div className="preview-item preview-item-stat">
+                    <span className="preview-label">Languages</span>
+                    <span className={`badge ${livePreview.isBilingual ? 'badge-success' : 'badge-neutral'}`}>
+                      <Languages size={13} />
+                      <span>{livePreview.isBilingual ? 'Bilingual (Hindi + English)' : 'Monolingual'}</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             )}
@@ -833,6 +1008,14 @@ service firebase.storage {
                               onClick={() => handleDownloadExam(examItem)}
                             >
                               <Download size={16} />
+                            </button>
+                            <button
+                              type="button"
+                              className="btn-action-icon edit-btn"
+                              title="Edit exam name & duration"
+                              onClick={() => handleOpenEditModal(examItem)}
+                            >
+                              <Edit3 size={16} />
                             </button>
                             {examItem.storageUrl && (
                               <a
@@ -1054,6 +1237,129 @@ service firebase.storage {
                 <span>{copied ? 'Copied to Clipboard!' : 'Copy AI Prompt'}</span>
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Edit Exam Details Modal */}
+      {editingExam && (
+        <div className="prompt-modal-overlay" onClick={handleCloseEditModal}>
+          <div className="prompt-modal-card edit-exam-modal-card" onClick={(e) => e.stopPropagation()}>
+            <div className="prompt-modal-header">
+              <div>
+                <h3>
+                  <Edit3 size={20} className="icon-gold" />
+                  <span>Edit Exam Details</span>
+                </h3>
+                <p>Update the name, duration, and target stream for this exam. Changes will be saved to Firebase.</p>
+              </div>
+              <button
+                type="button"
+                className="btn-close-modal"
+                onClick={handleCloseEditModal}
+                aria-label="Close modal"
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveEditedExam} className="edit-exam-form">
+              <div className="edit-exam-modal-body">
+                <div className="edit-form-field">
+                  <label htmlFor="edit-exam-name">
+                    <Type size={14} />
+                    <span>Exam Name / Title</span>
+                  </label>
+                  <input
+                    id="edit-exam-name"
+                    type="text"
+                    className="admin-input"
+                    value={editTitle}
+                    onChange={(e) => setEditTitle(e.target.value)}
+                    placeholder="e.g. SSC CGL Tier I — 14 July 2023 — Shift 1"
+                    required
+                  />
+                </div>
+
+                <div className="edit-form-field">
+                  <label htmlFor="edit-exam-duration">
+                    <Clock size={14} />
+                    <span>Duration (Minutes)</span>
+                  </label>
+                  <div className="edit-duration-input-row">
+                    <input
+                      id="edit-exam-duration"
+                      type="number"
+                      min="1"
+                      max="1440"
+                      className="admin-input edit-num-input"
+                      value={editDuration}
+                      onChange={(e) => setEditDuration(e.target.value)}
+                      placeholder="60"
+                      required
+                    />
+                    <div className="duration-quick-presets" role="group" aria-label="Quick duration presets">
+                      {[30, 45, 60, 90, 120].map((mins) => (
+                        <button
+                          key={mins}
+                          type="button"
+                          className={`btn-duration-preset ${Number(editDuration) === mins ? 'is-active' : ''}`}
+                          onClick={() => setEditDuration(String(mins))}
+                        >
+                          {mins}m
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="edit-form-field">
+                  <label htmlFor="edit-exam-category">
+                    <Tag size={14} />
+                    <span>Target Stream</span>
+                  </label>
+                  <select
+                    id="edit-exam-category"
+                    className="admin-select"
+                    value={editCategory}
+                    onChange={(e) => setEditCategory(e.target.value)}
+                  >
+                    {EXAM_CATEGORIES.map(cat => (
+                      <option key={cat.id} value={cat.id}>{cat.name}</option>
+                    ))}
+                    <option value="custom">General / Custom Stream</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="prompt-modal-footer">
+                <button
+                  type="button"
+                  className="btn-secondary"
+                  onClick={handleCloseEditModal}
+                  disabled={isUpdatingExam}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="btn-primary"
+                  disabled={isUpdatingExam || !editTitle.trim()}
+                >
+                  {isUpdatingExam ? (
+                    <>
+                      <span className="spinner-small" />
+                      <span>Saving Changes...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Check size={16} />
+                      <span>Save Changes</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

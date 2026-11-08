@@ -31,9 +31,10 @@ export const hardFullFormExam = makeFullFormPart({
   questions: fullFormExam.questions.slice(100),
 });
 
-// All exams are now dynamic (managed via Firebase / Admin Panel upload)
-// No static mock tests are bundled in code
-export const builtInExams = [];
+import { upPolice2025PyqExam } from './exams/up-police/index.js';
+
+// All exams are now dynamic or official PYQ papers
+export const builtInExams = [upPolice2025PyqExam];
 
 // Retired static sample IDs
 const RETIRED_SAMPLE_IDS = new Set([

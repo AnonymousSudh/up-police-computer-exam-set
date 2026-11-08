@@ -255,7 +255,15 @@ const ExamSimulator = () => {
         <div className="question-area" ref={questionArea}>
           <div className="question-top-bar">
             <div className="question-top-left">
-              <div className="question-number">Question {currentQuestionIdx + 1} of {exam.questions.length}</div>
+              <div className="question-number">
+                Question {currentQuestion.question_number || (currentQuestionIdx + 1)} of {exam.expectedQuestionCount || exam.questions.length}
+              </div>
+              {(() => {
+                const currentSection = exam.sections?.find(s => s.id === currentQuestion.section_id);
+                if (!currentSection) return null;
+                const secName = currentLang === 'hi' ? (currentSection.name_hindi || currentSection.name_english) : currentSection.name_english;
+                return <span className="section-pill-badge">{secName}</span>;
+              })()}
               <div className="question-time-badge" title="Time spent on this question">
                 <Clock size={14} className="question-time-icon" aria-hidden="true" />
                 <span>Time on Q: <strong>{formatTimer(questionTimes[currentQuestion.id] || 0)}</strong></span>
@@ -288,6 +296,20 @@ const ExamSimulator = () => {
           </div>
           {currentQuestion.topic && <p className="question-topic">{currentQuestion.topic}</p>}
           <h3 className="question-text">{displayText}</h3>
+
+          {Array.isArray(currentQuestion.question_image_asset_ids) && currentQuestion.question_image_asset_ids.map(assetId => {
+            const asset = exam.assets?.[assetId];
+            if (!asset?.data_uri) return null;
+            return (
+              <div key={assetId} className="question-figure-container">
+                <img
+                  src={asset.data_uri}
+                  alt={currentLang === 'hi' ? (asset.alt_hindi || asset.alt_english || 'Question figure') : (asset.alt_english || 'Question figure')}
+                  className="question-figure-img"
+                />
+              </div>
+            );
+          })}
           
           <div className="options-list" role="group" aria-label="Answer options">
             {displayOptions.map((option, idx) => {
@@ -352,15 +374,16 @@ const ExamSimulator = () => {
             if (answers[q.id] !== undefined) statusClass = 'attempted';
             if (markedForReview[q.id]) statusClass += ' marked';
 
+            const displayNum = q.question_number || (idx + 1);
             return (
               <button 
-                aria-label={`Question ${idx + 1}, ${answers[q.id] !== undefined ? "answered" : "unanswered"}${markedForReview[q.id] ? ", marked for review" : ""}`}
+                aria-label={`Question ${displayNum}, ${answers[q.id] !== undefined ? "answered" : "unanswered"}${markedForReview[q.id] ? ", marked for review" : ""}`}
                 aria-current={currentQuestionIdx === idx ? "step" : undefined}
                 key={q.id}
                 className={`palette-btn ${statusClass} ${currentQuestionIdx === idx ? 'current' : ''}`}
                 onClick={() => navigateToQuestion(idx)}
               >
-                {idx + 1}
+                {displayNum}
               </button>
             );
           })}

@@ -219,5 +219,56 @@ test('grades exam and tracks per-question time and total time correctly', async 
   assert.equal(resultFallback.totalTimeSpent, 80);
 });
 
+test('supports source transcriptions with pending answer key and figure assets', async () => {
+  const { validateExam, gradeExam } = await import('../src/lib/exam.js');
+  const sourceTranscription = {
+    schemaVersion: '2.1-source-transcription',
+    id: 'up-police-pyq-2025',
+    title: 'UP Police 2025 PYQ',
+    durationMinutes: 120,
+    gradingReady: false,
+    officialAnswerKeyIncluded: false,
+    assets: {
+      'fig-1': { mime_type: 'image/jpeg', data_uri: 'data:image/jpeg;base64,abc' }
+    },
+    sections: [
+      { id: 'gk', name_english: 'General Knowledge', questionStart: 1, questionEnd: 40 }
+    ],
+    missing_question_numbers: [94, 95, 96, 97],
+    questions: [
+      {
+        question_number: 1,
+        question_english: 'What is the capital of Tajikistan?',
+        question_hindi: 'ताजिकिस्तान की राजधानी क्या है ?',
+        options: [
+          { option_label: 'a', option_text_english: 'Bangkok', option_text_hindi: 'बैंकॉक' },
+          { option_label: 'b', option_text_english: 'Taipei', option_text_hindi: 'ताइपे' },
+          { option_label: 'c', option_text_english: 'Dushanbe', option_text_hindi: 'दुशांबे' },
+          { option_label: 'd', option_text_english: 'Lomé', option_text_hindi: 'लोमे' }
+        ],
+        correct_option_label: null,
+        question_image_asset_ids: ['fig-1']
+      }
+    ]
+  };
+
+  const validated = validateExam(sourceTranscription);
+  assert.equal(validated.gradingReady, false);
+  assert.equal(validated.officialAnswerKeyIncluded, false);
+  assert.equal(validated.questions[0].correctAnswer, null);
+  assert.deepEqual(validated.questions[0].question_image_asset_ids, ['fig-1']);
+  assert.deepEqual(validated.assets, sourceTranscription.assets);
+  assert.deepEqual(validated.missing_question_numbers, [94, 95, 96, 97]);
+
+  // Grading pending verification
+  const gradeResult = gradeExam(validated, { 'q-1': 2 }, { 'q-1': 30 }, 30);
+  assert.equal(gradeResult.gradingPending, true);
+  assert.equal(gradeResult.gradingReady, false);
+  assert.equal(gradeResult.score, null);
+  assert.equal(gradeResult.attemptedCount, 1);
+  assert.equal(gradeResult.unattemptedCount, 0);
+});
+
+
 
 

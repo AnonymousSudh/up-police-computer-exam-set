@@ -8,6 +8,7 @@ import {
   FileQuestion, 
   Shield, 
   Train, 
+  Award,
   Layers, 
   Search, 
   UploadCloud, 
@@ -50,6 +51,7 @@ const Home = () => {
   // Helper to determine which category an exam belongs to
   const getExamCategory = (exam) => {
     if (exam.category) return exam.category;
+    if (exam.id.includes('ssc')) return 'ssc';
     if (exam.id.includes('rrb')) return 'rrb';
     if (exam.id.includes('police') || exam.id.includes('computer-operator')) return 'up-police';
     return 'custom';
@@ -57,7 +59,7 @@ const Home = () => {
 
   // Group stats for each category
   const categoryStats = useMemo(() => {
-    const counts = { 'all': exams.length, 'up-police': 0, 'rrb': 0, 'custom': 0 };
+    const counts = { 'all': exams.length, 'up-police': 0, 'rrb': 0, 'ssc': 0, 'custom': 0 };
     for (const exam of exams) {
       const cat = getExamCategory(exam);
       if (counts[cat] !== undefined) counts[cat]++;
@@ -153,13 +155,43 @@ const Home = () => {
               <p className="category-desc">RRB NTPC, Group D, ALP &amp; Technical tests with General Awareness, Science &amp; Math.</p>
             </div>
             <div className="category-card-footer">
-              <span className="exam-count-chip">{categoryStats['rrb']} Test Available</span>
+              <span className="exam-count-chip">{categoryStats['rrb']} {categoryStats['rrb'] === 1 ? 'Test' : 'Tests'} Available</span>
               <button 
                 type="button"
                 className={`btn-category-action ${activeCategory === 'rrb' ? 'active-btn' : ''}`}
                 onClick={(e) => { e.stopPropagation(); handleCategorySelect('rrb'); }}
               >
                 {activeCategory === 'rrb' ? 'Selected' : 'Select Exam'}
+              </button>
+            </div>
+          </div>
+
+          {/* SSC Category Card */}
+          <div 
+            className={`category-card ssc-card ${activeCategory === 'ssc' ? 'selected' : ''}`}
+            onClick={() => handleCategorySelect('ssc')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => e.key === 'Enter' && handleCategorySelect('ssc')}
+          >
+            <div className="category-card-top">
+              <div className="category-icon-wrapper ssc-icon-bg">
+                <Award size={24} />
+              </div>
+              <span className="category-badge ssc-badge">Staff Selection</span>
+            </div>
+            <div className="category-card-info">
+              <h4>SSC Exam</h4>
+              <p className="category-desc">SSC CGL, CHSL, MTS &amp; CPO practice papers with Reasoning, Math, English &amp; GK.</p>
+            </div>
+            <div className="category-card-footer">
+              <span className="exam-count-chip">{categoryStats['ssc'] || 0} {categoryStats['ssc'] === 1 ? 'Test' : 'Tests'} Available</span>
+              <button 
+                type="button"
+                className={`btn-category-action ${activeCategory === 'ssc' ? 'active-btn' : ''}`}
+                onClick={(e) => { e.stopPropagation(); handleCategorySelect('ssc'); }}
+              >
+                {activeCategory === 'ssc' ? 'Selected' : 'Select Exam'}
               </button>
             </div>
           </div>
@@ -178,6 +210,8 @@ const Home = () => {
               ? 'UP Police Practice Tests' 
               : activeCategory === 'rrb' 
               ? 'RRB Railway Practice Tests' 
+              : activeCategory === 'ssc'
+              ? 'SSC Practice Tests'
               : 'Custom Practice Tests'}
           </h3>
           <p className="section-desc">
@@ -216,6 +250,16 @@ const Home = () => {
             >
               <Train size={16} />
               <span>RRB Railway ({categoryStats['rrb']})</span>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              aria-selected={activeCategory === 'ssc'}
+              className={`category-tab ${activeCategory === 'ssc' ? 'active' : ''}`}
+              onClick={() => handleCategorySelect('ssc')}
+            >
+              <Award size={16} />
+              <span>SSC ({categoryStats['ssc'] || 0})</span>
             </button>
             {categoryStats.custom > 0 && (
               <button
@@ -258,7 +302,7 @@ const Home = () => {
         {activeCategory !== 'all' && (
           <div className="active-filter-banner">
             <span>
-              Showing tests for: <strong>{activeCategory === 'up-police' ? 'UP Police Exam' : activeCategory === 'rrb' ? 'RRB Railway Exam' : 'Custom / Imported'}</strong>
+              Showing tests for: <strong>{activeCategory === 'up-police' ? 'UP Police Exam' : activeCategory === 'rrb' ? 'RRB Railway Exam' : activeCategory === 'ssc' ? 'SSC Exam' : 'Custom / Imported'}</strong>
             </span>
             <button 
               type="button" 
@@ -281,7 +325,7 @@ const Home = () => {
                 <div className="exam-card-header">
                   <div className="exam-card-tags">
                     <span className={`exam-category-tag tag-${cat}`}>
-                      {cat === 'up-police' ? 'UP Police' : cat === 'rrb' ? 'RRB Railway' : 'Custom'}
+                      {cat === 'up-police' ? 'UP Police' : cat === 'rrb' ? 'RRB Railway' : cat === 'ssc' ? 'SSC Exam' : 'Custom'}
                     </span>
                     {exam.badge && <span className="exam-badge">{exam.badge}</span>}
                     {isBilingual && (

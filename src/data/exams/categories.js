@@ -25,6 +25,20 @@ export const EXAM_CATEGORIES = [
     gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.1) 100%)',
     tags: ['RRB NTPC', 'Group D', 'General Awareness', 'General Science', 'Bilingual'],
   },
+  {
+    id: 'ssc',
+    name: 'SSC Exam',
+    shortName: 'SSC',
+    fullName: 'Staff Selection Commission (SSC)',
+    tagline: 'SSC CGL, CHSL, MTS, CPO & GD',
+    description: 'Tier-I and Tier-II previous year papers & mock tests with Reasoning, General Awareness, Quantitative Aptitude & English Comprehension.',
+    icon: 'Award',
+    badge: 'Staff Selection Commission',
+    folder: 'src/data/exams/ssc/',
+    accentColor: '#3b82f6',
+    gradient: 'linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(147, 51, 234, 0.1) 100%)',
+    tags: ['SSC CGL', 'Tier I', 'Reasoning', 'Math', 'English', 'Bilingual'],
+  },
 ];
 
 export function getExamCategoryById(categoryId) {

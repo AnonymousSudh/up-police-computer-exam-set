@@ -1,5 +1,6 @@
 import defaultExam from './default-exam.json' with { type: 'json' };
 import fullFormExam from './full-form-exam.json' with { type: 'json' };
+import pyq2025Exam from './up-police-computer-operator-2025-11-01-by-c25.json' with { type: 'json' };
 
 const makeFullFormPart = ({ id, title, badge, questions, durationMinutes, description }) => ({
   ...fullFormExam,
@@ -35,10 +36,17 @@ export const upPoliceDefaultExam = {
   category: 'up-police',
 };
 
+export const upPolice2025PyqExam = {
+  ...pyq2025Exam,
+  category: 'up-police',
+};
+
 export const upPoliceExams = [
+  upPolice2025PyqExam,
   simpleFullFormExam,
   hardFullFormExam,
   upPoliceDefaultExam,
 ];
 
 export default upPoliceExams;
+

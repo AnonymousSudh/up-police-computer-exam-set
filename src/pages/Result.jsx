@@ -108,6 +108,9 @@ const Result = () => {
     );
   };
 
+  const isGradingPending = Boolean(currentExamResult.gradingPending || exam?.gradingReady === false || exam?.officialAnswerKeyIncluded === false);
+  const attemptedCount = currentExamResult.attemptedCount ?? (totalQuestions - unattemptedCount);
+
   return (
     <div className="result-container">
       <div className="result-card">
@@ -118,12 +121,24 @@ const Result = () => {
           <p className="exam-title-text">{examTitle}</p>
         </div>
 
-        <div className="score-circle-container">
-          <div className="score-circle" style={{ background: `conic-gradient(var(--accent-primary) ${percentage}%, var(--border-color) 0)` }}>
-            <span className="score-text">{percentage}%</span>
-            <span className="score-subtext">Score</span>
+        {isGradingPending ? (
+          <div className="pending-grading-card" role="region" aria-label="Grading status notice">
+            <AlertCircle size={32} className="pending-grading-icon" aria-hidden="true" />
+            <div className="pending-grading-body">
+              <h3 className="pending-grading-title">Official Answer Key Pending</h3>
+              <p className="pending-grading-desc">
+                {currentExamResult.answerKeyNote || exam?.answerKeyNote || 'This paper is an authentic source transcription. The official answer key has not yet been released. Your attempted responses are recorded below without scoring penalties.'}
+              </p>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="score-circle-container">
+            <div className="score-circle" style={{ background: `conic-gradient(var(--accent-primary) ${percentage}%, var(--border-color) 0)` }}>
+              <span className="score-text">{percentage}%</span>
+              <span className="score-subtext">Score</span>
+            </div>
+          </div>
+        )}
 
         <div className="stats-grid">
           <button
@@ -135,42 +150,77 @@ const Result = () => {
             <span className="stat-label">Total Questions</span>
             <span className="stat-value">{totalQuestions}</span>
           </button>
-          <button
-            type="button"
-            className={`stat-box success-box clickable-card ${filter === 'correct' ? 'active-filter-success' : ''}`}
-            aria-pressed={filter === 'correct'}
-            onClick={() => handleFilterClick('correct')}
-          >
-            <CheckCircle size={20} />
-            <div className="stat-info">
-              <span className="stat-label">Correct</span>
-              <span className="stat-value">{correctCount}</span>
-            </div>
-          </button>
-          <button
-            type="button"
-            className={`stat-box danger-box clickable-card ${filter === 'incorrect' ? 'active-filter-danger' : ''}`}
-            aria-pressed={filter === 'incorrect'}
-            onClick={() => handleFilterClick('incorrect')}
-          >
-            <XCircle size={20} />
-            <div className="stat-info">
-              <span className="stat-label">Incorrect</span>
-              <span className="stat-value">{incorrectCount}</span>
-            </div>
-          </button>
-          <button
-            type="button"
-            className={`stat-box warning-box clickable-card ${filter === 'unattempted' ? 'active-filter-warning' : ''}`}
-            aria-pressed={filter === 'unattempted'}
-            onClick={() => handleFilterClick('unattempted')}
-          >
-            <AlertCircle size={20} />
-            <div className="stat-info">
-              <span className="stat-label">Unattempted</span>
-              <span className="stat-value">{unattemptedCount}</span>
-            </div>
-          </button>
+          {isGradingPending ? (
+            <>
+              <button
+                type="button"
+                className={`stat-box success-box clickable-card ${filter === 'attempted' ? 'active-filter-success' : ''}`}
+                aria-pressed={filter === 'attempted'}
+                onClick={() => handleFilterClick('attempted')}
+              >
+                <CheckCircle size={20} />
+                <div className="stat-info">
+                  <span className="stat-label">Attempted</span>
+                  <span className="stat-value">{attemptedCount}</span>
+                </div>
+              </button>
+              <button
+                type="button"
+                className={`stat-box warning-box clickable-card ${filter === 'unattempted' ? 'active-filter-warning' : ''}`}
+                aria-pressed={filter === 'unattempted'}
+                onClick={() => handleFilterClick('unattempted')}
+              >
+                <AlertCircle size={20} />
+                <div className="stat-info">
+                  <span className="stat-label">Unattempted</span>
+                  <span className="stat-value">{unattemptedCount}</span>
+                </div>
+              </button>
+              <div className="stat-box neutral-box">
+                <span className="stat-label">Evaluation</span>
+                <span className="stat-value text-accent" style={{ fontSize: '1rem', marginTop: '0.25rem' }}>Key Pending</span>
+              </div>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                className={`stat-box success-box clickable-card ${filter === 'correct' ? 'active-filter-success' : ''}`}
+                aria-pressed={filter === 'correct'}
+                onClick={() => handleFilterClick('correct')}
+              >
+                <CheckCircle size={20} />
+                <div className="stat-info">
+                  <span className="stat-label">Correct</span>
+                  <span className="stat-value">{correctCount}</span>
+                </div>
+              </button>
+              <button
+                type="button"
+                className={`stat-box danger-box clickable-card ${filter === 'incorrect' ? 'active-filter-danger' : ''}`}
+                aria-pressed={filter === 'incorrect'}
+                onClick={() => handleFilterClick('incorrect')}
+              >
+                <XCircle size={20} />
+                <div className="stat-info">
+                  <span className="stat-label">Incorrect</span>
+                  <span className="stat-value">{incorrectCount}</span>
+                </div>
+              </button>
+              <button
+                type="button"
+                className={`stat-box warning-box clickable-card ${filter === 'unattempted' ? 'active-filter-warning' : ''}`}
+                aria-pressed={filter === 'unattempted'}
+                onClick={() => handleFilterClick('unattempted')}
+              >
+                <AlertCircle size={20} />
+                <div className="stat-info">
+                  <span className="stat-label">Unattempted</span>
+                  <span className="stat-value">{unattemptedCount}</span>
+                </div>
+              </button>
+            </>
+          )}
         </div>
 
         {/* Time Analysis Section */}
@@ -341,10 +391,11 @@ const Result = () => {
                 .map((q, idx) => ({ ...q, originalIdx: idx, timeSpent: qTimes[q.id] || 0 }))
                 .filter(q => {
                   const userAnswer = answers[q.id];
-                  const isCorrect = userAnswer === q.correctAnswer;
+                  const isCorrect = q.correctAnswer !== null && userAnswer === q.correctAnswer;
                   const isAttempted = userAnswer !== undefined;
                   
                   if (filter === 'all') return true;
+                  if (filter === 'attempted') return isAttempted;
                   if (filter === 'correct') return isCorrect;
                   if (filter === 'incorrect') return isAttempted && !isCorrect;
                   if (filter === 'unattempted') return !isAttempted;
@@ -358,7 +409,8 @@ const Result = () => {
                 .map((q) => {
                   const idx = q.originalIdx;
                   const userAnswer = answers[q.id];
-                  const isCorrect = userAnswer === q.correctAnswer;
+                  const isPendingKey = q.correctAnswer === null;
+                  const isCorrect = !isPendingKey && userAnswer === q.correctAnswer;
                   const isAttempted = userAnswer !== undefined;
                   const isBilingual = isBilingualQuestion(q);
                   const currentLang = questionReviewLangs[q.id] || globalReviewLang;
@@ -366,12 +418,30 @@ const Result = () => {
                   const displayOptions = getQuestionOptions(q, currentLang);
                   const displayExplanation = getQuestionExplanation(q, currentLang);
                   const qTime = qTimes[q.id] || 0;
+
+                  const cardClass = isPendingKey
+                    ? (isAttempted ? 'attempted-card' : 'unattempted-card')
+                    : (isCorrect ? 'correct-card' : isAttempted ? 'incorrect-card' : 'unattempted-card');
+
+                  const statusText = isPendingKey
+                    ? (isAttempted ? 'Attempted' : 'Unattempted')
+                    : (isCorrect ? 'Correct' : isAttempted ? 'Incorrect' : 'Unattempted');
+
+                  const statusClass = isPendingKey
+                    ? (isAttempted ? 'text-accent' : 'text-warning')
+                    : (isCorrect ? 'text-success' : isAttempted ? 'text-danger' : 'text-warning');
                   
                   return (
-                    <div key={q.id} className={`review-card ${isCorrect ? 'correct-card' : isAttempted ? 'incorrect-card' : 'unattempted-card'}`}>
+                    <div key={q.id} className={`review-card ${cardClass}`}>
                       <div className="review-q-header">
                         <div className="review-q-header-left">
-                          <span className="q-num">Question {idx + 1}</span>
+                          <span className="q-num">Question {q.question_number || (idx + 1)}</span>
+                          {(() => {
+                            const currentSection = exam.sections?.find(s => s.id === q.section_id);
+                            if (!currentSection) return null;
+                            const secName = currentLang === 'hi' ? (currentSection.name_hindi || currentSection.name_english) : currentSection.name_english;
+                            return <span className="section-pill-badge">{secName}</span>;
+                          })()}
                           {isBilingual && (
                             <div className="question-lang-switcher compact" role="group" aria-label="Question language toggle">
                               <Languages size={13} aria-hidden="true" />
@@ -401,21 +471,41 @@ const Result = () => {
                             <Clock size={13} aria-hidden="true" />
                             <span>Time: <strong>{formatDuration(qTime)}</strong></span>
                           </div>
-                          <span className={`q-status ${isCorrect ? 'text-success' : isAttempted ? 'text-danger' : 'text-warning'}`}>
-                            {isCorrect ? 'Correct' : isAttempted ? 'Incorrect' : 'Unattempted'}
+                          <span className={`q-status ${statusClass}`}>
+                            {statusText}
                           </span>
                         </div>
                       </div>
                       <h4 className="review-q-text">{displayText}</h4>
+
+                      {Array.isArray(q.question_image_asset_ids) && q.question_image_asset_ids.map(assetId => {
+                        const asset = exam.assets?.[assetId];
+                        if (!asset?.data_uri) return null;
+                        return (
+                          <div key={assetId} className="question-figure-container">
+                            <img
+                              src={asset.data_uri}
+                              alt={currentLang === 'hi' ? (asset.alt_hindi || asset.alt_english || 'Question figure') : (asset.alt_english || 'Question figure')}
+                              className="question-figure-img"
+                            />
+                          </div>
+                        );
+                      })}
                       
                       <div className="review-options">
                         {displayOptions.map((opt, optIdx) => {
                           const label = q.option_labels?.[optIdx] || String.fromCharCode(65 + optIdx);
                           let optClass = 'review-opt';
-                          if (optIdx === q.correctAnswer) {
-                            optClass += ' correct-opt';
-                          } else if (optIdx === userAnswer) {
-                            optClass += ' incorrect-opt';
+                          if (isPendingKey) {
+                            if (optIdx === userAnswer) {
+                              optClass += ' selected-neutral-opt';
+                            }
+                          } else {
+                            if (optIdx === q.correctAnswer) {
+                              optClass += ' correct-opt';
+                            } else if (optIdx === userAnswer) {
+                              optClass += ' incorrect-opt';
+                            }
                           }
                           
                           return (
@@ -424,8 +514,9 @@ const Result = () => {
                                 <span className="opt-marker">{label.toUpperCase()}.</span> 
                                 <span>{opt}</span>
                               </div>
-                              {optIdx === q.correctAnswer && <CheckCircle size={18} className="opt-icon success-icon" />}
-                              {optIdx === userAnswer && optIdx !== q.correctAnswer && <XCircle size={18} className="opt-icon danger-icon" />}
+                              {!isPendingKey && optIdx === q.correctAnswer && <CheckCircle size={18} className="opt-icon success-icon" />}
+                              {!isPendingKey && optIdx === userAnswer && optIdx !== q.correctAnswer && <XCircle size={18} className="opt-icon danger-icon" />}
+                              {isPendingKey && optIdx === userAnswer && <CheckCircle size={18} className="opt-icon neutral-icon" />}
                             </div>
                           );
                         })}

@@ -8,13 +8,15 @@ import {
   isFirebaseConfigured
 } from '../lib/firebase';
 
+import { upPolice2025PyqExam } from '../data/exams/up-police/index.js';
+
 const ExamContext = createContext();
 
 export const ExamProvider = ({ children }) => {
   const [storageWarning, setStorageWarning] = useState('');
   const [exams, setExams] = useState(() => {
     const raw = readStorage('up-police-exams', []);
-    const dynamicExams = mergeExamLibrary(raw);
+    const dynamicExams = mergeExamLibrary([upPolice2025PyqExam, ...(Array.isArray(raw) ? raw : [])]);
     if (typeof window !== 'undefined' && Array.isArray(raw) && raw.length !== dynamicExams.length) {
       writeStorage('up-police-exams', dynamicExams);
     }
@@ -35,7 +37,7 @@ export const ExamProvider = ({ children }) => {
     try {
       const remoteExams = await fetchExamsFromFirebase();
       const localCustom = readStorage('up-police-exams', []);
-      const merged = mergeExamLibrary([...localCustom, ...(remoteExams || [])]);
+      const merged = mergeExamLibrary([upPolice2025PyqExam, ...localCustom, ...(remoteExams || [])]);
       setExams(merged);
       writeStorage('up-police-exams', merged);
     } catch (err) {
@@ -51,7 +53,7 @@ export const ExamProvider = ({ children }) => {
       .then(remoteExams => {
         if (!isMounted) return;
         const localCustom = readStorage('up-police-exams', []);
-        const merged = mergeExamLibrary([...localCustom, ...(remoteExams || [])]);
+        const merged = mergeExamLibrary([upPolice2025PyqExam, ...localCustom, ...(remoteExams || [])]);
         setExams(merged);
         writeStorage('up-police-exams', merged);
       })
@@ -102,6 +104,38 @@ export const ExamProvider = ({ children }) => {
     setExams(filtered);
   };
 
+  const updateExam = async (examId, updatedFields) => {
+    const existingIndex = exams.findIndex(item => item.id === examId);
+    if (existingIndex === -1) {
+      throw new Error('Exam not found to update.');
+    }
+
+    const currentExam = exams[existingIndex];
+    const durationNum = Number(updatedFields.durationMinutes);
+    const updatedExam = {
+      ...currentExam,
+      ...updatedFields,
+      title: updatedFields.title?.trim() || currentExam.title,
+      durationMinutes: durationNum > 0 ? durationNum : (currentExam.durationMinutes || 60),
+      category: updatedFields.category || currentExam.category || 'rrb'
+    };
+
+    if (isFirebaseConfigured()) {
+      try {
+        const saved = await saveExamToFirebase(updatedExam);
+        Object.assign(updatedExam, saved);
+      } catch (fbErr) {
+        console.warn('Firebase update notice:', fbErr.message);
+      }
+    }
+
+    const next = [...exams];
+    next[existingIndex] = updatedExam;
+    writeStorage('up-police-exams', next);
+    setExams(next);
+    return updatedExam;
+  };
+
   const getExamById = useCallback(id => exams.find(exam => exam.id === id), [exams]);
 
   const saveExamResult = useCallback(result => {
@@ -116,6 +150,7 @@ export const ExamProvider = ({ children }) => {
       value={{
         exams,
         addExam,
+        updateExam,
         deleteExam,
         refreshExams,
         getExamById,

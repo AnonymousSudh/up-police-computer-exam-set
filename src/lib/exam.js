@@ -114,6 +114,7 @@ export function validateExam(data) {
   if (!Number.isFinite(durationMinutes) || durationMinutes < 1 || durationMinutes > 1440) throw new Error('Duration must be between 1 and 1440 minutes.');
   if (!Array.isArray(data.questions) || !data.questions.length || data.questions.length > 1000) throw new Error('Include between 1 and 1000 questions.');
 
+  const isGradingReady = data.gradingReady !== false && data.officialAnswerKeyIncluded !== false;
   const ids = new Set();
   const questions = data.questions.map((q, index) => {
     const label = `Question ${index + 1}`;
@@ -122,7 +123,19 @@ export function validateExam(data) {
     const text_en = (q.question_english ?? q.text_english ?? q.text_en ?? (typeof q.text === 'string' && !q.question_hindi ? q.text : '') ?? '')?.toString().trim();
     const text_hi = (q.question_hindi ?? q.text_hindi ?? q.text_hi ?? '')?.toString().trim();
     const fallbackText = (typeof q.text === 'string' ? q.text : typeof q.question === 'string' ? q.question : '')?.trim();
-    const mainText = text_en || fallbackText || text_hi;
+    let mainText = text_en || fallbackText || text_hi;
+
+    const hasImages = Boolean(
+      (Array.isArray(q.source_question_images_english) && q.source_question_images_english.length > 0) ||
+      (Array.isArray(q.source_question_images_hindi) && q.source_question_images_hindi.length > 0) ||
+      (Array.isArray(q.question_images_english) && q.question_images_english.length > 0) ||
+      (Array.isArray(q.question_images_hindi) && q.question_images_hindi.length > 0) ||
+      q.display_mode === 'original_source_image'
+    );
+
+    if (!mainText && hasImages) {
+      mainText = `Question ${q.question_number || (index + 1)} (Image Based Question)`;
+    }
 
     if (!mainText) throw new Error(`${label} needs question text.`);
 
@@ -153,7 +166,14 @@ export function validateExam(data) {
         if (Array.isArray(q.option_labels) && typeof q.option_labels[optIdx] === 'string') {
           optLabel = q.option_labels[optIdx].trim();
         }
-        if (!optEn && !optHi) throw new Error(`${label} has empty option text.`);
+        if (!optEn && !optHi) {
+          if (hasImages || optLabel) {
+            optEn = `(Option ${optLabel.toUpperCase()})`;
+            optHi = `(विकल्प ${optLabel.toUpperCase()})`;
+          } else {
+            throw new Error(`${label} has empty option text.`);
+          }
+        }
       } else if (opt && typeof opt === 'object') {
         hasObjectOptions = true;
         if (opt.option_label !== undefined || opt.label !== undefined) {
@@ -161,7 +181,16 @@ export function validateExam(data) {
         }
         optEn = (opt.option_text_english ?? opt.text_english ?? opt.text_en ?? opt.text ?? opt.english ?? '')?.toString().trim();
         optHi = (opt.option_text_hindi ?? opt.text_hindi ?? opt.text_hi ?? opt.hindi ?? '')?.toString().trim();
-        if (!optEn && !optHi) throw new Error(`${label} has empty option text.`);
+        if (!optEn && !optHi) {
+          const hasOptImages = (Array.isArray(opt.option_images_english) && opt.option_images_english.length > 0) ||
+                               (Array.isArray(opt.option_images_hindi) && opt.option_images_hindi.length > 0);
+          if (hasImages || hasOptImages || optLabel) {
+            optEn = `(Option ${optLabel.toUpperCase()})`;
+            optHi = `(विकल्प ${optLabel.toUpperCase()})`;
+          } else {
+            throw new Error(`${label} has empty option text.`);
+          }
+        }
       } else {
         throw new Error(`${label} option ${optIdx + 1} must be text or an option object.`);
       }
@@ -209,8 +238,9 @@ export function validateExam(data) {
         }
       }
     }
-
-    if (!Number.isInteger(resolvedCorrectAnswer) || resolvedCorrectAnswer < 0 || resolvedCorrectAnswer >= options.length) {
+    if (!isGradingReady && resolvedCorrectAnswer === null) {
+      resolvedCorrectAnswer = null;
+    } else if (!Number.isInteger(resolvedCorrectAnswer) || resolvedCorrectAnswer < 0 || resolvedCorrectAnswer >= options.length) {
       throw new Error(`${label}: correctAnswer must be a valid zero-based option index.`);
     }
 
@@ -246,6 +276,17 @@ export function validateExam(data) {
       if (q.question_number !== undefined) questionItem.question_number = q.question_number;
     }
 
+    if (q.source_question_images_english) questionItem.source_question_images_english = q.source_question_images_english;
+    if (q.source_question_images_hindi) questionItem.source_question_images_hindi = q.source_question_images_hindi;
+    if (q.question_images_english) questionItem.question_images_english = q.question_images_english;
+    if (q.question_images_hindi) questionItem.question_images_hindi = q.question_images_hindi;
+    if (q.question_image_asset_ids) questionItem.question_image_asset_ids = q.question_image_asset_ids;
+    if (q.display_mode) questionItem.display_mode = q.display_mode;
+    if (q.section_id) questionItem.section_id = q.section_id;
+    if (q.section_question_number !== undefined) questionItem.section_question_number = q.section_question_number;
+    if (q.question_number !== undefined) questionItem.question_number = q.question_number;
+    if (q.correct_option_label !== undefined) questionItem.correct_option_label = q.correct_option_label;
+
     return questionItem;
   });
 
@@ -253,7 +294,23 @@ export function validateExam(data) {
   if (data.badge) result.badge = String(data.badge).trim();
   if (data.description) result.description = String(data.description).trim();
   if (data.category) result.category = String(data.category).trim();
+  if (data.sections) result.sections = data.sections;
+  if (data.marking) result.marking = data.marking;
   if (data.researchNote) result.researchNote = String(data.researchNote).trim();
+  if (data.assets && typeof data.assets === 'object') result.assets = data.assets;
+  if (data.schemaVersion) result.schemaVersion = String(data.schemaVersion).trim();
+  if (data.paperType) result.paperType = String(data.paperType).trim();
+  if (data.gradingReady !== undefined) result.gradingReady = Boolean(data.gradingReady);
+  else if (!isGradingReady) result.gradingReady = false;
+  if (data.officialAnswerKeyIncluded !== undefined) result.officialAnswerKeyIncluded = Boolean(data.officialAnswerKeyIncluded);
+  if (data.answerKeyNote) result.answerKeyNote = String(data.answerKeyNote).trim();
+  if (data.exam) result.exam = data.exam;
+  if (data.missing_question_numbers) result.missing_question_numbers = data.missing_question_numbers;
+  if (data.sourceCompletenessNote) result.sourceCompletenessNote = String(data.sourceCompletenessNote).trim();
+  if (data.source) result.source = data.source;
+  if (data.verification) result.verification = data.verification;
+  if (data.expectedQuestionCount !== undefined) result.expectedQuestionCount = data.expectedQuestionCount;
+  if (data.totalQuestions !== undefined) result.totalQuestions = data.totalQuestions;
   return result;
 }
 
@@ -301,11 +358,18 @@ export function formatTimer(seconds) {
 }
 
 export function gradeExam(exam, answers, questionTimes = {}, totalTimeSpent = 0) {
+  const isGradingReady = exam.gradingReady !== false && exam.officialAnswerKeyIncluded !== false;
   let correctCount = 0, incorrectCount = 0, unattemptedCount = 0;
   for (const q of exam.questions) {
-    if (answers[q.id] === undefined) unattemptedCount++;
-    else if (answers[q.id] === q.correctAnswer) correctCount++;
-    else incorrectCount++;
+    if (answers[q.id] === undefined) {
+      unattemptedCount++;
+    } else if (q.correctAnswer === null || !isGradingReady) {
+      // Pending official key: recorded as attempted, not marked as incorrect
+    } else if (answers[q.id] === q.correctAnswer) {
+      correctCount++;
+    } else {
+      incorrectCount++;
+    }
   }
 
   const safeQuestionTimes = {};
@@ -326,10 +390,13 @@ export function gradeExam(exam, answers, questionTimes = {}, totalTimeSpent = 0)
   return {
     examTitle: exam.title,
     totalQuestions: exam.questions.length,
-    score: correctCount,
-    correctCount,
-    incorrectCount,
+    score: isGradingReady ? correctCount : null,
+    correctCount: isGradingReady ? correctCount : null,
+    incorrectCount: isGradingReady ? incorrectCount : null,
     unattemptedCount,
+    attemptedCount: Object.keys(answers).length,
+    gradingPending: !isGradingReady,
+    gradingReady: isGradingReady,
     answers,
     exam,
     questionTimes: safeQuestionTimes,
